@@ -1,3 +1,4 @@
+import 'package:customer/views/mainPage.dart';
 import 'package:flutter/material.dart';
 
 class LoginInput extends StatelessWidget {
@@ -41,11 +42,17 @@ class LoginInput extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: Text("Login", style: TextStyle(fontSize: 20)),
               ),
-              onPressed: () {},
+              onPressed: () {
+                mainPage(context);
+              },
             ),
           ),
         ],
       ),
     );
   }
+}
+
+mainPage(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
 }

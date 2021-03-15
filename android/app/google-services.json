@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "104748290697",
+    "project_id": "customersolutionmanagement",
+    "storage_bucket": "customersolutionmanagement.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104748290697:android:60ddc9577fe4ec4f0cac58",
+        "android_client_info": {
+          "package_name": "id.realpha.customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104748290697-5qk66t2kj1927nq9dbf9fjtusk6o2en3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjghqrCGJnb9MNucvpksNQP39zvCqL0Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104748290697-5qk66t2kj1927nq9dbf9fjtusk6o2en3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

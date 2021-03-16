@@ -12,9 +12,17 @@ abstract class _AuthUser with Store {
   @observable
   Users usr = Users();
 
+  @observable
+  bool checked = false;
+
   @action
-  chekcUser(String username, String password) {
-    validateUser(username, password).then((value) => usr = value);
+  checkUser(String username, String password) {
+    validateUser(username, password).then((value) {
+      if (_validateUserPass(value, username, password)) {
+        usr = value;
+        checked = true;
+      }
+    });
   }
 }
 
@@ -29,12 +37,17 @@ Future<Users> validateUser(String username, String password) async {
       .get()
       .then((value) => dataUser = value.docs);
   if (dataUser.length == 1) {
-    Users data = Users.fromMap(dataUser[0].data());
-    if (username == data.username && password == data.password) {
-      users = data;
-    }
+    users = Users.fromMap(dataUser[0].data());
   }
   return users;
+}
+
+bool _validateUserPass(Users data, String username, String password) {
+  bool check = false;
+  if (username == data.username && password == data.password) {
+    check = true;
+  }
+  return check;
 }
 
 void anonymousLogin() {

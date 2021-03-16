@@ -24,14 +24,29 @@ mixin _$AuthUser on _AuthUser, Store {
     });
   }
 
+  final _$checkedAtom = Atom(name: '_AuthUser.checked');
+
+  @override
+  bool get checked {
+    _$checkedAtom.reportRead();
+    return super.checked;
+  }
+
+  @override
+  set checked(bool value) {
+    _$checkedAtom.reportWrite(value, super.checked, () {
+      super.checked = value;
+    });
+  }
+
   final _$_AuthUserActionController = ActionController(name: '_AuthUser');
 
   @override
-  dynamic chekcUser(String username, String password) {
+  dynamic checkUser(String username, String password) {
     final _$actionInfo =
-        _$_AuthUserActionController.startAction(name: '_AuthUser.chekcUser');
+        _$_AuthUserActionController.startAction(name: '_AuthUser.checkUser');
     try {
-      return super.chekcUser(username, password);
+      return super.checkUser(username, password);
     } finally {
       _$_AuthUserActionController.endAction(_$actionInfo);
     }
@@ -40,7 +55,8 @@ mixin _$AuthUser on _AuthUser, Store {
   @override
   String toString() {
     return '''
-usr: ${usr}
+usr: ${usr},
+checked: ${checked}
     ''';
   }
 }

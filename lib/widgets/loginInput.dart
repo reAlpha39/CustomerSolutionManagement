@@ -1,6 +1,6 @@
 import 'package:customer/utils/auth_user.dart';
 import 'package:customer/models/users.dart';
-import 'package:customer/views/mainPage.dart';
+import 'package:customer/views/main_page_customer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_mobx_helpers/flutter_mobx_helpers.dart';
@@ -91,7 +91,7 @@ class _LoginInputState extends State<LoginInput> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MainPage()));
+                                      builder: (context) => MainPageCustomer()));
                             } else {
                               showDialog(
                                   context: context,

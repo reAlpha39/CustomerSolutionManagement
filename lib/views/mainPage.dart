@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shape_of_view/shape_of_view.dart';
 
 class MainPage extends StatelessWidget {
   @override

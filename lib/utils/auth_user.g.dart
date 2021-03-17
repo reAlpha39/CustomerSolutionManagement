@@ -39,6 +39,21 @@ mixin _$AuthUser on _AuthUser, Store {
     });
   }
 
+  final _$stateAtom = Atom(name: '_AuthUser.state');
+
+  @override
+  int get state {
+    _$stateAtom.reportRead();
+    return super.state;
+  }
+
+  @override
+  set state(int value) {
+    _$stateAtom.reportWrite(value, super.state, () {
+      super.state = value;
+    });
+  }
+
   final _$_AuthUserActionController = ActionController(name: '_AuthUser');
 
   @override
@@ -56,7 +71,8 @@ mixin _$AuthUser on _AuthUser, Store {
   String toString() {
     return '''
 usr: ${usr},
-checked: ${checked}
+checked: ${checked},
+state: ${state}
     ''';
   }
 }

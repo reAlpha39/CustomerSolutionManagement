@@ -13,14 +13,29 @@ abstract class _AuthUser with Store {
   Users usr = Users();
 
   @observable
-  bool checked = false;
+  bool checked;
+
+  @observable
+  int state = 0;
 
   @action
   checkUser(String username, String password) {
+    checked = false;
+    state = 1;
+    usr = Users();
     validateUser(username, password).then((value) {
-      if (_validateUserPass(value, username, password)) {
-        usr = value;
-        checked = true;
+      if (value != null) {
+        if (_validateUserPass(value, username, password)) {
+          usr = value;
+          checked = true;
+          state = 2;
+        } else {
+          checked = false;
+          state = 2;
+        }
+      } else {
+        checked = false;
+        state = 2;
       }
     });
   }
@@ -28,16 +43,20 @@ abstract class _AuthUser with Store {
 
 Future<Users> validateUser(String username, String password) async {
   Users users;
-  await Firebase.initializeApp();
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  List<QueryDocumentSnapshot> dataUser;
-  await firestore
-      .collection('users')
-      .where('username', isEqualTo: username)
-      .get()
-      .then((value) => dataUser = value.docs);
-  if (dataUser.length == 1) {
-    users = Users.fromMap(dataUser[0].data());
+  try {
+    await Firebase.initializeApp();
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    List<QueryDocumentSnapshot> dataUser;
+    await firestore
+        .collection('users')
+        .where('username', isEqualTo: username)
+        .get()
+        .then((value) => dataUser = value.docs);
+    if (dataUser.length == 1) {
+      users = Users.fromMap(dataUser[0].data());
+    }
+  } catch (e) {
+    Exception("Connection error");
   }
   return users;
 }

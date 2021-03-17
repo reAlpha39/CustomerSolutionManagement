@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shape_of_view/shape_of_view.dart';
-import '../widgets/iconApp.dart';
+import '../widgets/icon_app.dart';
 
 class MainPageCustomer extends StatelessWidget {
   @override

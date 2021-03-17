@@ -1,5 +1,8 @@
 import 'package:customer/views/loginPage.dart';
+import 'package:customer/views/main_page_customer.dart';
 import 'package:flutter/material.dart';
+
+import 'views/loginPage.dart';
 
 void main() {
   runApp(MyApp());

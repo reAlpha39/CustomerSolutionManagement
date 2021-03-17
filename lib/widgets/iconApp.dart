@@ -9,7 +9,7 @@ class IconApp extends StatelessWidget {
         margin: EdgeInsets.only(left: 0, top: 0),
         height: 100,
         width: 100,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.yellowAccent[400]),
       ),
     );
   }

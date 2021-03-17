@@ -57,7 +57,7 @@ class _LoginInputState extends State<LoginInput> {
               padding: const EdgeInsets.only(bottom: 10),
               child: TextFormField(
                 controller: passwordC,
-                obscureText: true,
+                obscureText: false,
                 decoration: InputDecoration(
                     labelText: "Password",
                     prefixIcon: Icon(

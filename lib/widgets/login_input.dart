@@ -86,18 +86,3 @@ class _LoginInputState extends State<LoginInput> {
     }
   }
 }
-
-_buildPopupDialog(BuildContext context) {
-  return AlertDialog(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-    title: Text('Login Gagal'),
-    content: Text('Username atau password salah!'),
-    actions: [
-      TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text("Ok"))
-    ],
-  );
-}

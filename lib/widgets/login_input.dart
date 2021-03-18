@@ -43,6 +43,12 @@ class _LoginInputState extends State<LoginInput> {
   }
 
   Widget _loginButton() {
+    bool isEnabled = true;
+    if (_loginController.state.value == 1) {
+      isEnabled = false;
+    } else {
+      isEnabled = true;
+    }
     return Padding(
       padding: const EdgeInsets.only(top: 50),
       child: ElevatedButton(
@@ -50,14 +56,16 @@ class _LoginInputState extends State<LoginInput> {
           child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Center(child: _buttonState())),
-          onPressed: () {
-            var form = _formKey.currentState;
-            if (form.validate()) {
-              form.save();
-              _loginController.userLogin();
-            }
-          }),
+          onPressed: isEnabled ? () => _submitData() : null),
     );
+  }
+
+  _submitData() {
+    var form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      _loginController.userLogin();
+    }
   }
 
   Widget _buttonState() {
@@ -68,7 +76,7 @@ class _LoginInputState extends State<LoginInput> {
         height: 20,
         width: 20,
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.yellowAccent),
         ),
       );
     } else {

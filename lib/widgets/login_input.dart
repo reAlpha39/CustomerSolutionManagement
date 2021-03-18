@@ -26,6 +26,7 @@ class _LoginInputState extends State<LoginInput> {
                         textEditingController:
                             _loginController.usernameTextController,
                         isObsecure: false,
+                        iconData: Icons.account_circle_outlined,
                         labelText: 'Username',
                         returnError: 'Username harus diisi!')),
                 Padding(
@@ -34,6 +35,7 @@ class _LoginInputState extends State<LoginInput> {
                       textEditingController:
                           _loginController.passwordTextController,
                       isObsecure: true,
+                      iconData: Icons.lock_outline,
                       labelText: 'Password',
                       returnError: 'Password harus diisi!'),
                 ),

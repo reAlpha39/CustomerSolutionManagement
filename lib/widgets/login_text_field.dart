@@ -7,6 +7,7 @@ class LoginTextField extends StatelessWidget {
     this.labelText,
     this.returnError,
     this.isObsecure,
+    this.iconData,
   })  : _textEditingController = textEditingController,
         super(key: key);
 
@@ -14,6 +15,7 @@ class LoginTextField extends StatelessWidget {
   final String labelText;
   final String returnError;
   final bool isObsecure;
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class LoginTextField extends StatelessWidget {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(17)),
           labelText: labelText,
           prefixIcon: Icon(
-            Icons.lock,
+            iconData,
             size: 20,
           )),
       validator: (value) {

@@ -1,4 +1,6 @@
+import 'package:customer/controller/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shape_of_view/shape_of_view.dart';
 import '../widgets/icon_app.dart';
 
@@ -12,17 +14,15 @@ class MainPageCustomer extends StatelessWidget {
         ),
         home: Scaffold(
           body: SingleChildScrollView(
-            child: Container(child: 
-            Shapeground(),)
-          ),
+              child: Container(
+            child: Shapeground(),
+          )),
         ));
   }
 }
 
 class Shapeground extends StatelessWidget {
-  const Shapeground({
-    Key key,
-  }) : super(key: key);
+  final LoginController _loginController = LoginController.to;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class Shapeground extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 15),
                       child: Text(
-                        'Nama Customer',
+                        '${_loginController.usr.value.username}',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 17, color: Colors.white),
                       ),
@@ -66,14 +66,14 @@ class Shapeground extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 30, left: 15, right: 15),
               child: TextFormField(
-                  textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    focusColor: Colors.white,
-                    hintText: 'ID Service',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(60)),
-                  ),
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  focusColor: Colors.white,
+                  hintText: 'ID Service',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(60)),
                 ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 15),
@@ -92,7 +92,7 @@ class Shapeground extends StatelessWidget {
               padding: const EdgeInsets.only(top: 240),
               child: TextButton(
                 onPressed: () {
-                  loginPage(context);
+                  Get.offAndToNamed('/login_page');
                 },
                 child: Text(
                   "Logout",

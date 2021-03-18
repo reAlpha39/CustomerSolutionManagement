@@ -1,4 +1,5 @@
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginInput extends StatefulWidget {
@@ -20,43 +21,21 @@ class _LoginInputState extends State<LoginInput> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: TextFormField(
-                    controller: _loginController.usernameTextController,
-                    decoration: InputDecoration(
-                        labelText: "Username",
-                        prefixIcon: Icon(
-                          Icons.email,
-                          size: 20,
-                        )),
-                    validator: (value) {
-                      if (value == '') {
-                        return 'Username harus diisi';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                ),
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: LoginTextField(
+                        textEditingController:
+                            _loginController.usernameTextController,
+                        isObsecure: false,
+                        labelText: 'Username',
+                        returnError: 'Username harus diisi!')),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: TextFormField(
-                    controller: _loginController.passwordTextController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        labelText: "Password",
-                        prefixIcon: Icon(
-                          Icons.lock,
-                          size: 20,
-                        )),
-                    validator: (value) {
-                      if (value == '') {
-                        return 'Password harus diisi';
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
+                  child: LoginTextField(
+                      textEditingController:
+                          _loginController.passwordTextController,
+                      isObsecure: true,
+                      labelText: 'Password',
+                      returnError: 'Password harus diisi!'),
                 ),
                 _loginButton()
               ],

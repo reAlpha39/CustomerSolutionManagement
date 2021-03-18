@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:customer/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,12 +9,28 @@ import '../widgets/icon_app.dart';
 class MainPageCustomer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-          child: Container(
-        child: Shapeground(),
-      )),
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        body: SingleChildScrollView(
+            child: Container(
+          child: Shapeground(),
+        )),
+      ),
     );
+  }
+
+  Future<bool> _onWillPop() {
+    return Get.defaultDialog(
+            radius: 17,
+            title: 'Exit App',
+            middleText: 'Apakah anda ingin keluar dari aplikasi?',
+            textConfirm: 'OK',
+            textCancel: 'Batal',
+            confirmTextColor: Colors.white,
+            onConfirm: () => exit(0),
+            onCancel: () => Get.back()) ??
+        false;
   }
 }
 

@@ -112,10 +112,10 @@ class _LoginInputState extends State<LoginCard> {
       return Text("Login", style: TextStyle(fontSize: 20));
     } else if (_loginController.state.value == 1) {
       return SizedBox(
-        height: 20,
-        width: 20,
+        height: 24,
+        width: 24,
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.yellowAccent),
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.blueGrey),
         ),
       );
     } else {

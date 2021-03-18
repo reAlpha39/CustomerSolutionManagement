@@ -110,7 +110,8 @@ class LoginController extends GetxController {
   }
 
   Future<bool> _connectionChecker() async {
-    bool hasConnection = await DataConnectionChecker().hasConnection;
+    bool hasConnection = false;
+    hasConnection = await DataConnectionChecker().hasConnection;
     return hasConnection;
   }
 }

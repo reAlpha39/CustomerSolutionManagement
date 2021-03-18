@@ -81,7 +81,13 @@ class LoginController extends GetxController {
         user = Users.fromMap(dataUser[0].data());
       }
     } catch (e) {
-      Exception("Connection error");
+      state.value = 2;
+      Get.defaultDialog(
+          title: 'Login Gagal',
+          middleText: 'Periksa koneksi internet anda',
+          textConfirm: 'OK',
+          confirmTextColor: Colors.white,
+          onConfirm: () => Get.back());
     }
     return user;
   }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/models/users.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,34 +37,47 @@ class LoginController extends GetxController {
     //   Get.dialog(Center(child: CircularProgressIndicator()),
     //       barrierDismissible: false);
     state.value = 1;
-    _validateUser().then((value) {
-      if (value != null) {
-        usr.value = value;
-        _validateUserPass();
-        state.value = 2;
-        print(isValidate.value);
-        if (isValidate.value) {
-          Get.offAndToNamed('/main_page_customer');
-          usernameTextController.text = '';
-          passwordTextController.text = '';
-        } else {
-          Get.defaultDialog(
+    _connectionChecker().then((conn) {
+      if (conn) {
+        _validateUser().then((value) {
+          if (value != null) {
+            usr.value = value;
+            _validateUserPass();
+            state.value = 2;
+            print(isValidate.value);
+            if (isValidate.value) {
+              Get.offAndToNamed('/main_page_customer');
+              usernameTextController.text = '';
+              passwordTextController.text = '';
+            } else {
+              _showDialogError(
+                title: 'Login Gagal',
+                middleText: 'Username atau password salah!',
+              );
+            }
+          } else {
+            state.value = 2;
+            _showDialogError(
               title: 'Login Gagal',
-              middleText: 'Username atau password salah!',
-              textConfirm: 'OK',
-              confirmTextColor: Colors.white,
-              onConfirm: () => Get.back());
-        }
+              middleText: 'Username tidak ditemukan!',
+            );
+          }
+        });
       } else {
         state.value = 2;
-        Get.defaultDialog(
-            title: 'Login Gagal',
-            middleText: 'Username tidak ditemukan!',
-            textConfirm: 'OK',
-            confirmTextColor: Colors.white,
-            onConfirm: () => Get.back());
+        _showDialogError(
+            title: 'Login Gagal', middleText: 'Periksa koneksi internet anda.');
       }
     });
+  }
+
+  _showDialogError({String title, String middleText}) {
+    Get.defaultDialog(
+        title: title,
+        middleText: middleText,
+        textConfirm: 'OK',
+        confirmTextColor: Colors.white,
+        onConfirm: () => Get.back());
   }
 
   Future<Users> _validateUser() async {
@@ -80,14 +94,8 @@ class LoginController extends GetxController {
       if (dataUser.length == 1) {
         user = Users.fromMap(dataUser[0].data());
       }
-    } catch (e) {
+    } on FirebaseException catch (e) {
       state.value = 2;
-      Get.defaultDialog(
-          title: 'Login Gagal',
-          middleText: 'Periksa koneksi internet anda',
-          textConfirm: 'OK',
-          confirmTextColor: Colors.white,
-          onConfirm: () => Get.back());
     }
     return user;
   }
@@ -99,5 +107,10 @@ class LoginController extends GetxController {
     } else {
       isValidate.value = false;
     }
+  }
+
+  Future<bool> _connectionChecker() async {
+    bool hasConnection = await DataConnectionChecker().hasConnection;
+    return hasConnection;
   }
 }

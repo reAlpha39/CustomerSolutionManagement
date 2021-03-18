@@ -34,6 +34,7 @@ dependencies:
   get: ^3.26.0
   shape_of_view: ^1.0.2
   expandable: ^5.0.1
+  data_connection_checker: ^0.3.4
 
 dev_dependencies:
   flutter_test:

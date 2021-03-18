@@ -33,6 +33,7 @@ dependencies:
   firebase_auth: ^1.0.1
   get: ^3.26.0
   shape_of_view: ^1.0.2
+  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_test:

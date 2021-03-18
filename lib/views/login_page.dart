@@ -33,16 +33,8 @@ class _LoginPageState extends State<LoginPage> {
                           child: IconApp(),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Card(
-                              clipBehavior: Clip.antiAlias,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(17)),
-                              child: Container(
-                                  color: Colors.white,
-                                  width: 350,
-                                  child: LoginInput())),
-                        )
+                            padding: const EdgeInsets.only(top: 20),
+                            child: LoginInput()),
                       ],
                     ),
                   ],

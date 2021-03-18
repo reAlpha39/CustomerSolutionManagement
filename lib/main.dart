@@ -8,7 +8,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  LoginController loginController = Get.put<LoginController>(LoginController());
+  final LoginController loginController =
+      Get.put<LoginController>(LoginController());
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         getPages: Routes.route,
         initialRoute: '/login_page',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.blueGrey,
         ));
   }
 }

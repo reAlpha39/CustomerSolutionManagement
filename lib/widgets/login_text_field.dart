@@ -5,7 +5,8 @@ class LoginTextField extends StatelessWidget {
     Key key,
     @required TextEditingController textEditingController,
     this.labelText,
-    this.returnError, this.isObsecure,
+    this.returnError,
+    this.isObsecure,
   })  : _textEditingController = textEditingController,
         super(key: key);
 
@@ -20,6 +21,10 @@ class LoginTextField extends StatelessWidget {
       controller: _textEditingController,
       obscureText: isObsecure,
       decoration: InputDecoration(
+          fillColor: Colors.black87,
+          focusColor: Colors.black87,
+          hoverColor: Colors.black87,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(17)),
           labelText: labelText,
           prefixIcon: Icon(
             Icons.lock,

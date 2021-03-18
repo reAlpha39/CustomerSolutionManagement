@@ -3,12 +3,12 @@ import 'package:customer/widgets/login_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
-class LoginInput extends StatefulWidget {
+class LoginCard extends StatefulWidget {
   @override
   _LoginInputState createState() => _LoginInputState();
 }
 
-class _LoginInputState extends State<LoginInput> {
+class _LoginInputState extends State<LoginCard> {
   final LoginController _loginController = LoginController.to;
   final _formKey = GlobalKey<FormState>();
   @override

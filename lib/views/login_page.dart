@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:customer/widgets/icon_app.dart';
-import 'package:customer/widgets/login_input.dart';
+import 'package:customer/widgets/login_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Padding(
                             padding: const EdgeInsets.only(top: 20),
-                            child: LoginInput()),
+                            child: LoginCard()),
                       ],
                     ),
                   ],

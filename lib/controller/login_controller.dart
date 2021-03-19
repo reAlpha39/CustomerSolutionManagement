@@ -17,7 +17,8 @@ class LoginController extends GetxController {
   //Observalbe object
   Rx<Users> usr = Users().obs;
   RxBool isValidate = false.obs;
-  RxInt state = 0.obs;
+  //RxInt state = 0.obs;
+  RxBool isLoading = false.obs;
 
   @override
   void onInit() {
@@ -36,14 +37,14 @@ class LoginController extends GetxController {
   void userLogin() {
     //   Get.dialog(Center(child: CircularProgressIndicator()),
     //       barrierDismissible: false);
-    state.value = 1;
+    isLoading.value = true;
     _connectionChecker().then((conn) {
       if (conn) {
         _validateUser().then((value) {
           if (value != null) {
             usr.value = value;
             _validateUserPass();
-            state.value = 2;
+            isLoading.value = false;
             print(isValidate.value);
             if (isValidate.value) {
               Get.offAndToNamed('/main_page_customer');
@@ -56,7 +57,7 @@ class LoginController extends GetxController {
               );
             }
           } else {
-            state.value = 2;
+            isLoading.value = false;
             _showDialogError(
               title: 'Login Gagal',
               middleText: 'Username tidak ditemukan!',
@@ -64,7 +65,7 @@ class LoginController extends GetxController {
           }
         });
       } else {
-        state.value = 2;
+        isLoading.value = false;
         _showDialogError(
             title: 'Login Gagal', middleText: 'Periksa koneksi internet anda.');
       }
@@ -95,7 +96,7 @@ class LoginController extends GetxController {
         user = Users.fromMap(dataUser[0].data());
       }
     } on FirebaseException catch (e) {
-      state.value = 2;
+      isLoading.value = false;
     }
     return user;
   }

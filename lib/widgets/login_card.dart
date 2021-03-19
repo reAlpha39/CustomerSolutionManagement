@@ -2,6 +2,7 @@ import 'package:customer/controller/login_controller.dart';
 import 'package:customer/widgets/login_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginCard extends StatefulWidget {
   @override
@@ -48,7 +49,7 @@ class _LoginInputState extends State<LoginCard> {
                               returnError: 'Password harus diisi!'),
                         ),
                         _loginHelper(),
-                        _loginButton()
+                        Obx(() => _loginButton())
                       ],
                     )))));
   }
@@ -83,7 +84,7 @@ class _LoginInputState extends State<LoginCard> {
 
   Widget _loginButton() {
     bool isEnabled = true;
-    if (_loginController.state.value == 1) {
+    if (_loginController.isLoading.value) {
       isEnabled = false;
     } else {
       isEnabled = true;
@@ -112,9 +113,7 @@ class _LoginInputState extends State<LoginCard> {
   }
 
   Widget _buttonState() {
-    if (_loginController.state.value == 0) {
-      return Text("Login", style: TextStyle(fontSize: 20));
-    } else if (_loginController.state.value == 1) {
+    if (_loginController.isLoading.value) {
       return SizedBox(
         height: 24,
         width: 24,

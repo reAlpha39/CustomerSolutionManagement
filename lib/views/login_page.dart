@@ -16,12 +16,12 @@ class _LoginPageState extends State<LoginPage> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        body: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
-          child: Container(
-              color: Colors.black87,
-              height: Get.height,
-              child: Center(
+        body: Container(
+            color: Colors.black87,
+            height: Get.height,
+            child: Center(
+              child: SingleChildScrollView(
+                physics: ClampingScrollPhysics(),
                 child: Stack(
                   children: [
                     Column(
@@ -29,18 +29,18 @@ class _LoginPageState extends State<LoginPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 20),
+                          padding: const EdgeInsets.only(bottom: 20, top: 20),
                           child: IconApp(),
                         ),
                         Padding(
-                            padding: const EdgeInsets.only(top: 20),
+                            padding: const EdgeInsets.only(top: 20, bottom: 20),
                             child: LoginCard()),
                       ],
                     ),
                   ],
                 ),
-              )),
-        ),
+              ),
+            )),
       ),
     );
   }

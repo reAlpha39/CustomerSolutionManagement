@@ -5,8 +5,8 @@ class HomeCustomer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ElevatedButton(
-          child: Text('Need support United Tractors'), onPressed: () {}),
-    );
+        child: ElevatedButton(
+            child: Text('Need support United Tractors'),
+            onPressed: () => Get.toNamed('/customer_info')));
   }
 }

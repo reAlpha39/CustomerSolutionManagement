@@ -15,6 +15,7 @@ class _LoginInputState extends State<LoginCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+        elevation: 3,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
         child: Container(
@@ -26,6 +27,7 @@ class _LoginInputState extends State<LoginCard> {
                 child: Form(
                     key: _formKey,
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

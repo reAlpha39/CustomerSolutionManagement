@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,6 +37,7 @@ class MainPageCustomer extends StatelessWidget {
 
 class Shapeground extends StatelessWidget {
   final LoginController _loginController = LoginController.to;
+  final HomeController _homeController = HomeController.to;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,6 @@ class Shapeground extends StatelessWidget {
       children: [
         Container(
           height: MediaQuery.of(context).size.height,
-          //color: Colors.black87,
         ),
         Column(
           children: [
@@ -54,64 +55,42 @@ class Shapeground extends StatelessWidget {
                 position: ArcPosition.Bottom,
               ),
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.30,
-                color: Colors.black87,
-                child: Center(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30),
-                      child: IconApp(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Text(
-                        '${_loginController.usr.value.username}',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 17, color: Colors.white),
+                  height: MediaQuery.of(context).size.height * 0.30,
+                  color: Colors.black87,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: IconApp(),
                       ),
-                    ),
-                  ],
-                )),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30, left: 15, right: 15),
-              child: TextFormField(
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  focusColor: Colors.white,
-                  hintText: 'ID Service',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(60)),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: FloatingActionButton.extended(
-                  backgroundColor: Colors.yellowAccent[400],
-                  foregroundColor: Colors.black,
-                  onPressed: () {
-                    // Respond to button press
-                  },
-                  label: Text(
-                    'CEK SERVICE',
-                    style: TextStyle(fontSize: 12),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 10),
+                        child: Text(
+                          '${_loginController.usr.value.username}',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 23, color: Colors.white),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 0),
+                        child: TextButton(
+                          onPressed: () {
+                            Get.offAndToNamed('/login_page');
+                          },
+                          child: Text(
+                            "Logout",
+                            style: TextStyle(color: Colors.orange),
+                          ),
+                        ),
+                      ),
+                    ],
                   )),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 240),
-              child: TextButton(
-                onPressed: () {
-                  Get.offAndToNamed('/login_page');
-                },
-                child: Text(
-                  "Logout",
-                  style: TextStyle(color: Colors.black87),
-                ),
-              ),
+              padding: const EdgeInsets.only(top: 30),
+              child: Obx(() => _homeController.userType()),
             ),
           ],
         ),

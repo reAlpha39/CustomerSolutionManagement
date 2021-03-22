@@ -120,7 +120,7 @@ class _LoginInputState extends State<LoginCard> {
         height: 24,
         width: 24,
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.blueGrey),
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow.shade600),
         ),
       );
     } else {

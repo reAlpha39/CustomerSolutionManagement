@@ -24,6 +24,11 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         getPages: Routes.route,
         initialRoute: '/login_page',
-        theme: ThemeData(primarySwatch: Colors.yellow));
+        theme: ThemeData(
+            appBarTheme: AppBarTheme(
+              color: Colors.yellow.shade600,
+              titleTextStyle: TextStyle(color: Colors.black87),
+              brightness: Brightness.light,
+            )));
   }
 }

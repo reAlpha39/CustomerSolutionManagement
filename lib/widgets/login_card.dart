@@ -93,16 +93,19 @@ class _LoginInputState extends State<LoginCard> {
     }
     return Padding(
       padding: const EdgeInsets.only(top: 30),
-      child: ElevatedButton(
-          style: ButtonStyle(
-              elevation: MaterialStateProperty.all<double>(0),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(17)))),
-          child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Center(child: _buttonState())),
-          onPressed: isEnabled ? () => _submitData() : null),
+      child: Theme(
+        data: ThemeData(primarySwatch: Colors.yellow),
+        child: ElevatedButton(
+            style: ButtonStyle(
+                elevation: MaterialStateProperty.all<double>(0),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(17)))),
+            child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Center(child: _buttonState())),
+            onPressed: isEnabled ? () => _submitData() : null),
+      ),
     );
   }
 
@@ -124,7 +127,8 @@ class _LoginInputState extends State<LoginCard> {
         ),
       );
     } else {
-      return Text("Login", style: TextStyle(fontSize: 20));
+      return Text("Login",
+          style: TextStyle(fontSize: 20, color: Colors.black54));
     }
   }
 }

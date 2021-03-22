@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:shape_of_view/shape_of_view.dart';
 import '../widgets/icon_app.dart';
 
-class MainPageCustomer extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

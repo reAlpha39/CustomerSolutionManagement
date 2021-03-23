@@ -20,7 +20,7 @@ class LoginTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData(primarySwatch: Colors.yellow),
+      data: ThemeData(primarySwatch: Colors.amber),
       child: TextFormField(
         controller: _textEditingController,
         obscureText: isObsecure,

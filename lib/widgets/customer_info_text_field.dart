@@ -4,9 +4,8 @@ class CustomerInfoTextField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
   final int maxLines;
-  final String saveData;
 
-  const CustomerInfoTextField({this.controller, this.labelText, this.maxLines, this.saveData});
+  CustomerInfoTextField({this.controller, this.labelText, this.maxLines});
 
   @override
   Widget build(BuildContext context) {

@@ -23,32 +23,27 @@ class CustomerInfo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 20, right: 10),
             child: FloatingActionButton(
+              heroTag: "btn1",
               child: Icon(
                 Icons.delete_outline_outlined,
                 color: Colors.yellow.shade700,
                 size: 30,
               ),
-              onPressed: () {
-                var formP = controller.formKeyProduk.currentState;
-                var formC = controller.formKeyCustomer.currentState;
-                var formO = controller.formKeyOther.currentState;
-                if (formC.validate() || formP.validate() || formO.validate()) {
-                  formC.save();
-                  formP.save();
-                  formO.save();
-                }
-              },
+              onPressed: () {},
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 20, right: 10),
             child: FloatingActionButton(
+              heroTag: "btn2",
               child: Icon(
                 Icons.save_outlined,
                 color: Colors.yellow.shade700,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed: () {
+                controller.validateTextField();
+              },
             ),
           ),
         ],

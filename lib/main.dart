@@ -28,7 +28,10 @@ class MyApp extends StatelessWidget {
         getPages: Routes.route,
         initialRoute: '/login_page',
         theme: ThemeData(
+            floatingActionButtonTheme:
+                FloatingActionButtonThemeData(backgroundColor: Colors.white),
             appBarTheme: AppBarTheme(
+              iconTheme: IconThemeData(color: Colors.black87),
               color: Colors.yellow.shade600,
               titleTextStyle: TextStyle(color: Colors.black87),
               brightness: Brightness.light,

@@ -1,17 +1,39 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/data_customer.dart';
+import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DatabaseProvider {
+  final LoginController loginController = LoginController();
   FirebaseFirestore firestore;
 
   getFirestore() {
     Firebase.initializeApp().then((value) => null);
     firestore = FirebaseFirestore.instance;
+  }
+
+  //validate username
+  Future<Users> validateUser(String username) async {
+    Users user;
+    try {
+      await Firebase.initializeApp();
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      List<QueryDocumentSnapshot> dataUser;
+      await firestore
+          .collection('users')
+          .where('username', isEqualTo: username)
+          .get()
+          .then((value) => dataUser = value.docs);
+      if (dataUser.length == 1) {
+        user = Users.fromMap(dataUser[0].data());
+      }
+    } on FirebaseException catch (e) {
+      loginController.isLoading.value = false;
+    }
+    return user;
   }
 
   //Save data

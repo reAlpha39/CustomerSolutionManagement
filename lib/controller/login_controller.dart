@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/models/users.dart';
+import 'package:customer/repositories/database_provider.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,10 +37,13 @@ class LoginController extends GetxController {
   void userLogin() {
     //   Get.dialog(Center(child: CircularProgressIndicator()),
     //       barrierDismissible: false);
+    DatabaseProvider databaseProvider = DatabaseProvider();
     isLoading.value = true;
     _connectionChecker().then((conn) {
       if (conn) {
-        _validateUser().then((value) {
+        databaseProvider
+            .validateUser(usernameTextController.text)
+            .then((value) {
           if (value != null) {
             usr.value = value;
             _validateUserPass();
@@ -79,26 +82,6 @@ class LoginController extends GetxController {
         textConfirm: 'OK',
         confirmTextColor: Colors.white,
         onConfirm: () => Get.back());
-  }
-
-  Future<Users> _validateUser() async {
-    Users user;
-    try {
-      await Firebase.initializeApp();
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
-      List<QueryDocumentSnapshot> dataUser;
-      await firestore
-          .collection('users')
-          .where('username', isEqualTo: usernameTextController.text)
-          .get()
-          .then((value) => dataUser = value.docs);
-      if (dataUser.length == 1) {
-        user = Users.fromMap(dataUser[0].data());
-      }
-    } on FirebaseException catch (e) {
-      isLoading.value = false;
-    }
-    return user;
   }
 
   void _validateUserPass() {

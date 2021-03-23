@@ -1,3 +1,4 @@
+import 'package:customer/controller/customer_info_controller.dart';
 import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/routes/routes.dart';
@@ -14,6 +15,8 @@ class MyApp extends StatelessWidget {
       Get.put<LoginController>(LoginController());
   final HomeController homeController =
       Get.put<HomeController>(HomeController());
+  final CustomerInfoController customerInfoController =
+      Get.put<CustomerInfoController>(CustomerInfoController());
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

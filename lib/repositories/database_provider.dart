@@ -60,6 +60,6 @@ class DatabaseProvider {
         radius: 17,
         buttonColor: Colors.yellow.shade600,
         confirmTextColor: Colors.black87,
-        onConfirm: () => Get.offAndToNamed('/main_page_customer'));
+        onConfirm: () => Get.offAndToNamed('/home_page'));
   }
 }

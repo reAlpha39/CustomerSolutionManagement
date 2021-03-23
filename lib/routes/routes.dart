@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class Routes {
   static final route = [
     GetPage(name: '/login_page', page: () => LoginPage()),
-    GetPage(name: '/main_page_customer', page: () => HomePage()),
+    GetPage(name: '/home_page', page: () => HomePage()),
     GetPage(name: '/customer_info', page: () => CustomerInfo()),
   ];
 }

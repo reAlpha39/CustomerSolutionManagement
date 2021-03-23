@@ -50,7 +50,7 @@ class LoginController extends GetxController {
             isLoading.value = false;
             print(isValidate.value);
             if (isValidate.value) {
-              Get.offAndToNamed('/main_page_customer');
+              Get.offAndToNamed('/home_page');
               usernameTextController.text = '';
               passwordTextController.text = '';
             } else {

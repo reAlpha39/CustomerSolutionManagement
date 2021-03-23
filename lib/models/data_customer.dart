@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:customer/models/total_product.dart';
+
 class DataCustomer {
   DataCustomer({
     this.namaCustomer,
@@ -12,12 +14,7 @@ class DataCustomer {
     this.misiPerusahaan,
     this.visiPerusahaan,
     this.customerSegment,
-    this.tpUt,
-    this.tpTrakindo,
-    this.tpKobel,
-    this.tpHitachi,
-    this.tpSuny,
-    this.tpLainnya,
+    this.totalProduct,
     this.planBudget,
     this.problem,
     this.target,
@@ -30,12 +27,7 @@ class DataCustomer {
   String misiPerusahaan;
   String visiPerusahaan;
   String customerSegment;
-  String tpUt;
-  String tpTrakindo;
-  String tpKobel;
-  String tpHitachi;
-  String tpSuny;
-  String tpLainnya;
+  TotalProduct totalProduct;
   String planBudget;
   String problem;
   String target;
@@ -52,13 +44,8 @@ class DataCustomer {
         alamatPerusahaan: json["alamatPerusahaan"],
         misiPerusahaan: json["misiPerusahaan"],
         visiPerusahaan: json["visiPerusahaan"],
-        customerSegment: json["customerSegment"],
-        tpUt: json["tpUT"],
-        tpTrakindo: json["tpTrakindo"],
-        tpKobel: json["tpKobel"],
-        tpHitachi: json["tpHitachi"],
-        tpSuny: json["tpSuny"],
-        tpLainnya: json["tpLainnya"],
+        customerSegment: json["customer Segment"],
+        totalProduct: TotalProduct.fromMap(json["totalProduct"]),
         planBudget: json["planBudget"],
         problem: json["problem"],
         target: json["target"],
@@ -71,13 +58,8 @@ class DataCustomer {
         "alamatPerusahaan": alamatPerusahaan,
         "misiPerusahaan": misiPerusahaan,
         "visiPerusahaan": visiPerusahaan,
-        "customerSegment": customerSegment,
-        "tpUT": tpUt,
-        "tpTrakindo": tpTrakindo,
-        "tpKobel": tpKobel,
-        "tpHitachi": tpHitachi,
-        "tpSuny": tpSuny,
-        "tpLainnya": tpLainnya,
+        "customer Segment": customerSegment,
+        "totalProduct": totalProduct.toMap(),
         "planBudget": planBudget,
         "problem": problem,
         "target": target,

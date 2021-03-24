@@ -24,7 +24,7 @@ class CustomerInfoCardProduk extends StatelessWidget {
                   theme: const ExpandableThemeData(
                     headerAlignment: ExpandablePanelHeaderAlignment.center,
                     tapBodyToExpand: true,
-                    tapBodyToCollapse: true,
+                    tapBodyToCollapse: false,
                     hasIcon: true,
                   ),
                   header: Container(

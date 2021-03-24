@@ -119,6 +119,24 @@ class CustomerInfoController extends GetxController {
           target: targetTextController.text,
           ketidakpuasan: ["placeholder"]);
       _databaseProvider.saveData(dataCustomer);
+      clearText();
     }
+  }
+
+  void clearText() {
+    namaTextController.clear();
+    alamatTextController.clear();
+    misiTextController.clear();
+    visiTextController.clear();
+    customerSegmentTextController.clear();
+    tpUnitedTractorTextController.clear();
+    tpTrakindoTextController.clear();
+    tdKobelDoTextController.clear();
+    tpHitachiTextController.clear();
+    tpSunyTextController.clear();
+    tpOtherTextController.clear();
+    planBudgetTextController.clear();
+    problemTextController.clear();
+    targetTextController.clear();
   }
 }

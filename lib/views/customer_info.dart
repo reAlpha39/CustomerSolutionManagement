@@ -94,6 +94,6 @@ class CustomerInfo extends StatelessWidget {
           }
           Get.back();
         },
-        onCancel: () => Get.back());
+        onCancel: () => Get.toNamed('/customer_info'));
   }
 }

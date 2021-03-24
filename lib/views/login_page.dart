@@ -77,7 +77,9 @@ class _LoginPageState extends State<LoginPage> {
             middleText: 'Apakah anda ingin keluar dari aplikasi?',
             textConfirm: 'OK',
             textCancel: 'Batal',
-            confirmTextColor: Colors.white,
+            buttonColor: Colors.yellow.shade600,
+            cancelTextColor: Colors.black87,
+            confirmTextColor: Colors.black87,
             onConfirm: () => exit(0),
             onCancel: () => Get.back()) ??
         false;

@@ -27,8 +27,10 @@ class HomePage extends StatelessWidget {
             title: 'Exit App',
             middleText: 'Apakah anda ingin keluar dari aplikasi?',
             textConfirm: 'OK',
+            buttonColor: Colors.yellow.shade600,
+            cancelTextColor: Colors.black87,
             textCancel: 'Batal',
-            confirmTextColor: Colors.white,
+            confirmTextColor: Colors.black87,
             onConfirm: () => exit(0),
             onCancel: () => Get.back()) ??
         false;

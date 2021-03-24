@@ -1,4 +1,5 @@
 import 'package:customer/controller/customer_info_controller.dart';
+import 'package:customer/widgets/customer_info_radio_single.dart';
 import 'package:customer/widgets/customer_info_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class CustomerInfoCardOther extends StatelessWidget {
                               customerInfoController.targetTextController,
                           maxLines: 1,
                         ),
-                        Container(child: Text('Ketidakpuasan support UT'))
+                        CustomerInfoCheckbox()
                       ],
                     ),
                   ),

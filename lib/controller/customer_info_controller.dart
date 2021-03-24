@@ -12,7 +12,6 @@ class CustomerInfoController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
   //Dropdown
-  RxString dropdown = ''.obs;
   final List<String> listCustomerSegment = [
     'Rental',
     'Contractor Mining',
@@ -21,6 +20,13 @@ class CustomerInfoController extends GetxController {
     'Agro',
     'Other'
   ];
+
+  //RadioButton
+  RxInt radioIndex = 1.obs;
+  //Checkbox
+  RxBool checkBoxA = false.obs;
+  RxBool checkBoxB = false.obs;
+  RxBool checkBoxC = false.obs;
 
   GlobalKey<FormState> formKeyCustomer;
   GlobalKey<FormState> formKeyProduk;
@@ -31,7 +37,7 @@ class CustomerInfoController extends GetxController {
   TextEditingController alamatTextController;
   TextEditingController misiTextController;
   TextEditingController visiTextController;
-  TextEditingController customerSegmentTextController;
+  TextEditingController csOtherTextController;
   TextEditingController tpUnitedTractorTextController;
   TextEditingController tpTrakindoTextController;
   TextEditingController tdKobelDoTextController;
@@ -41,16 +47,14 @@ class CustomerInfoController extends GetxController {
   TextEditingController planBudgetTextController;
   TextEditingController problemTextController;
   TextEditingController targetTextController;
-  TextEditingController ketidakpuasanTextController;
 
   @override
   void onInit() {
-    dropdown.value = '';
     namaTextController = TextEditingController();
     alamatTextController = TextEditingController();
     misiTextController = TextEditingController();
     visiTextController = TextEditingController();
-    customerSegmentTextController = TextEditingController();
+    csOtherTextController = TextEditingController();
     tpUnitedTractorTextController = TextEditingController();
     tpTrakindoTextController = TextEditingController();
     tdKobelDoTextController = TextEditingController();
@@ -60,7 +64,6 @@ class CustomerInfoController extends GetxController {
     planBudgetTextController = TextEditingController();
     problemTextController = TextEditingController();
     targetTextController = TextEditingController();
-    ketidakpuasanTextController = TextEditingController();
     super.onInit();
   }
 
@@ -70,7 +73,7 @@ class CustomerInfoController extends GetxController {
     alamatTextController?.dispose();
     misiTextController?.dispose();
     visiTextController?.dispose();
-    customerSegmentTextController?.dispose();
+    csOtherTextController?.dispose();
     tpUnitedTractorTextController?.dispose();
     tpTrakindoTextController?.dispose();
     tdKobelDoTextController?.dispose();
@@ -80,18 +83,31 @@ class CustomerInfoController extends GetxController {
     planBudgetTextController?.dispose();
     problemTextController?.dispose();
     targetTextController?.dispose();
-    ketidakpuasanTextController?.dispose();
-    dropdown.value = '';
     super.onClose();
   }
 
-  String dropdownValue() {
-    String data = dropdown.value;
-    if (data == '') {
-      return 'Customer Segment';
+  String radioValue() {
+    String data = '';
+    if (radioIndex.value == 5) {
+      data = csOtherTextController.text;
     } else {
-      return data;
+      data = listCustomerSegment[radioIndex.value];
     }
+    return data;
+  }
+
+  List<String> checkBoxValue() {
+    List<String> data = [];
+    if (checkBoxA.value) {
+      data.add('Produk');
+    }
+    if (checkBoxB.value) {
+      data.add('Service');
+    }
+    if (checkBoxC.value) {
+      data.add('Part');
+    }
+    return data;
   }
 
   void validateTextField() {
@@ -112,12 +128,12 @@ class CustomerInfoController extends GetxController {
           alamatPerusahaan: alamatTextController.text,
           misiPerusahaan: misiTextController.text,
           visiPerusahaan: visiTextController.text,
-          customerSegment: customerSegmentTextController.text,
+          customerSegment: radioValue(),
           totalProduct: totalProduct,
           planBudget: planBudgetTextController.text,
           problem: problemTextController.text,
           target: targetTextController.text,
-          ketidakpuasan: ["placeholder"]);
+          ketidakpuasan: checkBoxValue());
       _databaseProvider.saveData(dataCustomer);
       clearText();
     }
@@ -128,7 +144,7 @@ class CustomerInfoController extends GetxController {
     alamatTextController.clear();
     misiTextController.clear();
     visiTextController.clear();
-    customerSegmentTextController.clear();
+    csOtherTextController.clear();
     tpUnitedTractorTextController.clear();
     tpTrakindoTextController.clear();
     tdKobelDoTextController.clear();

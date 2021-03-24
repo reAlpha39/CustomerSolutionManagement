@@ -1,5 +1,5 @@
 import 'package:customer/controller/customer_info_controller.dart';
-import 'package:customer/widgets/customer_info_dropdown.dart';
+import 'package:customer/widgets/customer_info_checkbox.dart';
 import 'package:customer/widgets/customer_info_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -64,17 +64,25 @@ class CustomerInfoCardInfo extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 5),
-                          child: CustomerInfoDropDown(),
+                          child: CustomerInfoRadio(
+                            data: [
+                              'Rental',
+                              'Contractor Mining',
+                              'Contractor Maintenance Road',
+                              'Hauling',
+                              'Agro',
+                              'Other'
+                            ],
+                          ),
                         ),
-                        Obx(() =>
-                            customerInfoController.dropdown.value == 'Other'
-                                ? CustomerInfoTextField(
-                                    labelText: 'Customer Segment',
-                                    controller: customerInfoController
-                                        .namaTextController,
-                                    maxLines: 1,
-                                  )
-                                : Container()),
+                        Obx(() => customerInfoController.radioIndex.value == 5
+                            ? CustomerInfoTextField(
+                                labelText: 'Other',
+                                controller: customerInfoController
+                                    .csOtherTextController,
+                                maxLines: 1,
+                              )
+                            : Container()),
                       ],
                     ),
                   ),

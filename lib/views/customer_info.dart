@@ -29,7 +29,9 @@ class CustomerInfo extends StatelessWidget {
                 color: Colors.yellow.shade700,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed: () {
+                controller.clearText();
+              },
             ),
           ),
           Padding(

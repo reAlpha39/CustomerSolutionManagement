@@ -1,4 +1,5 @@
 import 'package:customer/controller/customer_info_controller.dart';
+import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/customer_info_card_produk.dart';
 import 'package:customer/widgets/customer_info_card_info.dart';
 import 'package:customer/widgets/customer_info_card_other.dart';
@@ -59,17 +60,20 @@ class CustomerInfo extends StatelessWidget {
               data: ThemeData(primarySwatch: Colors.blueGrey),
               child: Padding(
                 padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
-                child: SingleChildScrollView(
-                  physics: ClampingScrollPhysics(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      CustomerInfoCardInfo(),
-                      CustomerInfoCardProduk(),
-                      CustomerInfoCardOther(),
-                    ],
+                child: ScrollConfiguration(
+                  behavior: CustomScrollBehavior(),
+                  child: SingleChildScrollView(
+                    physics: ClampingScrollPhysics(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        CustomerInfoCardInfo(),
+                        CustomerInfoCardProduk(),
+                        CustomerInfoCardOther(),
+                      ],
+                    ),
                   ),
                 ),
               ))),

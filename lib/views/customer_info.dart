@@ -92,8 +92,8 @@ class CustomerInfo extends StatelessWidget {
           } else {
             controller.clearText();
           }
-          Get.toNamed('/customer_info');
+          Get.back();
         },
-        onCancel: () => Get.toNamed('/customer_info'));
+        onCancel: () => Get.back());
   }
 }

@@ -26,7 +26,7 @@ class CustomerInfo extends StatelessWidget {
               heroTag: "btn1",
               child: Icon(
                 Icons.delete_outline_outlined,
-                color: Colors.yellow.shade700,
+                color: Color(0xffffcd29),
                 size: 30,
               ),
               onPressed: () {
@@ -41,7 +41,7 @@ class CustomerInfo extends StatelessWidget {
               heroTag: "btn2",
               child: Icon(
                 Icons.save_outlined,
-                color: Colors.yellow.shade700,
+                color: Color(0xffffcd29),
                 size: 30,
               ),
               onPressed: () {
@@ -53,7 +53,7 @@ class CustomerInfo extends StatelessWidget {
         ],
       ),
       body: Container(
-          color: Colors.yellow.shade600,
+          color: Color(0xffffcd29),
           height: Get.height,
           child: Theme(
               data: ThemeData(primarySwatch: Colors.blueGrey),
@@ -84,7 +84,7 @@ class CustomerInfo extends StatelessWidget {
         textConfirm: 'YA',
         textCancel: 'Tidak',
         confirmTextColor: Colors.black87,
-        buttonColor: Colors.yellow.shade600,
+        buttonColor: Color(0xffffcd29),
         cancelTextColor: Colors.black87,
         onConfirm: () {
           if (id == 0) {

@@ -22,7 +22,7 @@ class CustomerInfoCheckbox extends StatelessWidget {
                 title: Text('Produk'),
                 value: controller.checkBoxA.value,
                 controlAffinity: ListTileControlAffinity.leading,
-                activeColor: Colors.yellow.shade600,
+                activeColor: Color(0xffffcd29),
                 checkColor: Colors.black87,
                 onChanged: (bool value) {
                   controller.checkBoxA.value = value;
@@ -32,7 +32,7 @@ class CustomerInfoCheckbox extends StatelessWidget {
                 title: Text('Service'),
                 value: controller.checkBoxB.value,
                 controlAffinity: ListTileControlAffinity.leading,
-                activeColor: Colors.yellow.shade600,
+                activeColor: Color(0xffffcd29),
                 checkColor: Colors.black87,
                 onChanged: (bool value) {
                   controller.checkBoxB.value = value;
@@ -42,7 +42,7 @@ class CustomerInfoCheckbox extends StatelessWidget {
                 title: Text('Part'),
                 value: controller.checkBoxC.value,
                 controlAffinity: ListTileControlAffinity.leading,
-                activeColor: Colors.yellow.shade600,
+                activeColor: Color(0xffffcd29),
                 checkColor: Colors.black87,
                 onChanged: (bool value) {
                   controller.checkBoxC.value = value;

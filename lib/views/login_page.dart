@@ -16,6 +16,11 @@ class _LoginPageState extends State<LoginPage> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 0,
+          brightness: Brightness.light,
+          shadowColor: Colors.transparent,
+        ),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -35,8 +40,8 @@ class _LoginPageState extends State<LoginPage> {
                         position: ArcPosition.Bottom,
                       ),
                       child: Container(
-                        height: Get.height / 9,
-                        color: Colors.yellow.shade600,
+                        height: 90,
+                        color: Color(0xffffcd29),
                       ),
                     ),
                     ShapeOfView(
@@ -48,8 +53,8 @@ class _LoginPageState extends State<LoginPage> {
                         position: ArcPosition.Top,
                       ),
                       child: Container(
-                        height: Get.height / 9,
-                        color: Colors.yellow.shade600,
+                        height: 120,
+                        color: Color(0xffffcd29),
                       ),
                     ),
                   ],
@@ -77,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
             middleText: 'Apakah anda ingin keluar dari aplikasi?',
             textConfirm: 'OK',
             textCancel: 'Batal',
-            buttonColor: Colors.yellow.shade600,
+            buttonColor: Color(0xffffcd29),
             cancelTextColor: Colors.black87,
             confirmTextColor: Colors.black87,
             onConfirm: () => exit(0),

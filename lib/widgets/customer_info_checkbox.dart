@@ -27,7 +27,7 @@ class CustomerInfoRadio extends StatelessWidget {
                   leading: Radio(
                       value: i,
                       groupValue: controller.radioIndex.value,
-                      activeColor: Colors.yellow.shade600,
+                      activeColor: Color(0xffffcd29),
                       onChanged: (int value) =>
                           controller.radioIndex.value = value),
                 )),

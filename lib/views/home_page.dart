@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shape_of_view/shape_of_view.dart';
 import '../widgets/icon_app.dart';
@@ -13,6 +14,12 @@ class HomePage extends StatelessWidget {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 0,
+          shadowColor: Colors.transparent,
+          backgroundColor: Colors.black87,
+          brightness: Brightness.dark,
+        ),
         body: SingleChildScrollView(
             child: Container(
           child: Shapeground(),
@@ -27,7 +34,7 @@ class HomePage extends StatelessWidget {
             title: 'Exit App',
             middleText: 'Apakah anda ingin keluar dari aplikasi?',
             textConfirm: 'OK',
-            buttonColor: Colors.yellow.shade600,
+            buttonColor: Color(0xffffcd29),
             cancelTextColor: Colors.black87,
             textCancel: 'Batal',
             confirmTextColor: Colors.black87,
@@ -83,7 +90,7 @@ class Shapeground extends StatelessWidget {
                           },
                           child: Text(
                             "Logout",
-                            style: TextStyle(color: Colors.orange),
+                            style: TextStyle(color: Color(0xffffcd29)),
                           ),
                         ),
                       ),

@@ -19,26 +19,23 @@ class LoginTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(primarySwatch: Colors.amber),
-      child: TextFormField(
-        controller: _textEditingController,
-        obscureText: isObsecure,
-        decoration: InputDecoration(
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(17)),
-            labelText: labelText,
-            prefixIcon: Icon(
-              iconData,
-              size: 20,
-            )),
-        validator: (value) {
-          if (value == '') {
-            return returnError;
-          } else {
-            return null;
-          }
-        },
-      ),
+    return TextFormField(
+      controller: _textEditingController,
+      obscureText: isObsecure,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(17)),
+          labelText: labelText,
+          prefixIcon: Icon(
+            iconData,
+            size: 20,
+          )),
+      validator: (value) {
+        if (value == '') {
+          return returnError;
+        } else {
+          return null;
+        }
+      },
     );
   }
 }

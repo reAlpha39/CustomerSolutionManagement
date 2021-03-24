@@ -30,7 +30,8 @@ class CustomerInfo extends StatelessWidget {
                 size: 30,
               ),
               onPressed: () {
-                controller.clearText();
+                showDialog('Hapus data',
+                    'Apakah anda yakin ingin menghapus semua field?', 1);
               },
             ),
           ),
@@ -44,7 +45,8 @@ class CustomerInfo extends StatelessWidget {
                 size: 30,
               ),
               onPressed: () {
-                controller.validateTextField();
+                showDialog('Simpan data',
+                    'Apakah data yang anda masukkan sudah benar?', 0);
               },
             ),
           ),
@@ -72,5 +74,26 @@ class CustomerInfo extends StatelessWidget {
                 ),
               ))),
     );
+  }
+
+  showDialog(String title, String text, int id) {
+    return Get.defaultDialog(
+        radius: 17,
+        title: title,
+        middleText: text,
+        textConfirm: 'YA',
+        textCancel: 'Tidak',
+        confirmTextColor: Colors.black87,
+        buttonColor: Colors.yellow.shade600,
+        cancelTextColor: Colors.black87,
+        onConfirm: () {
+          if (id == 0) {
+            controller.validateTextField();
+          } else {
+            controller.clearText();
+          }
+          Get.toNamed('/customer_info');
+        },
+        onCancel: () => Get.toNamed('/customer_info'));
   }
 }

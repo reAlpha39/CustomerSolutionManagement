@@ -45,9 +45,9 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               'Long-Lasting Relationship',
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 13,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.w600),
+                                  fontWeight: FontWeight.w400),
                             ),
                           ),
                         ),

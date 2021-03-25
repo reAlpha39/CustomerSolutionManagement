@@ -56,6 +56,10 @@ flutter:
   assets:
     - assets/images/csm_logo.png
     - assets/images/ut_logo.png
+    - assets/images/need_support.png
+    - assets/images/other_program.png
+    - assets/images/part_program.png
+    - assets/images/service_program.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

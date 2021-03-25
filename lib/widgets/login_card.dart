@@ -37,7 +37,7 @@ class _LoginInputState extends State<LoginCard> {
                               constraints:
                                   BoxConstraints(maxHeight: 200, maxWidth: 200),
                               child:
-                                  Image.asset('assets/images/csm_logo_3.png')),
+                                  Image.asset('assets/images/csm_logo.png')),
                         ),
                         Padding(
                             padding: const EdgeInsets.only(bottom: 10),

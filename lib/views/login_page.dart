@@ -29,23 +29,23 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 30),
+                          padding: const EdgeInsets.only(bottom: 10),
                           child: ConstrainedBox(
-                            constraints: BoxConstraints(maxWidth: 200),
+                            constraints: BoxConstraints(maxWidth: 180),
                             child: Container(
                               child: Image.asset('assets/images/ut_logo.png'),
                             ),
                           ),
                         ),
                         Container(
-                          height: 70,
+                          height: 30,
                           width: Get.width,
                           color: Color(0xffffcd29),
                           child: Center(
                             child: Text(
                               'Long-Lasting Relationship',
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 16,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
               child: SingleChildScrollView(
                 physics: ClampingScrollPhysics(),
                 child: Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    padding: const EdgeInsets.only(left: 30, right: 30),
                     child: LoginCard()),
               ),
             ),

@@ -54,7 +54,8 @@ class CustomerInfo extends StatelessWidget {
         ],
       ),
       body: Container(
-          color: Color(0xffffcd29),
+          color: Colors.white,
+          //color: Color(0xffffcd29),
           height: Get.height,
           child: Theme(
               data: ThemeData(primarySwatch: Colors.blueGrey),

@@ -6,10 +6,10 @@ class IconApp extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: Container(
-        margin: EdgeInsets.only(left: 0, top: 0),
-        height: 100,
-        width: 100,
-        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.yellowAccent[400]),
+        height: 77,
+        width: 77,
+        decoration: BoxDecoration(
+            shape: BoxShape.circle, color: Colors.yellowAccent[400]),
       ),
     );
   }

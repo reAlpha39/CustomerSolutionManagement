@@ -53,7 +53,11 @@ class Shapeground extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(top: 125),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: Center(child: Obx(() => _homeController.userType())),
+          ),
         ),
         Column(
           children: [
@@ -64,7 +68,7 @@ class Shapeground extends StatelessWidget {
                 position: ArcPosition.Bottom,
               ),
               child: Container(
-                  height: MediaQuery.of(context).size.height * 0.30,
+                  height: 200,
                   color: Colors.black87,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,11 +79,11 @@ class Shapeground extends StatelessWidget {
                         child: IconApp(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 10),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Text(
                           '${_loginController.usr.value.username}',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 23, color: Colors.white),
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ),
                       Padding(
@@ -96,10 +100,6 @@ class Shapeground extends StatelessWidget {
                       ),
                     ],
                   )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30),
-              child: Obx(() => _homeController.userType()),
             ),
           ],
         ),

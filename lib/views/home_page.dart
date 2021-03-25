@@ -14,17 +14,15 @@ class HomePage extends StatelessWidget {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 0,
-          shadowColor: Colors.transparent,
-          backgroundColor: Colors.black87,
-          brightness: Brightness.dark,
-        ),
-        body: SingleChildScrollView(
-            child: Container(
-          child: Shapeground(),
-        )),
-      ),
+          appBar: AppBar(
+            toolbarHeight: 0,
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.black87,
+            brightness: Brightness.dark,
+          ),
+          body: Container(
+            child: Shapeground(),
+          )),
     );
   }
 
@@ -52,11 +50,20 @@ class Shapeground extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          padding: EdgeInsets.only(top: 125),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 100),
-            child: Center(child: Obx(() => _homeController.userType())),
+        ScrollConfiguration(
+          behavior: ScrollBehavior(),
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.only(top: 125),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 100),
+                child: Column(
+                  children: [
+                    Center(child: Obx(() => _homeController.userType())),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
         Column(

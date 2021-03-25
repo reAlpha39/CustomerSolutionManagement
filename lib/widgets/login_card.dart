@@ -31,6 +31,14 @@ class _LoginInputState extends State<LoginCard> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Container(
+                          padding: EdgeInsets.only(bottom: 30),
+                          child: ConstrainedBox(
+                              constraints:
+                                  BoxConstraints(maxHeight: 200, maxWidth: 200),
+                              child:
+                                  Image.asset('assets/images/csm_logo_3.png')),
+                        ),
                         Padding(
                             padding: const EdgeInsets.only(bottom: 10),
                             child: LoginTextField(

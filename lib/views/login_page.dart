@@ -16,11 +16,6 @@ class _LoginPageState extends State<LoginPage> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 0,
-          brightness: Brightness.light,
-          shadowColor: Colors.transparent,
-        ),
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -29,33 +24,35 @@ class _LoginPageState extends State<LoginPage> {
                 constraints:
                     BoxConstraints(minHeight: Get.height, minWidth: Get.width),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ShapeOfView(
-                      clipBehavior: Clip.antiAlias,
-                      elevation: 0,
-                      shape: ArcShape(
-                        direction: ArcDirection.Outside,
-                        height: 11,
-                        position: ArcPosition.Bottom,
-                      ),
-                      child: Container(
-                        height: 90,
-                        color: Color(0xffffcd29),
-                      ),
-                    ),
-                    ShapeOfView(
-                      clipBehavior: Clip.antiAlias,
-                      elevation: 0,
-                      shape: ArcShape(
-                        direction: ArcDirection.Outside,
-                        height: 11,
-                        position: ArcPosition.Top,
-                      ),
-                      child: Container(
-                        height: 120,
-                        color: Color(0xffffcd29),
-                      ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 30),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: 230),
+                            child: Container(
+                              child: Image.asset('assets/images/ut_logo.png'),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 70,
+                          width: Get.width,
+                          color: Color(0xffffcd29),
+                          child: Center(
+                            child: Text(
+                              'Long-Lasting Relationship',
+                              style: TextStyle(
+                                  fontSize: 22,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

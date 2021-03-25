@@ -1,8 +1,8 @@
 import 'package:customer/controller/customer_info_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/customer_info_card_produk.dart';
-import 'package:customer/widgets/customer_info_card_info.dart';
-import 'package:customer/widgets/customer_info_card_other.dart';
+import 'package:customer/widgets/customer_info/customer_info_card_produk.dart';
+import 'package:customer/widgets/customer_info/customer_info_card_info.dart';
+import 'package:customer/widgets/customer_info/customer_info_card_other.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

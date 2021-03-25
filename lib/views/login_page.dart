@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:customer/widgets/login_card.dart';
+import 'package:customer/widgets/login/login_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

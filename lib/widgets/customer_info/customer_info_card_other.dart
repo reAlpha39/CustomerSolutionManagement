@@ -1,14 +1,16 @@
 import 'package:customer/controller/customer_info_controller.dart';
-import 'package:customer/widgets/customer_info_text_field.dart';
+import 'package:customer/widgets/customer_info/customer_info_radio_single.dart';
+import 'package:customer/widgets/customer_info/customer_info_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
-class CustomerInfoCardProduk extends StatelessWidget {
+class CustomerInfoCardOther extends StatelessWidget {
   final CustomerInfoController customerInfoController =
       CustomerInfoController.to;
+
   @override
   Widget build(BuildContext context) {
-    customerInfoController.formKeyProduk = GlobalKey<FormState>();
+    customerInfoController.formKeyOther = GlobalKey<FormState>();
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Card(
@@ -17,7 +19,7 @@ class CustomerInfoCardProduk extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
           child: Form(
-              key: customerInfoController.formKeyProduk,
+              key: customerInfoController.formKeyOther,
               child: ExpandableNotifier(
                   child: ScrollOnExpand(
                 child: ExpandablePanel(
@@ -29,7 +31,7 @@ class CustomerInfoCardProduk extends StatelessWidget {
                   ),
                   header: Container(
                     child: Text(
-                      'Total Produk',
+                      'Lainnya',
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
@@ -40,41 +42,24 @@ class CustomerInfoCardProduk extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomerInfoTextField(
-                          labelText: 'United Tractors',
-                          controller: customerInfoController
-                              .tpUnitedTractorTextController,
+                          labelText: 'Plan Budget UT',
+                          controller:
+                              customerInfoController.planBudgetTextController,
                           maxLines: 1,
                         ),
                         CustomerInfoTextField(
-                          labelText: 'TrakindoCAT',
+                          labelText: 'Problem yang sedang dihadapi',
                           controller:
-                              customerInfoController.tpTrakindoTextController,
-                          maxLines: 1,
+                              customerInfoController.problemTextController,
+                          maxLines: 3,
                         ),
                         CustomerInfoTextField(
-                          labelText: 'KobelDO',
+                          labelText: 'Target yang diharapkan',
                           controller:
-                              customerInfoController.tdKobelDoTextController,
+                              customerInfoController.targetTextController,
                           maxLines: 1,
                         ),
-                        CustomerInfoTextField(
-                          labelText: 'Hitachi',
-                          controller:
-                              customerInfoController.tpHitachiTextController,
-                          maxLines: 1,
-                        ),
-                        CustomerInfoTextField(
-                          labelText: 'Suny',
-                          controller:
-                              customerInfoController.tpSunyTextController,
-                          maxLines: 1,
-                        ),
-                        CustomerInfoTextField(
-                          labelText: 'Lainnya',
-                          controller:
-                              customerInfoController.tpOtherTextController,
-                          maxLines: 1,
-                        ),
+                        CustomerInfoCheckbox()
                       ],
                     ),
                   ),

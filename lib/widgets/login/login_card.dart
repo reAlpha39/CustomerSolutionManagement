@@ -1,5 +1,5 @@
 import 'package:customer/controller/login_controller.dart';
-import 'package:customer/widgets/login_text_field.dart';
+import 'package:customer/widgets/login/login_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

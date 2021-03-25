@@ -1,7 +1,7 @@
 import 'package:customer/controller/login_controller.dart';
-import 'package:customer/widgets/home_admin.dart';
-import 'package:customer/widgets/home_customer.dart';
-import 'package:customer/widgets/home_internal.dart';
+import 'package:customer/widgets/home/home_admin.dart';
+import 'package:customer/widgets/home/home_customer.dart';
+import 'package:customer/widgets/home/home_internal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

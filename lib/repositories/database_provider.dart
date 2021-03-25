@@ -19,8 +19,7 @@ class DatabaseProvider {
   Future<Users> validateUser(String username) async {
     Users user;
     try {
-      await Firebase.initializeApp();
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      getFirestore();
       List<QueryDocumentSnapshot> dataUser;
       await firestore
           .collection('users')
@@ -40,13 +39,19 @@ class DatabaseProvider {
   saveData(DataCustomer dataCustomer) {
     getFirestore();
     var data = dataCustomer.toMap();
-    print(data);
-    firestore
-        .collection("data_customer")
-        .doc(dataCustomer.namaCustomer)
-        .set(data)
-        .then((_) => showDialog(
+    DocumentReference doc =
+        firestore.collection('data_customer').doc(dataCustomer.namaCustomer);
+    CollectionReference collection = doc.collection('need_support');
+    collection.get().then((value) {
+      if (value.size == 0) {
+        collection.doc('ticket_1').set(data).then((_) => showDialog(
             title: "Sukses", middleText: "Data berhasil dimasukkan"));
+      } else {
+        collection.doc('ticket_${value.size + 1}').set(data).then((_) =>
+            showDialog(
+                title: "Sukses", middleText: "Data berhasil dimasukkan"));
+      }
+    });
   }
 
   //menampilkan dialog

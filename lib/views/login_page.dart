@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:customer/widgets/login_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shape_of_view/shape_of_view.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -32,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 30),
                           child: ConstrainedBox(
-                            constraints: BoxConstraints(maxWidth: 230),
+                            constraints: BoxConstraints(maxWidth: 200),
                             child: Container(
                               child: Image.asset('assets/images/ut_logo.png'),
                             ),
@@ -46,9 +45,9 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               'Long-Lasting Relationship',
                               style: TextStyle(
-                                  fontSize: 22,
+                                  fontSize: 20,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

@@ -22,7 +22,7 @@ class CustomerInfoController extends GetxController {
   ];
 
   //RadioButton
-  RxInt radioIndex = 1.obs;
+  RxInt radioIndex = 0.obs;
   //Checkbox
   RxBool checkBoxA = false.obs;
   RxBool checkBoxB = false.obs;
@@ -31,7 +31,6 @@ class CustomerInfoController extends GetxController {
   GlobalKey<FormState> formKeyCustomer;
   GlobalKey<FormState> formKeyProduk;
   GlobalKey<FormState> formKeyOther;
-  String dataCus;
 
   TextEditingController namaTextController;
   TextEditingController alamatTextController;
@@ -154,5 +153,9 @@ class CustomerInfoController extends GetxController {
     planBudgetTextController.clear();
     problemTextController.clear();
     targetTextController.clear();
+    radioIndex.value = 0;
+    checkBoxA.value = false;
+    checkBoxB.value = false;
+    checkBoxC.value = false;
   }
 }

@@ -41,32 +41,32 @@ class LoginController extends GetxController {
     isLoading.value = true;
     _connectionChecker().then((conn) {
       if (conn) {
-        databaseProvider
-            .validateUser(usernameTextController.text)
-            .then((value) {
-          if (value != null) {
-            usr.value = value;
-            _validateUserPass();
-            isLoading.value = false;
-            print(isValidate.value);
-            if (isValidate.value) {
-              Get.offAndToNamed('/home_page');
-              usernameTextController.text = '';
-              passwordTextController.text = '';
-            } else {
-              _showDialogError(
-                title: 'Login Gagal',
-                middleText: 'Username atau password salah!',
-              );
-            }
-          } else {
-            isLoading.value = false;
-            _showDialogError(
-              title: 'Login Gagal',
-              middleText: 'Username tidak ditemukan!',
-            );
-          }
-        });
+        databaseProvider.getFirestore().then((value) => databaseProvider
+                .validateUser(usernameTextController.text)
+                .then((value) {
+              if (value != null) {
+                usr.value = value;
+                _validateUserPass();
+                isLoading.value = false;
+                print(isValidate.value);
+                if (isValidate.value) {
+                  Get.offAndToNamed('/home_page');
+                  usernameTextController.text = '';
+                  passwordTextController.text = '';
+                } else {
+                  _showDialogError(
+                    title: 'Login Gagal',
+                    middleText: 'Username atau password salah!',
+                  );
+                }
+              } else {
+                isLoading.value = false;
+                _showDialogError(
+                  title: 'Login Gagal',
+                  middleText: 'Username tidak ditemukan!',
+                );
+              }
+            }));
       } else {
         isLoading.value = false;
         _showDialogError(

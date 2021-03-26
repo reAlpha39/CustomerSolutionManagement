@@ -7,19 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DatabaseProvider {
-  final LoginController loginController = LoginController();
+  LoginController loginController = LoginController();
   FirebaseFirestore firestore;
 
-  getFirestore() {
-    Firebase.initializeApp().then((value) => null);
-    firestore = FirebaseFirestore.instance;
+  //Inisialisasi Firebase instance
+  Future<FirebaseApp> getFirestore() async {
+    FirebaseApp firebaseApp;
+    await Firebase.initializeApp().then((value) => firebaseApp = value);
+    return firebaseApp;
   }
 
   //validate username
   Future<Users> validateUser(String username) async {
     Users user;
     try {
-      getFirestore();
+      firestore = FirebaseFirestore.instance;
       List<QueryDocumentSnapshot> dataUser;
       await firestore
           .collection('users')
@@ -37,7 +39,7 @@ class DatabaseProvider {
 
   //Save data
   saveData(DataCustomer dataCustomer) {
-    getFirestore();
+    firestore = FirebaseFirestore.instance;
     var data = dataCustomer.toMap();
     DocumentReference doc =
         firestore.collection('data_customer').doc(dataCustomer.namaCustomer);

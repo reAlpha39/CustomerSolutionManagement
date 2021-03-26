@@ -44,36 +44,42 @@ class CustomerInfoCardProduk extends StatelessWidget {
                           controller: customerInfoController
                               .tpUnitedTractorTextController,
                           maxLines: 1,
+                          keyboardType: TextInputType.number,
                         ),
                         CustomerInfoTextField(
                           labelText: 'TrakindoCAT',
                           controller:
                               customerInfoController.tpTrakindoTextController,
                           maxLines: 1,
+                          keyboardType: TextInputType.number,
                         ),
                         CustomerInfoTextField(
                           labelText: 'KobelDO',
                           controller:
                               customerInfoController.tdKobelDoTextController,
                           maxLines: 1,
+                          keyboardType: TextInputType.number,
                         ),
                         CustomerInfoTextField(
                           labelText: 'Hitachi',
                           controller:
                               customerInfoController.tpHitachiTextController,
                           maxLines: 1,
+                          keyboardType: TextInputType.number,
                         ),
                         CustomerInfoTextField(
                           labelText: 'Suny',
                           controller:
                               customerInfoController.tpSunyTextController,
                           maxLines: 1,
+                          keyboardType: TextInputType.number,
                         ),
                         CustomerInfoTextField(
                           labelText: 'Lainnya',
                           controller:
                               customerInfoController.tpOtherTextController,
                           maxLines: 1,
+                          keyboardType: TextInputType.number,
                         ),
                       ],
                     ),

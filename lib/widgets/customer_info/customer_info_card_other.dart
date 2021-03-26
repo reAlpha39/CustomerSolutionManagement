@@ -46,6 +46,7 @@ class CustomerInfoCardOther extends StatelessWidget {
                           controller:
                               customerInfoController.planBudgetTextController,
                           maxLines: 1,
+                          keyboardType: TextInputType.number,
                         ),
                         CustomerInfoTextField(
                           labelText: 'Problem yang sedang dihadapi',

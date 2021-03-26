@@ -2,6 +2,7 @@ import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/data_customer.dart';
 import 'package:customer/models/total_product.dart';
 import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/utils/connectivity_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -110,32 +111,44 @@ class CustomerInfoController extends GetxController {
   }
 
   void validateTextField() {
-    var formP = formKeyProduk.currentState;
-    var formC = formKeyCustomer.currentState;
-    var formO = formKeyOther.currentState;
-    if (formC.validate() && formP.validate() && formO.validate()) {
-      TotalProduct totalProduct = TotalProduct(
-          unitedTractor: tpUnitedTractorTextController.text,
-          trakindo: tpTrakindoTextController.text,
-          kobelDo: tdKobelDoTextController.text,
-          hitachi: tpHitachiTextController.text,
-          suny: tpSunyTextController.text,
-          lainnya: tpOtherTextController.text);
-      DataCustomer dataCustomer = DataCustomer(
-          namaCustomer: _loginController.usr.value.username,
-          namaPerusahaan: namaTextController.text,
-          alamatPerusahaan: alamatTextController.text,
-          misiPerusahaan: misiTextController.text,
-          visiPerusahaan: visiTextController.text,
-          customerSegment: radioValue(),
-          totalProduct: totalProduct,
-          planBudget: planBudgetTextController.text,
-          problem: problemTextController.text,
-          target: targetTextController.text,
-          ketidakpuasan: checkBoxValue());
-      _databaseProvider.saveData(dataCustomer);
-      clearText();
-    }
+    Get.back();
+    showProgressDialog();
+    connectivityChecker().then((conn) {
+      if (conn) {
+        var formP = formKeyProduk.currentState;
+        var formC = formKeyCustomer.currentState;
+        var formO = formKeyOther.currentState;
+        if (formC.validate() && formP.validate() && formO.validate()) {
+          TotalProduct totalProduct = TotalProduct(
+              unitedTractor: tpUnitedTractorTextController.text,
+              trakindo: tpTrakindoTextController.text,
+              kobelDo: tdKobelDoTextController.text,
+              hitachi: tpHitachiTextController.text,
+              suny: tpSunyTextController.text,
+              lainnya: tpOtherTextController.text);
+          DataCustomer dataCustomer = DataCustomer(
+              namaCustomer: _loginController.usr.value.username,
+              namaPerusahaan: namaTextController.text,
+              alamatPerusahaan: alamatTextController.text,
+              misiPerusahaan: misiTextController.text,
+              visiPerusahaan: visiTextController.text,
+              customerSegment: radioValue(),
+              totalProduct: totalProduct,
+              planBudget: planBudgetTextController.text,
+              problem: problemTextController.text,
+              target: targetTextController.text,
+              ketidakpuasan: checkBoxValue());
+          _databaseProvider.saveData(dataCustomer);
+          clearText();
+        }
+      }
+    });
+    Get.back();
+  }
+
+  void showProgressDialog() {
+    Get.dialog(Center(child: CircularProgressIndicator()),
+        barrierDismissible: false);
   }
 
   void clearText() {

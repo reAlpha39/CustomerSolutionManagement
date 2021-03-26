@@ -1,7 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/models/users.dart';
 import 'package:customer/repositories/database_provider.dart';
-import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:customer/utils/connectivity_checker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,7 +38,7 @@ class LoginController extends GetxController {
     //       barrierDismissible: false);
     DatabaseProvider databaseProvider = DatabaseProvider();
     isLoading.value = true;
-    _connectionChecker().then((conn) {
+    connectivityChecker().then((conn) {
       if (conn) {
         databaseProvider.getFirestore().then((value) => databaseProvider
                 .validateUser(usernameTextController.text)
@@ -69,8 +68,6 @@ class LoginController extends GetxController {
             }));
       } else {
         isLoading.value = false;
-        _showDialogError(
-            title: 'Login Gagal', middleText: 'Periksa koneksi internet anda.');
       }
     });
   }
@@ -91,11 +88,5 @@ class LoginController extends GetxController {
     } else {
       isValidate.value = false;
     }
-  }
-
-  Future<bool> _connectionChecker() async {
-    bool hasConnection = false;
-    hasConnection = await DataConnectionChecker().hasConnection;
-    return hasConnection;
   }
 }

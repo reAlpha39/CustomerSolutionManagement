@@ -96,8 +96,8 @@ class CustomerInfo extends StatelessWidget {
             controller.validateTextField();
           } else {
             controller.clearText();
+            Get.back();
           }
-          Get.back();
         },
         onCancel: () => Get.toNamed('/customer_info'));
   }

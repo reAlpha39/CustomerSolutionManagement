@@ -1,3 +1,5 @@
+import 'package:customer/utils/custom_scroll_behavior.dart';
+import 'package:customer/widgets/Mspp/mspp_card_plan_unit.dart';
 import 'package:flutter/material.dart';
 
 class Mspp extends StatelessWidget {
@@ -7,7 +9,15 @@ class Mspp extends StatelessWidget {
       appBar: AppBar(
         title: Text('MSPP'),
       ),
-      body: Container(),
+      body: ScrollConfiguration(
+        behavior: CustomScrollBehavior(),
+        child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
+          child: Column(
+            children: [MsppCardPlanUnit()],
+          ),
+        ),
+      ),
     );
   }
 }

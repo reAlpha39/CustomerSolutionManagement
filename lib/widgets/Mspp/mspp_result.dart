@@ -16,20 +16,18 @@ class MsppResult extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           for (int i = 0; i <= data.length - 1; i++)
-            Obx(
-              () => Container(
-                child: Row(
-                  children: [
-                    Radio(
-                        visualDensity: VisualDensity.compact,
-                        value: i,
-                        groupValue: controller.listRadioIndexPU[index],
-                        activeColor: Color(0xffffcd29),
-                        onChanged: (int value) =>
-                            controller.listRadioIndexPU[index] = value),
-                    Text('${data[i]}'),
-                  ],
-                ),
+            Container(
+              child: Row(
+                children: [
+                  Obx(() => Radio(
+                      visualDensity: VisualDensity.compact,
+                      value: i,
+                      groupValue: controller.listRadioIndexPI[index],
+                      activeColor: Color(0xffffcd29),
+                      onChanged: (int value) =>
+                          controller.listRadioIndexPI[index] = value)),
+                  Text('${data[i]}'),
+                ],
               ),
             ),
         ],

@@ -5,8 +5,9 @@ class MsppController extends GetxController {
   static MsppController to = Get.find();
 
   //RadioButton
-  RxList<int> listRadioIndexPI =
-      [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1].obs;
+  RxList<int> radioIndexPU = [-1, -1, -1, -1, -1].obs;
+  RxList<int> radioIndexMeet = [-1, -1].obs;
+  RxList<int> radioIndexAsses = [-1, -1, -1, -1, -1, -1].obs;
 
   //Plan Unit
   TextEditingController textEditingControllerPU01;
@@ -61,5 +62,22 @@ class MsppController extends GetxController {
     textEditingControllerA05?.dispose();
     textEditingControllerA06?.dispose();
     super.onClose();
+  }
+
+  RxList<int> radioIndexPI(String i) {
+    RxList<int> data;
+    switch (i) {
+      case 'planUnit':
+        data = radioIndexPU;
+        break;
+      case 'meet':
+        data = radioIndexMeet;
+        break;
+      case 'asses':
+        data = radioIndexAsses;
+        break;
+      default:
+    }
+    return data;
   }
 }

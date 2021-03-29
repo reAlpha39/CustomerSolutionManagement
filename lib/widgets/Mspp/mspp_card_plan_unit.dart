@@ -53,6 +53,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
                                 index: 0,
+                                id: 'planUnit',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -85,6 +86,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
                                 index: 1,
+                                id: 'planUnit',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -117,6 +119,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
                                 index: 2,
+                                id: 'planUnit',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -149,6 +152,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
                                 index: 3,
+                                id: 'planUnit',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -181,6 +185,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
                                 index: 4,
+                                id: 'planUnit',
                               )),
                               DataCell(
                                 MsppTextField(

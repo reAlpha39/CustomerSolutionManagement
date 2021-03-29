@@ -52,7 +52,8 @@ class MsppCardMeet extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 5,
+                                index: 0,
+                                id: 'meet',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -84,7 +85,8 @@ class MsppCardMeet extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 6,
+                                index: 1,
+                                id: 'meet',
                               )),
                               DataCell(
                                 MsppTextField(

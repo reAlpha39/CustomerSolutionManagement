@@ -52,7 +52,8 @@ class MsppCardAsses extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 7,
+                                index: 0,
+                                id: 'asses',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -84,7 +85,8 @@ class MsppCardAsses extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 8,
+                                index: 1,
+                                id: 'asses',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -116,7 +118,8 @@ class MsppCardAsses extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 9,
+                                index: 2,
+                                id: 'asses',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -148,7 +151,8 @@ class MsppCardAsses extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 10,
+                                index: 3,
+                                id: 'asses',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -180,7 +184,8 @@ class MsppCardAsses extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 11,
+                                index: 4,
+                                id: 'asses',
                               )),
                               DataCell(
                                 MsppTextField(
@@ -212,7 +217,8 @@ class MsppCardAsses extends StatelessWidget {
                             cells: [
                               DataCell(MsppResult(
                                 data: ['Yes', 'No', 'N/A'],
-                                index: 12,
+                                index: 5,
+                                id: 'asses',
                               )),
                               DataCell(
                                 MsppTextField(

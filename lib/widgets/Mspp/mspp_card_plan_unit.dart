@@ -60,7 +60,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerPU01),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.1.1.1.a')),
                               DataCell(
                                 Container(
                                   width: 160,
@@ -98,7 +98,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah  jadwal periodik inspeksi selalu diupdate berdasarkan pencapaian periodik inspection sebelumnya ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -106,7 +106,7 @@ class MsppCardPlanUnit extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah pencapaian PI selalu di update'),
                                 ),
                               ),
                               DataCell(
@@ -126,24 +126,24 @@ class MsppCardPlanUnit extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerPU03),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.1.1.2')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah  hasil periodik inspeksi  dilakukan review di setiap akhir shift?'),
                                 ),
                               ),
-                              DataCell(Text('Planner')),
+                              DataCell(Text('SPV/GL')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah hasil PI dilakukan review setiap akhir shift'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Absensi review meeting'),
                               ),
                             ],
                           ),
@@ -159,12 +159,12 @@ class MsppCardPlanUnit extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerPU04),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.1.1.3.a')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Check apakah setiap pekerjaan periodik inspection ada dilengkapi dengan Surat Perintah Kerja (WO) ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -172,11 +172,11 @@ class MsppCardPlanUnit extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah WO dibuat sesuai dengan plan PI'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Dokumen WO untuk PI'),
                               ),
                             ],
                           ),
@@ -192,12 +192,12 @@ class MsppCardPlanUnit extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerPU05),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.1.1.3.b')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Check apakah Surat Perintah Kerja (WO) pekerjaan Periodik Inspeksi dibuat sebelum pelaksanaan inspection ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -205,11 +205,11 @@ class MsppCardPlanUnit extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah WO untuk PI dibuat sebelum pelaksanaan'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Tanggal dokumen WO untuk PI'),
                               ),
                             ],
                           ),

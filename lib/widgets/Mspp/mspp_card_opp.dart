@@ -38,6 +38,7 @@ class MsppCardOpp extends StatelessWidget {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
+                        dataRowHeight: 100,
                         columns: [
                           DataColumn(label: Text('Assessment Result 1')),
                           DataColumn(label: Text('Remark')),
@@ -60,12 +61,12 @@ class MsppCardOpp extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerOPPSP01),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.2.1')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah verifikasi atas status backlog dilakukan untuk persiapan meeting plan service ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -73,11 +74,11 @@ class MsppCardOpp extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah status backlog dan status part sudah update pada backlog monitoring sheet'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('File Backlog Monitoring'),
                               ),
                             ],
                           ),
@@ -93,12 +94,12 @@ class MsppCardOpp extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerOPPSP02),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.2.2')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah meeting mingguan dilakukan dengan konsisten?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -106,11 +107,20 @@ class MsppCardOpp extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat CoE dan MOM meeting mingguan'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Container(
+                                  width: 130,
+                                  child: Column(
+                                    children: [
+                                      Text('- CoE                           '),
+                                      Text(''),
+                                      Text('- Minutes of Meeting')
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -126,12 +136,12 @@ class MsppCardOpp extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerOPPSP03),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.2.3')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah urutan prioritas plan PS sudah di tetapkan sesuai data Condition Base Monitoring ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -139,11 +149,11 @@ class MsppCardOpp extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah urutan plan PS sudah sesuai dengan data Condition Based Maintenance'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('File Planning PS'),
                               ),
                             ],
                           ),

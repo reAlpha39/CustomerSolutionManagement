@@ -38,6 +38,7 @@ class MsppCardMeet extends StatelessWidget {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
+                        dataRowHeight: 100,
                         columns: [
                           DataColumn(label: Text('Assessment Result 1')),
                           DataColumn(label: Text('Remark')),
@@ -60,24 +61,42 @@ class MsppCardMeet extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerM01),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.1.2.1')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
                                 ),
                               ),
-                              DataCell(Text('Planner')),
+                              DataCell(Text('SPV/GL')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
+                                        Text(''),
+                                        Text(
+                                            '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
+                                        Text(''),
+                                        Text(
+                                            '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Column(
+                                  children: [
+                                    Text('- Meeting Record'),
+                                    Text(''),
+                                    Text('- Dokumen PI')
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -93,24 +112,36 @@ class MsppCardMeet extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerM02),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.1.2.2')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Check apakah setiap unit yang di inspeksi di konfirmasi ke radio room untuk dicatatkan down unitnya dan kebutuhan alat suppornya ?'),
                                 ),
                               ),
-                              DataCell(Text('Planner')),
+                              DataCell(Text('Team PI')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            '- Melihat apakah ada Log Book khusus radioman'),
+                                            Text(''),
+                                        Text(
+                                            '- Melihat apakah setiap unit yang dilakukan PI dilakukan konfirmasi ke radioman untuk dicatat kebutuhan alat support dan waktu downnya di Log Book'),
+                                            Text(''),
+                                        Text(
+                                            '- Interview mekanik dan radioman terkait konfirmasi unit yang akan PI dan pencatatannya di Log Book')
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Log Book Radioman'),
                               ),
                             ],
                           ),

@@ -38,6 +38,7 @@ class MsppCardRcps extends StatelessWidget {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
+                        dataRowHeight: 100,
                         columns: [
                           DataColumn(label: Text('Assessment Result 1')),
                           DataColumn(label: Text('Remark')),
@@ -60,12 +61,14 @@ class MsppCardRcps extends StatelessWidget {
                                     controller: controller
                                         .textEditingControllerRCPSP01),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.4.1')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Text(
+                                        'Cek apakah sudah ada konfirmasi dari logistic dan operation atas draft plan service yang sudah dikirimkan maksimal 3 hari sebelum PS dilaksanakan ?'),
+                                  ),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -73,11 +76,15 @@ class MsppCardRcps extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat pada tanggal email konfirmasi atau notulen meeting final plan PS'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Tanggal email feedback dari logistic dan operation atau notulen meeting terkait plan PS'),
+                                ),
                               ),
                             ],
                           ),
@@ -93,24 +100,44 @@ class MsppCardRcps extends StatelessWidget {
                                     controller: controller
                                         .textEditingControllerRCPSP02),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.4.2')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Text(
+                                        'Cek apakah fix plan service sudah disepakati dan dikirimkan ke operation, logistic dan plant maksimal 2 hari sebelum pelaksanaan PS?'),
+                                  ),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            '- Melihat apakah email plan PS sudah dikirimkan pe PIC terkait H-2 sebelum pelaksanaan PS'),
+                                        Text(''),
+                                        Text(
+                                            '- Interview PIC terkait apakah sudah menerima plan PS tersebut dan kapan menerima plan PS tersebut H-2')
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Container(
+                                  width: 160,
+                                  child: Column(
+                                    children: [
+                                      Text('- Email terkait pengiriman Plan PS '),
+                                      Text(''),
+                                      Text('- Hasil interview dengan PIC terkait')
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -126,24 +153,42 @@ class MsppCardRcps extends StatelessWidget {
                                     controller: controller
                                         .textEditingControllerRCPSP03),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.4.3')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah plan PS mingguan sudah dibuatkan WO dan diorderkan kebutuhan partsnya beberapa hari sebelum pelaksanaan ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            '- Melihat apakah sudah dibuatkan WO untuk pekerjaan PS sesuai dengan plan'),
+                                        Text(''),
+                                        Text(
+                                            '- Melihat apakah sudah dilakukan pengorderan part untuk pelaksanaan PS')
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Container(
+                                  width: 95,
+                                  child: Column(
+                                    children: [
+                                      Text('- Dokumen WO'),
+                                      Text(''),
+                                      Text('- List part order')
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -159,24 +204,42 @@ class MsppCardRcps extends StatelessWidget {
                                     controller: controller
                                         .textEditingControllerRCPSP04),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.4.4')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah dokumen PS sudah dipersiapkan maksimal 1 hari sebelum pelaksanaan PS ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            '- Melihat apakah dokumen PS sudah lengkap dan diserahkan ke SPV 1 hari sebelum pelaksanaan PS'),
+                                        Text(''),
+                                        Text(
+                                            '- Interview PPC dan SPV terkait dokumen untuk pekerjaan PS besok apakah sudah diterima oleh SPV 1 hari sebelumnya')
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Container(
+                                  width: 120,
+                                  child: Column(
+                                    children: [
+                                      Text('- Dokumen PS                '),
+                                      Text(''),
+                                      Text('- Hasil interview dengan PPC')
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -192,24 +255,24 @@ class MsppCardRcps extends StatelessWidget {
                                     controller: controller
                                         .textEditingControllerRCPSP05),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.4.5')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah Parts PS dan Backlog sudah di prepare di logistic maksimal 1 hari sebelum pelaksanaan PS ?'),
                                 ),
                               ),
-                              DataCell(Text('Planner')),
+                              DataCell(Text('Logistic')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah part ps dan backlog sudah sesuai dengan jumlah plan PS dan sudah disiapkan 1 hari sebelum pelaksanaan PS '),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Fisik part PS dan Backlog'),
                               ),
                             ],
                           ),

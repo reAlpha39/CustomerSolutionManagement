@@ -13,8 +13,10 @@ class MsppResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(right: 5),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           for (int i = 0; i <= data.length - 1; i++)
             Container(

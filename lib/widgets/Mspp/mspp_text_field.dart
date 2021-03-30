@@ -1,25 +1,16 @@
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:flutter/material.dart';
 
 class MsppTextField extends StatelessWidget {
-  final TextEditingController controller;
-
-  MsppTextField({this.controller});
+  final MsppController controller = MsppController.to;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: Container(
-        width: 100,
-        child: TextFormField(
-          controller: controller,
-          validator: (value) {
-            if (value == '') {
-              return 'Data harus diisi';
-            } else {
-              return null;
-            }
-          },
+        child: TextField(
+          controller: controller.textEditingControllerALL,
           decoration: InputDecoration(hintText: 'Isi disini'),
         ),
       ),

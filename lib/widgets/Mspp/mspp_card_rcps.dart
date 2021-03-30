@@ -3,10 +3,9 @@ import 'package:customer/widgets/Mspp/mspp_result.dart';
 import 'package:customer/widgets/Mspp/mspp_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MsppCardRcps extends StatelessWidget {
-  final MsppController controller = MsppController.to;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,257 +31,329 @@ class MsppCardRcps extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Scrollbar(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: DataTable(
-                        dataRowHeight: 100,
-                        columns: [
-                          DataColumn(label: Text('Assessment Result 1')),
-                          DataColumn(label: Text('Remark')),
-                          DataColumn(label: Text('No. Klausul')),
-                          DataColumn(label: Text('Deskripsi')),
-                          DataColumn(label: Text('PIC')),
-                          DataColumn(label: Text('Guidance')),
-                          DataColumn(label: Text('Objective Evidence')),
-                        ],
-                        rows: [
-                          DataRow(
-                            cells: [
-                              DataCell(MsppResult(
-                                data: ['Yes', 'No', 'N/A'],
-                                index: 0,
-                                id: 'rcpsp',
-                              )),
-                              DataCell(
-                                MsppTextField(
-                                    controller: controller
-                                        .textEditingControllerRCPSP01),
-                              ),
-                              DataCell(Text('1.2.4.1')),
-                              DataCell(
-                                SingleChildScrollView(
-                                  child: Container(
-                                    width: 160,
-                                    child: Text(
-                                        'Cek apakah sudah ada konfirmasi dari logistic dan operation atas draft plan service yang sudah dikirimkan maksimal 3 hari sebelum PS dilaksanakan ?'),
-                                  ),
-                                ),
-                              ),
-                              DataCell(Text('Planner')),
-                              DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat pada tanggal email konfirmasi atau notulen meeting final plan PS'),
-                                ),
-                              ),
-                              DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Tanggal email feedback dari logistic dan operation atau notulen meeting terkait plan PS'),
-                                ),
-                              ),
-                            ],
-                          ),
-                          DataRow(
-                            cells: [
-                              DataCell(MsppResult(
-                                data: ['Yes', 'No', 'N/A'],
-                                index: 1,
-                                id: 'rcpsp',
-                              )),
-                              DataCell(
-                                MsppTextField(
-                                    controller: controller
-                                        .textEditingControllerRCPSP02),
-                              ),
-                              DataCell(Text('1.2.4.2')),
-                              DataCell(
-                                SingleChildScrollView(
-                                  child: Container(
-                                    width: 160,
-                                    child: Text(
-                                        'Cek apakah fix plan service sudah disepakati dan dikirimkan ke operation, logistic dan plant maksimal 2 hari sebelum pelaksanaan PS?'),
-                                  ),
-                                ),
-                              ),
-                              DataCell(Text('Planner')),
-                              DataCell(
-                                SingleChildScrollView(
-                                  child: Container(
-                                    width: 160,
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                            '- Melihat apakah email plan PS sudah dikirimkan pe PIC terkait H-2 sebelum pelaksanaan PS'),
-                                        Text(''),
-                                        Text(
-                                            '- Interview PIC terkait apakah sudah menerima plan PS tersebut dan kapan menerima plan PS tersebut H-2')
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Column(
-                                    children: [
-                                      Text('- Email terkait pengiriman Plan PS '),
-                                      Text(''),
-                                      Text('- Hasil interview dengan PIC terkait')
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          DataRow(
-                            cells: [
-                              DataCell(MsppResult(
-                                data: ['Yes', 'No', 'N/A'],
-                                index: 2,
-                                id: 'rcpsp',
-                              )),
-                              DataCell(
-                                MsppTextField(
-                                    controller: controller
-                                        .textEditingControllerRCPSP03),
-                              ),
-                              DataCell(Text('1.2.4.3')),
-                              DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Cek apakah plan PS mingguan sudah dibuatkan WO dan diorderkan kebutuhan partsnya beberapa hari sebelum pelaksanaan ?'),
-                                ),
-                              ),
-                              DataCell(Text('Planner')),
-                              DataCell(
-                                SingleChildScrollView(
-                                  child: Container(
-                                    width: 160,
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                            '- Melihat apakah sudah dibuatkan WO untuk pekerjaan PS sesuai dengan plan'),
-                                        Text(''),
-                                        Text(
-                                            '- Melihat apakah sudah dilakukan pengorderan part untuk pelaksanaan PS')
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Container(
-                                  width: 95,
-                                  child: Column(
-                                    children: [
-                                      Text('- Dokumen WO'),
-                                      Text(''),
-                                      Text('- List part order')
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          DataRow(
-                            cells: [
-                              DataCell(MsppResult(
-                                data: ['Yes', 'No', 'N/A'],
-                                index: 3,
-                                id: 'rcpsp',
-                              )),
-                              DataCell(
-                                MsppTextField(
-                                    controller: controller
-                                        .textEditingControllerRCPSP04),
-                              ),
-                              DataCell(Text('1.2.4.4')),
-                              DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Cek apakah dokumen PS sudah dipersiapkan maksimal 1 hari sebelum pelaksanaan PS ?'),
-                                ),
-                              ),
-                              DataCell(Text('Planner')),
-                              DataCell(
-                                SingleChildScrollView(
-                                  child: Container(
-                                    width: 160,
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                            '- Melihat apakah dokumen PS sudah lengkap dan diserahkan ke SPV 1 hari sebelum pelaksanaan PS'),
-                                        Text(''),
-                                        Text(
-                                            '- Interview PPC dan SPV terkait dokumen untuk pekerjaan PS besok apakah sudah diterima oleh SPV 1 hari sebelumnya')
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Container(
-                                  width: 120,
-                                  child: Column(
-                                    children: [
-                                      Text('- Dokumen PS                '),
-                                      Text(''),
-                                      Text('- Hasil interview dengan PPC')
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          DataRow(
-                            cells: [
-                              DataCell(MsppResult(
-                                data: ['Yes', 'No', 'N/A'],
-                                index: 4,
-                                id: 'rcpsp',
-                              )),
-                              DataCell(
-                                MsppTextField(
-                                    controller: controller
-                                        .textEditingControllerRCPSP05),
-                              ),
-                              DataCell(Text('1.2.4.5')),
-                              DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Cek apakah Parts PS dan Backlog sudah di prepare di logistic maksimal 1 hari sebelum pelaksanaan PS ?'),
-                                ),
-                              ),
-                              DataCell(Text('Logistic')),
-                              DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah part ps dan backlog sudah sesuai dengan jumlah plan PS dan sudah disiapkan 1 hari sebelum pelaksanaan PS '),
-                                ),
-                              ),
-                              DataCell(
-                                Text('Fisik part PS dan Backlog'),
-                              ),
-                            ],
-                          ),
+                expanded: ExpandedRcpspData(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ExpandedRcpspData extends StatelessWidget {
+  final MsppController controller = MsppController.to;
+
+  Future<bool> resultRadio({int index}) {
+    return Get.defaultDialog(
+        barrierDismissible: false,
+        radius: 17,
+        title: 'Pilih salah satu',
+        content: (MsppResult(
+          data: ['Yes', 'No', 'N/A'],
+          index: index,
+          id: 'rcpsp',
+        )),
+        textConfirm: 'OK',
+        buttonColor: Color(0xffffcd29),
+        confirmTextColor: Colors.black87,
+        onConfirm: () => Get.back(closeOverlays: false));
+  }
+
+  Future<bool> resultTextField({int index}) {
+    return Get.defaultDialog(
+        barrierDismissible: false,
+        radius: 17,
+        title: 'Remark',
+        content: MsppTextField(),
+        textConfirm: 'OK',
+        buttonColor: Color(0xffffcd29),
+        confirmTextColor: Colors.black87,
+        onConfirm: () {
+          controller.textFieldPI('rcpsp')[index] =
+              controller.textEditingControllerALL.text;
+          controller.textEditingControllerALL.clear();
+          Get.back(closeOverlays: false);
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Scrollbar(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            dataRowHeight: 100,
+            columns: [
+              DataColumn(label: Text('Assessment Result 1')),
+              DataColumn(label: Text('Remark')),
+              DataColumn(label: Text('No. Klausul')),
+              DataColumn(label: Text('Deskripsi')),
+              DataColumn(label: Text('PIC')),
+              DataColumn(label: Text('Guidance')),
+              DataColumn(label: Text('Objective Evidence')),
+            ],
+            rows: [
+              DataRow(
+                cells: [
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultRadio(index: 0);
+                    },
+                    child: Obx(() => Text(controller.radioIndexRCPSP[0] == -1
+                        ? 'Pilih disini'
+                        : '${controller.radioData[controller.radioIndexRCPSP[0]]}')),
+                  )),
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultTextField(index: 0);
+                    },
+                    child: Obx(() => Text(controller.textFieldRCPSP[0] == ""
+                        ? 'Klik disini'
+                        : "${controller.textFieldRCPSP[0]}")),
+                  )),
+                  DataCell(Text('1.2.4.1')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah sudah ada konfirmasi dari logistic dan operation atas draft plan service yang sudah dikirimkan maksimal 3 hari sebelum PS dilaksanakan ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Text('Planner')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Melihat pada tanggal email konfirmasi atau notulen meeting final plan PS'),
+                    ),
+                  ),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Tanggal email feedback dari logistic dan operation atau notulen meeting terkait plan PS'),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultRadio(index: 1);
+                    },
+                    child: Obx(() => Text(controller.radioIndexRCPSP[1] == -1
+                        ? 'Pilih disini'
+                        : '${controller.radioData[controller.radioIndexRCPSP[1]]}')),
+                  )),
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultTextField(index: 1);
+                    },
+                    child: Obx(() => Text(controller.textFieldRCPSP[1] == ""
+                        ? 'Klik disini'
+                        : "${controller.textFieldRCPSP[1]}")),
+                  )),
+                  DataCell(Text('1.2.4.2')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah fix plan service sudah disepakati dan dikirimkan ke operation, logistic dan plant maksimal 2 hari sebelum pelaksanaan PS?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Text('Planner')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                '- Melihat apakah email plan PS sudah dikirimkan pe PIC terkait H-2 sebelum pelaksanaan PS'),
+                            Text(''),
+                            Text(
+                                '- Interview PIC terkait apakah sudah menerima plan PS tersebut dan kapan menerima plan PS tersebut H-2')
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Column(
+                        children: [
+                          Text('- Email terkait pengiriman Plan PS '),
+                          Text(''),
+                          Text('- Hasil interview dengan PIC terkait')
                         ],
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ),
+              DataRow(
+                cells: [
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultRadio(index: 2);
+                    },
+                    child: Obx(() => Text(controller.radioIndexRCPSP[2] == -1
+                        ? 'Pilih disini'
+                        : '${controller.radioData[controller.radioIndexRCPSP[2]]}')),
+                  )),
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultTextField(index: 2);
+                    },
+                    child: Obx(() => Text(controller.textFieldRCPSP[2] == ""
+                        ? 'Klik disini'
+                        : "${controller.textFieldRCPSP[2]}")),
+                  )),
+                  DataCell(Text('1.2.4.3')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah plan PS mingguan sudah dibuatkan WO dan diorderkan kebutuhan partsnya beberapa hari sebelum pelaksanaan ?'),
+                    ),
+                  ),
+                  DataCell(Text('Planner')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                '- Melihat apakah sudah dibuatkan WO untuk pekerjaan PS sesuai dengan plan'),
+                            Text(''),
+                            Text(
+                                '- Melihat apakah sudah dilakukan pengorderan part untuk pelaksanaan PS')
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Container(
+                      width: 95,
+                      child: Column(
+                        children: [
+                          Text('- Dokumen WO'),
+                          Text(''),
+                          Text('- List part order')
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultRadio(index: 3);
+                    },
+                    child: Obx(() => Text(controller.radioIndexRCPSP[3] == -1
+                        ? 'Pilih disini'
+                        : '${controller.radioData[controller.radioIndexRCPSP[3]]}')),
+                  )),
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultTextField(index: 3);
+                    },
+                    child: Obx(() => Text(controller.textFieldRCPSP[3] == ""
+                        ? 'Klik disini'
+                        : "${controller.textFieldRCPSP[3]}")),
+                  )),
+                  DataCell(Text('1.2.4.4')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah dokumen PS sudah dipersiapkan maksimal 1 hari sebelum pelaksanaan PS ?'),
+                    ),
+                  ),
+                  DataCell(Text('Planner')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                '- Melihat apakah dokumen PS sudah lengkap dan diserahkan ke SPV 1 hari sebelum pelaksanaan PS'),
+                            Text(''),
+                            Text(
+                                '- Interview PPC dan SPV terkait dokumen untuk pekerjaan PS besok apakah sudah diterima oleh SPV 1 hari sebelumnya')
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Container(
+                      width: 120,
+                      child: Column(
+                        children: [
+                          Text('- Dokumen PS                '),
+                          Text(''),
+                          Text('- Hasil interview dengan PPC')
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultRadio(index: 4);
+                    },
+                    child: Obx(() => Text(controller.radioIndexRCPSP[4] == -1
+                        ? 'Pilih disini'
+                        : '${controller.radioData[controller.radioIndexRCPSP[4]]}')),
+                  )),
+                  DataCell(TextButton(
+                    onPressed: () {
+                      resultTextField(index: 4);
+                    },
+                    child: Obx(() => Text(controller.textFieldRCPSP[4] == ""
+                        ? 'Klik disini'
+                        : "${controller.textFieldRCPSP[4]}")),
+                  )),
+                  DataCell(Text('1.2.4.5')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah Parts PS dan Backlog sudah di prepare di logistic maksimal 1 hari sebelum pelaksanaan PS ?'),
+                    ),
+                  ),
+                  DataCell(Text('Logistic')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Melihat apakah part ps dan backlog sudah sesuai dengan jumlah plan PS dan sudah disiapkan 1 hari sebelum pelaksanaan PS '),
+                    ),
+                  ),
+                  DataCell(
+                    Text('Fisik part PS dan Backlog'),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

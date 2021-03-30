@@ -38,6 +38,7 @@ class MsppCardBsps extends StatelessWidget {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
+                        dataRowHeight: 100,
                         columns: [
                           DataColumn(label: Text('Assessment Result 1')),
                           DataColumn(label: Text('Remark')),
@@ -57,27 +58,45 @@ class MsppCardBsps extends StatelessWidget {
                               )),
                               DataCell(
                                 MsppTextField(
-                                    controller:
-                                        controller.textEditingControllerBSPSP01),
+                                    controller: controller
+                                        .textEditingControllerBSPSP01),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.3.1')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah penentuan schedule dan lead time PS sudah mengikuti aturan scheduling dan memperhitungkan projection avaibility ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            '- Memastikan apakah projection avalibility dibuat dan diupdate setiap bulannya sebelum menentukan leadtime PS'),
+                                        Text(''),
+                                        Text(
+                                            '- Melihat apakah penentuan lead time PS sudah mempertimbangkan projection availability')
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Container(
+                                  width: 160,
+                                  child: Column(
+                                    children: [
+                                      Text('- File Projection availability'),
+                                      Text(''),
+                                      Text('- File Planning PS               ')
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -90,15 +109,17 @@ class MsppCardBsps extends StatelessWidget {
                               )),
                               DataCell(
                                 MsppTextField(
-                                    controller:
-                                        controller.textEditingControllerBSPSP02),
+                                    controller: controller
+                                        .textEditingControllerBSPSP02),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.3.2')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Text(
+                                        'Cek apakah draft plan service sudah dikirimkan ke pihak Plan, logistic dan operation beberapa hari sebelum pelaksanaan PS untuk memastikan down time unit dan kebutuhan alat support ?'),
+                                  ),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -106,11 +127,11 @@ class MsppCardBsps extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah draft plan PS dikirimkan ke pihak Plant, Logistic dan Operation'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Email'),
                               ),
                             ],
                           ),

@@ -90,12 +90,15 @@ class MsppCardMeet extends StatelessWidget {
                                 ),
                               ),
                               DataCell(
-                                Column(
-                                  children: [
-                                    Text('- Meeting Record'),
-                                    Text(''),
-                                    Text('- Dokumen PI')
-                                  ],
+                                Container(
+                                  width: 110,
+                                  child: Column(
+                                    children: [
+                                      Text('- Meeting Record'),
+                                      Text(''),
+                                      Text('- Dokumen PI      ')
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

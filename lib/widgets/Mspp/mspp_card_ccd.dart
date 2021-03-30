@@ -38,6 +38,7 @@ class MsppCardCcd extends StatelessWidget {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
+                        dataRowHeight: 100,
                         columns: [
                           DataColumn(label: Text('Assessment Result 1')),
                           DataColumn(label: Text('Remark')),
@@ -60,12 +61,12 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD01),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.1.a')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah sudah ada standard lead time pekerjaan PS untuk masing masing type PS dan unit model ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -73,11 +74,223 @@ class MsppCardCcd extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah ada standart penentuan tipe PS dan durasi untuk pembuatan plan PS'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('File Planning PS'),
+                              ),
+                            ],
+                          ),
+                          DataRow(
+                            cells: [
+                              DataCell(MsppResult(
+                                data: ['Yes', 'No', 'N/A'],
+                                index: 0,
+                                id: 'ccd',
+                              )),
+                              DataCell(
+                                MsppTextField(
+                                    controller:
+                                        controller.textEditingControllerCCD01),
+                              ),
+                              DataCell(Text('1.2.1.1.b')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Cek apakah sudah ada pembagian area kerja dan target eksekusi untuk masing masing type PS dan unit model?'),
+                                ),
+                              ),
+                              DataCell(Text('Planner')),
+                              DataCell(
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            '- Observasi ke lapangan untuk melihat apakah ada pembagian area kerja kepada mekanik'),
+                                        Text(''),
+                                        Text(
+                                            '- Melihat apakah ada target waktu eksekusi')
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              DataCell(
+                                Column(
+                                  children: [
+                                    Text('Hasil observasi ke lapangan'),
+                                    Text(''),
+                                    Text('JSS')
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          DataRow(
+                            cells: [
+                              DataCell(MsppResult(
+                                data: ['Yes', 'No', 'N/A'],
+                                index: 0,
+                                id: 'ccd',
+                              )),
+                              DataCell(
+                                MsppTextField(
+                                    controller:
+                                        controller.textEditingControllerCCD01),
+                              ),
+                              DataCell(Text('1.2.1.2')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Cek apakah sudah ada list standard kebutuhan Part & Lubrication untuk setiap type PS di masing masing unit?'),
+                                ),
+                              ),
+                              DataCell(Text('Planner')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Melihat apakah sudah ada standart part list setiap tipe PS'),
+                                ),
+                              ),
+                              DataCell(
+                                Text('File Planning PS'),
+                              ),
+                            ],
+                          ),
+                          DataRow(
+                            cells: [
+                              DataCell(MsppResult(
+                                data: ['Yes', 'No', 'N/A'],
+                                index: 0,
+                                id: 'ccd',
+                              )),
+                              DataCell(
+                                MsppTextField(
+                                    controller:
+                                        controller.textEditingControllerCCD01),
+                              ),
+                              DataCell(Text('1.2.1.3.a')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Cek apakah sudah ada standard template untuk pembuatan Plan Periodik Service?'),
+                                ),
+                              ),
+                              DataCell(Text('Planner')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Melihat apakah sudah ada template yang standart untuk pembuatan Plan PS'),
+                                ),
+                              ),
+                              DataCell(
+                                Text('File Planning PS'),
+                              ),
+                            ],
+                          ),
+                          DataRow(
+                            cells: [
+                              DataCell(MsppResult(
+                                data: ['Yes', 'No', 'N/A'],
+                                index: 0,
+                                id: 'ccd',
+                              )),
+                              DataCell(
+                                MsppTextField(
+                                    controller:
+                                        controller.textEditingControllerCCD01),
+                              ),
+                              DataCell(Text('1.2.1.3.b')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Cek apakah PS yang sudah terlaksana di update pada template tersebut secara rutin?'),
+                                ),
+                              ),
+                              DataCell(Text('Planner')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text('Melihat file plan PS '),
+                                ),
+                              ),
+                              DataCell(
+                                Text('Interview dengan tim planner'),
+                              ),
+                            ],
+                          ),
+                          DataRow(
+                            cells: [
+                              DataCell(MsppResult(
+                                data: ['Yes', 'No', 'N/A'],
+                                index: 0,
+                                id: 'ccd',
+                              )),
+                              DataCell(
+                                MsppTextField(
+                                    controller:
+                                        controller.textEditingControllerCCD01),
+                              ),
+                              DataCell(Text('1.2.1.4.a')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Cek apakah sudah ada standard template Backlog Monitoring ?'),
+                                ),
+                              ),
+                              DataCell(Text('Planner')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Melihat apakah sudah ada format standart untuk backlog monitoring'),
+                                ),
+                              ),
+                              DataCell(
+                                Text('File Planning PS'),
+                              ),
+                            ],
+                          ),
+                          DataRow(
+                            cells: [
+                              DataCell(MsppResult(
+                                data: ['Yes', 'No', 'N/A'],
+                                index: 0,
+                                id: 'ccd',
+                              )),
+                              DataCell(
+                                MsppTextField(
+                                    controller:
+                                        controller.textEditingControllerCCD01),
+                              ),
+                              DataCell(Text('1.2.1.4.b')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                      'Cek apakah setiap temuan backlog baru di update pada template tersebut secara rutin?'),
+                                ),
+                              ),
+                              DataCell(Text('Planner')),
+                              DataCell(
+                                Container(
+                                  width: 160,
+                                  child:
+                                      Text('Melihat file backlog monitoring'),
+                                ),
+                              ),
+                              DataCell(
+                                Text('File Planning PS'),
                               ),
                             ],
                           ),
@@ -93,24 +306,24 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD02),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.4.c')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah Backlog yang sudah dikerjakan di update pada template tersebut secara rutin?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
                                 Container(
                                   width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                  child:
+                                      Text('Melihat file backlog monitoring'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('File Planning PS'),
                               ),
                             ],
                           ),
@@ -126,12 +339,12 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD03),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.5.a')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah sudah ada standard template untuk pencatatan SMR unit dan menentukan rata rata jam operasinya ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -139,11 +352,16 @@ class MsppCardCcd extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah SMR dan adjustment average SMR sudah update pada file Planning PS'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Column(
+                                  children: [
+                                    Text('- File Planning PS'),
+                                    Text('- Data backlog')
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -159,24 +377,28 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD04),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.5.b')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah SMR unit diupdate secara rutin pada template tersebut ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
                                 Container(
                                   width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                  child: Text('Melihat file planning PS'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Column(
+                                  children: [
+                                    Text('- File Planning PS'),
+                                    Text('- Data backlog')
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -192,12 +414,12 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD05),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.5.c')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah rata rata jam operasi untuk pembuatan planning PS menggunakan data rata rata jam operasi yang update ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -205,11 +427,11 @@ class MsppCardCcd extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah draft next service terupdate sesuai last HM,  rata-rata jam operasi seminggu terakhir'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('File Planning PS'),
                               ),
                             ],
                           ),
@@ -225,24 +447,33 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD06),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.6')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Text(
+                                        'Cek apakah draft plan service dibuat berdasarkan pada data last service, last HM, rata-rata jam operasi seminggu terakhir dan  data backlog yang terupdate? '),
+                                  ),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Text(
+                                        'Melihat apakah draft next service terupdate sesuai last HM,  rata-rata jam operasi seminggu terakhir, dan data backlog terupdate dengan melihat sheet PS schedule dan BMS Template'),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Column(
+                                  children: [
+                                    Text('- Planning PS templates'),
+                                    Text('- Template Backlog Monitoring Sheet')
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -258,12 +489,12 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD07),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.7.a')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah WO backlog dibuat maksimum 2 hari dari tanggal temuan ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -271,11 +502,11 @@ class MsppCardCcd extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah WO dibuat maksimum 2 hari dari tanggal temuan'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Dokumen WO untuk backlog'),
                               ),
                             ],
                           ),
@@ -291,24 +522,24 @@ class MsppCardCcd extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerCCD08),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.1.7.b')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah No WO dan status parts ordernya diupdate di BMS ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
                               DataCell(
                                 Container(
                                   width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                  child:
+                                      Text('Melihat Backlog Monitoring Sheet'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('File backlog monitoring'),
                               ),
                             ],
                           ),

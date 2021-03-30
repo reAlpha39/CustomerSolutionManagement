@@ -38,6 +38,7 @@ class MsppCardAde extends StatelessWidget {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
+                        dataRowHeight: 100,
                         columns: [
                           DataColumn(label: Text('Assessment Result 1')),
                           DataColumn(label: Text('Remark')),
@@ -60,12 +61,12 @@ class MsppCardAde extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerADE01),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.5.1.a')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah review atas akurasi plan PS vs actual pelaksanaan PS dilakukan secara rutin?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -73,11 +74,11 @@ class MsppCardAde extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah review Plan dan pelaksanaan PS dilakukan'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('MOM meeting Review Pelaksanaan PS'),
                               ),
                             ],
                           ),
@@ -93,12 +94,12 @@ class MsppCardAde extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerADE02),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.5.1.b')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek akurasi atas plan PS vs actual apakah tercapai?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -106,11 +107,11 @@ class MsppCardAde extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat akurasi plan vs actual pelaksanaan PS'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Report pelaksanaan PS'),
                               ),
                             ],
                           ),
@@ -126,24 +127,34 @@ class MsppCardAde extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerADE03),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.5.1.c')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah mandatory activity condition based maintenance di review setiap minggu?'),
                                 ),
                               ),
-                              DataCell(Text('Planner')),
+                              DataCell(Column(
+                                children: [
+                                  Text(''),
+                                  Text('SPV/GL'),
+                                  Text(''),
+                                  Text('Planner')
+                                ],
+                              )),
                               DataCell(
-                                Container(
-                                  width: 160,
-                                  child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                SingleChildScrollView(
+                                  child: Container(
+                                    width: 160,
+                                    child: Text(
+                                        'Melihat apakah mandatory activity condition based maintenance (contoh : cleaning radiator, pengambilan sample oli, washing unit, dll) dilakukan review tiap minggu'),
+                                  ),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text(
+                                    'File mandatory activity CBM untuk Periodic Service'),
                               ),
                             ],
                           ),
@@ -159,12 +170,12 @@ class MsppCardAde extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerADE04),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.5.2.a')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah plan PS yang tidak tercapai dilakukan reschedule agar akurasi plan PSnya akurat?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -172,11 +183,11 @@ class MsppCardAde extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah unit yang tidak terlaksana PSnya direschedue atau tidak'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Report pelaksanaan PS'),
                               ),
                             ],
                           ),
@@ -192,12 +203,12 @@ class MsppCardAde extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerADE05),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.5.2.b')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah Reschedule PS dikomunikasikan ke operation, logistic dan pihak internal terkait ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -205,11 +216,11 @@ class MsppCardAde extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah setiap ada unit yang tidak terlaksana Psnya dikomunikasikan dengan dept terkait'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text('Email'),
                               ),
                             ],
                           ),
@@ -225,12 +236,12 @@ class MsppCardAde extends StatelessWidget {
                                     controller:
                                         controller.textEditingControllerADE06),
                               ),
-                              DataCell(Text('1.1.1.1.b')),
+                              DataCell(Text('1.2.5.3')),
                               DataCell(
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                                      'Cek apakah ada koordinasi harian di area Planner untuk membahas persiapan pekerjaan besok dan progress pekerjaan hari ini ?'),
                                 ),
                               ),
                               DataCell(Text('Planner')),
@@ -238,11 +249,12 @@ class MsppCardAde extends StatelessWidget {
                                 Container(
                                   width: 160,
                                   child: Text(
-                                      'Melihat apakah jadwal Periodic Inspection dibuat'),
+                                      'Melihat apakah meeting harian konsisten dijalankan, dan apakah meeting record agendanya sesuai'),
                                 ),
                               ),
                               DataCell(
-                                Text('File Planning PI'),
+                                Text(
+                                    'Meeting Record terkait koordinasi dengan Planner'),
                               ),
                             ],
                           ),

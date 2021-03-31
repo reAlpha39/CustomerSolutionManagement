@@ -1,5 +1,5 @@
 import 'package:customer/controller/login_controller.dart';
-import 'package:customer/models/data_customer.dart';
+import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/total_product.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
@@ -126,7 +126,7 @@ class CustomerInfoController extends GetxController {
               hitachi: tpHitachiTextController.text,
               suny: tpSunyTextController.text,
               lainnya: tpOtherTextController.text);
-          DataCustomer dataCustomer = DataCustomer(
+          SupportUt dataCustomer = SupportUt(
               namaCustomer: _loginController.usr.value.username,
               namaPerusahaan: namaTextController.text,
               alamatPerusahaan: alamatTextController.text,

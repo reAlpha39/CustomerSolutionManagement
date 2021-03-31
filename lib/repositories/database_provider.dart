@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
-import 'package:customer/models/data_customer.dart';
+import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 
 class DatabaseProvider {
   LoginController loginController = LoginController();
+  Users users = Users();
   FirebaseFirestore firestore;
 
   //Inisialisasi Firebase instance
@@ -38,11 +39,11 @@ class DatabaseProvider {
   }
 
   //Save data
-  saveData(DataCustomer dataCustomer) {
+  saveData(SupportUt supportUt) {
     firestore = FirebaseFirestore.instance;
-    var data = dataCustomer.toMap();
+    var data = supportUt.toMap();
     DocumentReference doc =
-        firestore.collection('data_customer').doc(dataCustomer.namaCustomer);
+        firestore.collection('data_customer').doc(supportUt.namaCustomer);
     CollectionReference collection = doc.collection('need_support');
     collection.get().then((value) {
       if (value.size == 0) {

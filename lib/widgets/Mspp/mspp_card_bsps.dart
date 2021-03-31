@@ -77,6 +77,28 @@ class ExpandedBspspData extends StatelessWidget {
         });
   }
 
+  TextButton buildTextButtonRemark(int id) {
+    return TextButton(
+      onPressed: () {
+        resultTextField(index: id);
+      },
+      child: Obx(() => Text(controller.textFieldBSPSP[id] == ""
+          ? 'Klik disini'
+          : "${controller.textFieldBSPSP[id]}")),
+    );
+  }
+
+  TextButton buildTextButtonAssessment(int id) {
+    return TextButton(
+      onPressed: () {
+        resultRadio(index: id);
+      },
+      child: Obx(() => Text(controller.radioIndexBSPSP[id] == -1
+          ? 'Pilih disini'
+          : '${controller.radioData[controller.radioIndexBSPSP[id]]}')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -98,22 +120,8 @@ class ExpandedBspspData extends StatelessWidget {
             rows: [
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 0);
-                    },
-                    child: Obx(() => Text(controller.radioIndexBSPSP[0] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexBSPSP[0]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 0);
-                    },
-                    child: Obx(() => Text(controller.textFieldBSPSP[0] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldBSPSP[0]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(0)),
+                  DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.3.1')),
                   DataCell(
                     Container(
@@ -155,22 +163,8 @@ class ExpandedBspspData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 1);
-                    },
-                    child: Obx(() => Text(controller.radioIndexBSPSP[1] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexBSPSP[1]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 1);
-                    },
-                    child: Obx(() => Text(controller.textFieldBSPSP[1] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldBSPSP[1]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.2.3.2')),
                   DataCell(
                     SingleChildScrollView(

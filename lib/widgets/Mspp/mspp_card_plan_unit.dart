@@ -77,6 +77,28 @@ class ExpandedPlanUnitData extends StatelessWidget {
         });
   }
 
+  TextButton buildTextButtonRemark(int id) {
+    return TextButton(
+      onPressed: () {
+        resultTextField(index: id);
+      },
+      child: Obx(() => Text(controller.textFieldPU[id] == ""
+          ? 'Klik disini'
+          : "${controller.textFieldPU[id]}")),
+    );
+  }
+
+  TextButton buildTextButtonAssessment(int id) {
+    return TextButton(
+      onPressed: () {
+        resultRadio(index: id);
+      },
+      child: Obx(() => Text(controller.radioIndexPU[id] == -1
+          ? 'Pilih disini'
+          : '${controller.radioData[controller.radioIndexPU[id]]}')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -98,22 +120,8 @@ class ExpandedPlanUnitData extends StatelessWidget {
             rows: [
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 0);
-                    },
-                    child: Obx(() => Text(controller.radioIndexPU[0] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexPU[0]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 0);
-                    },
-                    child: Obx(() => Text(controller.textFieldPU[0] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldPU[0]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(0)),
+                  DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.1.1.1.a')),
                   DataCell(
                     Container(
@@ -137,22 +145,8 @@ class ExpandedPlanUnitData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 1);
-                    },
-                    child: Obx(() => Text(controller.radioIndexPU[1] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexPU[1]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 1);
-                    },
-                    child: Obx(() => Text(controller.textFieldPU[1] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldPU[1]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.1.1.1.b')),
                   DataCell(
                     Container(
@@ -176,22 +170,8 @@ class ExpandedPlanUnitData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 2);
-                    },
-                    child: Obx(() => Text(controller.radioIndexPU[2] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexPU[2]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 2);
-                    },
-                    child: Obx(() => Text(controller.textFieldPU[2] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldPU[2]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.1.1.2')),
                   DataCell(
                     Container(
@@ -215,22 +195,8 @@ class ExpandedPlanUnitData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 3);
-                    },
-                    child: Obx(() => Text(controller.radioIndexPU[3] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexPU[3]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 3);
-                    },
-                    child: Obx(() => Text(controller.textFieldPU[3] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldPU[3]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.1.1.3.a')),
                   DataCell(
                     Container(
@@ -254,22 +220,8 @@ class ExpandedPlanUnitData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 4);
-                    },
-                    child: Obx(() => Text(controller.radioIndexPU[4] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexPU[4]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 4);
-                    },
-                    child: Obx(() => Text(controller.textFieldPU[4] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldPU[4]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(4)),
+                  DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.1.1.3.b')),
                   DataCell(
                     Container(

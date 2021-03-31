@@ -77,6 +77,28 @@ class ExpandedRcpspData extends StatelessWidget {
         });
   }
 
+  TextButton buildTextButtonRemark(int id) {
+    return TextButton(
+      onPressed: () {
+        resultTextField(index: id);
+      },
+      child: Obx(() => Text(controller.textFieldRCPSP[id] == ""
+          ? 'Klik disini'
+          : "${controller.textFieldRCPSP[id]}")),
+    );
+  }
+
+  TextButton buildTextButtonAssessment(int id) {
+    return TextButton(
+      onPressed: () {
+        resultRadio(index: id);
+      },
+      child: Obx(() => Text(controller.radioIndexRCPSP[id] == -1
+          ? 'Pilih disini'
+          : '${controller.radioData[controller.radioIndexRCPSP[id]]}')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -98,22 +120,8 @@ class ExpandedRcpspData extends StatelessWidget {
             rows: [
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 0);
-                    },
-                    child: Obx(() => Text(controller.radioIndexRCPSP[0] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexRCPSP[0]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 0);
-                    },
-                    child: Obx(() => Text(controller.textFieldRCPSP[0] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldRCPSP[0]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(0)),
+                  DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.4.1')),
                   DataCell(
                     SingleChildScrollView(
@@ -143,22 +151,8 @@ class ExpandedRcpspData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 1);
-                    },
-                    child: Obx(() => Text(controller.radioIndexRCPSP[1] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexRCPSP[1]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 1);
-                    },
-                    child: Obx(() => Text(controller.textFieldRCPSP[1] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldRCPSP[1]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.2.4.2')),
                   DataCell(
                     SingleChildScrollView(
@@ -202,22 +196,8 @@ class ExpandedRcpspData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 2);
-                    },
-                    child: Obx(() => Text(controller.radioIndexRCPSP[2] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexRCPSP[2]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 2);
-                    },
-                    child: Obx(() => Text(controller.textFieldRCPSP[2] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldRCPSP[2]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.2.4.3')),
                   DataCell(
                     Container(
@@ -259,22 +239,8 @@ class ExpandedRcpspData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 3);
-                    },
-                    child: Obx(() => Text(controller.radioIndexRCPSP[3] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexRCPSP[3]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 3);
-                    },
-                    child: Obx(() => Text(controller.textFieldRCPSP[3] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldRCPSP[3]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.2.4.4')),
                   DataCell(
                     Container(
@@ -316,22 +282,8 @@ class ExpandedRcpspData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 4);
-                    },
-                    child: Obx(() => Text(controller.radioIndexRCPSP[4] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexRCPSP[4]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 4);
-                    },
-                    child: Obx(() => Text(controller.textFieldRCPSP[4] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldRCPSP[4]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(4)),
+                  DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.2.4.5')),
                   DataCell(
                     Container(

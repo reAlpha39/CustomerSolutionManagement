@@ -77,6 +77,28 @@ class ExpandedAdeData extends StatelessWidget {
         });
   }
 
+  TextButton buildTextButtonRemark(int id) {
+    return TextButton(
+      onPressed: () {
+        resultTextField(index: id);
+      },
+      child: Obx(() => Text(controller.textFieldADE[id] == ""
+          ? 'Klik disini'
+          : "${controller.textFieldADE[id]}")),
+    );
+  }
+
+  TextButton buildTextButtonAssessment(int id) {
+    return TextButton(
+      onPressed: () {
+        resultRadio(index: id);
+      },
+      child: Obx(() => Text(controller.radioIndexADE[id] == -1
+          ? 'Pilih disini'
+          : '${controller.radioData[controller.radioIndexADE[id]]}')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -98,22 +120,8 @@ class ExpandedAdeData extends StatelessWidget {
             rows: [
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 0);
-                    },
-                    child: Obx(() => Text(controller.radioIndexADE[0] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexADE[0]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 0);
-                    },
-                    child: Obx(() => Text(controller.textFieldADE[0] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldADE[0]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(0)),
+                  DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.5.1.a')),
                   DataCell(
                     Container(
@@ -137,22 +145,8 @@ class ExpandedAdeData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 1);
-                    },
-                    child: Obx(() => Text(controller.radioIndexADE[1] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexADE[1]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 1);
-                    },
-                    child: Obx(() => Text(controller.textFieldADE[1] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldADE[1]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.2.5.1.b')),
                   DataCell(
                     Container(
@@ -176,22 +170,8 @@ class ExpandedAdeData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 2);
-                    },
-                    child: Obx(() => Text(controller.radioIndexADE[2] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexADE[2]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 2);
-                    },
-                    child: Obx(() => Text(controller.textFieldADE[2] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldADE[2]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.2.5.1.c')),
                   DataCell(
                     Container(
@@ -224,22 +204,8 @@ class ExpandedAdeData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 3);
-                    },
-                    child: Obx(() => Text(controller.radioIndexADE[3] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexADE[3]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 3);
-                    },
-                    child: Obx(() => Text(controller.textFieldADE[3] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldADE[3]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.2.5.2.a')),
                   DataCell(
                     Container(
@@ -263,22 +229,8 @@ class ExpandedAdeData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 4);
-                    },
-                    child: Obx(() => Text(controller.radioIndexADE[4] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexADE[4]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 4);
-                    },
-                    child: Obx(() => Text(controller.textFieldADE[4] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldADE[4]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(4)),
+                  DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.2.5.2.b')),
                   DataCell(
                     Container(
@@ -302,22 +254,8 @@ class ExpandedAdeData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 5);
-                    },
-                    child: Obx(() => Text(controller.radioIndexADE[5] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexADE[5]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 5);
-                    },
-                    child: Obx(() => Text(controller.textFieldADE[5] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldADE[5]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(5)),
+                  DataCell(buildTextButtonRemark(5)),
                   DataCell(Text('1.2.5.3')),
                   DataCell(
                     Container(

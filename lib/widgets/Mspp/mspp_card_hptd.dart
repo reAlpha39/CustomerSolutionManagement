@@ -77,6 +77,28 @@ class ExpandedMeetData extends StatelessWidget {
         });
   }
 
+  TextButton buildTextButtonRemark(int id) {
+    return TextButton(
+      onPressed: () {
+        resultTextField(index: id);
+      },
+      child: Obx(() => Text(controller.textFieldHPTD[id] == ""
+          ? 'Klik disini'
+          : "${controller.textFieldHPTD[id]}")),
+    );
+  }
+
+  TextButton buildTextButtonAssessment(int id) {
+    return TextButton(
+      onPressed: () {
+        resultRadio(index: id);
+      },
+      child: Obx(() => Text(controller.radioIndexHPTD[id] == -1
+          ? 'Pilih disini'
+          : '${controller.radioData[controller.radioIndexHPTD[id]]}')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -98,22 +120,8 @@ class ExpandedMeetData extends StatelessWidget {
             rows: [
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 0);
-                    },
-                    child: Obx(() => Text(controller.radioIndexMeet[0] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexMeet[0]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 0);
-                    },
-                    child: Obx(() => Text(controller.textFieldMeet[0] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldMeet[0]}")),
-                  )),
+                  DataCell(buildTextButtonAssessment(0)),
+                  DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.1.2.1')),
                   DataCell(
                     Container(

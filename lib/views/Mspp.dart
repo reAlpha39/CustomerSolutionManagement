@@ -1,4 +1,5 @@
 import 'package:customer/widgets/Mspp/mspp_pi.dart';
+import 'package:customer/widgets/Mspp/mspp_ps.dart';
 import 'package:customer/widgets/Mspp/mspp_ps_plan.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class Mspp extends StatelessWidget {
           children: [
             MsppPi(),
             MsppPsPlan(),
-            Container(),
+            MsppPs(),
           ],
         ),
       ),

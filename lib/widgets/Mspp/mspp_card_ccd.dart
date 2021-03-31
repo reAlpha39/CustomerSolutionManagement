@@ -77,6 +77,28 @@ class ExpandedCcdData extends StatelessWidget {
         });
   }
 
+  TextButton buildTextButtonRemark(int id) {
+    return TextButton(
+      onPressed: () {
+        resultTextField(index: id);
+      },
+      child: Obx(() => Text(controller.textFieldCCD[id] == ""
+          ? 'Klik disini'
+          : "${controller.textFieldCCD[id]}")),
+    );
+  }
+
+  TextButton buildTextButtonAssesment(int id) {
+    return TextButton(
+      onPressed: () {
+        resultRadio(index: id);
+      },
+      child: Obx(() => Text(controller.radioIndexCCD[id] == -1
+          ? 'Pilih disini'
+          : '${controller.radioData[controller.radioIndexCCD[id]]}')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -98,22 +120,8 @@ class ExpandedCcdData extends StatelessWidget {
             rows: [
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 0);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[0] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[0]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 0);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[0] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[0]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(0)),
+                  DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.1.1.a')),
                   DataCell(
                     Container(
@@ -137,22 +145,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 1);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[1] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[1]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 1);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[1] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[1]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(1)),
+                  DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.2.1.1.b')),
                   DataCell(
                     Container(
@@ -190,22 +184,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 2);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[2] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[2]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 2);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[2] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[2]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(2)),
+                  DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.2.1.2')),
                   DataCell(
                     Container(
@@ -229,22 +209,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 3);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[3] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[3]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 3);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[3] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[3]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(3)),
+                  DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.2.1.3.a')),
                   DataCell(
                     Container(
@@ -268,22 +234,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 4);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[4] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[4]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 4);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[4] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[4]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(4)),
+                  DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.2.1.3.b')),
                   DataCell(
                     Container(
@@ -306,22 +258,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 5);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[5] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[5]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 5);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[5] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[5]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(5)),
+                  DataCell(buildTextButtonRemark(5)),
                   DataCell(Text('1.2.1.4.a')),
                   DataCell(
                     Container(
@@ -345,22 +283,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 6);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[6] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[6]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 6);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[6] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[6]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(6)),
+                  DataCell(buildTextButtonRemark(6)),
                   DataCell(Text('1.2.1.4.b')),
                   DataCell(
                     Container(
@@ -383,22 +307,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 7);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[7] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[7]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 7);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[7] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[7]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(7)),
+                  DataCell(buildTextButtonRemark(7)),
                   DataCell(Text('1.2.1.4.c')),
                   DataCell(
                     Container(
@@ -421,22 +331,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 8);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[8] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[8]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 8);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[8] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[8]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(8)),
+                  DataCell(buildTextButtonRemark(8)),
                   DataCell(Text('1.2.1.5.a')),
                   DataCell(
                     Container(
@@ -465,22 +361,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 9);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[9] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[9]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 9);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[9] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[9]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(9)),
+                  DataCell(buildTextButtonRemark(9)),
                   DataCell(Text('1.2.1.5.b')),
                   DataCell(
                     Container(
@@ -508,22 +390,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 10);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[10] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[10]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 10);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[10] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[10]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(10)),
+                  DataCell(buildTextButtonRemark(10)),
                   DataCell(Text('1.2.1.5.c')),
                   DataCell(
                     Container(
@@ -547,22 +415,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 11);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[11] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[11]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 11);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[11] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[11]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(11)),
+                  DataCell(buildTextButtonRemark(11)),
                   DataCell(Text('1.2.1.6')),
                   DataCell(
                     SingleChildScrollView(
@@ -595,22 +449,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 12);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[12] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[12]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 12);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[12] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[12]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(12)),
+                  DataCell(buildTextButtonRemark(12)),
                   DataCell(Text('1.2.1.7.a')),
                   DataCell(
                     Container(
@@ -634,22 +474,8 @@ class ExpandedCcdData extends StatelessWidget {
               ),
               DataRow(
                 cells: [
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultRadio(index: 13);
-                    },
-                    child: Obx(() => Text(controller.radioIndexCCD[13] == -1
-                        ? 'Pilih disini'
-                        : '${controller.radioData[controller.radioIndexCCD[13]]}')),
-                  )),
-                  DataCell(TextButton(
-                    onPressed: () {
-                      resultTextField(index: 13);
-                    },
-                    child: Obx(() => Text(controller.textFieldCCD[13] == ""
-                        ? 'Klik disini'
-                        : "${controller.textFieldCCD[13]}")),
-                  )),
+                  DataCell(buildTextButtonAssesment(13)),
+                  DataCell(buildTextButtonRemark(13)),
                   DataCell(Text('1.2.1.7.b')),
                   DataCell(
                     Container(

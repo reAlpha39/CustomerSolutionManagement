@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/models/mspp.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -57,9 +58,32 @@ class DatabaseProvider {
     });
   }
 
+  //Save MSPP Dipisah perdokumen
+  saveMSPP(Mspp mspp, String username) {
+    firestore = FirebaseFirestore.instance;
+    var data = mspp.toMap();
+    DocumentReference doc = firestore.collection('data_customer').doc(username);
+    CollectionReference collection = doc.collection('mspp');
+    collection.get().then((value) {
+      collection
+          .doc('periodic_inspection')
+          .set(data['periodicInspection'])
+          .then((_) => collection
+              .doc('periodic_service_plan')
+              .set(data['periodicServicePlan'])
+              .then((_) => collection
+                  .doc('periodic_service')
+                  .set(data['periodicService'])
+                  .then((value) => showDialog(
+                      title: "Sukses",
+                      middleText: "Data berhasil dimasukkan"))));
+    });
+  }
+
   //menampilkan dialog
   showDialog({String title, String middleText}) {
     Get.defaultDialog(
+        barrierDismissible: false,
         titleStyle: TextStyle(fontSize: 24),
         middleTextStyle: TextStyle(fontSize: 18),
         title: title,
@@ -68,6 +92,6 @@ class DatabaseProvider {
         radius: 17,
         buttonColor: Colors.yellow.shade600,
         confirmTextColor: Colors.black87,
-        onConfirm: () => Get.offAndToNamed('/home_page'));
+        onConfirm: () => Get.back(closeOverlays: false));
   }
 }

@@ -1,11 +1,17 @@
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/mspp_data.dart';
+import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/utils/connectivity_checker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MsppController extends GetxController {
   static MsppController to = Get.find();
+
+  final LoginController _loginController = LoginController.to;
+  final DatabaseProvider _databaseProvider = DatabaseProvider();
 
   //RadioButton
   RxList<int> radioIndexPU = [-1, -1, -1, -1, -1].obs;
@@ -24,21 +30,6 @@ class MsppController extends GetxController {
   RxList<int> radioIndexHPTD = [-1, -1, -1, -1, -1].obs;
   RxList<int> radioIndexEDS = [-1, -1, -1].obs;
   RxList<int> radioIndexRPLL = [-1, -1].obs;
-
-  // Rx<MsppData> msppDataPU = MsppData(
-  //   assessmentResult: [-1, -1, -1, -1, -1],
-  //   remark: ["", "", "", "", ""]
-  // ).obs;
-
-  // Rx<MsppData> msppDataMeet = MsppData(
-  //   assessmentResult: [-1, -1],
-  //   remark: ["", ""]
-  // ).obs;
-
-  // Rx<MsppData> msppDataAsses = MsppData(
-  //   assessmentResult: [-1, -1, -1, -1, -1],
-  //   remark: ["", "", "", "", ""]
-  // ).obs;
 
   //Textfield data
   RxList<String> textFieldPU = ["", "", "", "", ""].obs;
@@ -76,6 +67,69 @@ class MsppController extends GetxController {
   void onClose() {
     textEditingControllerALL?.dispose();
     super.onClose();
+  }
+
+  saveDataMspp() {
+    Get.back(closeOverlays: false);
+    showProgressDialog();
+    connectivityChecker().then((conn) {
+      MsppData msppDataPU =
+          MsppData(assessmentResult: radioIndexPU, remark: textFieldPU);
+      MsppData msppDataMeet =
+          MsppData(assessmentResult: radioIndexMeet, remark: textFieldMeet);
+      MsppData msppDataAsses =
+          MsppData(assessmentResult: radioIndexAsses, remark: textFieldAsses);
+      MsppData msppDataCCD =
+          MsppData(assessmentResult: radioIndexCCD, remark: textFieldCCD);
+      MsppData msppDataOPPSP =
+          MsppData(assessmentResult: radioIndexOPPSP, remark: textFieldOPPSP);
+      MsppData msppDataBSPSP =
+          MsppData(assessmentResult: radioIndexBSPSP, remark: textFieldBSPSP);
+      MsppData msppDataRCPSP =
+          MsppData(assessmentResult: radioIndexRCPSP, remark: textFieldRCPSP);
+      MsppData msppDataADE =
+          MsppData(assessmentResult: radioIndexADE, remark: textFieldADE);
+      MsppData msppDataPPS =
+          MsppData(assessmentResult: radioIndexPPS, remark: textFieldPPS);
+      MsppData msppDataAPPT =
+          MsppData(assessmentResult: radioIndexAPPT, remark: textFieldAPPT);
+      MsppData msppDataEPSS =
+          MsppData(assessmentResult: radioIndexEPSS, remark: textFieldEPSS);
+      MsppData msppDataTPSNP =
+          MsppData(assessmentResult: radioIndexTPSNP, remark: textFieldTPSNP);
+      MsppData msppDataHPTD =
+          MsppData(assessmentResult: radioIndexHPTD, remark: textFieldHPTD);
+      MsppData msppDataEDS =
+          MsppData(assessmentResult: radioIndexEDS, remark: textFieldEDS);
+      MsppData msppDataRPLL =
+          MsppData(assessmentResult: radioIndexRPLL, remark: textFieldRPLL);
+      Mspp mspp = Mspp(periodicInspection: {
+        'planUnit': msppDataPU,
+        'meet': msppDataMeet,
+        'assess': msppDataAsses
+      }, periodicServicePlan: {
+        'ccd': msppDataCCD,
+        'oppsp': msppDataOPPSP,
+        'bspsp': msppDataBSPSP,
+        'rcpsp': msppDataRCPSP,
+        'ade': msppDataADE
+      }, periodicService: {
+        'pps': msppDataPPS,
+        'appt': msppDataAPPT,
+        'epss': msppDataEPSS,
+        'tpsnp': msppDataTPSNP,
+        'hptd': msppDataHPTD,
+        'eds': msppDataEDS,
+        'rpll': msppDataRPLL
+      });
+      _databaseProvider.saveMSPP(mspp, _loginController.usr.value.username);
+    });
+    Get.back(closeOverlays: false);
+  }
+
+  void showProgressDialog() {
+    Get.dialog(Center(child: CircularProgressIndicator()),
+        barrierDismissible: false);
   }
 
   RxList<String> textFieldPI(String i) {
@@ -158,7 +212,7 @@ class MsppController extends GetxController {
       case 'ade':
         data = radioIndexADE;
         break;
-        case 'pps':
+      case 'pps':
         data = radioIndexPPS;
         break;
       case 'appt':

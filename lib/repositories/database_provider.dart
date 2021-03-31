@@ -54,28 +54,18 @@ class DatabaseProvider {
             showDialog(
                 title: "Sukses", middleText: "Data berhasil dimasukkan"));
       } else {
-        searchLastId().then((value) {
-          supportUt.id = '${value + 1}';
-          collection.doc(supportUt.id).set(supportUt.toMap()).then((_) =>
-              showDialog(
-                  title: "Sukses", middleText: "Data berhasil dimasukkan"));
-        });
+        supportUt.id = '${searchLastId(value) + 1}';
+        collection.doc(supportUt.id).set(supportUt.toMap()).then((_) =>
+            showDialog(
+                title: "Sukses", middleText: "Data berhasil dimasukkan"));
       }
     });
   }
 
-  Future<int> searchLastId() async {
+  int searchLastId(QuerySnapshot querySnapshot) {
     int id;
-    firestore = FirebaseFirestore.instance;
-    await firestore
-        .collection('data_customer')
-        .doc('customer01')
-        .collection('need_support')
-        .get()
-        .then((value) {
-      var data = value.docs.last.data();
-      id = int.tryParse(data['id']);
-    });
+    var data = querySnapshot.docs.last.data();
+    id = int.tryParse(data['id']);
     return id;
   }
 

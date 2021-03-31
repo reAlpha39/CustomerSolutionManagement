@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/mspp.dart';
@@ -42,20 +44,39 @@ class DatabaseProvider {
   //Save data
   saveData(SupportUt supportUt) {
     firestore = FirebaseFirestore.instance;
-    var data = supportUt.toMap();
     DocumentReference doc =
         firestore.collection('data_customer').doc(supportUt.namaCustomer);
     CollectionReference collection = doc.collection('need_support');
     collection.get().then((value) {
       if (value.size == 0) {
-        collection.doc('ticket_1').set(data).then((_) => showDialog(
-            title: "Sukses", middleText: "Data berhasil dimasukkan"));
-      } else {
-        collection.doc('ticket_${value.size + 1}').set(data).then((_) =>
+        supportUt.id = '1000001';
+        collection.doc(supportUt.id).set(supportUt.toMap()).then((_) =>
             showDialog(
                 title: "Sukses", middleText: "Data berhasil dimasukkan"));
+      } else {
+        searchLastId().then((value) {
+          supportUt.id = '${value + 1}';
+          collection.doc(supportUt.id).set(supportUt.toMap()).then((_) =>
+              showDialog(
+                  title: "Sukses", middleText: "Data berhasil dimasukkan"));
+        });
       }
     });
+  }
+
+  Future<int> searchLastId() async {
+    int id;
+    firestore = FirebaseFirestore.instance;
+    await firestore
+        .collection('data_customer')
+        .doc('customer01')
+        .collection('need_support')
+        .get()
+        .then((value) {
+      var data = value.docs.last.data();
+      id = int.tryParse(data['id']);
+    });
+    return id;
   }
 
   //Save MSPP Dipisah perdokumen

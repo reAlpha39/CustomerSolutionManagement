@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomerInfoCheckbox extends StatelessWidget {
-  final CustomerInfoController controller = CustomerInfoController.to;
+  final CustomerInfoController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

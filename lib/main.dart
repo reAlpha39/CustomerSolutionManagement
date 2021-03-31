@@ -1,7 +1,4 @@
-import 'package:customer/controller/customer_info_controller.dart';
-import 'package:customer/controller/home_controller.dart';
-import 'package:customer/controller/login_controller.dart';
-import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/routes/login_binding.dart';
 import 'package:customer/routes/routes.dart';
 import 'package:customer/utils/custom_color.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +10,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final LoginController loginController =
-      Get.put<LoginController>(LoginController());
-  final HomeController homeController =
-      Get.put<HomeController>(HomeController());
-  final CustomerInfoController customerInfoController =
-      Get.put<CustomerInfoController>(CustomerInfoController());
-  final MsppController msppController =
-      Get.put<MsppController>(MsppController());
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -31,6 +20,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         getPages: Routes.route,
         initialRoute: '/login_page',
+        initialBinding: LoginBinding(),
         theme: ThemeData(
             primarySwatch: createMaterialColor(Color(0xffffcd29)),
             floatingActionButtonTheme:

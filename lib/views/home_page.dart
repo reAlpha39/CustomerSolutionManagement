@@ -43,8 +43,8 @@ class HomePage extends StatelessWidget {
 }
 
 class Shapeground extends StatelessWidget {
-  final LoginController _loginController = LoginController.to;
-  final HomeController _homeController = HomeController.to;
+  final LoginController _loginController = Get.find();
+  final HomeController _homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {

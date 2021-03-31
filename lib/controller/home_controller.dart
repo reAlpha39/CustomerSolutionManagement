@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  static HomeController to = Get.find();
-
-  final LoginController _loginController = LoginController.to;
+  final LoginController _loginController = Get.find();
 
   Widget userType() {
     String type = _loginController.usr.value.type;

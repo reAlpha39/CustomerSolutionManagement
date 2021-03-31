@@ -2,10 +2,10 @@ import 'package:customer/controller/customer_info_controller.dart';
 import 'package:customer/widgets/customer_info/customer_info_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomerInfoCardProduk extends StatelessWidget {
-  final CustomerInfoController customerInfoController =
-      CustomerInfoController.to;
+  final CustomerInfoController customerInfoController = Get.find();
   @override
   Widget build(BuildContext context) {
     customerInfoController.formKeyProduk = GlobalKey<FormState>();

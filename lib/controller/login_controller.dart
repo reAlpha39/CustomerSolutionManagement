@@ -6,10 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //Mengambil LoginController instance dimanapun dalam app
-  //Dengan mengetik LoginController.to
-  static LoginController to = Get.find();
-
   TextEditingController usernameTextController;
   TextEditingController passwordTextController;
 

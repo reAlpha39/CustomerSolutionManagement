@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomerInfo extends StatelessWidget {
-  final CustomerInfoController controller = CustomerInfoController.to;
+  final CustomerInfoController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

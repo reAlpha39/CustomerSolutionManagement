@@ -3,10 +3,10 @@ import 'package:customer/widgets/customer_info/customer_info_radio_single.dart';
 import 'package:customer/widgets/customer_info/customer_info_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomerInfoCardOther extends StatelessWidget {
-  final CustomerInfoController customerInfoController =
-      CustomerInfoController.to;
+  final CustomerInfoController customerInfoController = Get.find();
 
   @override
   Widget build(BuildContext context) {

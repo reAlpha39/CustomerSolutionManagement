@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomerInfoCardInfo extends StatelessWidget {
-  final CustomerInfoController customerInfoController =
-      CustomerInfoController.to;
+  final CustomerInfoController customerInfoController = Get.find();
   @override
   Widget build(BuildContext context) {
     customerInfoController.formKeyCustomer = GlobalKey<FormState>();

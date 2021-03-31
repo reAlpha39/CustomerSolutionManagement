@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomerInfoRadio extends StatelessWidget {
-  final CustomerInfoController controller = CustomerInfoController.to;
+  final CustomerInfoController controller = Get.find();
   final List<String> data;
 
   CustomerInfoRadio({this.data});

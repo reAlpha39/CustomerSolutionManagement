@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomerInfoController extends GetxController {
-  static CustomerInfoController to = Get.find();
-
-  final LoginController _loginController = LoginController.to;
+  final LoginController _loginController = Get.find();
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
   //Dropdown

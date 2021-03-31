@@ -10,7 +10,7 @@ class LoginCard extends StatefulWidget {
 }
 
 class _LoginInputState extends State<LoginCard> {
-  final LoginController _loginController = LoginController.to;
+  final LoginController _loginController = Get.find();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,7 @@ class _LoginInputState extends State<LoginCard> {
                           child: ConstrainedBox(
                               constraints:
                                   BoxConstraints(maxHeight: 200, maxWidth: 200),
-                              child:
-                                  Image.asset('assets/images/csm_logo.png')),
+                              child: Image.asset('assets/images/csm_logo.png')),
                         ),
                         Padding(
                             padding: const EdgeInsets.only(bottom: 10),

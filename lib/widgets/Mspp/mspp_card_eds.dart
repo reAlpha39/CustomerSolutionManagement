@@ -42,7 +42,7 @@ class MsppCardEds extends StatelessWidget {
 }
 
 class ExpandedMeetData extends StatelessWidget {
-  final MsppController controller = MsppController.to;
+  final MsppController controller = Get.find();
 
   Future<bool> resultRadio({int index}) {
     return Get.defaultDialog(

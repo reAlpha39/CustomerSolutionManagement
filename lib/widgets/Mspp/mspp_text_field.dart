@@ -1,8 +1,9 @@
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MsppTextField extends StatelessWidget {
-  final MsppController controller = MsppController.to;
+  final MsppController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

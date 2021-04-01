@@ -59,7 +59,7 @@ class Shapeground extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 100),
                 child: Column(
                   children: [
-                    Center(child: Obx(() => _homeController.userType())),
+                    Center(child: _homeController.userView),
                   ],
                 ),
               ),

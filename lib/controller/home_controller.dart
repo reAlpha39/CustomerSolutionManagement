@@ -8,26 +8,33 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final LoginController _loginController = Get.find();
 
-  Widget userType() {
+  RxString msppPage = ''.obs;
+  Widget userView;
+
+  @override
+  void onInit() {
+    userType();
+    super.onInit();
+  }
+
+  void userType() {
     String type = _loginController.usr.value.type;
-    Widget data;
     switch (type) {
       case 'admin':
         //command here
-        data = HomeAdmin();
+        userView = HomeAdmin();
         break;
       case 'internal':
         //command here
-        data = HomeInternal();
+        userView = HomeInternal();
         break;
       case 'customer':
         //command here
-        data = HomeCustomer();
+        userView = HomeCustomer();
         break;
       default:
         //command unknown
-        data = Container();
+        userView = Container();
     }
-    return data;
   }
 }

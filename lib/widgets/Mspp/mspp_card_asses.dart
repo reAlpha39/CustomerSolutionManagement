@@ -124,52 +124,65 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.1.3.1.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah pelaksanaan periodik inspeksi sudah memakai check sheet standard, form pencatatan backlog dan kamera?'),
-                    ),
-                  ),
-                  DataCell(Text('Team PI')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah ada Periodic Inspection Sheet'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah ada dokumen Backlog Entry Sheet'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah ada Backlog Monitoring Sheet'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah mekanik membawa Backlog Monitoring Sheet sesuai jumlah unit saat daily inspection'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah Tim PI membawa kamera pada saat pelaksanaan PI '),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah ada folder foto terkait backlog unit')
-                          ],
+                        child: Text(
+                            'Cek apakah pelaksanaan periodik inspeksi sudah memakai check sheet standard, form pencatatan backlog dan kamera?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Team PI'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah ada Periodic Inspection Sheet'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah ada dokumen Backlog Entry Sheet'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah ada Backlog Monitoring Sheet'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah mekanik membawa Backlog Monitoring Sheet sesuai jumlah unit saat daily inspection'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah Tim PI membawa kamera pada saat pelaksanaan PI '),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah ada folder foto terkait backlog unit')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 166,
-                      child: Column(
-                        children: [
-                          Text('- Periodic Inspection Sheet'),
-                          Text(''),
-                          Text('- Backlog Entry Sheet         '),
-                          Text(''),
-                          Text('- Backlog Monitoring Sheet'),
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 166,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- Periodic Inspection Sheet'),
+                            Text(''),
+                            Text('- Backlog Entry Sheet'),
+                            Text(''),
+                            Text('- Backlog Monitoring Sheet'),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -181,29 +194,42 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.1.3.1.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah check sheet periodik inspeksi diisi dengan lengkap dan benar?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah check sheet periodik inspeksi diisi dengan lengkap dan benar?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Team PI')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Team PI'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah check sheet PI diisi dengan benar dan lengkap'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah check sheet PI diisi dengan benar dan lengkap'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Column(
-                        children: [
-                          Text('- Check sheet PI yang sudah diisi'),
-                          Text(''),
-                          Text('- Interview dengan mekanik dan SPV/GL')
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- Check sheet PI yang sudah diisi'),
+                            Text(''),
+                            Text('- Interview dengan mekanik dan SPV/GL')
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -215,22 +241,34 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.1.3.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah ada pencatatan jika terjadi kendala dalam proses pekerjaan periodik inspeksi ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah ada pencatatan jika terjadi kendala dalam proses pekerjaan periodik inspeksi ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('SPV/GL')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('SPV/GL'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah ada pencatatan setiap ada kendala dalam proses pekerjaan PI'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah ada pencatatan setiap ada kendala dalam proses pekerjaan PI'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Form Problem Log'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Form Problem Log'),
+                    ),
                   ),
                 ],
               ),
@@ -240,31 +278,43 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.1.3.3')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah hasil periodik inspeksi dan backlog dilakukan evaluasi dan validasi oleh GL/SPV ?'),
-                    ),
-                  ),
-                  DataCell(Text('SPV/GL')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah ada dokumen Periodic Inspection Sheet '),
-                            Text(''),
-                            Text(
-                                '- Memastikan apakah  Evaluasi dan validasi atas dokumen PI dan Backlog Entry Sheet dilakukan maksimal 1 hari setelah pelaksanaan inspection')
-                          ],
+                        child: Text(
+                            'Cek apakah hasil periodik inspeksi dan backlog dilakukan evaluasi dan validasi oleh GL/SPV ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah ada dokumen Periodic Inspection Sheet '),
+                              Text(''),
+                              Text(
+                                  '- Memastikan apakah  Evaluasi dan validasi atas dokumen PI dan Backlog Entry Sheet dilakukan maksimal 1 hari setelah pelaksanaan inspection')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Text('Dokumen PI'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Dokumen PI'),
+                    ),
                   ),
                 ],
               ),
@@ -274,22 +324,34 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.1.3.4')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah Surat Perintah Kerja (WO) dilakukan closing jika pekerjaan sudah selesai ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah Surat Perintah Kerja (WO) dilakukan closing jika pekerjaan sudah selesai ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah WO di close setelah pekerjaan selesai'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah WO di close setelah pekerjaan selesai'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Bukti WO sudah di close'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Bukti WO sudah di close'),
+                    ),
                   ),
                 ],
               ),
@@ -299,22 +361,34 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(5)),
                   DataCell(Text('1.1.3.5')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah hasil PI dan backlog dilakukan pencatatan kedalam database/monitoring khusus ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah hasil PI dan backlog dilakukan pencatatan kedalam database/monitoring khusus ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah hasil PI dan backlog dicatat kedalam database'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah hasil PI dan backlog dicatat kedalam database'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Database PI dan backlog'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Database PI dan backlog'),
+                    ),
                   ),
                 ],
               ),

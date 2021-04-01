@@ -124,41 +124,54 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.1.2.1')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
-                    ),
-                  ),
-                  DataCell(Text('SPV/GL')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                            Text(''),
-                            Text(
-                                '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                            Text(''),
-                            Text(
-                                '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
-                          ],
+                        child: Text(
+                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
+                              Text(''),
+                              Text(
+                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
+                              Text(''),
+                              Text(
+                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 110,
-                      child: Column(
-                        children: [
-                          Text('- Meeting Record'),
-                          Text(''),
-                          Text('- Dokumen PI      ')
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 110,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- Meeting Record'),
+                            Text(''),
+                            Text('- Dokumen PI')
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -170,34 +183,46 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.1.2.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Check apakah setiap unit yang di inspeksi di konfirmasi ke radio room untuk dicatatkan down unitnya dan kebutuhan alat suppornya ?'),
-                    ),
-                  ),
-                  DataCell(Text('Team PI')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah ada Log Book khusus radioman'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah setiap unit yang dilakukan PI dilakukan konfirmasi ke radioman untuk dicatat kebutuhan alat support dan waktu downnya di Log Book'),
-                            Text(''),
-                            Text(
-                                '- Interview mekanik dan radioman terkait konfirmasi unit yang akan PI dan pencatatannya di Log Book')
-                          ],
+                        child: Text(
+                            'Check apakah setiap unit yang di inspeksi di konfirmasi ke radio room untuk dicatatkan down unitnya dan kebutuhan alat suppornya ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Team PI'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah ada Log Book khusus radioman'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah setiap unit yang dilakukan PI dilakukan konfirmasi ke radioman untuk dicatat kebutuhan alat support dan waktu downnya di Log Book'),
+                              Text(''),
+                              Text(
+                                  '- Interview mekanik dan radioman terkait konfirmasi unit yang akan PI dan pencatatannya di Log Book')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Text('Log Book Radioman'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Log Book Radioman'),
+                    ),
                   ),
                 ],
               ),

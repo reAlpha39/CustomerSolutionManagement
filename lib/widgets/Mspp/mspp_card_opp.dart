@@ -124,22 +124,34 @@ class ExpandedOppspData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.2.1')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah verifikasi atas status backlog dilakukan untuk persiapan meeting plan service ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah verifikasi atas status backlog dilakukan untuk persiapan meeting plan service ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah status backlog dan status part sudah update pada backlog monitoring sheet'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah status backlog dan status part sudah update pada backlog monitoring sheet'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Backlog Monitoring'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Backlog Monitoring'),
+                    ),
                   ),
                 ],
               ),
@@ -149,28 +161,41 @@ class ExpandedOppspData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.2.2.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah meeting mingguan dilakukan dengan konsisten?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah meeting mingguan dilakukan dengan konsisten?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text('Melihat CoE dan MOM meeting mingguan'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text('Melihat CoE dan MOM meeting mingguan'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 130,
-                      child: Column(
-                        children: [
-                          Text('- CoE                           '),
-                          Text(''),
-                          Text('- Minutes of Meeting')
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 130,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- CoE'),
+                            Text(''),
+                            Text('- Minutes of Meeting')
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -182,22 +207,34 @@ class ExpandedOppspData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.2.2.3')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah urutan prioritas plan PS sudah di tetapkan sesuai data Condition Base Monitoring ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah urutan prioritas plan PS sudah di tetapkan sesuai data Condition Base Monitoring ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah urutan plan PS sudah sesuai dengan data Condition Based Maintenance'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah urutan plan PS sudah sesuai dengan data Condition Based Maintenance'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),

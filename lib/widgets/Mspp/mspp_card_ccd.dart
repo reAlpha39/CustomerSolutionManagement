@@ -124,22 +124,31 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.1.1.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah sudah ada standard lead time pekerjaan PS untuk masing masing type PS dan unit model ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah sudah ada standard lead time pekerjaan PS untuk masing masing type PS dan unit model ?'),
+                      ),
                     ),
                   ),
                   DataCell(Text('Planner')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah ada standart penentuan tipe PS dan durasi untuk pembuatan plan PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah ada standart penentuan tipe PS dan durasi untuk pembuatan plan PS'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),
@@ -149,35 +158,48 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.2.1.1.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah sudah ada pembagian area kerja dan target eksekusi untuk masing masing type PS dan unit model?'),
-                    ),
-                  ),
-                  DataCell(Text('Planner')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Observasi ke lapangan untuk melihat apakah ada pembagian area kerja kepada mekanik'),
-                            Text(''),
-                            Text('- Melihat apakah ada target waktu eksekusi')
-                          ],
+                        child: Text(
+                            'Cek apakah sudah ada pembagian area kerja dan target eksekusi untuk masing masing type PS dan unit model?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Observasi ke lapangan untuk melihat apakah ada pembagian area kerja kepada mekanik'),
+                              Text(''),
+                              Text('- Melihat apakah ada target waktu eksekusi')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Column(
-                      children: [
-                        Text('Hasil observasi ke lapangan'),
-                        Text(''),
-                        Text('JSS')
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('- Hasil observasi ke lapangan'),
+                          Text(''),
+                          Text('- JSS')
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -188,22 +210,34 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.2.1.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah sudah ada list standard kebutuhan Part & Lubrication untuk setiap type PS di masing masing unit?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah sudah ada list standard kebutuhan Part & Lubrication untuk setiap type PS di masing masing unit?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah sudah ada standart part list setiap tipe PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah sudah ada standart part list setiap tipe PS'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),
@@ -213,22 +247,34 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.2.1.3.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah sudah ada standard template untuk pembuatan Plan Periodik Service?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah sudah ada standard template untuk pembuatan Plan Periodik Service?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah sudah ada template yang standart untuk pembuatan Plan PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah sudah ada template yang standart untuk pembuatan Plan PS'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),
@@ -238,21 +284,33 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.2.1.3.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah PS yang sudah terlaksana di update pada template tersebut secara rutin?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah PS yang sudah terlaksana di update pada template tersebut secara rutin?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text('Melihat file plan PS '),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text('Melihat file plan PS '),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Interview dengan tim planner'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Interview dengan tim planner'),
+                    ),
                   ),
                 ],
               ),
@@ -262,22 +320,31 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(5)),
                   DataCell(Text('1.2.1.4.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah sudah ada standard template Backlog Monitoring ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah sudah ada standard template Backlog Monitoring ?'),
+                      ),
                     ),
                   ),
                   DataCell(Text('Planner')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah sudah ada format standart untuk backlog monitoring'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah sudah ada format standart untuk backlog monitoring'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),
@@ -287,21 +354,33 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(6)),
                   DataCell(Text('1.2.1.4.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah setiap temuan backlog baru di update pada template tersebut secara rutin?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah setiap temuan backlog baru di update pada template tersebut secara rutin?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text('Melihat file backlog monitoring'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text('Melihat file backlog monitoring'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),
@@ -311,21 +390,33 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(7)),
                   DataCell(Text('1.2.1.4.c')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah Backlog yang sudah dikerjakan di update pada template tersebut secara rutin?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah Backlog yang sudah dikerjakan di update pada template tersebut secara rutin?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text('Melihat file backlog monitoring'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text('Melihat file backlog monitoring'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),
@@ -335,26 +426,40 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(8)),
                   DataCell(Text('1.2.1.5.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah sudah ada standard template untuk pencatatan SMR unit dan menentukan rata rata jam operasinya ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah sudah ada standard template untuk pencatatan SMR unit dan menentukan rata rata jam operasinya ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah SMR dan adjustment average SMR sudah update pada file Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah SMR dan adjustment average SMR sudah update pada file Planning PS'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Column(
-                      children: [
-                        Text('- File Planning PS'),
-                        Text('- Data backlog')
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('- File Planning PS'),
+                          Text(''),
+                          Text('- Data backlog')
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -365,25 +470,39 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(9)),
                   DataCell(Text('1.2.1.5.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah SMR unit diupdate secara rutin pada template tersebut ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah SMR unit diupdate secara rutin pada template tersebut ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text('Melihat file planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text('Melihat file planning PS'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Column(
-                      children: [
-                        Text('- File Planning PS'),
-                        Text('- Data backlog')
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('- File Planning PS'),
+                          Text(''),
+                          Text('- Data backlog')
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -394,22 +513,34 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(10)),
                   DataCell(Text('1.2.1.5.c')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah rata rata jam operasi untuk pembuatan planning PS menggunakan data rata rata jam operasi yang update ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah rata rata jam operasi untuk pembuatan planning PS menggunakan data rata rata jam operasi yang update ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah draft next service terupdate sesuai last HM,  rata-rata jam operasi seminggu terakhir'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah draft next service terupdate sesuai last HM,  rata-rata jam operasi seminggu terakhir'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PS'),
+                    ),
                   ),
                 ],
               ),
@@ -420,29 +551,46 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(Text('1.2.1.6')),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah draft plan service dibuat berdasarkan pada data last service, last HM, rata-rata jam operasi seminggu terakhir dan  data backlog yang terupdate? '),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah draft plan service dibuat berdasarkan pada data last service, last HM, rata-rata jam operasi seminggu terakhir dan  data backlog yang terupdate? '),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Melihat apakah draft next service terupdate sesuai last HM,  rata-rata jam operasi seminggu terakhir, dan data backlog terupdate dengan melihat sheet PS schedule dan BMS Template'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Melihat apakah draft next service terupdate sesuai last HM,  rata-rata jam operasi seminggu terakhir, dan data backlog terupdate dengan melihat sheet PS schedule dan BMS Template'),
+                        ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Column(
-                      children: [
-                        Text('- Planning PS templates'),
-                        Text('- Template Backlog Monitoring Sheet')
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- Planning PS templates'),
+                            Text(''),
+                            Text('- Template Backlog Monitoring Sheet')
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -453,22 +601,34 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(12)),
                   DataCell(Text('1.2.1.7.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah WO backlog dibuat maksimum 2 hari dari tanggal temuan ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah WO backlog dibuat maksimum 2 hari dari tanggal temuan ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah WO dibuat maksimum 2 hari dari tanggal temuan'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah WO dibuat maksimum 2 hari dari tanggal temuan'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Dokumen WO untuk backlog'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Dokumen WO untuk backlog'),
+                    ),
                   ),
                 ],
               ),
@@ -478,21 +638,33 @@ class ExpandedCcdData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(13)),
                   DataCell(Text('1.2.1.7.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah No WO dan status parts ordernya diupdate di BMS ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah No WO dan status parts ordernya diupdate di BMS ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text('Melihat Backlog Monitoring Sheet'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text('Melihat Backlog Monitoring Sheet'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File backlog monitoring'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File backlog monitoring'),
+                    ),
                   ),
                 ],
               ),

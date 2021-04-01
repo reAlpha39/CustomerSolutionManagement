@@ -124,32 +124,44 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.3.4.1')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah setiap pelaksanaan Periodik Service sudah menggunakan check sheet PS dan Job Schedule Sheet ?'),
-                    ),
-                  ),
-                  DataCell(Text('Team PSL')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text('- Melihat apakah ada JSS untuk setiap PS'),
-                            Text(''),
-                            Text('- Melihat apakah JSS terisi lengkap'),
-                            Text(''),
-                            Text(
-                                '- Melihat pembagian job dan progress PS dan Backlog apakah sudah sesuai dengan JSS')
-                          ],
+                        child: Text(
+                            'Cek apakah setiap pelaksanaan Periodik Service sudah menggunakan check sheet PS dan Job Schedule Sheet ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Team PSL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text('- Melihat apakah ada JSS untuk setiap PS'),
+                              Text(''),
+                              Text('- Melihat apakah JSS terisi lengkap'),
+                              Text(''),
+                              Text(
+                                  '- Melihat pembagian job dan progress PS dan Backlog apakah sudah sesuai dengan JSS')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Text('Job Schedule Sheet '),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Job Schedule Sheet '),
+                    ),
                   ),
                 ],
               ),
@@ -159,22 +171,34 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.3.4.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah sudah ada mekanisme problem log untuk mencatat setiap masalah/ kendala atas pelaksanaan PS dan Backlog?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah sudah ada mekanisme problem log untuk mencatat setiap masalah/ kendala atas pelaksanaan PS dan Backlog?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Team PS')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Team PS'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah setiap temuan dan masalah pada saat pelaksanaan PS dicatat di Problem Log'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah setiap temuan dan masalah pada saat pelaksanaan PS dicatat di Problem Log'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Problem log '),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Problem log '),
+                    ),
                   ),
                 ],
               ),
@@ -184,36 +208,48 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.3.4.3')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah setiap pekerjaan PS  dilakukan final inspection dengan menggunakan form receiving & final inspection ?'),
-                    ),
-                  ),
-                  DataCell(Text('Team PS')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah setiap PS ada form Receiving and Final Inspection'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah pengisian form Receiving and Final Inspection sudah benar'),
-                            Text(''),
-                            Text(
-                                '- Inspeksi dan interview mekanik bagaimana mereka mengisi form Receiving and Final Inspection tersebut')
-                          ],
+                        child: Text(
+                            'Cek apakah setiap pekerjaan PS  dilakukan final inspection dengan menggunakan form receiving & final inspection ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Team PS'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah setiap PS ada form Receiving and Final Inspection'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah pengisian form Receiving and Final Inspection sudah benar'),
+                              Text(''),
+                              Text(
+                                  '- Inspeksi dan interview mekanik bagaimana mereka mengisi form Receiving and Final Inspection tersebut')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                        width: 160,
-                        child: Text('Form Receiving and Final Inspection')),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                          width: 160,
+                          child: Text('Form Receiving and Final Inspection')),
+                    ),
                   ),
                 ],
               ),
@@ -223,47 +259,57 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.3.4.4')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah dokumen Periodik Service (check sheet PS, form Receiving & Final Inspection, form BMS dan JSS) sudah diisi dengan benar ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah dokumen Periodik Service (check sheet PS, form Receiving & Final Inspection, form BMS dan JSS) sudah diisi dengan benar ?'),
+                      ),
                     ),
                   ),
                   DataCell(Text('Team PS')),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah semua dokumen PS sudah lengkap atau belum'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah semua dokumen PS sudah diisi dengan benar dan lengkap pada akhir service'),
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah semua dokumen PS sudah lengkap atau belum'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah semua dokumen PS sudah diisi dengan benar dan lengkap pada akhir service'),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text('- Job Schedule Sheet                '),
-                            Text(''),
-                            Text('- Backlog Monitoring Sheet'),
-                            Text(''),
-                            Text('- Check Sheet Service                 '),
-                            Text(''),
-                            Text('- Receiving & Final Inspection sheet'),
-                            Text(''),
-                            Text('- Problem Log Sheet                   '),
-                            Text(''),
-                            Text('- Nota Pemakaian Barang                ')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Job Schedule Sheet'),
+                              Text(''),
+                              Text('- Backlog Monitoring Sheet'),
+                              Text(''),
+                              Text('- Check Sheet Service'),
+                              Text(''),
+                              Text('- Receiving & Final Inspection sheet'),
+                              Text(''),
+                              Text('- Problem Log Sheet'),
+                              Text(''),
+                              Text('- Nota Pemakaian Barang')
+                            ],
+                          ),
                         ),
                       ),
                     ),

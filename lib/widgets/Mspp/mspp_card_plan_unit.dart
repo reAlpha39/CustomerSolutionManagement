@@ -124,22 +124,34 @@ class ExpandedPlanUnitData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.1.1.1.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah jadwal Periodic Inspection dibuat'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah jadwal Periodic Inspection dibuat'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PI'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PI'),
+                    ),
                   ),
                 ],
               ),
@@ -149,22 +161,34 @@ class ExpandedPlanUnitData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.1.1.1.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah  jadwal periodik inspeksi selalu diupdate berdasarkan pencapaian periodik inspection sebelumnya ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah  jadwal periodik inspeksi selalu diupdate berdasarkan pencapaian periodik inspection sebelumnya ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child:
-                          Text('Melihat apakah pencapaian PI selalu di update'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah pencapaian PI selalu di update'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('File Planning PI'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File Planning PI'),
+                    ),
                   ),
                 ],
               ),
@@ -174,22 +198,34 @@ class ExpandedPlanUnitData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.1.1.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah  hasil periodik inspeksi  dilakukan review di setiap akhir shift?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah  hasil periodik inspeksi  dilakukan review di setiap akhir shift?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('SPV/GL')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah hasil PI dilakukan review setiap akhir shift'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah hasil PI dilakukan review setiap akhir shift'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Absensi review meeting'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Absensi review meeting'),
+                    ),
                   ),
                 ],
               ),
@@ -199,22 +235,34 @@ class ExpandedPlanUnitData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.1.1.3.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Check apakah setiap pekerjaan periodik inspection ada dilengkapi dengan Surat Perintah Kerja (WO) ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Check apakah setiap pekerjaan periodik inspection ada dilengkapi dengan Surat Perintah Kerja (WO) ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah WO dibuat sesuai dengan plan PI'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah WO dibuat sesuai dengan plan PI'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Dokumen WO untuk PI'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Dokumen WO untuk PI'),
+                    ),
                   ),
                 ],
               ),
@@ -224,22 +272,34 @@ class ExpandedPlanUnitData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.1.1.3.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Check apakah Surat Perintah Kerja (WO) pekerjaan Periodik Inspeksi dibuat sebelum pelaksanaan inspection ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Check apakah Surat Perintah Kerja (WO) pekerjaan Periodik Inspeksi dibuat sebelum pelaksanaan inspection ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah WO untuk PI dibuat sebelum pelaksanaan'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah WO untuk PI dibuat sebelum pelaksanaan'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Tanggal dokumen WO untuk PI'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Tanggal dokumen WO untuk PI'),
+                    ),
                   ),
                 ],
               ),

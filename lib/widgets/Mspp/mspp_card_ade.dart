@@ -124,22 +124,40 @@ class ExpandedAdeData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.5.1.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah review atas akurasi plan PS vs actual pelaksanaan PS dilakukan secara rutin?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah review atas akurasi plan PS vs actual pelaksanaan PS dilakukan secara rutin?'),
+                        ),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah review Plan dan pelaksanaan PS dilakukan'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah review Plan dan pelaksanaan PS dilakukan'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('MOM meeting Review Pelaksanaan PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: 
+                        Text('MOM meeting Review Pelaksanaan PS')),
+                    ),
                   ),
                 ],
               ),
@@ -149,22 +167,34 @@ class ExpandedAdeData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.2.5.1.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek akurasi atas plan PS vs actual apakah tercapai?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek akurasi atas plan PS vs actual apakah tercapai?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child:
-                          Text('Melihat akurasi plan vs actual pelaksanaan PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child:
+                            Text('Melihat akurasi plan vs actual pelaksanaan PS'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Report pelaksanaan PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Report pelaksanaan PS'),
+                    ),
                   ),
                 ],
               ),
@@ -176,29 +206,46 @@ class ExpandedAdeData extends StatelessWidget {
                   DataCell(
                     Container(
                       width: 160,
-                      child: Text(
-                          'Cek apakah mandatory activity condition based maintenance di review setiap minggu?'),
-                    ),
-                  ),
-                  DataCell(Column(
-                    children: [
-                      Text(''),
-                      Text('SPV/GL'),
-                      Text(''),
-                      Text('Planner')
-                    ],
-                  )),
-                  DataCell(
-                    SingleChildScrollView(
-                      child: Container(
-                        width: 160,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
                         child: Text(
-                            'Melihat apakah mandatory activity condition based maintenance (contoh : cleaning radiator, pengambilan sample oli, washing unit, dll) dilakukan review tiap minggu'),
+                            'Cek apakah mandatory activity condition based maintenance di review setiap minggu?'),
                       ),
                     ),
                   ),
                   DataCell(
-                    Text('File mandatory activity CBM untuk Periodic Service'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(''),
+                        Text('- SPV/GL'),
+                        Text(''),
+                        Text('- Planner')
+                      ],
+                  ),
+                    )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 7, bottom:7),
+                          child: Text(
+                              'Melihat apakah mandatory activity condition based maintenance (contoh : cleaning radiator, pengambilan sample oli, washing unit, dll) dilakukan review tiap minggu'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: 
+                        Text('File mandatory activity CBM untuk Periodic Service')),
+                    ),
                   ),
                 ],
               ),
@@ -210,20 +257,32 @@ class ExpandedAdeData extends StatelessWidget {
                   DataCell(
                     Container(
                       width: 160,
-                      child: Text(
-                          'Cek apakah plan PS yang tidak tercapai dilakukan reschedule agar akurasi plan PSnya akurat?'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Text(
+                            'Cek apakah plan PS yang tidak tercapai dilakukan reschedule agar akurasi plan PSnya akurat?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
                     Container(
                       width: 160,
-                      child: Text(
-                          'Melihat apakah unit yang tidak terlaksana PSnya direschedue atau tidak'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Text(
+                            'Melihat apakah unit yang tidak terlaksana PSnya direschedue atau tidak'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Report pelaksanaan PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Report pelaksanaan PS'),
+                    ),
                   ),
                 ],
               ),
@@ -235,20 +294,29 @@ class ExpandedAdeData extends StatelessWidget {
                   DataCell(
                     Container(
                       width: 160,
-                      child: Text(
-                          'Cek apakah Reschedule PS dikomunikasikan ke operation, logistic dan pihak internal terkait ?'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Text(
+                            'Cek apakah Reschedule PS dikomunikasikan ke operation, logistic dan pihak internal terkait ?'),
+                      ),
                     ),
                   ),
                   DataCell(Text('Planner')),
                   DataCell(
                     Container(
                       width: 160,
-                      child: Text(
-                          'Melihat apakah setiap ada unit yang tidak terlaksana Psnya dikomunikasikan dengan dept terkait'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Text(
+                            'Melihat apakah setiap ada unit yang tidak terlaksana Psnya dikomunikasikan dengan dept terkait'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Email'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Email'),
+                    ),
                   ),
                 ],
               ),
@@ -258,22 +326,36 @@ class ExpandedAdeData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(5)),
                   DataCell(Text('1.2.5.3')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah ada koordinasi harian di area Planner untuk membahas persiapan pekerjaan besok dan progress pekerjaan hari ini ?'),
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 7, bottom:7),
+                          child: Text(
+                              'Cek apakah ada koordinasi harian di area Planner untuk membahas persiapan pekerjaan besok dan progress pekerjaan hari ini ?'),
+                        ),
+                      ),
                     ),
                   ),
                   DataCell(Text('Planner')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah meeting harian konsisten dijalankan, dan apakah meeting record agendanya sesuai'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah meeting harian konsisten dijalankan, dan apakah meeting record agendanya sesuai'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Meeting Record terkait koordinasi dengan Planner'),
+                    Container(
+                        width: 160,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 7, bottom:7),
+                          child: Text(
+                              'Meeting Record terkait koordinasi dengan Planner'),
+                        )),
                   ),
                 ],
               ),

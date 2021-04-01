@@ -124,38 +124,48 @@ class ExpandedBspspData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.2.3.1')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah penentuan schedule dan lead time PS sudah mengikuti aturan scheduling dan memperhitungkan projection avaibility ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah penentuan schedule dan lead time PS sudah mengikuti aturan scheduling dan memperhitungkan projection avaibility ?'),
+                      ),
                     ),
                   ),
                   DataCell(Text('Planner')),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Memastikan apakah projection avalibility dibuat dan diupdate setiap bulannya sebelum menentukan leadtime PS'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah penentuan lead time PS sudah mempertimbangkan projection availability')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Memastikan apakah projection avalibility dibuat dan diupdate setiap bulannya sebelum menentukan leadtime PS'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah penentuan lead time PS sudah mempertimbangkan projection availability')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Column(
-                        children: [
-                          Text('- File Projection availability'),
-                          Text(''),
-                          Text('- File Planning PS               ')
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- File Projection availability'),
+                            Text(''),
+                            Text('- File Planning PS')
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -168,23 +178,35 @@ class ExpandedBspspData extends StatelessWidget {
                   DataCell(Text('1.2.3.2')),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah draft plan service sudah dikirimkan ke pihak Plan, logistic dan operation beberapa hari sebelum pelaksanaan PS untuk memastikan down time unit dan kebutuhan alat support ?'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah draft plan service sudah dikirimkan ke pihak Plan, logistic dan operation beberapa hari sebelum pelaksanaan PS untuk memastikan down time unit dan kebutuhan alat support ?'),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Text('Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah draft plan PS dikirimkan ke pihak Plant, Logistic dan Operation'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah draft plan PS dikirimkan ke pihak Plant, Logistic dan Operation'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Email'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Email'),
+                    ),
                   ),
                 ],
               ),

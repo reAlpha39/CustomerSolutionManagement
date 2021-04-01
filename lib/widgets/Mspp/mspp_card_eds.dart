@@ -124,22 +124,34 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.3.6.1.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah dokumen PS sudah diinput ke Kpi data base ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah dokumen PS sudah diinput ke Kpi data base ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Planner/Adm Planner')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner/Adm Planner'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah dokumen periodic service diinput ke database maksimal 2 hari setelah pekerjaan PS selesai'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah dokumen periodic service diinput ke database maksimal 2 hari setelah pekerjaan PS selesai'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Visual Check KPI data base'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Visual Check KPI data base'),
+                    ),
                   ),
                 ],
               ),
@@ -149,24 +161,36 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.3.6.1.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah problem log sudah diinput ke database ?'),
-                    ),
-                  ),
-                  DataCell(Text('Planner/Adm Planner')),
-                  DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah data problem log diinput ke database maksimal satu hari setelah pekerjaan PS selesai'),
-                    ),
-                  ),
-                  DataCell(
-                    Container(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
                         width: 160,
-                        child: Text('Visual check database problem log')),
+                        child: Text(
+                            'Cek apakah problem log sudah diinput ke database ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Planner/Adm Planner'),
+                  )),
+                  DataCell(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah data problem log diinput ke database maksimal satu hari setelah pekerjaan PS selesai'),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                          width: 160,
+                          child: Text('Visual check database problem log')),
+                    ),
                   ),
                 ],
               ),
@@ -176,22 +200,34 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.3.6.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah atas pekerjaan yang sudah selesai dilakukan closing WO-nya ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah atas pekerjaan yang sudah selesai dilakukan closing WO-nya ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Team PS')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Team PS'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah selalu dilakukan closing WO setiap selesai pekerjaan'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah selalu dilakukan closing WO setiap selesai pekerjaan'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Tanggal closing WO'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('Tanggal closing WO'),
+                    ),
                   ),
                 ],
               ),

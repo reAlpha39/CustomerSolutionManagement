@@ -125,43 +125,55 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(Text('1.3.5.1')),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah setelah selesai pekerjaan service, semua tools dan fasility dibersihkan dan dikembalikan ke tempat semula dan jika ada yang rusak dibuatkan Berita acara kerusakan ?'),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah setelah selesai pekerjaan service, semua tools dan fasility dibersihkan dan dikembalikan ke tempat semula dan jika ada yang rusak dibuatkan Berita acara kerusakan ?'),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Text('Team PS')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Team PS'),
+                  )),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah facility PS sudah dibersikan atau belum'),
-                            Text(''),
-                            Text(
-                                '- Melihat apakah tools sudah dikembalikan ke tempat penyimpanan yang sudah ditentukan'),
-                            Text(''),
-                            Text(
-                                '- Jika terjadi kerusakan atau kehilangan, melihat apakah dicatat pada form BAK')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah facility PS sudah dibersikan atau belum'),
+                              Text(''),
+                              Text(
+                                  '- Melihat apakah tools sudah dikembalikan ke tempat penyimpanan yang sudah ditentukan'),
+                              Text(''),
+                              Text(
+                                  '- Jika terjadi kerusakan atau kehilangan, melihat apakah dicatat pada form BAK')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Column(
-                        children: [
-                          Text('- Visual check tools dan facility PS'),
-                          Text(''),
-                          Text(
-                              '- Form BAK                                       ')
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- Visual check tools dan facility PS'),
+                            Text(''),
+                            Text('- Form BAK')
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -173,50 +185,57 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.3.5.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah semua dokumen Periodik Service yang sudah diisi dilakukan review oleh supervisor / Grup Leader ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah semua dokumen Periodik Service yang sudah diisi dilakukan review oleh supervisor / Grup Leader ?'),
+                      ),
                     ),
                   ),
                   DataCell(Text('SPV/GL')),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah review dan evaluasi pengisian dokumen PS telah dilakukan maksimal 1 hari setelah pekerjaan PS selesai (lengkap, benar dan sudah tanda tangan)'),
-                            Text(''),
-                            Text(
-                                '- Interview SPV terkait bagaimana proses review dan evaluasi dokumen PS')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah review dan evaluasi pengisian dokumen PS telah dilakukan maksimal 1 hari setelah pekerjaan PS selesai (lengkap, benar dan sudah tanda tangan)'),
+                              Text(''),
+                              Text(
+                                  '- Interview SPV terkait bagaimana proses review dan evaluasi dokumen PS')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text('- Job Schedule Sheet                      '),
-                            Text(''),
-                            Text('- Backlog Monitoring Sheet    '),
-                            Text(''),
-                            Text(
-                                '- Check Sheet Service                           '),
-                            Text(''),
-                            Text('- Receiving & Final Inspection sheet   '),
-                            Text(''),
-                            Text(
-                                '- Problem Log Sheet                            '),
-                            Text(''),
-                            Text(
-                                '- Nota Pemakaian Barang                       ')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Job Schedule Sheet'),
+                              Text(''),
+                              Text('- Backlog Monitoring Sheet'),
+                              Text(''),
+                              Text('- Check Sheet Service'),
+                              Text(''),
+                              Text('- Receiving & Final Inspection sheet'),
+                              Text(''),
+                              Text('- Problem Log Sheet'),
+                              Text(''),
+                              Text('- Nota Pemakaian Barang')
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -229,22 +248,34 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.3.5.3')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah nota pengambilan barang diserahkan ke warehouse setelah pekerjaan selesai untuk konfirmasi pemakaian parts ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah nota pengambilan barang diserahkan ke warehouse setelah pekerjaan selesai untuk konfirmasi pemakaian parts ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Team PS')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Team PS'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah NPB/SPB telah diserahkan ke warehouse setelah pekerjaan selesai'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah NPB/SPB telah diserahkan ke warehouse setelah pekerjaan selesai'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('Nota Pemakaian Barang'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Nota Pemakaian Barang'),
+                    ),
                   ),
                 ],
               ),
@@ -254,20 +285,32 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.3.5.4.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah part yang tidak terpakai di return ke warehouse  ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah part yang tidak terpakai di return ke warehouse  ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Team PS/Warehouse Officer')),
-                  DataCell(Container(
-                    width: 160,
-                    child: Text(
-                        'Melihat apakah spare part yang tidak terpakai sudah dikembalikan ke Warehouse'),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Team PS/Warehouse Officer'),
+                  )),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Container(
+                      width: 160,
+                      child: Text(
+                          'Melihat apakah spare part yang tidak terpakai sudah dikembalikan ke Warehouse'),
+                    ),
                   )),
                   DataCell(
-                    Text('Dokumen pemakaian part'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Dokumen pemakaian part'),
+                    ),
                   ),
                 ],
               ),
@@ -277,22 +320,34 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.3.5.4.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah part yang  sudah terpasang dilakukan good issue ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah part yang  sudah terpasang dilakukan good issue ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Team PS/Warehouse Officer')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Team PS/Warehouse Officer'),
+                  )),
                   DataCell(SingleChildScrollView(
-                    child: Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah spare parts yang telah terpakai sudah dilakukan good issue di SAP maksimal 1 hari setelah dokumen NPB/SPB diterima oleh PDCSS/WPSR'),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah spare parts yang telah terpakai sudah dilakukan good issue di SAP maksimal 1 hari setelah dokumen NPB/SPB diterima oleh PDCSS/WPSR'),
+                      ),
                     ),
                   )),
                   DataCell(
-                    Text('Dokumen pemakaian part'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('Dokumen pemakaian part'),
+                    ),
                   ),
                 ],
               ),

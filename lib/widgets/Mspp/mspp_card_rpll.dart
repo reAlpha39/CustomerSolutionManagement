@@ -124,32 +124,44 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.3.7.1.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah dilakukan meeting mingguan untuk pembahasan KPI PS dan Backlog rutin dilakukan ?'),
-                    ),
-                  ),
-                  DataCell(Text('SPV/GL, Planner')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah meeting mingguan pembahasan KPI rutin dilakukan'),
-                            Text(''),
-                            Text('- Interview dengan SPV/GL, planner, Kabag'),
-                          ],
+                        child: Text(
+                            'Cek apakah dilakukan meeting mingguan untuk pembahasan KPI PS dan Backlog rutin dilakukan ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL, Planner'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah meeting mingguan pembahasan KPI rutin dilakukan'),
+                              Text(''),
+                              Text('- Interview dengan SPV/GL, planner, Kabag'),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                        width: 160,
-                        child: Text('MOM pembahasan KPI PS dan Backlog')),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                          width: 160,
+                          child: Text('MOM pembahasan KPI PS dan Backlog')),
+                    ),
                   ),
                 ],
               ),
@@ -159,30 +171,42 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.3.7.1.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah setiap item yang tidak tercapai selalu dibuatkan PICA dan progressnya selalu dimonitor?'),
-                    ),
-                  ),
-                  DataCell(Text('SPV/GL, Planner')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah PICA selalu dibuat jika ada item yang tidak tercapai'),
-                            Text(''),
-                            Text('- Interview dengan tim site'),
-                          ],
+                        child: Text(
+                            'Cek apakah setiap item yang tidak tercapai selalu dibuatkan PICA dan progressnya selalu dimonitor?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL, Planner'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah PICA selalu dibuat jika ada item yang tidak tercapai'),
+                              Text(''),
+                              Text('- Interview dengan tim site'),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Text('File PICA'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Text('File PICA'),
+                    ),
                   ),
                 ],
               ),

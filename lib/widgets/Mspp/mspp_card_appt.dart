@@ -124,35 +124,48 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.3.2.1.a')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah briefing dilakukan oleh supervisor kepada team eksekusi Periodik Service di setiap awal shift ?'),
-                    ),
-                  ),
-                  DataCell(Text('SPV/GL')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                'Interview SPV/GL dan mekanik terkait bagaimana proses briefing '),
-                          ],
+                        child: Text(
+                            'Cek apakah briefing dilakukan oleh supervisor kepada team eksekusi Periodik Service di setiap awal shift ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Interview SPV/GL dan mekanik terkait bagaimana proses briefing '),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Column(
-                        children: [
-                          Text('- Meeting Record                       '),
-                          Text(''),
-                          Text('- Hasil Interview SPV/GL dan mekanik terkait briefing pada awal shift')
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- Meeting Record'),
+                            Text(''),
+                            Text('- Hasil Interview SPV/GL dan mekanik terkait briefing pada awal shift')
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -164,35 +177,48 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.3.2.1.b')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah materi briefing sesuai dengan agenda ( target job, safety dan 5 S) ?'),
-                    ),
-                  ),
-                  DataCell(Text('SPV/GL')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                'Melihat apakah briefing dilakukan sesuai agenda (pembagian area kerja, JSA, critical item, aplikasi 5S, dan penyerahan dokumen PS)')
-                          ],
+                        child: Text(
+                            'Cek apakah materi briefing sesuai dengan agenda ( target job, safety dan 5 S) ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah briefing dilakukan sesuai agenda (pembagian area kerja, JSA, critical item, aplikasi 5S, dan penyerahan dokumen PS)')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Column(
-                        children: [
-                          Text('- Meeting Record                       '),
-                          Text(''),
-                          Text('- Hasil Interview SPV/GL dan mekanik terkait briefing pada awal shift')
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('- Meeting Record'),
+                            Text(''),
+                            Text('- Hasil Interview SPV/GL dan mekanik terkait briefing pada awal shift')
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -204,40 +230,50 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.3.2.2')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah tools dan facility sudah tersedia sesuai kebutuhan di setiap area kerja ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah tools dan facility sudah tersedia sesuai kebutuhan di setiap area kerja ?'),
+                      ),
                     ),
                   ),
                   DataCell(Text('Team PS')),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Melihat apakah Tools dan facility yang diperlukan sudah tersedia sesuai dengan zona kerja masing-masing'),
-                            Text(''),
-                            Text(
-                                '- Interview mekanik apakah masih ada kendala terkait tools dan facility')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Melihat apakah Tools dan facility yang diperlukan sudah tersedia sesuai dengan zona kerja masing-masing'),
+                              Text(''),
+                              Text(
+                                  '- Interview mekanik apakah masih ada kendala terkait tools dan facility')
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Hasil interview mekanik terkait ketersedian dan kelayakan  tools dan facility'),
-                            Text(''),
-                            Text('- Fisik tools dan facility per area')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  '- Hasil interview mekanik terkait ketersedian dan kelayakan  tools dan facility'),
+                              Text(''),
+                              Text('- Fisik tools dan facility per area')
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -250,22 +286,34 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.3.2.3')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah parts PS dan backlog sudah diprepare sebelum pelaksanaan Periodik Service ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah parts PS dan backlog sudah diprepare sebelum pelaksanaan Periodik Service ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('Team PS')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('Team PS'),
+                  )),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Melihat apakah part PS dan Backlog sudah disiapkan sebelum pelaksanaan PS'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Melihat apakah part PS dan Backlog sudah disiapkan sebelum pelaksanaan PS'),
+                      ),
                     ),
                   ),
                   DataCell(
-                    Text('List Part PS dan Backlog'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Text('List Part PS dan Backlog'),
+                    ),
                   ),
                 ],
               ),
@@ -275,26 +323,38 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(4)),
                   DataCell(Text('1.3.2.4')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah dilakukan konfirmasi atas waktu shutdown unit dari operation dan kesiapan service support dari plan ?'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      child: Container(
+                        width: 160,
+                        child: Text(
+                            'Cek apakah dilakukan konfirmasi atas waktu shutdown unit dari operation dan kesiapan service support dari plan ?'),
+                      ),
                     ),
                   ),
-                  DataCell(Text('SPV/GL/Radioman')),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    child: Text('SPV/GL/Radioman'),
+                  )),
                   DataCell(
                     SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                            width: 160,
+                            child: Text(
+                                'Interview SPV/GL dan Radioman terkait bagaimana cara konfirmasi waktu shutdown unit dan kesiapan service support dari customer')),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom:7),
                       child: Container(
                           width: 160,
                           child: Text(
-                              'Interview SPV/GL dan Radioman terkait bagaimana cara konfirmasi waktu shutdown unit dan kesiapan service support dari customer')),
+                              'Hasil interview radioman untuk proses konfirmasi shut down unit')),
                     ),
-                  ),
-                  DataCell(
-                    Container(
-                        width: 160,
-                        child: Text(
-                            'Hasil interview radioman untuk proses konfirmasi shut down unit')),
                   ),
                 ],
               ),

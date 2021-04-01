@@ -124,42 +124,55 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.3.1.1')),
                   DataCell(
-                    Container(
-                      width: 160,
-                      child: Text(
-                          'Cek apakah plan service dan dokumen Periodik Service sudah didapatkan supervisor maksimal 1 hari sebelum pelaksanaan PS ?'),
-                    ),
-                  ),
-                  DataCell(Text('SPV/GL')),
-                  DataCell(
-                    SingleChildScrollView(
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                'Interview supervisor apakah sudah mendapatkan dokumen periodic service dan plan service mingguan 1 hari sebelum pelaksanaan service'),
-                          ],
+                        child: Text(
+                            'Cek apakah plan service dan dokumen Periodik Service sudah didapatkan supervisor maksimal 1 hari sebelum pelaksanaan PS ?'),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Interview supervisor apakah sudah mendapatkan dokumen periodic service dan plan service mingguan 1 hari sebelum pelaksanaan service'),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
                   DataCell(
                     SingleChildScrollView(
-                      child: Container(
-                        width: 135,
-                        child: Column(
-                          children: [
-                            Text('- Backlog Monitoring Sheet'),
-                            Text(''),
-                            Text('- Check Sheet Service            '),
-                            Text(''),
-                            Text('- Receiving & Final Inspection sheet'),
-                            Text(''),
-                            Text('- Problem Log Sheet     '),
-                            Text(''),
-                            Text('- RPL                             ')
-                          ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Backlog Monitoring Sheet'),
+                              Text(''),
+                              Text('- Check Sheet Service'),
+                              Text(''),
+                              Text('- Receiving & Final Inspection sheet'),
+                              Text(''),
+                              Text('- Problem Log Sheet'),
+                              Text(''),
+                              Text('- RPL')
+                            ],
+                          ),
                         ),
                       ),
                     ),

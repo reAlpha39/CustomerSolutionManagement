@@ -152,7 +152,7 @@ class ExpandedMeetData extends StatelessWidget {
                           children: [
                             Text('- Backlog Monitoring Sheet'),
                             Text(''),
-                            Text('- Check Sheet Service'),
+                            Text('- Check Sheet Service            '),
                             Text(''),
                             Text('- Receiving & Final Inspection sheet'),
                             Text(''),

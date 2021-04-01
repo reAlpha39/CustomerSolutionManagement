@@ -26,7 +26,7 @@ class MsppCardAppt extends StatelessWidget {
                 ),
                 header: Container(
                   child: Text(
-                    'APPT',
+                    'Assemble people, parts and tools',
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -122,12 +122,12 @@ class ExpandedMeetData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('1.3.2.1.a')),
                   DataCell(
                     Container(
                       width: 160,
                       child: Text(
-                          'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                          'Cek apakah briefing dilakukan oleh supervisor kepada team eksekusi Periodik Service di setiap awal shift ?'),
                     ),
                   ),
                   DataCell(Text('SPV/GL')),
@@ -138,13 +138,7 @@ class ExpandedMeetData extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                                '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                            Text(''),
-                            Text(
-                                '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                            Text(''),
-                            Text(
-                                '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                                'Interview SPV/GL dan mekanik terkait bagaimana proses briefing '),
                           ],
                         ),
                       ),
@@ -152,15 +146,155 @@ class ExpandedMeetData extends StatelessWidget {
                   ),
                   DataCell(
                     Container(
-                      width: 110,
+                      width: 160,
                       child: Column(
                         children: [
-                          Text('- Meeting Record'),
+                          Text('- Meeting Record                       '),
                           Text(''),
-                          Text('- Dokumen PI      ')
+                          Text('- Hasil Interview SPV/GL dan mekanik terkait briefing pada awal shift')
                         ],
                       ),
                     ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
+                  DataCell(Text('1.3.2.1.b')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah materi briefing sesuai dengan agenda ( target job, safety dan 5 S) ?'),
+                    ),
+                  ),
+                  DataCell(Text('SPV/GL')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                'Melihat apakah briefing dilakukan sesuai agenda (pembagian area kerja, JSA, critical item, aplikasi 5S, dan penyerahan dokumen PS)')
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Column(
+                        children: [
+                          Text('- Meeting Record                       '),
+                          Text(''),
+                          Text('- Hasil Interview SPV/GL dan mekanik terkait briefing pada awal shift')
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
+                  DataCell(Text('1.3.2.2')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah tools dan facility sudah tersedia sesuai kebutuhan di setiap area kerja ?'),
+                    ),
+                  ),
+                  DataCell(Text('Team PS')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                '- Melihat apakah Tools dan facility yang diperlukan sudah tersedia sesuai dengan zona kerja masing-masing'),
+                            Text(''),
+                            Text(
+                                '- Interview mekanik apakah masih ada kendala terkait tools dan facility')
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                '- Hasil interview mekanik terkait ketersedian dan kelayakan  tools dan facility'),
+                            Text(''),
+                            Text('- Fisik tools dan facility per area')
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
+                  DataCell(Text('1.3.2.3')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah parts PS dan backlog sudah diprepare sebelum pelaksanaan Periodik Service ?'),
+                    ),
+                  ),
+                  DataCell(Text('Team PS')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Melihat apakah part PS dan Backlog sudah disiapkan sebelum pelaksanaan PS'),
+                    ),
+                  ),
+                  DataCell(
+                    Text('List Part PS dan Backlog'),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(4)),
+                  DataCell(buildTextButtonRemark(4)),
+                  DataCell(Text('1.3.2.4')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah dilakukan konfirmasi atas waktu shutdown unit dari operation dan kesiapan service support dari plan ?'),
+                    ),
+                  ),
+                  DataCell(Text('SPV/GL/Radioman')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                          width: 160,
+                          child: Text(
+                              'Interview SPV/GL dan Radioman terkait bagaimana cara konfirmasi waktu shutdown unit dan kesiapan service support dari customer')),
+                    ),
+                  ),
+                  DataCell(
+                    Container(
+                        width: 160,
+                        child: Text(
+                            'Hasil interview radioman untuk proses konfirmasi shut down unit')),
                   ),
                 ],
               ),

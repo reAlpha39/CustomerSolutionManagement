@@ -26,7 +26,7 @@ class MsppCardEds extends StatelessWidget {
                 ),
                 header: Container(
                   child: Text(
-                    'EDS',
+                    'Enter Data into System',
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -122,45 +122,76 @@ class ExpandedMeetData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('1.3.6.1.a')),
                   DataCell(
                     Container(
                       width: 160,
                       child: Text(
-                          'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                          'Cek apakah dokumen PS sudah diinput ke Kpi data base ?'),
                     ),
                   ),
-                  DataCell(Text('SPV/GL')),
+                  DataCell(Text('Planner/Adm Planner')),
                   DataCell(
-                    SingleChildScrollView(
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            Text(
-                                '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                            Text(''),
-                            Text(
-                                '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                            Text(''),
-                            Text(
-                                '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
-                          ],
-                        ),
-                      ),
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Melihat apakah dokumen periodic service diinput ke database maksimal 2 hari setelah pekerjaan PS selesai'),
+                    ),
+                  ),
+                  DataCell(
+                    Text('Visual Check KPI data base'),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
+                  DataCell(Text('1.3.6.1.b')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah problem log sudah diinput ke database ?'),
+                    ),
+                  ),
+                  DataCell(Text('Planner/Adm Planner')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Melihat apakah data problem log diinput ke database maksimal satu hari setelah pekerjaan PS selesai'),
                     ),
                   ),
                   DataCell(
                     Container(
-                      width: 110,
-                      child: Column(
-                        children: [
-                          Text('- Meeting Record'),
-                          Text(''),
-                          Text('- Dokumen PI      ')
-                        ],
-                      ),
+                        width: 160,
+                        child: Text('Visual check database problem log')),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
+                  DataCell(Text('1.3.6.2')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah atas pekerjaan yang sudah selesai dilakukan closing WO-nya ?'),
                     ),
+                  ),
+                  DataCell(Text('Team PS')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Melihat apakah selalu dilakukan closing WO setiap selesai pekerjaan'),
+                    ),
+                  ),
+                  DataCell(
+                    Text('Tanggal closing WO'),
                   ),
                 ],
               ),

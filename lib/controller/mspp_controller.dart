@@ -77,7 +77,7 @@ class MsppController extends GetxController {
         _databaseProvider
             .loadMsppData(_loginController.usr.value.username)
             .then((value) {
-          if (value.periodicInspection.isNotEmpty) {
+          if (value.periodicInspection != null) {
             radioIndexPU.assignAll(
                 value.periodicInspection['planUnit'].assessmentResult);
             radioIndexMeet

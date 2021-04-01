@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/mspp.dart';
@@ -74,21 +72,23 @@ class DatabaseProvider {
     firestore = FirebaseFirestore.instance;
     var data = mspp.toMap();
     DocumentReference doc = firestore.collection('data_customer').doc(username);
-    CollectionReference collection = doc.collection('mspp');
+    CollectionReference collection = doc.collection('service_program');
     collection.get().then((value) {
-      collection
-          .doc('periodic_inspection')
-          .set(data['periodicInspection'])
-          .then((_) => collection
-              .doc('periodic_service_plan')
-              .set(data['periodicServicePlan'])
-              .then((_) => collection
-                  .doc('periodic_service')
-                  .set(data['periodicService'])
-                  .then((value) => showDialog(
-                      title: "Sukses",
-                      middleText: "Data berhasil dimasukkan"))));
+      collection.doc('mspp').set(data).then((_) =>
+          showDialog(title: "Sukses", middleText: "Data berhasil dimasukkan"));
     });
+  }
+
+  Future<Mspp> loadMsppData(String username) async {
+    Mspp mspp = Mspp();
+    firestore = FirebaseFirestore.instance;
+    DocumentReference doc = firestore.collection('data_customer').doc(username);
+    CollectionReference collection = doc.collection('service_program');
+    var data = await collection.doc('mspp').get();
+    if (data.exists) {
+      mspp = Mspp.fromMap(data.data());
+    }
+    return mspp;
   }
 
   //menampilkan dialog

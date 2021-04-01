@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MsppController extends GetxController {
-
   final LoginController _loginController = Get.find();
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
@@ -54,10 +53,13 @@ class MsppController extends GetxController {
     2: 'N/A',
   };
 
+  RxBool isLoading = false.obs;
+
   TextEditingController textEditingControllerALL;
 
   @override
   void onInit() {
+    loadData();
     textEditingControllerALL = TextEditingController();
     super.onInit();
   }
@@ -66,6 +68,66 @@ class MsppController extends GetxController {
   void onClose() {
     textEditingControllerALL?.dispose();
     super.onClose();
+  }
+
+  loadData() {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        _databaseProvider
+            .loadMsppData(_loginController.usr.value.username)
+            .then((value) {
+          if (value.periodicInspection.isNotEmpty) {
+            radioIndexPU.assignAll(
+                value.periodicInspection['planUnit'].assessmentResult);
+            radioIndexMeet
+                .assignAll(value.periodicInspection['meet'].assessmentResult);
+            radioIndexAsses
+                .assignAll(value.periodicInspection['assess'].assessmentResult);
+            radioIndexCCD
+                .assignAll(value.periodicServicePlan['ccd'].assessmentResult);
+            radioIndexOPPSP
+                .assignAll(value.periodicServicePlan['oppsp'].assessmentResult);
+            radioIndexBSPSP
+                .assignAll(value.periodicServicePlan['bspsp'].assessmentResult);
+            radioIndexRCPSP
+                .assignAll(value.periodicServicePlan['rcpsp'].assessmentResult);
+            radioIndexADE
+                .assignAll(value.periodicServicePlan['ade'].assessmentResult);
+            radioIndexPPS
+                .assignAll(value.periodicService['pps'].assessmentResult);
+            radioIndexAPPT
+                .assignAll(value.periodicService['appt'].assessmentResult);
+            radioIndexEPSS
+                .assignAll(value.periodicService['epss'].assessmentResult);
+            radioIndexTPSNP
+                .assignAll(value.periodicService['tpsnp'].assessmentResult);
+            radioIndexHPTD
+                .assignAll(value.periodicService['hptd'].assessmentResult);
+            radioIndexEDS
+                .assignAll(value.periodicService['eds'].assessmentResult);
+            radioIndexRPLL
+                .assignAll(value.periodicService['rpll'].assessmentResult);
+            textFieldPU.assignAll(value.periodicInspection['planUnit'].remark);
+            textFieldMeet.assignAll(value.periodicInspection['meet'].remark);
+            textFieldAsses.assignAll(value.periodicInspection['assess'].remark);
+            textFieldCCD.assignAll(value.periodicServicePlan['ccd'].remark);
+            textFieldOPPSP.assignAll(value.periodicServicePlan['oppsp'].remark);
+            textFieldBSPSP.assignAll(value.periodicServicePlan['bspsp'].remark);
+            textFieldRCPSP.assignAll(value.periodicServicePlan['rcpsp'].remark);
+            textFieldADE.assignAll(value.periodicServicePlan['ade'].remark);
+            textFieldPPS.assignAll(value.periodicService['pps'].remark);
+            textFieldAPPT.assignAll(value.periodicService['appt'].remark);
+            textFieldEPSS.assignAll(value.periodicService['epss'].remark);
+            textFieldTPSNP.assignAll(value.periodicService['tpsnp'].remark);
+            textFieldHPTD.assignAll(value.periodicService['hptd'].remark);
+            textFieldEDS.assignAll(value.periodicService['eds'].remark);
+            textFieldRPLL.assignAll(value.periodicService['rpll'].remark);
+          }
+        });
+      }
+    });
+    isLoading.value = false;
   }
 
   saveDataMspp() {

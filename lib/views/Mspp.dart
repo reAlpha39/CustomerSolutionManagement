@@ -22,12 +22,20 @@ class Mspp extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            MsppPi(),
-            MsppPsPlan(),
-            MsppPs(),
-          ],
+        body: Obx(
+          () => TabBarView(
+            children: [
+              controller.isLoading.value
+                  ? Center(child: CircularProgressIndicator())
+                  : MsppPi(),
+              controller.isLoading.value
+                  ? Center(child: CircularProgressIndicator())
+                  : MsppPsPlan(),
+              controller.isLoading.value
+                  ? Center(child: CircularProgressIndicator())
+                  : MsppPs(),
+            ],
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(

@@ -26,7 +26,7 @@ class MsppCardPps extends StatelessWidget {
                 ),
                 header: Container(
                   child: Text(
-                    'PPS',
+                    'Plan Periodic Service',
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -122,12 +122,12 @@ class ExpandedMeetData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('1.3.1.1')),
                   DataCell(
                     Container(
                       width: 160,
                       child: Text(
-                          'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                          'Cek apakah plan service dan dokumen Periodik Service sudah didapatkan supervisor maksimal 1 hari sebelum pelaksanaan PS ?'),
                     ),
                   ),
                   DataCell(Text('SPV/GL')),
@@ -138,27 +138,29 @@ class ExpandedMeetData extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                                '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                            Text(''),
-                            Text(
-                                '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                            Text(''),
-                            Text(
-                                '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                                'Interview supervisor apakah sudah mendapatkan dokumen periodic service dan plan service mingguan 1 hari sebelum pelaksanaan service'),
                           ],
                         ),
                       ),
                     ),
                   ),
                   DataCell(
-                    Container(
-                      width: 110,
-                      child: Column(
-                        children: [
-                          Text('- Meeting Record'),
-                          Text(''),
-                          Text('- Dokumen PI      ')
-                        ],
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 135,
+                        child: Column(
+                          children: [
+                            Text('- Backlog Monitoring Sheet'),
+                            Text(''),
+                            Text('- Check Sheet Service'),
+                            Text(''),
+                            Text('- Receiving & Final Inspection sheet'),
+                            Text(''),
+                            Text('- Problem Log Sheet     '),
+                            Text(''),
+                            Text('- RPL                             ')
+                          ],
+                        ),
                       ),
                     ),
                   ),

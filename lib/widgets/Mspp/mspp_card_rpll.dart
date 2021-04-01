@@ -26,7 +26,7 @@ class MsppCardRpll extends StatelessWidget {
                 ),
                 header: Container(
                   child: Text(
-                    'RPLL',
+                    'Review performance and lessons learned',
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -122,15 +122,15 @@ class ExpandedMeetData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('1.3.7.1.a')),
                   DataCell(
                     Container(
                       width: 160,
                       child: Text(
-                          'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                          'Cek apakah dilakukan meeting mingguan untuk pembahasan KPI PS dan Backlog rutin dilakukan ?'),
                     ),
                   ),
-                  DataCell(Text('SPV/GL')),
+                  DataCell(Text('SPV/GL, Planner')),
                   DataCell(
                     SingleChildScrollView(
                       child: Container(
@@ -138,13 +138,9 @@ class ExpandedMeetData extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                                '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
+                                '- Melihat apakah meeting mingguan pembahasan KPI rutin dilakukan'),
                             Text(''),
-                            Text(
-                                '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                            Text(''),
-                            Text(
-                                '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                            Text('- Interview dengan SPV/GL, planner, Kabag'),
                           ],
                         ),
                       ),
@@ -152,15 +148,41 @@ class ExpandedMeetData extends StatelessWidget {
                   ),
                   DataCell(
                     Container(
-                      width: 110,
-                      child: Column(
-                        children: [
-                          Text('- Meeting Record'),
-                          Text(''),
-                          Text('- Dokumen PI      ')
-                        ],
+                        width: 160,
+                        child: Text('MOM pembahasan KPI PS dan Backlog')),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
+                  DataCell(Text('1.3.7.1.b')),
+                  DataCell(
+                    Container(
+                      width: 160,
+                      child: Text(
+                          'Cek apakah setiap item yang tidak tercapai selalu dibuatkan PICA dan progressnya selalu dimonitor?'),
+                    ),
+                  ),
+                  DataCell(Text('SPV/GL, Planner')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                '- Melihat apakah PICA selalu dibuat jika ada item yang tidak tercapai'),
+                            Text(''),
+                            Text('- Interview dengan tim site'),
+                          ],
+                        ),
                       ),
                     ),
+                  ),
+                  DataCell(
+                    Text('File PICA'),
                   ),
                 ],
               ),

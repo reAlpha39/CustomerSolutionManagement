@@ -84,14 +84,26 @@ class MsppAdmin extends StatelessWidget {
 
   Future<bool> listCustomer() {
     return Get.defaultDialog(
-        barrierDismissible: false,
-        radius: 17,
-        title: 'Pilih salah satu',
-        content: ListCustomer(),
-        textConfirm: 'OK',
-        buttonColor: Color(0xffffcd29),
-        confirmTextColor: Colors.black87,
-        onConfirm: () => Get.back(closeOverlays: false));
+      barrierDismissible: false,
+      radius: 17,
+      title: 'Pilih customer',
+      content: ListCustomer(),
+      confirm: ElevatedButton(
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all<double>(0),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(17),
+            ),
+          ),
+        ),
+        onPressed: () => Get.back(closeOverlays: false),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: Text('Kembali'),
+        ),
+      ),
+    );
   }
 }
 
@@ -101,20 +113,32 @@ class ListCustomer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        height: 200,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+            minHeight: 100, maxHeight: 400, minWidth: 200, maxWidth: 200),
         child: ListView.builder(
+          shrinkWrap: true,
           itemCount: msppAdminController.listCustomer.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text('${msppAdminController.listCustomer[index]}'),
-              onTap: () {
-                msppAdminController.idCustomer.value =
-                    msppAdminController.listCustomer[index];
-                msppController.loadData(
-                    username: msppAdminController.idCustomer.value);
-                Get.back(closeOverlays: false);
-              },
+            return Column(
+              children: [
+                ListTile(
+                  title: Text('${msppAdminController.listCustomer[index]}'),
+                  onTap: () {
+                    msppAdminController.idCustomer.value =
+                        msppAdminController.listCustomer[index];
+                    msppController.loadData(
+                        username: msppAdminController.idCustomer.value);
+                    Get.back(closeOverlays: false);
+                  },
+                ),
+                index != msppAdminController.listCustomer.length - 1
+                    ? Divider(
+                        height: 3,
+                        color: Colors.black45,
+                      )
+                    : Container(),
+              ],
             );
           },
         ),

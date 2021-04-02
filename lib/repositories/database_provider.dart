@@ -97,7 +97,10 @@ class DatabaseProvider {
     QuerySnapshot snapshot = await firestore.collection('users').get();
     var docs = snapshot.docs;
     for (int i = 0; i <= docs.length - 1; i++) {
-      listCustomer.add(docs[i].id);
+      Users users = Users.fromMap(docs[i].data());
+      if (users.type == 'customer') {
+        listCustomer.add(users.username);
+      }
     }
     return listCustomer;
   }

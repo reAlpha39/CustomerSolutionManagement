@@ -35,7 +35,10 @@ class Routes {
     GetPage(
       name: '/mspp_admin',
       page: () => MsppAdmin(),
-      binding: MsppAdminBinding(),
+      bindings: [
+        MsppAdminBinding(),
+        MsppBinding(),
+      ],
     ),
   ];
 }

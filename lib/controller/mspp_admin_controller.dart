@@ -1,9 +1,10 @@
-import 'package:customer/controller/login_controller.dart';
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:get/get.dart';
 
 class MsppAdminController extends GetxController {
   final DatabaseProvider databaseProvider = DatabaseProvider();
+  final MsppController msppController = Get.find();
 
   RxList<String> listCustomer = [''].obs;
   RxString idCustomer = ''.obs;

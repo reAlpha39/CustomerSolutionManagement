@@ -8,7 +8,9 @@ class MsppAdminController extends GetxController {
 
   @override
   void onInit() {
-    
+    databaseProvider
+        .listCustomer()
+        .then((value) => listCustomer.assignAll(value));
     super.onInit();
   }
 }

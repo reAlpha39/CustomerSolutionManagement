@@ -91,6 +91,17 @@ class DatabaseProvider {
     return mspp;
   }
 
+  Future<List<String>> listCustomer() async {
+    List<String> listCustomer = [];
+    firestore = FirebaseFirestore.instance;
+    QuerySnapshot snapshot = await firestore.collection('users').get();
+    var docs = snapshot.docs;
+    for (int i = 0; i <= docs.length - 1; i++) {
+      listCustomer.add(docs[i].id);
+    }
+    return listCustomer;
+  }
+
   //menampilkan dialog
   showDialog({String title, String middleText}) {
     Get.defaultDialog(

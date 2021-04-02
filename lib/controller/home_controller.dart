@@ -23,6 +23,7 @@ class HomeController extends GetxController {
       case 'admin':
         //command here
         userView = HomeAdmin();
+        msppPage.value = '/mspp_admin';
         break;
       case 'internal':
         //command here
@@ -31,6 +32,7 @@ class HomeController extends GetxController {
       case 'customer':
         //command here
         userView = HomeCustomer();
+        msppPage.value = '/mspp';
         break;
       default:
         //command unknown

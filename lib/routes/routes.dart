@@ -1,11 +1,13 @@
 import 'package:customer/routes/customer_info_binding.dart';
 import 'package:customer/routes/home_binding.dart';
 import 'package:customer/routes/login_binding.dart';
+import 'package:customer/routes/mspp_admin_binding.dart';
 import 'package:customer/routes/mspp_binding.dart';
 import 'package:customer/views/login_page.dart';
 import 'package:customer/views/home_page.dart';
 import 'package:customer/views/customer_info.dart';
 import 'package:customer/views/Mspp.dart';
+import 'package:customer/views/mspp_admin.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -29,6 +31,11 @@ class Routes {
       name: '/mspp',
       page: () => Mspp(),
       binding: MsppBinding(),
+    ),
+    GetPage(
+      name: '/mspp_admin',
+      page: () => MsppAdmin(),
+      binding: MsppAdminBinding(),
     ),
   ];
 }

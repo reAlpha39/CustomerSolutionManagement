@@ -1,8 +1,10 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeCardExpanded extends StatelessWidget {
+  final HomeController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -64,7 +66,8 @@ class HomeCardExpanded extends StatelessWidget {
                                         right: 20,
                                         left: 20),
                                     child: ElevatedButton(
-                                      onPressed: () => Get.toNamed('/mspp'),
+                                      onPressed: () => Get.toNamed(
+                                          controller.msppPage.value),
                                       style: ButtonStyle(
                                           elevation:
                                               MaterialStateProperty.all<double>(

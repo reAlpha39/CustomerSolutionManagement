@@ -1,10 +1,13 @@
+import 'package:customer/widgets/home/home_card_expanded.dart';
 import 'package:flutter/material.dart';
 
 class HomeAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Column(
+      children: [
+        HomeCardExpanded(),
+      ],
     );
   }
 }

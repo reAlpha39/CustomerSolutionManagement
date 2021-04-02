@@ -31,7 +31,7 @@ dependencies:
   cloud_firestore: ^1.0.1
   firebase_core: ^1.0.1
   firebase_auth: ^1.0.1
-  get: ^3.26.0
+  get: ^4.1.1
   shape_of_view: ^1.0.2
   expandable: ^5.0.1
   data_connection_checker: ^0.3.4

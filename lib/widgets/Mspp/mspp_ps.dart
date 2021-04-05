@@ -1,11 +1,11 @@
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/Mspp/mspp_card_appt.dart';
-import 'package:customer/widgets/Mspp/mspp_card_eds.dart';
-import 'package:customer/widgets/Mspp/mspp_card_epss.dart';
-import 'package:customer/widgets/Mspp/mspp_card_hptd.dart';
-import 'package:customer/widgets/Mspp/mspp_card_pps.dart';
-import 'package:customer/widgets/Mspp/mspp_card_rpll.dart';
-import 'package:customer/widgets/Mspp/mspp_card_tpsnp.dart';
+import 'package:customer/widgets/Mspp/mspp_card/mspp_card_eds.dart';
+import 'package:customer/widgets/Mspp/mspp_card/mspp_card_epss.dart';
+import 'package:customer/widgets/Mspp/mspp_card/mspp_card_hptd.dart';
+import 'package:customer/widgets/Mspp/mspp_card/mspp_card_pps.dart';
+import 'package:customer/widgets/Mspp/mspp_card/mspp_card_rpll.dart';
+import 'package:customer/widgets/Mspp/mspp_card/mspp_card_tpsnp.dart';
+import 'package:customer/widgets/mspp/mspp_card/mspp_card_appt.dart';
 import 'package:flutter/material.dart';
 
 class MsppPs extends StatefulWidget {

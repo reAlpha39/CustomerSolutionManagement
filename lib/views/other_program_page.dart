@@ -1,4 +1,8 @@
 import 'package:customer/controller/other_program_controller.dart';
+import 'package:customer/widgets/other_program/other_card/other_card_os.dart';
+import 'package:customer/widgets/other_program/other_people.dart';
+import 'package:customer/widgets/other_program/other_regm.dart';
+import 'package:customer/widgets/other_program/other_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,9 +25,9 @@ class OtherProgramPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Container(),
-            Container(),
-            Container(),
+            OtherPeople(),
+            OtherVm(),
+            OtherRegm(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

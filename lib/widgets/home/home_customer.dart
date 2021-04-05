@@ -14,12 +14,12 @@ class HomeCustomer extends StatelessWidget {
         ),
         HomeCardExpanded(),
         HomeCard(
-          route: '/other_program',
+          route: '/customer_info',
           imageAsset: 'assets/images/part_program.png',
           titleText: "Part Program",
         ),
         HomeCard(
-          route: '/customer_info',
+          route: '/other_program',
           imageAsset: 'assets/images/other_program.png',
           titleText: "Other Program",
         ),

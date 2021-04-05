@@ -28,6 +28,15 @@ class MsppController extends GetxController {
   RxList<int> radioIndexHPTD = [-1, -1, -1, -1, -1].obs;
   RxList<int> radioIndexEDS = [-1, -1, -1].obs;
   RxList<int> radioIndexRPLL = [-1, -1].obs;
+  RxList<int> radioIndexCTST = [-1, -1, -1, -1, -1, -1, -1, -1].obs;
+  RxList<int> radioIndexMTDT = [-1].obs;
+  RxList<int> radioIndexFIELD =
+      [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1].obs;
+  RxList<int> radioIndexWORKSHOP =
+      [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+      -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1].obs;
+  RxList<int> radioIndexKM = [-1, -1, -1, -1].obs;
+  RxList<int> radioIndexLTPP = [-1, -1, -1, -1].obs;
 
   //Textfield data
   RxList<String> textFieldPU = ["", "", "", "", ""].obs;
@@ -46,6 +55,15 @@ class MsppController extends GetxController {
   RxList<String> textFieldHPTD = ["", "", "", "", ""].obs;
   RxList<String> textFieldEDS = ["", "", ""].obs;
   RxList<String> textFieldRPLL = ["", ""].obs;
+  RxList<String> textFieldCTST = ["", "", "", "", "", "", "", ""].obs;
+  RxList<String> textFieldMTDT = [""].obs;
+  RxList<String> textFieldFIELD =
+      ["", "", "", "", "", "", "", "", "", "", "", "", "", ""].obs;
+  RxList<String> textFieldWORKSHOP =
+      ["", "", "", "", "", "", "", "", "", "", "", "", "",
+       "", "", "", "", "", "", "", "", "", "", "", "", ""].obs;
+  RxList<String> textFieldKM = ["", "", "", ""].obs;
+  RxList<String> textFieldLTPP = ["", "", "", ""].obs;
 
   Map<int, String> radioData = {
     0: 'Yes',

@@ -2,6 +2,10 @@ import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/Mspp/mspp_pi.dart';
 import 'package:customer/widgets/Mspp/mspp_ps.dart';
 import 'package:customer/widgets/Mspp/mspp_ps_plan.dart';
+import 'package:customer/widgets/mspp/mspp_infras.dart';
+import 'package:customer/widgets/mspp/mspp_om.dart';
+import 'package:customer/widgets/mspp/mspp_os.dart';
+import 'package:customer/widgets/mspp/mspp_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,15 +14,20 @@ class Mspp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 7,
       child: Scaffold(
         appBar: AppBar(
           title: Text('MSPP'),
           bottom: TabBar(
+            isScrollable: true,
             tabs: [
               Tab(text: 'PI'),
               Tab(text: 'PS Plan'),
               Tab(text: 'PS'),
+              Tab(text: 'TOOLS'),
+              Tab(text: 'INFRAS'),
+              Tab(text: 'OM'),
+              Tab(text: 'OP'),
             ],
           ),
         ),
@@ -34,6 +43,18 @@ class Mspp extends StatelessWidget {
               controller.isLoading.value
                   ? Center(child: CircularProgressIndicator())
                   : MsppPs(),
+              controller.isLoading.value
+                  ? Center(child: CircularProgressIndicator())
+                  : MsppTools(),
+              controller.isLoading.value
+                  ? Center(child: CircularProgressIndicator())
+                  : MsppInfras(),
+              controller.isLoading.value
+                  ? Center(child: CircularProgressIndicator())
+                  : MsppOm(),
+              controller.isLoading.value
+                  ? Center(child: CircularProgressIndicator())
+                  : MsppOs(),
             ],
           ),
         ),

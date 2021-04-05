@@ -3,7 +3,6 @@ import 'package:customer/models/mspp.dart';
 import 'package:customer/models/mspp_data.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
-import 'package:customer/widgets/mspp/mspp_card/mspp_card_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -122,18 +121,16 @@ class MsppController extends GetxController {
                   .assignAll(value.periodicService['eds'].assessmentResult);
               radioIndexRPLL
                   .assignAll(value.periodicService['rpll'].assessmentResult);
-              radioIndexCTST
-                  .assignAll(value.periodicService['ctst'].assessmentResult);
-              radioIndexMTDT
-                  .assignAll(value.periodicService['mtdt'].assessmentResult);
+              radioIndexCTST.assignAll(value.tools['ctst'].assessmentResult);
+              radioIndexMTDT.assignAll(value.tools['mtdt'].assessmentResult);
               radioIndexFIELD
-                  .assignAll(value.periodicService['field'].assessmentResult);
-              radioIndexWORKSHOP.assignAll(
-                  value.periodicService['workshop'].assessmentResult);
+                  .assignAll(value.infrastructur['field'].assessmentResult);
+              radioIndexWORKSHOP
+                  .assignAll(value.infrastructur['workshop'].assessmentResult);
               radioIndexKM
-                  .assignAll(value.periodicService['km'].assessmentResult);
-              radioIndexLTPP
-                  .assignAll(value.periodicService['ltpp'].assessmentResult);
+                  .assignAll(value.ketersediaanMekanik['km'].assessmentResult);
+              radioIndexLTPP.assignAll(
+                  value.leadTimePenyelesaianP['ltpp'].assessmentResult);
               textFieldPU
                   .assignAll(value.periodicInspection['planUnit'].remark);
               textFieldMeet.assignAll(value.periodicInspection['meet'].remark);
@@ -154,13 +151,14 @@ class MsppController extends GetxController {
               textFieldHPTD.assignAll(value.periodicService['hptd'].remark);
               textFieldEDS.assignAll(value.periodicService['eds'].remark);
               textFieldRPLL.assignAll(value.periodicService['rpll'].remark);
-              textFieldCTST.assignAll(value.periodicService['ctst'].remark);
-              textFieldMTDT.assignAll(value.periodicService['mtdt'].remark);
-              textFieldFIELD.assignAll(value.periodicService['field'].remark);
+              textFieldCTST.assignAll(value.tools['ctst'].remark);
+              textFieldMTDT.assignAll(value.tools['mtdt'].remark);
+              textFieldFIELD.assignAll(value.infrastructur['field'].remark);
               textFieldWORKSHOP
-                  .assignAll(value.periodicService['workshop'].remark);
-              textFieldKM.assignAll(value.periodicService['km'].remark);
-              textFieldLTPP.assignAll(value.periodicService['ltpp'].remark);
+                  .assignAll(value.infrastructur['workshop'].remark);
+              textFieldKM.assignAll(value.ketersediaanMekanik['km'].remark);
+              textFieldLTPP
+                  .assignAll(value.leadTimePenyelesaianP['ltpp'].remark);
             }
           },
         );

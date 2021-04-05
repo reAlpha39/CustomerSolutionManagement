@@ -27,7 +27,7 @@ class Mspp extends StatelessWidget {
               Tab(text: 'TOOLS'),
               Tab(text: 'INFRAS'),
               Tab(text: 'OM'),
-              Tab(text: 'OP'),
+              Tab(text: 'OS'),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:customer/widgets/home/customer_account.dart';
 import 'package:customer/widgets/home/home_card_expanded.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class HomeAdmin extends StatelessWidget {
     return Column(
       children: [
         HomeCardExpanded(),
+        CustomerAccount(),
       ],
     );
   }

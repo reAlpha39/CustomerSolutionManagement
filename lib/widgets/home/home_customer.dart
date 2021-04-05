@@ -14,7 +14,7 @@ class HomeCustomer extends StatelessWidget {
         ),
         HomeCardExpanded(),
         HomeCard(
-          route: '/customer_info',
+          route: '/other_program',
           imageAsset: 'assets/images/part_program.png',
           titleText: "Part Program",
         ),

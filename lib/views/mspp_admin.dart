@@ -1,8 +1,12 @@
 import 'package:customer/controller/mspp_admin_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/widgets/mspp/mspp_infras.dart';
+import 'package:customer/widgets/mspp/mspp_om.dart';
+import 'package:customer/widgets/mspp/mspp_os.dart';
 import 'package:customer/widgets/mspp/mspp_pi.dart';
 import 'package:customer/widgets/mspp/mspp_ps.dart';
 import 'package:customer/widgets/mspp/mspp_ps_plan.dart';
+import 'package:customer/widgets/mspp/mspp_tools.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,7 +16,7 @@ class MsppAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 7,
       child: Scaffold(
         appBar: AppBar(
           title: Obx(
@@ -21,10 +25,15 @@ class MsppAdmin extends StatelessWidget {
                 : 'MSPP ' + msppAdminController.idCustomer.value),
           ),
           bottom: TabBar(
+            isScrollable: true,
             tabs: [
               Tab(text: 'PI'),
               Tab(text: 'PS Plan'),
               Tab(text: 'PS'),
+              Tab(text: 'TOOLS'),
+              Tab(text: 'INFRAS'),
+              Tab(text: 'OM'),
+              Tab(text: 'OS'),
             ],
           ),
         ),
@@ -67,6 +76,54 @@ class MsppAdmin extends StatelessWidget {
                       ),
                     )
                   : MsppPs(),
+              msppAdminController.idCustomer.value == ''
+                  ? Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          'Untuk pilih customer tekan tombol pada kanan bawah layar.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    )
+                  : MsppTools(),
+              msppAdminController.idCustomer.value == ''
+                  ? Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          'Untuk pilih customer tekan tombol pada kanan bawah layar.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    )
+                  : MsppInfras(),
+              msppAdminController.idCustomer.value == ''
+                  ? Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          'Untuk pilih customer tekan tombol pada kanan bawah layar.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    )
+                  : MsppOm(),
+              msppAdminController.idCustomer.value == ''
+                  ? Center(
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        child: Text(
+                          'Untuk pilih customer tekan tombol pada kanan bawah layar.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    )
+                  : MsppOs(),
             ],
           ),
         ),

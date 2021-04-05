@@ -1,6 +1,6 @@
 import 'package:customer/controller/other_program_controller.dart';
-import 'package:customer/widgets/Mspp/mspp_result.dart';
-import 'package:customer/widgets/Mspp/mspp_text_field.dart';
+import 'package:customer/widgets/other_program/other_result.dart';
+import 'package:customer/widgets/other_program/other_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -49,7 +49,7 @@ class ExpandedOsData extends StatelessWidget {
         barrierDismissible: false,
         radius: 17,
         title: 'Pilih salah satu',
-        content: (MsppResult(
+        content: (OtherResult(
           data: ['Yes', 'No', 'N/A'],
           index: index,
           id: 'os',
@@ -65,12 +65,12 @@ class ExpandedOsData extends StatelessWidget {
         barrierDismissible: false,
         radius: 17,
         title: 'Remark',
-        content: MsppTextField(),
+        content: OtherTextField(),
         textConfirm: 'OK',
         buttonColor: Color(0xffffcd29),
         confirmTextColor: Colors.black87,
         onConfirm: () {
-          controller.textFieldPI('os')[index] =
+          controller.textFieldOP('os')[index] =
               controller.textEditingControllerALL.text;
           controller.textEditingControllerALL.clear();
           Get.back(closeOverlays: false);

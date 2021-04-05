@@ -1,6 +1,6 @@
 import 'package:customer/controller/other_program_controller.dart';
-import 'package:customer/widgets/Mspp/mspp_result.dart';
-import 'package:customer/widgets/Mspp/mspp_text_field.dart';
+import 'package:customer/widgets/other_program/other_result.dart';
+import 'package:customer/widgets/other_program/other_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -49,10 +49,10 @@ class ExpandedMtdvData extends StatelessWidget {
         barrierDismissible: false,
         radius: 17,
         title: 'Pilih salah satu',
-        content: (MsppResult(
+        content: (OtherResult(
           data: ['Yes', 'No', 'N/A'],
           index: index,
-          id: 'mtdv',
+          id: 'mtdt',
         )),
         textConfirm: 'OK',
         buttonColor: Color(0xffffcd29),
@@ -65,12 +65,12 @@ class ExpandedMtdvData extends StatelessWidget {
         barrierDismissible: false,
         radius: 17,
         title: 'Remark',
-        content: MsppTextField(),
+        content: OtherTextField(),
         textConfirm: 'OK',
         buttonColor: Color(0xffffcd29),
         confirmTextColor: Colors.black87,
         onConfirm: () {
-          controller.textFieldPI('mtdv')[index] =
+          controller.textFieldOP('mtdt')[index] =
               controller.textEditingControllerALL.text;
           controller.textEditingControllerALL.clear();
           Get.back(closeOverlays: false);
@@ -82,9 +82,9 @@ class ExpandedMtdvData extends StatelessWidget {
       onPressed: () {
         resultTextField(index: id);
       },
-      child: Obx(() => Text(controller.textFieldOS[id] == ""
+      child: Obx(() => Text(controller.textFieldMTDT[id] == ""
           ? 'Klik disini'
-          : "${controller.textFieldOS[id]}")),
+          : "${controller.textFieldMTDT[id]}")),
     );
   }
 
@@ -93,9 +93,9 @@ class ExpandedMtdvData extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id);
       },
-      child: Obx(() => Text(controller.radioIndexOS[id] == -1
+      child: Obx(() => Text(controller.radioIndexMTDT[id] == -1
           ? 'Pilih disini'
-          : '${controller.radioData[controller.radioIndexOS[id]]}')),
+          : '${controller.radioData[controller.radioIndexMTDT[id]]}')),
     );
   }
 

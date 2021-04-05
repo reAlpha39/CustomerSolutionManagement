@@ -52,7 +52,7 @@ class OtherProgramPage extends StatelessWidget {
       buttonColor: Color(0xffffcd29),
       cancelTextColor: Colors.black87,
       onConfirm: () {
-        //controller.saveDataMspp();
+        controller.saveData();
       },
       onCancel: () => Get.toNamed('/other_program'),
     );

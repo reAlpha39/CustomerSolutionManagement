@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/mspp.dart';
+import 'package:customer/models/other_program.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -79,6 +80,18 @@ class DatabaseProvider {
     });
   }
 
+  //Save Other Program Data
+  saveOtherProgram(OtherProgram otherProgram, String username) {
+    firestore = FirebaseFirestore.instance;
+    var data = otherProgram.toMap();
+    DocumentReference doc = firestore.collection('data_customer').doc(username);
+    CollectionReference collection = doc.collection('service_program');
+    collection.get().then((value) {
+      collection.doc('other_program').set(data).then((_) =>
+          showDialog(title: "Sukses", middleText: "Data berhasil dimasukkan"));
+    });
+  }
+
   Future<Mspp> loadMsppData(String username) async {
     Mspp mspp = Mspp();
     firestore = FirebaseFirestore.instance;
@@ -89,6 +102,19 @@ class DatabaseProvider {
       mspp = Mspp.fromMap(data.data());
     }
     return mspp;
+  }
+
+  //load other program data from database
+  Future<OtherProgram> loadOtherProgramData(String username) async {
+    OtherProgram otherProgram = OtherProgram();
+    firestore = FirebaseFirestore.instance;
+    DocumentReference doc = firestore.collection('data_customer').doc(username);
+    CollectionReference collection = doc.collection('service_program');
+    var data = await collection.doc('other_program').get();
+    if (data.exists) {
+      otherProgram = OtherProgram.fromMap(data.data());
+    }
+    return otherProgram;
   }
 
   Future<List<String>> listCustomer() async {

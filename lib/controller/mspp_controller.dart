@@ -12,54 +12,50 @@ class MsppController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
   //RadioButton
-  RxList<int> radioIndexPU = [-1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexMeet = [-1, -1].obs;
-  RxList<int> radioIndexAsses = [-1, -1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexCCD =
-      [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexOPPSP = [-1, -1, -1].obs;
-  RxList<int> radioIndexBSPSP = [-1, -1].obs;
-  RxList<int> radioIndexRCPSP = [-1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexADE = [-1, -1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexPPS = [-1, -1, -1].obs;
-  RxList<int> radioIndexAPPT = [-1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexEPSS = [-1, -1, -1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexTPSNP = [-1, -1, -1, -1].obs;
-  RxList<int> radioIndexHPTD = [-1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexEDS = [-1, -1, -1].obs;
-  RxList<int> radioIndexRPLL = [-1, -1].obs;
-  RxList<int> radioIndexCTST = [-1, -1, -1, -1, -1, -1, -1, -1].obs;
-  RxList<int> radioIndexMTDT = [-1].obs;
-  RxList<int> radioIndexFIELD =
-      [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1].obs;
+  RxList<int> radioIndexPU = RxList.filled(5, -1);
+  RxList<int> radioIndexMeet = RxList.filled(2, -1);
+  RxList<int> radioIndexAsses = RxList.filled(6, -1);
+  RxList<int> radioIndexCCD = RxList.filled(14, -1);
+  RxList<int> radioIndexOPPSP = RxList.filled(3, -1);
+  RxList<int> radioIndexBSPSP = RxList.filled(2, -1);
+  RxList<int> radioIndexRCPSP = RxList.filled(5, -1);
+  RxList<int> radioIndexADE = RxList.filled(6, -1);
+  RxList<int> radioIndexPPS = RxList.filled(3, -1);
+  RxList<int> radioIndexAPPT = RxList.filled(5, -1);
+  RxList<int> radioIndexEPSS = RxList.filled(7, -1);
+  RxList<int> radioIndexTPSNP = RxList.filled(4, -1);
+  RxList<int> radioIndexHPTD = RxList.filled(5, -1);
+  RxList<int> radioIndexEDS = RxList.filled(3, -1);
+  RxList<int> radioIndexRPLL = RxList.filled(2, -1);
+  RxList<int> radioIndexCTST = RxList.filled(8, -1);
+  RxList<int> radioIndexMTDT = RxList.filled(1, -1);
+  RxList<int> radioIndexFIELD = RxList.filled(14, -1);
   RxList<int> radioIndexWORKSHOP = RxList.filled(26, -1);
-  RxList<int> radioIndexKM = [-1, -1, -1, -1].obs;
-  RxList<int> radioIndexLTPP = [-1, -1, -1, -1].obs;
+  RxList<int> radioIndexKM = RxList.filled(4, -1);
+  RxList<int> radioIndexLTPP = RxList.filled(4, -1);
 
   //Textfield data
-  RxList<String> textFieldPU = ["", "", "", "", ""].obs;
-  RxList<String> textFieldMeet = ["", ""].obs;
-  RxList<String> textFieldAsses = ["", "", "", "", "", ""].obs;
-  RxList<String> textFieldCCD =
-      ["", "", "", "", "", "", "", "", "", "", "", "", "", ""].obs;
-  RxList<String> textFieldOPPSP = ["", "", ""].obs;
-  RxList<String> textFieldBSPSP = ["", ""].obs;
-  RxList<String> textFieldRCPSP = ["", "", "", "", ""].obs;
-  RxList<String> textFieldADE = ["", "", "", "", "", ""].obs;
-  RxList<String> textFieldPPS = ["", "", ""].obs;
-  RxList<String> textFieldAPPT = ["", "", "", "", ""].obs;
-  RxList<String> textFieldEPSS = ["", "", "", "", "", "", ""].obs;
-  RxList<String> textFieldTPSNP = ["", "", "", ""].obs;
-  RxList<String> textFieldHPTD = ["", "", "", "", ""].obs;
-  RxList<String> textFieldEDS = ["", "", ""].obs;
-  RxList<String> textFieldRPLL = ["", ""].obs;
-  RxList<String> textFieldCTST = ["", "", "", "", "", "", "", ""].obs;
-  RxList<String> textFieldMTDT = [""].obs;
-  RxList<String> textFieldFIELD =
-      ["", "", "", "", "", "", "", "", "", "", "", "", "", ""].obs;
+  RxList<String> textFieldPU = RxList.filled(5, "");
+  RxList<String> textFieldMeet = RxList.filled(2, "");
+  RxList<String> textFieldAsses = RxList.filled(6, "");
+  RxList<String> textFieldCCD = RxList.filled(14, "");
+  RxList<String> textFieldOPPSP = RxList.filled(3, "");
+  RxList<String> textFieldBSPSP = RxList.filled(2, "");
+  RxList<String> textFieldRCPSP = RxList.filled(5, "");
+  RxList<String> textFieldADE = RxList.filled(6, "");
+  RxList<String> textFieldPPS = RxList.filled(3, "");
+  RxList<String> textFieldAPPT = RxList.filled(5, "");
+  RxList<String> textFieldEPSS = RxList.filled(7, "");
+  RxList<String> textFieldTPSNP = RxList.filled(4, "");
+  RxList<String> textFieldHPTD = RxList.filled(5, "");
+  RxList<String> textFieldEDS = RxList.filled(3, "");
+  RxList<String> textFieldRPLL = RxList.filled(2, "");
+  RxList<String> textFieldCTST = RxList.filled(8, "");
+  RxList<String> textFieldMTDT = RxList.filled(1, "");
+  RxList<String> textFieldFIELD = RxList.filled(14, "");
   RxList<String> textFieldWORKSHOP = RxList.filled(26, "");
-  RxList<String> textFieldKM = ["", "", "", ""].obs;
-  RxList<String> textFieldLTPP = ["", "", "", ""].obs;
+  RxList<String> textFieldKM = RxList.filled(4, "");
+  RxList<String> textFieldLTPP = RxList.filled(4, "");
 
   Map<int, String> radioData = {
     0: 'Yes',

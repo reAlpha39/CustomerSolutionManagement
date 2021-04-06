@@ -27,13 +27,43 @@ class MsppAdmin extends StatelessWidget {
           bottom: TabBar(
             isScrollable: true,
             tabs: [
-              Tab(text: 'PI'),
-              Tab(text: 'PS Plan'),
-              Tab(text: 'PS'),
-              Tab(text: 'TOOLS'),
-              Tab(text: 'INFRAS'),
-              Tab(text: 'OM'),
-              Tab(text: 'OS'),
+              Tab(
+                child: Column(
+                  children: [Text('Periodic'), Text('Inspection')],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Periodic'), Text('Service Plan')],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Periodic'), Text('Service')],
+                ),
+              ),
+              Tab(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Text('Tools'),
+                ),
+              ),
+              Tab(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Text('Infrastructure'),
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Ketersediaan'), Text('Mekanik')],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Lead Time'), Text('Penyelesaian Pekerjaan')],
+                ),
+              ),
             ],
           ),
         ),

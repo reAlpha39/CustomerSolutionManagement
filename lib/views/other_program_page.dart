@@ -1,5 +1,4 @@
 import 'package:customer/controller/other_program_controller.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_os.dart';
 import 'package:customer/widgets/other_program/other_people.dart';
 import 'package:customer/widgets/other_program/other_regm.dart';
 import 'package:customer/widgets/other_program/other_vm.dart';
@@ -16,10 +15,24 @@ class OtherProgramPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('Other Program'),
           bottom: TabBar(
+            isScrollable: true,
             tabs: [
-              Tab(text: 'People'),
-              Tab(text: 'VM'),
-              Tab(text: 'RegM'),
+              Tab(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Text('People'),
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Vendor'), Text('Management')],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Regular'), Text('Meeting')],
+                ),
+              ),
             ],
           ),
         ),

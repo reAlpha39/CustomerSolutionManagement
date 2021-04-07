@@ -3,12 +3,14 @@ import 'package:customer/routes/home_binding.dart';
 import 'package:customer/routes/login_binding.dart';
 import 'package:customer/routes/mspp_admin_binding.dart';
 import 'package:customer/routes/mspp_binding.dart';
+import 'package:customer/routes/other_program_admin_binding.dart';
 import 'package:customer/routes/other_program_binding.dart';
 import 'package:customer/views/login_page.dart';
 import 'package:customer/views/home_page.dart';
 import 'package:customer/views/customer_info.dart';
 import 'package:customer/views/Mspp.dart';
 import 'package:customer/views/mspp_admin.dart';
+import 'package:customer/views/other_program_admin_page.dart';
 import 'package:customer/views/other_program_page.dart';
 import 'package:get/get.dart';
 
@@ -46,6 +48,14 @@ class Routes {
       name: '/other_program',
       page: () => OtherProgramPage(),
       binding: OtherProgramBinding(),
+    ),
+    GetPage(
+      name: '/other_program_admin',
+      page: () => OtherProgramAdminPage(),
+      bindings: [
+        OtherProgramBinding(),
+        OtherProgramAdminBinding(),
+      ],
     )
   ];
 }

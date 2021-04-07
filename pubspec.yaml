@@ -35,6 +35,7 @@ dependencies:
   shape_of_view: ^1.0.2
   expandable: ^5.0.1
   data_connection_checker: ^0.3.4
+  sliding_up_panel: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +61,7 @@ flutter:
     - assets/images/other_program.png
     - assets/images/part_program.png
     - assets/images/service_program.png
+    - assets/images/background.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

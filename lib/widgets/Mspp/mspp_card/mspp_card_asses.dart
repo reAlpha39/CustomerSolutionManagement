@@ -124,12 +124,14 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.1.3.1.a')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah pelaksanaan periodik inspeksi sudah memakai check sheet standard, form pencatatan backlog dan kamera?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah pelaksanaan periodik inspeksi sudah memakai check sheet standard, form pencatatan backlog dan kamera?'),
+                        ),
                       ),
                     ),
                   ),
@@ -169,19 +171,21 @@ class ExpandedAssesData extends StatelessWidget {
                     ),
                   ),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 166,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('- Periodic Inspection Sheet'),
-                            Text(''),
-                            Text('- Backlog Entry Sheet'),
-                            Text(''),
-                            Text('- Backlog Monitoring Sheet'),
-                          ],
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 166,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Periodic Inspection Sheet'),
+                              Text(''),
+                              Text('- Backlog Entry Sheet'),
+                              Text(''),
+                              Text('- Backlog Monitoring Sheet'),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -194,12 +198,14 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.1.3.1.b')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah check sheet periodik inspeksi diisi dengan lengkap dan benar?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah check sheet periodik inspeksi diisi dengan lengkap dan benar?'),
+                        ),
                       ),
                     ),
                   ),
@@ -218,17 +224,19 @@ class ExpandedAssesData extends StatelessWidget {
                     ),
                   ),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('- Check sheet PI yang sudah diisi'),
-                            Text(''),
-                            Text('- Interview dengan mekanik dan SPV/GL')
-                          ],
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Check sheet PI yang sudah diisi'),
+                              Text(''),
+                              Text('- Interview dengan mekanik dan SPV/GL')
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -241,12 +249,14 @@ class ExpandedAssesData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(2)),
                   DataCell(Text('1.1.3.2')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah ada pencatatan jika terjadi kendala dalam proses pekerjaan periodik inspeksi ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah ada pencatatan jika terjadi kendala dalam proses pekerjaan periodik inspeksi ?'),
+                        ),
                       ),
                     ),
                   ),

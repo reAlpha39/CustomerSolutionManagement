@@ -124,12 +124,14 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(0)),
                   DataCell(Text('1.3.3.1')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah lokasi yang digunakan untuk pelaksanaan periodik service sudah sesuai standard dan dilengkapi element pendukung?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah lokasi yang digunakan untuk pelaksanaan periodik service sudah sesuai standard dan dilengkapi element pendukung?'),
+                        ),
                       ),
                     ),
                   ),
@@ -137,7 +139,7 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
@@ -154,18 +156,20 @@ class ExpandedMeetData extends StatelessWidget {
                     ),
                   ),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                                '- Survey fisik lokasi, tools, facility dan sarana terkait pekerjaan PS'),
-                            Text(''),
-                            Text('- Hasil interview mekanik dan SPV')
-                          ],
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  '- Survey fisik lokasi, tools, facility dan sarana terkait pekerjaan PS'),
+                              Text(''),
+                              Text('- Hasil interview mekanik dan SPV')
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -178,12 +182,14 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(1)),
                   DataCell(Text('1.3.3.2')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah dilakukan briefing pada setiap awal pelaksanaan periodik service untuk memastikan pembagian job, target jobs dan JSA?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah dilakukan briefing pada setiap awal pelaksanaan periodik service untuk memastikan pembagian job, target jobs dan JSA?'),
+                        ),
                       ),
                     ),
                   ),
@@ -191,7 +197,7 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
@@ -213,7 +219,7 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
@@ -238,7 +244,7 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(Text('1.3.3.3.a')),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
                         child: Text(
@@ -247,12 +253,12 @@ class ExpandedMeetData extends StatelessWidget {
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
                     child: Text('Team PS'),
                   )),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
                         child: Text(
@@ -262,7 +268,7 @@ class ExpandedMeetData extends StatelessWidget {
                   ),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                           width: 160,
                           child: Text('Form Receiving and Final Inspection')),
@@ -276,23 +282,25 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(3)),
                   DataCell(Text('1.3.3.3.b')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah Receiving inspection unit dilakukan sebelum pelaksanaan Periodik service  dengan menggunakan form standard ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah Receiving inspection unit dilakukan sebelum pelaksanaan Periodik service  dengan menggunakan form standard ?'),
+                        ),
                       ),
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
                     child: Text('Team PS'),
                   )),
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
@@ -320,7 +328,7 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
@@ -346,7 +354,7 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(Text('1.3.3.4.a')),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
                         child: Text(
@@ -355,12 +363,12 @@ class ExpandedMeetData extends StatelessWidget {
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
                     child: Text('Team PS'),
                   )),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
                         child: Text(
@@ -370,7 +378,7 @@ class ExpandedMeetData extends StatelessWidget {
                   ),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Text('Backlog Entry Sheet'),
                     ),
                   ),
@@ -383,7 +391,7 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(Text('1.3.3.4.b')),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
                         child: Text(
@@ -392,12 +400,12 @@ class ExpandedMeetData extends StatelessWidget {
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
                     child: Text('Team PS'),
                   )),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
                         child: Text(
@@ -407,7 +415,7 @@ class ExpandedMeetData extends StatelessWidget {
                   ),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Text('Backlog Entry Sheet'),
                     ),
                   ),
@@ -419,23 +427,25 @@ class ExpandedMeetData extends StatelessWidget {
                   DataCell(buildTextButtonRemark(6)),
                   DataCell(Text('1.3.3.5')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah parts , tools dan fasilitas pendukung sudah ditempatkan sesuai pembagian zona kerja saat eksekusi PS ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah parts , tools dan fasilitas pendukung sudah ditempatkan sesuai pembagian zona kerja saat eksekusi PS ?'),
+                        ),
                       ),
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
                     child: Text('Team PS'),
                   )),
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
@@ -450,7 +460,7 @@ class ExpandedMeetData extends StatelessWidget {
                   ),
                   DataCell(
                     Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
                         width: 160,
                         child: Column(

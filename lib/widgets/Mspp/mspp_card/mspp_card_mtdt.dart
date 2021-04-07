@@ -122,37 +122,34 @@ class ExpandedMeetData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('11A.2.1')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah terdapat jadwal kalibrasi untuk semua tools'),
+                        ),
                       ),
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
-                    child: Text('SPV/GL'),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Planner'),
                   )),
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
                             children: [
                               Text(
-                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                              Text(''),
-                              Text(
-                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                              Text(''),
-                              Text(
-                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                                  'Periksa apakah ada jadwal kalibrasi untuk setiap tools'),
+             
                             ],
                           ),
                         ),
@@ -160,17 +157,19 @@ class ExpandedMeetData extends StatelessWidget {
                     ),
                   ),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 110,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('- Meeting Record'),
-                            Text(''),
-                            Text('- Dokumen PI')
-                          ],
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Jadwal kalibrasi'),
+                              Text(''),
+                              Text('- Flow kalibrasi')
+                            ],
+                          ),
                         ),
                       ),
                     ),

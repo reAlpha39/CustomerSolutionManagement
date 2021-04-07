@@ -73,27 +73,32 @@ class Shapeground extends StatelessWidget {
                 child: IconApp(),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10, bottom: 425),
+                padding: const EdgeInsets.only(left: 10, bottom: 450),
                 child: Text(
                   '${_loginController.usr.value.username}',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 55, bottom: 380),
-                child: TextButton(
-                  onPressed: () {
-                    Get.offAndToNamed('/login_page');
-                  },
-                  child: Text(
-                    "Logout",
-                    style: TextStyle(color: Color(0xffffcd29)),
-                  ),
-                ),
-              ),
             ],
           ),
+              Padding(
+                padding: const EdgeInsets.only(top:130, left: 96),
+                child: Column(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Get.offAndToNamed('/login_page');
+                        },
+                        child: Text(
+                          "Logout",
+                          style: TextStyle(color: Color(0xffffcd29)),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            
           SlidingUpPanel(
             defaultPanelState: PanelState.OPEN,
             borderRadius: BorderRadius.only(

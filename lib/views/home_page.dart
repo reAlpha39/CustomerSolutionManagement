@@ -152,15 +152,13 @@ class Shapeground extends StatelessWidget {
                                           fontSize: 20, color: Colors.black87),
                                     ),
                                   ),
-                                  Container(
-                                    height: 30,
-                                    child: TextButton(
-                                      onPressed: () =>
-                                          Get.offAndToNamed('/login_page'),
-                                      child: Text(
-                                        'Logout',
-                                        style: TextStyle(color: Colors.black87),
-                                      ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        Get.offAndToNamed('/login_page'),
+                                    child: Text(
+                                      'Logout',
+                                      style:
+                                          TextStyle(color: Color(0xffffcd29)),
                                     ),
                                   )
                                 ],

@@ -149,7 +149,6 @@ class ExpandedMeetData extends StatelessWidget {
                             children: [
                               Text(
                                   'Periksa apakah ada jadwal kalibrasi untuk setiap tools'),
-             
                             ],
                           ),
                         ),

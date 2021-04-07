@@ -1,6 +1,7 @@
 import 'package:customer/routes/customer_info_binding.dart';
 import 'package:customer/routes/home_binding.dart';
 import 'package:customer/routes/login_binding.dart';
+import 'package:customer/routes/manage_account_binding.dart';
 import 'package:customer/routes/mspp_admin_binding.dart';
 import 'package:customer/routes/mspp_binding.dart';
 import 'package:customer/routes/other_program_admin_binding.dart';
@@ -9,6 +10,7 @@ import 'package:customer/views/login_page.dart';
 import 'package:customer/views/home_page.dart';
 import 'package:customer/views/customer_info.dart';
 import 'package:customer/views/Mspp.dart';
+import 'package:customer/views/manage_account_page.dart';
 import 'package:customer/views/mspp_admin.dart';
 import 'package:customer/views/other_program_admin_page.dart';
 import 'package:customer/views/other_program_page.dart';
@@ -56,6 +58,11 @@ class Routes {
         OtherProgramBinding(),
         OtherProgramAdminBinding(),
       ],
+    ),
+    GetPage(
+      name: '/manage_account',
+      page: () => ManageAccountPage(),
+      binding: ManageAccountBinding(),
     )
   ];
 }

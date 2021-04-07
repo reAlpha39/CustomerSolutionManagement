@@ -57,7 +57,7 @@ class CustomerAccount extends StatelessWidget {
                         ManageAccountButton(
                           title: 'Create',
                           desc: 'Create new customer account',
-                          route: '/mspp_admin',
+                          route: '/manage_account',
                         ),
                         ManageAccountButton(
                           title: 'Update',

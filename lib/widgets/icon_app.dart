@@ -6,8 +6,8 @@ class IconApp extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       child: Container(
-        height: 77,
-        width: 77,
+        height: 65,
+        width: 65,
         decoration: BoxDecoration(
             shape: BoxShape.circle, color: Colors.yellowAccent[400]),
       ),

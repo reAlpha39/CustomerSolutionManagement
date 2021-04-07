@@ -110,21 +110,6 @@ class Shapeground extends StatelessWidget {
                 ),
               ),
             ),
-            collapsed: Container(
-              decoration: BoxDecoration(
-                color: Colors.blueGrey,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24.0),
-                  topRight: Radius.circular(24.0),
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  "This is the collapsed Widget",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
             body: Container(
               color: Colors.transparent,
             ),

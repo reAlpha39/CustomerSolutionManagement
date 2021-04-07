@@ -122,37 +122,32 @@ class ExpandedMeetData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('11A.1.1.a')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah sudah ada daftar list Tools yang update'),
+                        ),
                       ),
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
                     child: Text('SPV/GL'),
                   )),
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
                             children: [
-                              Text(
-                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                              Text(''),
-                              Text(
-                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                              Text(''),
-                              Text(
-                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                              Text('Periksa apakah ada daftar tools'),
                             ],
                           ),
                         ),
@@ -160,17 +155,405 @@ class ExpandedMeetData extends StatelessWidget {
                     ),
                   ),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 110,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('- Meeting Record'),
-                            Text(''),
-                            Text('- Dokumen PI')
-                          ],
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Cek list daftar tool'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
+                  DataCell(Text('11A.1.1.b')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek penempatan lokasi Tools, apakah sudah sesuai dengan daftar list Tools'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Periksa apakah lokasi tools sesuai dengan daftar list tools'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  'Visual cek lokasi tools apakah sesuai dengan daftar'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
+                  DataCell(Text('11A.1.2')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah tersedia panduan atau petunjuk pemakaian Tools'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Periksa apakah petunjuk pemakaian tools tersedia'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Buku atau E-book Service Tool Guide  '),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
+                  DataCell(Text('11A.1.3')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child:
+                              Text('Cek apakah stock taking tools dilakukan'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Periksa adanya report Stock tacking tools '),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Report Stock Tacking Tools'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(4)),
+                  DataCell(buildTextButtonRemark(4)),
+                  DataCell(Text('11A.1.4.a')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah sudah ada Tagging (penandaan) terhadap Tools yang rusak'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Periksa adanya tagging untuk setiap tools yang rusak'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Tagging bertuliskan "RUSAK"'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(5)),
+                  DataCell(buildTextButtonRemark(5)),
+                  DataCell(Text('11A.1.4.b')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah setiap ada kerusakan tools dibuatkan form BAKK (Berita Acara Kerusakan & Kehilangan)'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SPV/GL'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Periksa adanya form BAKK untuk tools yang rusak atau hilang'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Form Berita Acara Kehilangan / Kerusakan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(6)),
+                  DataCell(buildTextButtonRemark(6)),
+                  DataCell(Text('11A.1.5')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah setiap ada peminjaman / pemakaian tools menggunakan form registrasi?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Tool Keeper'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Periksa adanya form Registrasi peminjaman Tools'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Form Registrasi Peminjaman tools'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(7)),
+                  DataCell(buildTextButtonRemark(7)),
+                  DataCell(Text('11A.1.6')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah ada pengaturan proses penyimpanan Tools (grouping)'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Tool Keeper'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Periksa apakah Tools ditempatkan sesuai dengan yang telah ditentukan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Jadwal kalibrasi'),
+                              Text(''),
+                              Text('- Flow kalibrasi')
+                            ],
+                          ),
                         ),
                       ),
                     ),

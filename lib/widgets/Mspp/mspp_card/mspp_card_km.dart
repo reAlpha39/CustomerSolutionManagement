@@ -122,37 +122,36 @@ class ExpandedMeetData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('7.1.1.a')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah UT melakukan sosialisasi terkait program OTIF Mekanik kepada customer?'),
+                        ),
                       ),
                     ),
                   ),
                   DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
-                    child: Text('SPV/GL'),
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Customer'),
                   )),
                   DataCell(
                     SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
                         child: Container(
                           width: 160,
                           child: Column(
                             children: [
                               Text(
-                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
+                                  '- Interview dengan SDH apakah pernah melakukan sosialisasi OTIF Mekanik kepada customer'),
                               Text(''),
                               Text(
-                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                              Text(''),
-                              Text(
-                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                                  '- Interview dengan All Kabag apakah pernah mendapatkan sosialisasi OTIF Mekanik dari UT')
                             ],
                           ),
                         ),
@@ -160,17 +159,192 @@ class ExpandedMeetData extends StatelessWidget {
                     ),
                   ),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 110,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('- Meeting Record'),
-                            Text(''),
-                            Text('- Dokumen PI')
-                          ],
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Hasil interview dengan SDH'),
+                              Text(''),
+                              Text('- Hasil interview dengan kabag')
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(1)),
+                  DataCell(buildTextButtonRemark(1)),
+                  DataCell(Text('7.1.1.b')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah customer masih merasakan keterlambatan pengiriman mekanik dalam 3 bulan terakhir?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('Customer'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Interview dengan customer terkait support UT dalam pengiriman mekanik'),
+                  
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Hasil interview dengan customer'),
+       
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
+                  DataCell(Text('7.1.3')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah setiap call dari customer tersebut dicatat di HEAT?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('BOO/SOO'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  '- Interview dengan BOO/SOO terkait pencatatan call dari customer'),
+                              Text(''),
+                              Text(
+                                  '- Membandingkan call report manual dengan hasil download di HEAT')
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('- Hasil interview dengan BOO/SOO'),
+                              Text(''),
+                              Text('- Gap analysis atas perbandingan data call report manual dengan hasil download di HEAT')
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
+                  DataCell(Text('7.1.4')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah OTIF Mechanic 3 bulan terakhir sesuai dengan SLA?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(Padding(
+                    padding: const EdgeInsets.only(top: 7, bottom: 7),
+                    child: Text('SDH'),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Cek Report OTIF Mechanic'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Report OTIF Mechanic'),
+
+                            ],
+                          ),
                         ),
                       ),
                     ),

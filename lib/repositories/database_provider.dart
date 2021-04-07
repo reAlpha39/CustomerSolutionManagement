@@ -131,6 +131,33 @@ class DatabaseProvider {
     return listCustomer;
   }
 
+  //Mengecek apakah username apakah sudah ada di database
+  Future<bool> usernameChecker(String username) async {
+    bool isAvailable = false;
+    firestore = FirebaseFirestore.instance;
+    var data = await firestore
+        .collection('users')
+        .where('username', isEqualTo: username)
+        .get();
+    if (data.docs.length == 0) {
+      isAvailable = true;
+    }
+    return isAvailable;
+  }
+
+  //Membuat akun user
+  Future<bool> createAccount(Users users) async {
+    bool isSuccess = false;
+    var data = users.toMap();
+    firestore = FirebaseFirestore.instance;
+    CollectionReference collection = firestore.collection('users');
+    collection.doc(users.username).set(data).then((_) {
+      showDialog(title: "Sukses", middleText: "User berhasil dibuat");
+      isSuccess = true;
+    });
+    return isSuccess;
+  }
+
   //menampilkan dialog
   showDialog({String title, String middleText}) {
     Get.defaultDialog(

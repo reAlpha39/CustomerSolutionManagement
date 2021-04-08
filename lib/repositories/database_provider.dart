@@ -177,7 +177,7 @@ class DatabaseProvider {
     bool isSuccess = false;
     firestore = FirebaseFirestore.instance;
     CollectionReference collection = firestore.collection('users');
-    var del = await collection.doc(username).delete().then((_) {
+    collection.doc(username).delete().then((_) {
       showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
       isSuccess = true;
     });

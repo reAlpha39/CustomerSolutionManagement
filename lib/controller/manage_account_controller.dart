@@ -66,20 +66,24 @@ class ManageAccountController extends GetxController {
   }
 
   deleteAccount(String username) {
+    showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
         databaseProvider.deleteAccount(username).then((value) {
           isLoading.value = false;
           listUsers();
+          Get.back();
         });
       } else {
         isLoading.value = false;
+        Get.back();
       }
     });
   }
 
   createAccount() {
+    showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -95,9 +99,11 @@ class ManageAccountController extends GetxController {
               clearData();
               isLoading.value = false;
               listUsers();
+              Get.back();
             });
           } else {
             isLoading.value = false;
+            Get.back();
             _showDialogError(
                 title: 'Create error',
                 middleText: 'Username sudah terdapat dalam database');
@@ -105,6 +111,7 @@ class ManageAccountController extends GetxController {
         });
       } else {
         isLoading.value = false;
+        Get.back();
       }
     });
   }
@@ -130,6 +137,7 @@ class ManageAccountController extends GetxController {
   }
 
   updateAccount() {
+    showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -142,11 +150,13 @@ class ManageAccountController extends GetxController {
         databaseProvider.createAccount(users).then((_) {
           clearData();
           isLoading.value = false;
+          Get.back();
           listUsers();
           panelController.close();
         });
       } else {
         isLoading.value = false;
+        Get.back();
       }
     });
   }
@@ -165,5 +175,10 @@ class ManageAccountController extends GetxController {
     usernameTEC.clear();
     passwordTEC.clear();
     radio.value = 2;
+  }
+
+  void showProgressDialog() {
+    Get.dialog(Center(child: CircularProgressIndicator()),
+        barrierDismissible: false);
   }
 }

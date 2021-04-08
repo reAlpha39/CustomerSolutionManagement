@@ -141,7 +141,10 @@ class ListUsersCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                      controller.deleteAccount(user.username);
+                    },
                     child: Container(
                       width: 80,
                       child: Center(

@@ -65,6 +65,20 @@ class ManageAccountController extends GetxController {
     }
   }
 
+  deleteAccount(String username) {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        databaseProvider.deleteAccount(username).then((value) {
+          isLoading.value = false;
+          listUsers();
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
   createAccount() {
     isLoading.value = true;
     connectivityChecker().then((conn) {

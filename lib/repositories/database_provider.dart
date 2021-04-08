@@ -172,6 +172,18 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  //Delete akun
+  Future<bool> deleteAccount(String username) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    CollectionReference collection = firestore.collection('users');
+    var del = await collection.doc(username).delete().then((_) {
+      showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
+      isSuccess = true;
+    });
+    return isSuccess;
+  }
+
   //List Users
   Future<List<Users>> listUsers() async {
     List<Users> list = [];

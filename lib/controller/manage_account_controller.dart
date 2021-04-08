@@ -21,6 +21,8 @@ class ManageAccountController extends GetxController {
     2: 'customer',
   };
   RxList<Users> listUser;
+  RxString textButton = 'Create'.obs;
+  RxString titleCard = 'Create Account'.obs;
 
   @override
   void onInit() {
@@ -55,6 +57,14 @@ class ManageAccountController extends GetxController {
     });
   }
 
+  createOrUpdate() {
+    if (textButton.value == "Create") {
+      validateTextField();
+    } else if (textButton.value == "Update") {
+      updateAccount();
+    }
+  }
+
   createAccount() {
     isLoading.value = true;
     connectivityChecker().then((conn) {
@@ -68,7 +78,7 @@ class ManageAccountController extends GetxController {
               type: radioData[radio],
             );
             databaseProvider.createAccount(users).then((_) {
-              _clearData();
+              clearData();
               isLoading.value = false;
               listUsers();
             });
@@ -85,6 +95,48 @@ class ManageAccountController extends GetxController {
     });
   }
 
+  changeTextButton() {
+    if (namaTEC.text.isNotEmpty) {
+      textButton.value = 'Update';
+      titleCard.value = 'Update Account';
+    } else {
+      textButton.value = 'Create';
+      titleCard.value = 'Create Account';
+    }
+  }
+
+  displayDataToCard(Users user) {
+    var radioKey = radioData.keys
+        .firstWhere((k) => radioData[k] == user.type, orElse: () => null);
+    namaTEC.text = user.nama;
+    usernameTEC.text = user.username;
+    passwordTEC.text = user.password;
+    radio.value = radioKey;
+    panelController.open();
+  }
+
+  updateAccount() {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        Users users = Users(
+          nama: namaTEC.text,
+          username: usernameTEC.text,
+          password: passwordTEC.text,
+          type: radioData[radio],
+        );
+        databaseProvider.createAccount(users).then((_) {
+          clearData();
+          isLoading.value = false;
+          listUsers();
+          panelController.close();
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
   _showDialogError({String title, String middleText}) {
     Get.defaultDialog(
         title: title,
@@ -94,7 +146,7 @@ class ManageAccountController extends GetxController {
         onConfirm: () => Get.back());
   }
 
-  _clearData() {
+  clearData() {
     namaTEC.clear();
     usernameTEC.clear();
     passwordTEC.clear();

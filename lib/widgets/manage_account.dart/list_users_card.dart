@@ -121,7 +121,10 @@ class ListUsersCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                      controller.displayDataToCard(user);
+                    },
                     child: Container(
                       width: 80,
                       child: Center(

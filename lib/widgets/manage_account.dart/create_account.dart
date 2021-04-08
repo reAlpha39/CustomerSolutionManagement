@@ -27,9 +27,11 @@ class CreateAccount extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 16),
-                  child: Text(
-                    "Create Account",
-                    style: TextStyle(fontSize: 24),
+                  child: Obx(
+                    () => Text(
+                      controller.titleCard.value,
+                      style: TextStyle(fontSize: 24),
+                    ),
                   ),
                 ),
                 Padding(
@@ -42,15 +44,19 @@ class CreateAccount extends StatelessWidget {
                     returnError: 'Nama harus diisi',
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: LoginTextField(
-                    textEditingController: controller.usernameTEC,
-                    labelText: 'Username',
-                    isObsecure: false,
-                    iconData: Icons.account_box_outlined,
-                    returnError: 'Username harus diisi',
-                  ),
+                Obx(
+                  () => controller.textButton.value == 'Update'
+                      ? Container()
+                      : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: LoginTextField(
+                            textEditingController: controller.usernameTEC,
+                            labelText: 'Username',
+                            isObsecure: false,
+                            iconData: Icons.account_box_outlined,
+                            returnError: 'Username harus diisi',
+                          ),
+                        ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -120,7 +126,7 @@ class CreateAccount extends StatelessWidget {
               child: _buttonState(),
             ),
           ),
-          onPressed: isEnabled ? () => controller.validateTextField() : null),
+          onPressed: isEnabled ? () => controller.createOrUpdate() : null),
     );
   }
 
@@ -135,7 +141,7 @@ class CreateAccount extends StatelessWidget {
             ),
           ));
     } else {
-      return Text("Create",
+      return Text(controller.textButton.value,
           style: TextStyle(fontSize: 20, color: Colors.black54));
     }
   }

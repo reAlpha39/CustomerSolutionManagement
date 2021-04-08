@@ -158,6 +158,20 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  //Update akun
+  Future<bool> updateAccount(Users user) async {
+    bool isSuccess = false;
+    var data = user.toMap();
+    firestore = FirebaseFirestore.instance;
+    CollectionReference collection = firestore.collection('users');
+    collection.doc(users.username).set(data).then((_) {
+      showDialog(
+          title: 'Sukses', middleText: 'Data user berhasil diperbaharui');
+      isSuccess = true;
+    });
+    return isSuccess;
+  }
+
   //List Users
   Future<List<Users>> listUsers() async {
     List<Users> list = [];

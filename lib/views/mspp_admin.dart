@@ -174,7 +174,12 @@ class MsppAdmin extends StatelessWidget {
       barrierDismissible: false,
       radius: 17,
       title: 'Pilih customer',
-      content: ListCustomer(),
+      content: Align(
+        alignment: Alignment.center,
+        child: ConstrainedBox(
+            constraints: BoxConstraints.tight(Size(300, 400)),
+            child: ListCustomer()),
+      ),
       confirm: ElevatedButton(
         style: ButtonStyle(
           elevation: MaterialStateProperty.all<double>(0),
@@ -199,10 +204,11 @@ class ListCustomer extends StatelessWidget {
   final MsppController msppController = Get.find();
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Align(
+      alignment: Alignment.center,
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            minHeight: 100, maxHeight: 400, minWidth: 200, maxWidth: 200),
+            minHeight: 400, maxHeight: 400, minWidth: 250, maxWidth: 250),
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: msppAdminController.listCustomer.length,

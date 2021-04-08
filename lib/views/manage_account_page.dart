@@ -12,6 +12,7 @@ class ManageAccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: SlidingUpPanel(
+        controller: controller.panelController,
         parallaxEnabled: true,
         parallaxOffset: 0.0,
         renderPanelSheet: false,

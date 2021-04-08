@@ -45,6 +45,8 @@ class ListUsersCard extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
+                            showEditIcon: true,
+                            onTap: () {}
                           ),
                           DataCell(
                             Container(

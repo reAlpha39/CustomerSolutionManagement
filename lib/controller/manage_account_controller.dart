@@ -3,9 +3,11 @@ import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ManageAccountController extends GetxController {
   DatabaseProvider databaseProvider = DatabaseProvider();
+  PanelController panelController;
   TextEditingController namaTEC;
   TextEditingController usernameTEC;
   TextEditingController passwordTEC;
@@ -22,6 +24,7 @@ class ManageAccountController extends GetxController {
 
   @override
   void onInit() {
+    panelController = PanelController();
     namaTEC = TextEditingController();
     usernameTEC = TextEditingController();
     passwordTEC = TextEditingController();

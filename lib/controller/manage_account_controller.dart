@@ -100,6 +100,7 @@ class ManageAccountController extends GetxController {
             databaseProvider.createAccount(users).then((_) {
               clearData();
               isLoading.value = false;
+              panelController.close();
               listUsers();
             });
           } else {

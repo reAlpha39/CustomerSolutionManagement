@@ -13,11 +13,8 @@ class ManageAccountPage extends StatelessWidget {
     return Material(
       child: SlidingUpPanel(
         controller: controller.panelController,
-        onPanelOpened: () {
-          controller.changeTextButton();
-        },
         onPanelClosed: () {
-          controller.clearData();
+          controller.onPanelClose();
         },
         parallaxEnabled: true,
         parallaxOffset: 0.0,

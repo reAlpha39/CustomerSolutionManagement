@@ -35,6 +35,13 @@ class ManageAccountController extends GetxController {
     super.onInit();
   }
 
+  // Called ketika panel ditutup
+  onPanelClose() {
+    titleCard.value = 'Create Account';
+    textButton.value = 'Create';
+    clearData();
+  }
+
   validateTextField() {
     var form = formKey.currentState;
     if (form.validate()) {
@@ -116,17 +123,9 @@ class ManageAccountController extends GetxController {
     });
   }
 
-  changeTextButton() {
-    if (namaTEC.text.isNotEmpty) {
-      textButton.value = 'Update';
-      titleCard.value = 'Update Account';
-    } else {
-      textButton.value = 'Create';
-      titleCard.value = 'Create Account';
-    }
-  }
-
   displayDataToCard(Users user) {
+    titleCard.value = 'Update Account';
+    textButton.value = 'Update';
     var radioKey = radioData.keys
         .firstWhere((k) => radioData[k] == user.type, orElse: () => null);
     namaTEC.text = user.nama;

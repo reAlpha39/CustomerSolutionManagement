@@ -90,7 +90,6 @@ class ManageAccountController extends GetxController {
   }
 
   createAccount() {
-    showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -106,11 +105,9 @@ class ManageAccountController extends GetxController {
               clearData();
               isLoading.value = false;
               listUsers();
-              Get.back();
             });
           } else {
             isLoading.value = false;
-            Get.back();
             _showDialogError(
                 title: 'Create error',
                 middleText: 'Username sudah terdapat dalam database');
@@ -118,7 +115,6 @@ class ManageAccountController extends GetxController {
         });
       } else {
         isLoading.value = false;
-        Get.back();
       }
     });
   }
@@ -136,7 +132,6 @@ class ManageAccountController extends GetxController {
   }
 
   updateAccount() {
-    showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -149,13 +144,11 @@ class ManageAccountController extends GetxController {
         databaseProvider.createAccount(users).then((_) {
           clearData();
           isLoading.value = false;
-          Get.back();
           listUsers();
           panelController.close();
         });
       } else {
         isLoading.value = false;
-        Get.back();
       }
     });
   }

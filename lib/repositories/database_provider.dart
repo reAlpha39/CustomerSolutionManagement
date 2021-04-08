@@ -158,6 +158,20 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  //List Users
+  Future<List<Users>> listUsers() async {
+    List<Users> list = [];
+    firestore = FirebaseFirestore.instance;
+    CollectionReference collection = firestore.collection('users');
+    var data = await collection.get().then((value) {
+      for (int i = 0; i <= value.docs.length - 1; i++) {
+        Users user = Users.fromMap(value.docs[i].data());
+        list.add(user);
+      }
+    });
+    return list;
+  }
+
   //menampilkan dialog
   showDialog({String title, String middleText}) {
     Get.defaultDialog(

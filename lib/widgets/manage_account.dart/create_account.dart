@@ -10,7 +10,7 @@ class CreateAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-      margin: EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 60),
+      margin: EdgeInsets.only(left: 30, right: 30),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 400),
         child: Container(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ManageAccountController extends GetxController {
+  DatabaseProvider databaseProvider = DatabaseProvider();
   TextEditingController namaTEC;
   TextEditingController usernameTEC;
   TextEditingController passwordTEC;
@@ -17,6 +18,7 @@ class ManageAccountController extends GetxController {
     1: 'internal',
     2: 'customer',
   };
+  RxList<Users> listUser;
 
   @override
   void onInit() {
@@ -24,6 +26,7 @@ class ManageAccountController extends GetxController {
     usernameTEC = TextEditingController();
     passwordTEC = TextEditingController();
     formKey = GlobalKey<FormState>();
+    listUsers();
     super.onInit();
   }
 
@@ -35,8 +38,21 @@ class ManageAccountController extends GetxController {
     }
   }
 
+  listUsers() {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        databaseProvider.listUsers().then((value) {
+          listUser = value.obs;
+          isLoading.value = false;
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
   createAccount() {
-    DatabaseProvider databaseProvider = DatabaseProvider();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -51,6 +67,7 @@ class ManageAccountController extends GetxController {
             databaseProvider.createAccount(users).then((_) {
               _clearData();
               isLoading.value = false;
+              listUsers();
             });
           } else {
             isLoading.value = false;

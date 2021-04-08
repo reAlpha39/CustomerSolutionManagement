@@ -1,6 +1,5 @@
 import 'package:customer/controller/manage_account_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/home/home_customer.dart';
 import 'package:customer/widgets/manage_account.dart/create_account.dart';
 import 'package:customer/widgets/manage_account.dart/list_users_card.dart';
 import 'package:flutter/material.dart';
@@ -8,91 +7,111 @@ import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ManageAccountPage extends StatelessWidget {
-  ManageAccountController controller = Get.find();
+  final ManageAccountController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text('Manage Customer Account'),
-      ),
-      body: SlidingUpPanel(
+    return Material(
+      child: SlidingUpPanel(
+        parallaxEnabled: true,
+        parallaxOffset: 0.0,
         renderPanelSheet: false,
+        backdropEnabled: true,
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(17.0),
+          topLeft: Radius.circular(17.0),
+        ),
+        maxHeight: context.height,
         panel: Align(
           alignment: Alignment.center,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minWidth: 500, maxWidth: 500),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 24, bottom: 24),
             child: ScrollConfiguration(
               behavior: CustomScrollBehavior(),
               child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Container(
-                  margin: EdgeInsets.only(bottom: 32),
-                  child: CreateAccount(),
-                ),
+                child: CreateAccount(),
               ),
             ),
           ),
         ),
         collapsed: _floatingCollapsed(),
-        body: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                constraints: BoxConstraints(maxHeight: 200),
-                color: Color(0xffffcd29),
-                height: 200,
+        body: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            elevation: 0,
+            title: Text('Manage Customer Account'),
+          ),
+          body: Stack(
+            children: [
+              SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                      minHeight: Get.height, minWidth: Get.width),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: context.height * 0.3,
+                        width: Get.width,
+                        color: Color(0xffffcd29),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Obx(
-                () => controller.isLoading.value
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : ListUsersCard(),
+              Container(
+                height: context.height,
+                child: Center(
+                  child: Obx(
+                    () => controller.isLoading.value
+                        ? CircularProgressIndicator()
+                        : Padding(
+                            padding: EdgeInsets.only(bottom: 32),
+                            child: ListUsersCard(),
+                          ),
+                  ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        maxHeight: 600,
-        minHeight: 100,
       ),
     );
   }
 
   Widget _floatingCollapsed() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color(0xffffcd29),
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24.0), topRight: Radius.circular(24.0)),
-      ),
-      margin: const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
-      child: Stack(
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              margin: EdgeInsets.only(top: 10),
-              height: 5,
-              decoration: BoxDecoration(
-                color: Colors.black26,
-                borderRadius: BorderRadius.circular(7),
-              ),
-              width: 40,
-            ),
+          Icon(
+            Icons.keyboard_arrow_up_outlined,
+            color: Colors.black54,
+            size: 32,
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              "Create Account",
-              style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500),
+          Expanded(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 500),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xffffcd29),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(17.0),
+                  ),
+                ),
+                margin: const EdgeInsets.fromLTRB(24.0, 0.0, 24.0, 12.0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Create Account",
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
             ),
           ),
         ],

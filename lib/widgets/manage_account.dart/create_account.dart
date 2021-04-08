@@ -14,12 +14,17 @@ class CreateAccount extends StatelessWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 400),
         child: Container(
-          padding: EdgeInsets.only(left: 20, right: 20, bottom: 40, top: 20),
+          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
           child: Form(
             key: controller.formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                Icon(
+                  Icons.keyboard_arrow_down_outlined,
+                  color: Colors.black54,
+                  size: 32,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 16),
                   child: Text(
@@ -102,7 +107,7 @@ class CreateAccount extends StatelessWidget {
       isEnabled = true;
     }
     return Padding(
-      padding: const EdgeInsets.only(top: 30),
+      padding: const EdgeInsets.only(top: 10),
       child: ElevatedButton(
           style: ButtonStyle(
               elevation: MaterialStateProperty.all<double>(0),

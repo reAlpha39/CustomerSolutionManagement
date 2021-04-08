@@ -1,4 +1,5 @@
 import 'package:customer/controller/manage_account_controller.dart';
+import 'package:customer/models/users.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,17 +38,21 @@ class ListUsersCard extends StatelessWidget {
                       (user) => DataRow(
                         cells: [
                           DataCell(
-                            Container(
-                              width: 100,
-                              child: Text(
-                                '${user.nama}',
-                                softWrap: true,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                            showEditIcon: true,
-                            onTap: () {}
-                          ),
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 100,
+                                    child: Text(
+                                      '${user.nama}',
+                                      softWrap: true,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  Icon(Icons.zoom_in_outlined),
+                                ],
+                              ), onTap: () {
+                            _showDialogUpdateDelete(user);
+                          }),
                           DataCell(
                             Container(
                               width: 100,
@@ -85,6 +90,81 @@ class ListUsersCard extends StatelessWidget {
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  _showDialogUpdateDelete(Users user) {
+    Get.defaultDialog(
+      title: "Detail Akun",
+      content: Padding(
+        padding: const EdgeInsets.only(left: 24, right: 24),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8),
+              child: Text('Apa yang ingin anda lakukan dengan akun ' +
+                  "${user.username}?"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12, right: 12, top: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      elevation: MaterialStateProperty.all<double>(0),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Container(
+                      width: 80,
+                      child: Center(
+                        child: Text('Update'),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      elevation: MaterialStateProperty.all<double>(0),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(17),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Container(
+                      width: 80,
+                      child: Center(
+                        child: Text('Delete'),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                elevation: MaterialStateProperty.all<double>(0),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(17),
+                  ),
+                ),
+              ),
+              onPressed: () {},
+              child: Container(
+                width: 200,
+                child: Center(child: Text('Kembali')),
+              ),
+            ),
+          ],
         ),
       ),
     );

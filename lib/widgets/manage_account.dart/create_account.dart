@@ -126,7 +126,7 @@ class CreateAccount extends StatelessWidget {
               child: _buttonState(),
             ),
           ),
-          onPressed: isEnabled ? () => controller.createOrUpdate() : null),
+          onPressed: isEnabled ? () => controller.validateTextField() : null),
     );
   }
 

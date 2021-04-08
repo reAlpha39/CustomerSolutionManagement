@@ -46,7 +46,11 @@ class ManageAccountController extends GetxController {
     var form = formKey.currentState;
     if (form.validate()) {
       form.save();
-      createAccount();
+      if (textButton.value == "Create") {
+        createAccount();
+      } else if (textButton.value == "Update") {
+        updateAccount();
+      }
     }
   }
 
@@ -62,14 +66,6 @@ class ManageAccountController extends GetxController {
         isLoading.value = false;
       }
     });
-  }
-
-  createOrUpdate() {
-    if (textButton.value == "Create") {
-      validateTextField();
-    } else if (textButton.value == "Update") {
-      updateAccount();
-    }
   }
 
   deleteAccount(String username) {

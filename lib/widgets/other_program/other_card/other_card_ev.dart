@@ -122,20 +122,31 @@ class ExpandedEvData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('13.3.1')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah terdapat jadwal evaluasi vendor '),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('SPV/GL'),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
                   )),
                   DataCell(
                     SingleChildScrollView(
@@ -145,56 +156,57 @@ class ExpandedEvData extends StatelessWidget {
                           width: 160,
                           child: Column(
                             children: [
-                              Text(
-                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                              Text(''),
-                              Text(
-                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                              Text(''),
-                              Text(
-                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                              Text('Melihat apakah ada jadwal evaluasi vendor'),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  DataCell(
-                    Padding(
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
-                        width: 110,
+                        width: 160,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('- Meeting Record'),
-                            Text(''),
-                            Text('- Dokumen PI')
+                            Text('Jadwal evaluasi vendor'),
                           ],
                         ),
                       ),
                     ),
-                  ),
+                  )),
                 ],
               ),
               DataRow(
                 cells: [
                   DataCell(buildTextButtonAssessment(1)),
                   DataCell(buildTextButtonRemark(1)),
-                  DataCell(Text('1.1.2.2')),
+                  DataCell(Text('13.3.2')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Check apakah setiap unit yang di inspeksi di konfirmasi ke radio room untuk dicatatkan down unitnya dan kebutuhan alat suppornya ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah terdapat kualifikasi standart untuk melakukan evaluasi vendor?'),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('Team PI'),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
                   )),
                   DataCell(
                     SingleChildScrollView(
@@ -205,25 +217,148 @@ class ExpandedEvData extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                  '- Melihat apakah ada Log Book khusus radioman'),
-                              Text(''),
-                              Text(
-                                  '- Melihat apakah setiap unit yang dilakukan PI dilakukan konfirmasi ke radioman untuk dicatat kebutuhan alat support dan waktu downnya di Log Book'),
-                              Text(''),
-                              Text(
-                                  '- Interview mekanik dan radioman terkait konfirmasi unit yang akan PI dan pencatatannya di Log Book')
+                                  'Melihat apakah ada kualifikasi standard untuk melakukan evaluasi vendor'),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  DataCell(
-                    Padding(
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('Log Book Radioman'),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('List standard kualifikasi vendor'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
+                  DataCell(Text('13.3.3')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah terdapat schedule fix untuk melakukan evaluasi vendor (setiap 6 bulan)?'),
+                        ),
+                      ),
                     ),
                   ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah evaluasi vendor dijalankan secara rutin'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('MOM evaluasi vendor'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
+                  DataCell(Text('13.3.4')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah ada daftar peringkat vendor berdasarkan kriteria harga, kualitas, warranty dan leadtime?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text('Melihat apakah ada data peringkat vendor'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                'List peringkat vendor berdasarkan Harga, Kualitas, Warranty dan Leadtme'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
                 ],
               ),
             ],

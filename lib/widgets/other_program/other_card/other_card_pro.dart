@@ -122,20 +122,31 @@ class ExpandedProData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('12.4.1')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah sudah ada struktur organisasi  untuk Logistic Department?'),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('SPV/GL'),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Kabag Production'),
+                          ],
+                        ),
+                      ),
+                    ),
                   )),
                   DataCell(
                     SingleChildScrollView(
@@ -146,55 +157,59 @@ class ExpandedProData extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                              Text(''),
-                              Text(
-                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                              Text(''),
-                              Text(
-                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                                  'Melihat apakah ada struktur organisasi Production Depertement'),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  DataCell(
-                    Padding(
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
-                        width: 110,
+                        width: 160,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('- Meeting Record'),
-                            Text(''),
-                            Text('- Dokumen PI')
+                            Text('Struktur organisasi Production departement'),
                           ],
                         ),
                       ),
                     ),
-                  ),
+                  )),
                 ],
               ),
               DataRow(
                 cells: [
                   DataCell(buildTextButtonAssessment(1)),
                   DataCell(buildTextButtonRemark(1)),
-                  DataCell(Text('1.1.2.2')),
+                  DataCell(Text('12.4.2')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Check apakah setiap unit yang di inspeksi di konfirmasi ke radio room untuk dicatatkan down unitnya dan kebutuhan alat suppornya ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah sudah ada tugas dan tanggung jawab untuk setiap personel di Production Department? '),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('Team PI'),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- HRD'),
+                          ],
+                        ),
+                      ),
+                    ),
                   )),
                   DataCell(
                     SingleChildScrollView(
@@ -205,25 +220,775 @@ class ExpandedProData extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                  '- Melihat apakah ada Log Book khusus radioman'),
-                              Text(''),
-                              Text(
-                                  '- Melihat apakah setiap unit yang dilakukan PI dilakukan konfirmasi ke radioman untuk dicatat kebutuhan alat support dan waktu downnya di Log Book'),
-                              Text(''),
-                              Text(
-                                  '- Interview mekanik dan radioman terkait konfirmasi unit yang akan PI dan pencatatannya di Log Book')
+                                  'Melihat apakah sudah ada tugas dan tanggung jawab untuk setiap personel di Production Departement'),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  DataCell(
-                    Padding(
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('Log Book Radioman'),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('File Rules & Responsibility'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
+                  DataCell(Text('12.4.3')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek  salinan tugas dan tanggung jawab untuk setiap personel di Logistic Department'),
+                        ),
+                      ),
                     ),
                   ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- HRD'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah setiap jabatan atau fungsi memiliki salinan tugas dan tanggung jawab'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Hard Copy/salinan tugas dan tanggung jawab'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
+                  DataCell(Text('12.4.4')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah sudah  ada Kualifikasi jabatan (minimum requirement untuk tiap-tiap jabatan) ? '),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- HRD'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah sudah ada standart minimum untuk setiap jabatan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('File Rules & Responsibility'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(4)),
+                  DataCell(buildTextButtonRemark(4)),
+                  DataCell(Text('12.4.5')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek  salinan Kualifikasi jabatan (minimum requirement untuk tiap-tiap jabatan'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- HRD'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah ada salinan untuk minimum requirement setiap jabatan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text(
+                                'Hard copy/salinan minimum requirement setiap jabatan'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(5)),
+                  DataCell(buildTextButtonRemark(5)),
+                  DataCell(Text('12.4.6')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah IDP telah dibuat untuk setiap personel ? '),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- Kabag Development'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah IDP telah dibuat oleh setiap personel'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('IDP setiap jabatan'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(6)),
+                  DataCell(buildTextButtonRemark(6)),
+                  DataCell(Text('12.4.7')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah IDP telah dilaksanakan sesuai dengan rencana dan hasilnya dievaluasi ?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- Kabag Development'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah IDP dilaksanakan sesuai rencana dan di evaluasi'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Hasil evaluasi IDP'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(7)),
+                  DataCell(buildTextButtonRemark(7)),
+                  DataCell(Text('12.4.8')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah KPI untuk masing-masing jabatan dan fungsi  sudah ditetapkan?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- Site Manager'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah KPI untuk setiap jabatan dan fungsi sudah ditetapkan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('KPI semua jabatan dan fungsi'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(8)),
+                  DataCell(buildTextButtonRemark(8)),
+                  DataCell(Text('12.4.9')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah Dilaksanakan penilaian kompetensi dan performance dilaksanakan setiap 6 bulan, sebagai masukan proses pengembangan individu? '),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- HRD'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah penilaian kompetensi dilaksanakan setiap 6 bulan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Hasil penilaian kompetensi'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(9)),
+                  DataCell(buildTextButtonRemark(9)),
+                  DataCell(Text('12.4.10')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek bagaimana cara menghitung  minimum kecukupan manpower di Plant Department ?  '),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Kabag Production'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat cara perhitungan kecukupan man power'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('File man power calculator'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(10)),
+                  DataCell(buildTextButtonRemark(10)),
+                  DataCell(Text('12.4.11')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek  apakah  tools/metode yang digunakan untuk menghitung  minimum kecukupan manpower di Plant Department ?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Kabag Production'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Interview dengan kabag Production cara/metode perhitungan man power')
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Hasil interview dengan kabag Production'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(11)),
+                  DataCell(buildTextButtonRemark(11)),
+                  DataCell(Text('12.4.12')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah perhitungan tersebut sesuai dengan target KPI (durasi pekerjaan), dan Roster (include cuti) ? '),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Kabag Production'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Interview dengan kabag Production terkait perhitungan man power apakah sesuai dengan target KPI dan Roster'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Hasil interview dengan kabag Production'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(12)),
+                  DataCell(buildTextButtonRemark(12)),
+                  DataCell(Text('12.4.13')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah personel yang ada memiliki kompetensi sesuai dengan pekerjaan yang dilakukan?'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Kabag Production'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah setiap personel memiliki kompetensi sesuai dengan pekerjaan yang dilakukan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('List kompetensi'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(13)),
+                  DataCell(buildTextButtonRemark(13)),
+                  DataCell(Text('12.4.14')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah apakah personel dalam setiap jabatan dan fungsi sudah mendapatkan pelatihan sesuai dengan pekerjaan yang dilakukan?  '),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Kabag Production'),
+                            Text(''),
+                            Text('- Kabag Development'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah setiap jabatan mendapatkan pelatihan sesuai dengan pekerjaan yang dilakukan'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Jadwal training tahunan'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
                 ],
               ),
             ],

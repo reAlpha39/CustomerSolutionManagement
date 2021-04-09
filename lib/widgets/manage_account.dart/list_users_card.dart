@@ -103,56 +103,26 @@ class ListUsersCard extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
+              padding: const EdgeInsets.only(left: 8, right: 8, bottom: 20),
               child: Text('Apa yang ingin anda lakukan dengan akun ' +
-                  "${user.username}?"),
+                  "${user.username}?\n(Tekan area diluar kotak untuk kembali.)"),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12, right: 12, top: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all<double>(0),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(17),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      Get.back();
-                      controller.displayDataToCard(user);
-                    },
-                    child: Container(
-                      width: 80,
-                      child: Center(
-                        child: Text('Update'),
-                      ),
-                    ),
+            ElevatedButton(
+              style: ButtonStyle(
+                elevation: MaterialStateProperty.all<double>(0),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(17),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      elevation: MaterialStateProperty.all<double>(0),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(17),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      Get.back();
-                      controller.deleteAccount(user.username);
-                    },
-                    child: Container(
-                      width: 80,
-                      child: Center(
-                        child: Text('Delete'),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
+              ),
+              onPressed: () {
+                Get.back();
+                controller.displayDataToCard(user);
+              },
+              child: Container(
+                width: 200,
+                child: Center(child: Text('Update')),
               ),
             ),
             ElevatedButton(
@@ -164,10 +134,13 @@ class ListUsersCard extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+                controller.deleteAccount(user.username);
+              },
               child: Container(
                 width: 200,
-                child: Center(child: Text('Kembali')),
+                child: Center(child: Text('Delete')),
               ),
             ),
           ],

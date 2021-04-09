@@ -28,9 +28,11 @@ class CustomerAccount extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Manage Customer Account',
-                        style: TextStyle(fontSize: 16),
+                      Flexible(
+                        child: Text(
+                          'Manage Customer Account',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                       ConstrainedBox(
                         constraints:

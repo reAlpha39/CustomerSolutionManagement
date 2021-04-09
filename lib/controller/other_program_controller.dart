@@ -33,7 +33,7 @@ class OtherProgramController extends GetxController {
   RxList<String> textFieldPV = RxList.filled(3, "");
   RxList<String> textFieldMTDT = RxList.filled(4, "");
   RxList<String> textFieldEV = RxList.filled(4, "");
-  RxList<String> textFieldRM = RxList.filled(3, "");
+  RxList<String> textFieldRM = RxList.filled(9, "");
 
   Map<int, String> radioData = {
     0: 'Yes',

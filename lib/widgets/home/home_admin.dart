@@ -1,4 +1,3 @@
-import 'package:customer/widgets/home/customer_account.dart';
 import 'package:customer/widgets/home/home_card.dart';
 import 'package:customer/widgets/home/home_card_expanded.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,11 @@ class HomeAdmin extends StatelessWidget {
           imageAsset: 'assets/images/other_program.png',
           titleText: "Other Program",
         ),
-        CustomerAccount(),
+        HomeCard(
+          route: '/manage_account',
+          imageAsset: 'assets/images/service_program.png',
+          titleText: "Manage Customer Account",
+        ),
       ],
     );
   }

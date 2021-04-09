@@ -122,20 +122,31 @@ class ExpandedMtdvData extends StatelessWidget {
                 cells: [
                   DataCell(buildTextButtonAssessment(0)),
                   DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
+                  DataCell(Text('13.2.1')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah terdapat penawaran dari vendor yang terpilih atau vendor baru?'),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('SPV/GL'),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
                   )),
                   DataCell(
                     SingleChildScrollView(
@@ -145,56 +156,57 @@ class ExpandedMtdvData extends StatelessWidget {
                           width: 160,
                           child: Column(
                             children: [
-                              Text(
-                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                              Text(''),
-                              Text(
-                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                              Text(''),
-                              Text(
-                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
+                              Text('Melihat apakah ada penawaran dari vendor'),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  DataCell(
-                    Padding(
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 7, bottom: 7),
                       child: Container(
-                        width: 110,
+                        width: 160,
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('- Meeting Record'),
-                            Text(''),
-                            Text('- Dokumen PI')
+                            Text('Penawaran vendor'),
                           ],
                         ),
                       ),
                     ),
-                  ),
+                  )),
                 ],
               ),
               DataRow(
                 cells: [
                   DataCell(buildTextButtonAssessment(1)),
                   DataCell(buildTextButtonRemark(1)),
-                  DataCell(Text('1.1.2.2')),
+                  DataCell(Text('13.2.2')),
                   DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Check apakah setiap unit yang di inspeksi di konfirmasi ke radio room untuk dicatatkan down unitnya dan kebutuhan alat suppornya ?'),
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Apakah sudah ada dokumen Quality Control dan surat Warranty Repair atas pekerjaan-pekerjaan vendor'),
+                        ),
                       ),
                     ),
                   ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('Team PI'),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
                   )),
                   DataCell(
                     SingleChildScrollView(
@@ -205,25 +217,150 @@ class ExpandedMtdvData extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                  '- Melihat apakah ada Log Book khusus radioman'),
-                              Text(''),
-                              Text(
-                                  '- Melihat apakah setiap unit yang dilakukan PI dilakukan konfirmasi ke radioman untuk dicatat kebutuhan alat support dan waktu downnya di Log Book'),
-                              Text(''),
-                              Text(
-                                  '- Interview mekanik dan radioman terkait konfirmasi unit yang akan PI dan pencatatannya di Log Book')
+                                  'Melihat apakah ada dokumen QC dan surat warranty repair untuk semua pekerjaan dari vendor'),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  DataCell(
-                    Padding(
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
                       padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('Log Book Radioman'),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('- Dokumen QC'),
+                            Text(''),
+                            Text('- Surat Warranty Repair'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(2)),
+                  DataCell(buildTextButtonRemark(2)),
+                  DataCell(Text('13.2.3')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah terdapat dokumen proses transaksi yang ditujukan ke vendor?'),
+                        ),
+                      ),
                     ),
                   ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah ada dokumen transaksi yang ditujukan ke veendor'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Dokumen transaksi ke vendor (PO)'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(buildTextButtonAssessment(3)),
+                  DataCell(buildTextButtonRemark(3)),
+                  DataCell(Text('13.2.4')),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Text(
+                              'Cek apakah terdapat bukti penerimaan barang'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Purchasing'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
+                  DataCell(
+                    SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 7, bottom: 7),
+                        child: Container(
+                          width: 160,
+                          child: Column(
+                            children: [
+                              Text(
+                                  'Melihat apakah ada bukti serah terima barang'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  DataCell(SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 7, bottom: 7),
+                      child: Container(
+                        width: 160,
+                        child: Column(
+                          children: [
+                            Text('Dokumen serah terima barang'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )),
                 ],
               ),
             ],

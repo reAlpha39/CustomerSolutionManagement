@@ -1,6 +1,8 @@
 import 'package:customer/controller/manage_account_controller.dart';
+import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/login/login_text_field.dart';
 import 'package:customer/widgets/manage_account.dart/radio_account_type.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -75,24 +77,55 @@ class CreateAccount extends StatelessWidget {
                       border: Border.all(width: 1, color: Colors.black38),
                       borderRadius: BorderRadius.circular(17),
                     ),
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 45, bottom: 5),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Tipe akun',
-                              style: TextStyle(
-                                  fontSize: 16, color: Colors.black54),
+                    padding: EdgeInsets.only(
+                        top: 10, bottom: 10, left: 10, right: 10),
+                    child: ExpandableNotifier(
+                      child: ScrollOnExpand(
+                        child: ExpandablePanel(
+                          theme: const ExpandableThemeData(
+                              headerAlignment:
+                                  ExpandablePanelHeaderAlignment.center,
+                              tapBodyToExpand: true,
+                              tapBodyToCollapse: true,
+                              hasIcon: true,
+                              iconPlacement:
+                                  ExpandablePanelIconPlacement.right),
+                          header: Padding(
+                            padding: const EdgeInsets.only(left: 1),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.app_registration,
+                                    color: Colors.black45,
+                                  ),
+                                  Flexible(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Text(
+                                        'Tipe akun',
+                                        overflow: TextOverflow.fade,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black54),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          collapsed: Container(),
+                          expanded: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 10, right: 10),
+                            child: RadioAccount(
+                              data: ['Admin', 'Internal', 'Customer'],
                             ),
                           ),
                         ),
-                        RadioAccount(
-                          data: ['Admin', 'Internal', 'Customer'],
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),

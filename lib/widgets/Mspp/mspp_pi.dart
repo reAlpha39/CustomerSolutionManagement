@@ -2,6 +2,7 @@ import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/Mspp/mspp_card/mspp_card_asses.dart';
 import 'package:customer/widgets/Mspp/mspp_card/mspp_card_meet.dart';
 import 'package:customer/widgets/Mspp/mspp_card/mspp_card_plan_unit.dart';
+import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
 import 'package:flutter/material.dart';
 
 class MsppPi extends StatefulWidget {
@@ -23,6 +24,7 @@ class _MsppPiState extends State<MsppPi> with AutomaticKeepAliveClientMixin {
         physics: ClampingScrollPhysics(),
         child: Column(
           children: [
+            MsppFillHelper(),
             MsppCardPlanUnit(),
             MsppCardMeet(),
             MsppCardAsses(),

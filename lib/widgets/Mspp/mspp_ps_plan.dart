@@ -4,6 +4,7 @@ import 'package:customer/widgets/Mspp/mspp_card/mspp_card_bsps.dart';
 import 'package:customer/widgets/Mspp/mspp_card/mspp_card_ccd.dart';
 import 'package:customer/widgets/Mspp/mspp_card/mspp_card_rcps.dart';
 import 'package:customer/widgets/mspp/mspp_card/mspp_card_opp.dart';
+import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
 import 'package:flutter/material.dart';
 
 class MsppPsPlan extends StatefulWidget {
@@ -22,6 +23,7 @@ class _MsppPsPlanState extends State<MsppPsPlan>
         physics: ClampingScrollPhysics(),
         child: Column(
           children: [
+            MsppFillHelper(),
             MsppCardCcd(),
             MsppCardOpp(),
             MsppCardBsps(),

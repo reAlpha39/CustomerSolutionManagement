@@ -1,6 +1,7 @@
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/mspp/mspp_card/mspp_card_field.dart';
 import 'package:customer/widgets/mspp/mspp_card/mspp_card_workshop.dart';
+import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
 import 'package:flutter/material.dart';
 
 class MsppInfras extends StatefulWidget {
@@ -19,6 +20,7 @@ class _MsppPsPlanState extends State<MsppInfras>
         physics: ClampingScrollPhysics(),
         child: Column(
           children: [
+            MsppFillHelper(),
             MsppCardField(),
             MsppCardWorkshop(),
           ],

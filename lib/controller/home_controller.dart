@@ -10,6 +10,7 @@ class HomeController extends GetxController {
 
   RxString msppPage = ''.obs;
   Widget userView;
+  String iconUser = '';
 
   @override
   void onInit() {
@@ -24,15 +25,18 @@ class HomeController extends GetxController {
         //command here
         userView = HomeAdmin();
         msppPage.value = '/mspp_admin';
+        iconUser = 'assets/images/icon_admin.png';
         break;
       case 'internal':
         //command here
         userView = HomeInternal();
+        iconUser = 'assets/images/icon_tc.png';
         break;
       case 'customer':
         //command here
         userView = HomeCustomer();
         msppPage.value = '/mspp';
+        iconUser = 'assets/images/icon_customer.png';
         break;
       default:
         //command unknown

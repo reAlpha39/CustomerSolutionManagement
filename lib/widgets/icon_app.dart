@@ -1,6 +1,9 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class IconApp extends StatelessWidget {
+  final HomeController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -9,7 +12,12 @@ class IconApp extends StatelessWidget {
         height: 65,
         width: 65,
         decoration: BoxDecoration(
-            shape: BoxShape.circle, color: Colors.yellowAccent[400]),
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: AssetImage(controller.iconUser),
+            fit: BoxFit.cover,
+          ),
+        ),
       ),
     );
   }

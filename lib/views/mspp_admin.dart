@@ -176,9 +176,12 @@ class MsppAdmin extends StatelessWidget {
       title: 'Pilih customer',
       content: Align(
         alignment: Alignment.center,
-        child: ConstrainedBox(
-            constraints: BoxConstraints.tight(Size(300, 400)),
-            child: ListCustomer()),
+        child: Container(
+          height: Get.context.isLandscape ? Get.height / 3 : Get.height / 2,
+          constraints:
+              BoxConstraints(minHeight: 100, minWidth: 250, maxWidth: 250),
+          child: ListCustomer(),
+        ),
       ),
       confirm: ElevatedButton(
         style: ButtonStyle(
@@ -205,36 +208,32 @@ class ListCustomer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.center,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-            minHeight: 400, maxHeight: 400, minWidth: 250, maxWidth: 250),
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: msppAdminController.listCustomer.length,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                ListTile(
-                  title: Text('${msppAdminController.listCustomer[index]}'),
-                  onTap: () {
-                    msppAdminController.idCustomer.value =
-                        msppAdminController.listCustomer[index];
-                    msppController.loadData(
-                        username: msppAdminController.idCustomer.value);
-                    Get.back(closeOverlays: false);
-                  },
-                ),
-                index != msppAdminController.listCustomer.length - 1
-                    ? Divider(
-                        height: 3,
-                        color: Colors.black45,
-                      )
-                    : Container(),
-              ],
-            );
-          },
-        ),
+      alignment: Alignment.topCenter,
+      child: ListView.builder(
+        // shrinkWrap: true,
+        itemCount: msppAdminController.listCustomer.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              ListTile(
+                title: Text('${msppAdminController.listCustomer[index]}'),
+                onTap: () {
+                  msppAdminController.idCustomer.value =
+                      msppAdminController.listCustomer[index];
+                  msppController.loadData(
+                      username: msppAdminController.idCustomer.value);
+                  Get.back(closeOverlays: false);
+                },
+              ),
+              index != msppAdminController.listCustomer.length - 1
+                  ? Divider(
+                      height: 3,
+                      color: Colors.black45,
+                    )
+                  : Container(),
+            ],
+          );
+        },
       ),
     );
   }

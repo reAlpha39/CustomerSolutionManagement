@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/models/audit_table_data.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/other_program.dart';
 import 'package:customer/models/support_ut.dart';
@@ -196,6 +197,19 @@ class DatabaseProvider {
       }
     });
     return list;
+  }
+
+  Future<AuditTableData> auditDataTable(
+      {String docA, String collectionA, String docB}) async {
+    AuditTableData tableData = AuditTableData();
+    try {
+      firestore = FirebaseFirestore.instance;
+      CollectionReference collection = firestore.collection('checklist_audit');
+      DocumentSnapshot data =
+          await collection.doc(docA).collection(collectionA).doc(docB).get();
+      tableData = AuditTableData.fromMap(data.data());
+    } on Exception catch (e) {}
+    return tableData;
   }
 
   //menampilkan dialog

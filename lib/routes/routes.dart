@@ -1,4 +1,5 @@
 import 'package:customer/routes/customer_info_binding.dart';
+import 'package:customer/routes/data_table_binding.dart';
 import 'package:customer/routes/home_binding.dart';
 import 'package:customer/routes/login_binding.dart';
 import 'package:customer/routes/manage_account_binding.dart';
@@ -36,7 +37,10 @@ class Routes {
     GetPage(
       name: '/mspp',
       page: () => Mspp(),
-      binding: MsppBinding(),
+      bindings: [
+        MsppBinding(),
+        DataTableBinding(),
+      ],
     ),
     GetPage(
       name: '/mspp_admin',

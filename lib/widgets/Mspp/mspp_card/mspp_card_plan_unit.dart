@@ -1,3 +1,4 @@
+import 'package:customer/controller/data_table_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/Mspp/mspp_result.dart';
 import 'package:customer/widgets/Mspp/mspp_text_field.dart';
@@ -43,6 +44,7 @@ class MsppCardPlanUnit extends StatelessWidget {
 
 class ExpandedPlanUnitData extends StatelessWidget {
   final MsppController controller = Get.find();
+  final DataTableController dtController = Get.find();
 
   Future<bool> resultRadio({int index}) {
     return Get.defaultDialog(
@@ -101,211 +103,80 @@ class ExpandedPlanUnitData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    dtController.loadDataTable(
+      docA: 'mspp',
+      colA: 'periodic_inspection',
+      docB: 'plan_unit',
+    );
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Scrollbar(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: DataTable(
-            dataRowHeight: 100,
-            columns: [
-              DataColumn(label: Text('Assessment Result 1')),
-              DataColumn(label: Text('Remark')),
-              DataColumn(label: Text('No. Klausul')),
-              DataColumn(label: Text('Deskripsi')),
-              DataColumn(label: Text('PIC')),
-              DataColumn(label: Text('Guidance')),
-              DataColumn(label: Text('Objective Evidence')),
-            ],
-            rows: [
-              DataRow(
-                cells: [
-                  DataCell(buildTextButtonAssessment(0)),
-                  DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.1.1.a')),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah ada jadwal periodik inspeksi  atas seluruh unit yang dioperasikan ?'),
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      child: Obx(
+        () => dtController.auditTableData.value.id == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Scrollbar(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
+                    dataRowHeight: 100,
+                    columns: [
+                      DataColumn(label: Text('Assessment Result 1')),
+                      DataColumn(label: Text('Remark')),
+                      DataColumn(label: Text('No. Klausul')),
+                      DataColumn(label: Text('Deskripsi')),
+                      DataColumn(label: Text('PIC')),
+                      DataColumn(label: Text('Guidance')),
+                      DataColumn(label: Text('Objective Evidence')),
+                    ],
+                    rows: List<DataRow>.generate(
+                      dtController.auditTableData.value.id.length,
+                      (index) => DataRow(
+                        cells: [
+                          DataCell(buildTextButtonAssessment(
+                              dtController.auditTableData.value.id[index])),
+                          DataCell(buildTextButtonRemark(
+                              dtController.auditTableData.value.id[index])),
+                          DataCell(Text(
+                              '${dtController.auditTableData.value.noKlause[index]}')),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Container(
+                                width: 160,
+                                child: Text(
+                                    '${dtController.auditTableData.value.description[index]}'),
+                              ),
+                            ),
+                          ),
+                          DataCell(Padding(
+                            padding: const EdgeInsets.only(top: 7, bottom: 7),
+                            child: Text(
+                                '${dtController.auditTableData.value.pic[index]}'),
+                          )),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Container(
+                                width: 160,
+                                child: Text(
+                                    '${dtController.auditTableData.value.guidance[index]}'),
+                              ),
+                            ),
+                          ),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Text(
+                                  '${dtController.auditTableData.value.objectiveEvidence[index]}'),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('Planner'),
-                  )),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Melihat apakah jadwal Periodic Inspection dibuat'),
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('File Planning PI'),
-                    ),
-                  ),
-                ],
+                ),
               ),
-              DataRow(
-                cells: [
-                  DataCell(buildTextButtonAssessment(1)),
-                  DataCell(buildTextButtonRemark(1)),
-                  DataCell(Text('1.1.1.1.b')),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  jadwal periodik inspeksi selalu diupdate berdasarkan pencapaian periodik inspection sebelumnya ?'),
-                      ),
-                    ),
-                  ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('Planner'),
-                  )),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Melihat apakah pencapaian PI selalu di update'),
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('File Planning PI'),
-                    ),
-                  ),
-                ],
-              ),
-              DataRow(
-                cells: [
-                  DataCell(buildTextButtonAssessment(2)),
-                  DataCell(buildTextButtonRemark(2)),
-                  DataCell(Text('1.1.1.2')),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  hasil periodik inspeksi  dilakukan review di setiap akhir shift?'),
-                      ),
-                    ),
-                  ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('SPV/GL'),
-                  )),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Melihat apakah hasil PI dilakukan review setiap akhir shift'),
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('Absensi review meeting'),
-                    ),
-                  ),
-                ],
-              ),
-              DataRow(
-                cells: [
-                  DataCell(buildTextButtonAssessment(3)),
-                  DataCell(buildTextButtonRemark(3)),
-                  DataCell(Text('1.1.1.3.a')),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Check apakah setiap pekerjaan periodik inspection ada dilengkapi dengan Surat Perintah Kerja (WO) ?'),
-                      ),
-                    ),
-                  ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('Planner'),
-                  )),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Melihat apakah WO dibuat sesuai dengan plan PI'),
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('Dokumen WO untuk PI'),
-                    ),
-                  ),
-                ],
-              ),
-              DataRow(
-                cells: [
-                  DataCell(buildTextButtonAssessment(4)),
-                  DataCell(buildTextButtonRemark(4)),
-                  DataCell(Text('1.1.1.3.b')),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Check apakah Surat Perintah Kerja (WO) pekerjaan Periodik Inspeksi dibuat sebelum pelaksanaan inspection ?'),
-                      ),
-                    ),
-                  ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom: 7),
-                    child: Text('Planner'),
-                  )),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Melihat apakah WO untuk PI dibuat sebelum pelaksanaan'),
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom: 7),
-                      child: Text('Tanggal dokumen WO untuk PI'),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

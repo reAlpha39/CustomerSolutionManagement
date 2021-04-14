@@ -1,3 +1,4 @@
+import 'package:customer/controller/data_table_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/Mspp/mspp_result.dart';
 import 'package:customer/widgets/Mspp/mspp_text_field.dart';
@@ -43,6 +44,7 @@ class MsppCardMeet extends StatelessWidget {
 
 class ExpandedMeetData extends StatelessWidget {
   final MsppController controller = Get.find();
+  final DataTableController dtController = Get.find();
 
   Future<bool> resultRadio({int index}) {
     return Get.defaultDialog(
@@ -101,134 +103,80 @@ class ExpandedMeetData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    dtController.loadDataTable(
+      docA: 'mspp',
+      colA: 'periodic_inspection',
+      docB: 'meet',
+    );
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: Scrollbar(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: DataTable(
-            dataRowHeight: 100,
-            columns: [
-              DataColumn(label: Text('Assessment Result 1')),
-              DataColumn(label: Text('Remark')),
-              DataColumn(label: Text('No. Klausul')),
-              DataColumn(label: Text('Deskripsi')),
-              DataColumn(label: Text('PIC')),
-              DataColumn(label: Text('Guidance')),
-              DataColumn(label: Text('Objective Evidence')),
-            ],
-            rows: [
-              DataRow(
-                cells: [
-                  DataCell(buildTextButtonAssessment(0)),
-                  DataCell(buildTextButtonRemark(0)),
-                  DataCell(Text('1.1.2.1')),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Cek apakah  briefing di awal shift dilakukan sebelum melakukan inspeksi ?'),
-                      ),
-                    ),
-                  ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
-                    child: Text('SPV/GL'),
-                  )),
-                  DataCell(
-                    SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
-                        child: Container(
-                          width: 160,
-                          child: Column(
-                            children: [
-                              Text(
-                                  '- Memastikan Agenda PI briefing sudah dibuat di meeting record sesuai dengan agenda'),
-                              Text(''),
-                              Text(
-                                  '- Melihat daftar absensi di meeting record apakah diisi dan di tanda tangani oleh peserta yang hadir'),
-                              Text(''),
-                              Text(
-                                  '- Memastikan apakah dokumen PI diserahkan kepada mekanik setelah briefing awal shift')
-                            ],
+      child: Obx(
+        () => dtController.auditTableData.value.id == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Scrollbar(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
+                    dataRowHeight: 100,
+                    columns: [
+                      DataColumn(label: Text('Assessment Result 1')),
+                      DataColumn(label: Text('Remark')),
+                      DataColumn(label: Text('No. Klausul')),
+                      DataColumn(label: Text('Deskripsi')),
+                      DataColumn(label: Text('PIC')),
+                      DataColumn(label: Text('Guidance')),
+                      DataColumn(label: Text('Objective Evidence')),
+                    ],
+                    rows: List<DataRow>.generate(
+                      dtController.auditTableData.value.id.length,
+                      (index) => DataRow(
+                        cells: [
+                          DataCell(buildTextButtonAssessment(
+                              dtController.auditTableData.value.id[index])),
+                          DataCell(buildTextButtonRemark(
+                              dtController.auditTableData.value.id[index])),
+                          DataCell(Text(
+                              '${dtController.auditTableData.value.noKlause[index]}')),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Container(
+                                width: 160,
+                                child: Text(
+                                    '${dtController.auditTableData.value.description[index]}'),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 110,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('- Meeting Record'),
-                            Text(''),
-                            Text('- Dokumen PI')
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              DataRow(
-                cells: [
-                  DataCell(buildTextButtonAssessment(1)),
-                  DataCell(buildTextButtonRemark(1)),
-                  DataCell(Text('1.1.2.2')),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Container(
-                        width: 160,
-                        child: Text(
-                            'Check apakah setiap unit yang di inspeksi di konfirmasi ke radio room untuk dicatatkan down unitnya dan kebutuhan alat suppornya ?'),
-                      ),
-                    ),
-                  ),
-                  DataCell(Padding(
-                    padding: const EdgeInsets.only(top: 7, bottom:7),
-                    child: Text('Team PI'),
-                  )),
-                  DataCell(
-                    SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 7, bottom:7),
-                        child: Container(
-                          width: 160,
-                          child: Column(
-                            children: [
-                              Text(
-                                  '- Melihat apakah ada Log Book khusus radioman'),
-                              Text(''),
-                              Text(
-                                  '- Melihat apakah setiap unit yang dilakukan PI dilakukan konfirmasi ke radioman untuk dicatat kebutuhan alat support dan waktu downnya di Log Book'),
-                              Text(''),
-                              Text(
-                                  '- Interview mekanik dan radioman terkait konfirmasi unit yang akan PI dan pencatatannya di Log Book')
-                            ],
+                          DataCell(Padding(
+                            padding: const EdgeInsets.only(top: 7, bottom: 7),
+                            child: Text(
+                                '${dtController.auditTableData.value.pic[index]}'),
+                          )),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Container(
+                                width: 160,
+                                child: Text(
+                                    '${dtController.auditTableData.value.guidance[index]}'),
+                              ),
+                            ),
                           ),
-                        ),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Text(
+                                  '${dtController.auditTableData.value.objectiveEvidence[index]}'),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  DataCell(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7, bottom:7),
-                      child: Text('Log Book Radioman'),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ],
-          ),
-        ),
       ),
     );
   }

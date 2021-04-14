@@ -73,7 +73,10 @@ class Routes {
     GetPage(
       name: '/part_program',
       page: () => PartProgramPage(),
-      binding: PartProgramBinding(),
+      bindings: [
+        PartProgramBinding(),
+        DataTableBinding(),
+      ],
     ),
   ];
 }

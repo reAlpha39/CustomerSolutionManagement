@@ -1,3 +1,4 @@
+import 'package:customer/widgets/part_program/part_kp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +29,7 @@ class PartProgramPage extends StatelessWidget {
         body: TabBarView(
           children: [
             Container(),
-            Container(),
+            PartKp(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

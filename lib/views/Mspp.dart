@@ -1,7 +1,7 @@
 import 'package:customer/controller/mspp_controller.dart';
-import 'package:customer/widgets/Mspp/mspp_pi.dart';
-import 'package:customer/widgets/Mspp/mspp_ps.dart';
-import 'package:customer/widgets/Mspp/mspp_ps_plan.dart';
+import 'package:customer/widgets/mspp/mspp_pi.dart';
+import 'package:customer/widgets/mspp/mspp_ps.dart';
+import 'package:customer/widgets/mspp/mspp_ps_plan.dart';
 import 'package:customer/widgets/mspp/mspp_infras.dart';
 import 'package:customer/widgets/mspp/mspp_om.dart';
 import 'package:customer/widgets/mspp/mspp_os.dart';

@@ -1,6 +1,6 @@
 import 'package:customer/controller/part_program_controller.dart';
-import 'package:customer/widgets/other_program/other_result.dart';
-import 'package:customer/widgets/other_program/other_text_field.dart';
+import 'package:customer/widgets/part_program/part_result.dart';
+import 'package:customer/widgets/part_program/part_text_field.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -49,7 +49,7 @@ class ExpandedKpData extends StatelessWidget {
         barrierDismissible: false,
         radius: 17,
         title: 'Pilih salah satu',
-        content: (OtherResult(
+        content: (PartResult(
           data: ['Yes', 'No', 'N/A'],
           index: index,
           id: 'kp',
@@ -65,7 +65,7 @@ class ExpandedKpData extends StatelessWidget {
         barrierDismissible: false,
         radius: 17,
         title: 'Remark',
-        content: OtherTextField(),
+        content: PartTextField(),
         textConfirm: 'OK',
         buttonColor: Color(0xffffcd29),
         confirmTextColor: Colors.black87,

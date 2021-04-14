@@ -1,4 +1,3 @@
-import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/models/audit_table_data.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
@@ -6,7 +5,6 @@ import 'package:get/get.dart';
 
 class DataTableController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
-  final MsppController controller = Get.find();
 
   Rx<AuditTableData> auditTableData = AuditTableData().obs;
   RxBool isLoading = false.obs;
@@ -16,7 +14,7 @@ class DataTableController extends GetxController {
       String colA,
       String docB,
       bool filter = false,
-      String idRadio,
+      RxList<int> listRadio,
       int radioIndex}) {
     isLoading.value = true;
     connectivityChecker().then((conn) {
@@ -25,7 +23,7 @@ class DataTableController extends GetxController {
             .auditDataTable(docA: docA, collectionA: colA, docB: docB)
             .then((value) {
           if (filter) {
-            filterTable(data: value, id: idRadio, radioIndex: radioIndex);
+            filterTable(data: value, radioIndex: radioIndex, listRadio: listRadio);
           } else {
             auditTableData.value = value;
             auditTableData.refresh();
@@ -38,7 +36,8 @@ class DataTableController extends GetxController {
     }).timeout(Duration(seconds: 20));
   }
 
-  filterTable({AuditTableData data, String id, int radioIndex}) {
+  filterTable(
+      {AuditTableData data, int radioIndex, RxList<int> listRadio}) {
     isLoading.value = true;
     AuditTableData tableData = AuditTableData();
     tableData.description = [];
@@ -47,11 +46,10 @@ class DataTableController extends GetxController {
     tableData.noKlause = [];
     tableData.objectiveEvidence = [];
     tableData.pic = [];
-    controller.radioIndexPI(id).refresh();
 
-    if (controller.radioIndexPI(id) != null) {
-      for (int i = 0; i <= controller.radioIndexPI(id).length - 1; i++) {
-        if (controller.radioIndexPI(id)[i] == radioIndex) {
+    if (listRadio != null) {
+      for (int i = 0; i <= listRadio.length - 1; i++) {
+        if (listRadio[i] == radioIndex) {
           tableData.description.add(data.description[i]);
           tableData.guidance.add(data.guidance[i]);
           tableData.id.add(data.id[i]);

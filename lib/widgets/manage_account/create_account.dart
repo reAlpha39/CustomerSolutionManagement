@@ -1,7 +1,7 @@
 import 'package:customer/controller/manage_account_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/login/login_text_field.dart';
-import 'package:customer/widgets/manage_account.dart/radio_account_type.dart';
+import 'package:customer/widgets/manage_account/radio_account_type.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

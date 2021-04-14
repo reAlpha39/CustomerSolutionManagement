@@ -1,7 +1,7 @@
 import 'package:customer/controller/manage_account_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/manage_account.dart/create_account.dart';
-import 'package:customer/widgets/manage_account.dart/list_users_card.dart';
+import 'package:customer/widgets/manage_account/create_account.dart';
+import 'package:customer/widgets/manage_account/list_users_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';

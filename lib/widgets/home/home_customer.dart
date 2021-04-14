@@ -23,6 +23,11 @@ class HomeCustomer extends StatelessWidget {
           imageAsset: 'assets/images/other_program.png',
           titleText: "Other Program",
         ),
+        HomeCard(
+          route: '/pica_page',
+          imageAsset: 'assets/images/other_program.png',
+          titleText: "Pica Analysis",
+        ),
       ],
     );
   }

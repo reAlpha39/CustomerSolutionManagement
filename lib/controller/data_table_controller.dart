@@ -25,13 +25,7 @@ class DataTableController extends GetxController {
             .auditDataTable(docA: docA, collectionA: colA, docB: docB)
             .then((value) {
           if (filter) {
-            filterTable(
-                data: value,
-                docA: docA,
-                colA: colA,
-                docB: docB,
-                id: idRadio,
-                radioIndex: radioIndex);
+            filterTable(data: value, id: idRadio, radioIndex: radioIndex);
           } else {
             auditTableData.value = value;
             auditTableData.refresh();
@@ -44,13 +38,7 @@ class DataTableController extends GetxController {
     }).timeout(Duration(seconds: 20));
   }
 
-  filterTable(
-      {AuditTableData data,
-      String docA,
-      String colA,
-      String docB,
-      String id,
-      int radioIndex}) {
+  filterTable({AuditTableData data, String id, int radioIndex}) {
     isLoading.value = true;
     AuditTableData tableData = AuditTableData();
     tableData.description = [];

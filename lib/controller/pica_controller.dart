@@ -28,11 +28,37 @@ class PicaController extends GetxController {
   RxList<int> indexRM = RxList<int>();
   RxList<int> indexCO = RxList<int>();
 
+  RxMap<int, RxList<int>> listIndex;
+
   RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
+  }
+
+  listedIndex() {
+    listIndex = {
+      0: indexPI,
+      1: indexPSP,
+      2: indexPS,
+      3: indexOVHP,
+      4: indexOVH,
+      5: indexUSC,
+      6: indexTOOLS,
+      7: indexCBM,
+      8: indexINFRAS,
+      9: indexPEOPLE,
+      10: indexIW,
+      11: indexVM,
+      12: indexAE,
+      13: indexMR,
+      14: indexOM,
+      15: indexOP,
+      16: indexOS,
+      17: indexRM,
+      18: indexCO,
+    }.obs;
   }
 
   scorePica(List<int> list) {
@@ -46,7 +72,6 @@ class PicaController extends GetxController {
     if (percentage.isNaN) {
       percentage = 0.1;
     }
-    print('percent:' + percentage.toString() + '%');
     return percentage;
   }
 

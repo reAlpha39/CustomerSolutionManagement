@@ -36,11 +36,11 @@ class PicaController extends GetxController {
   void onInit() {
     _mspp.loadData(username: _loginController.usr.value.username);
     _other.loadOtherProgram(username: _loginController.usr.value.username);
-    sumAll();
+    combineList();
     super.onInit();
   }
 
-  sumAll() {
+  combineList() {
     indexPI = _mspp.radioIndexPU + _mspp.radioIndexMeet + _mspp.radioIndexAsses;
     indexPSP = _mspp.radioIndexCCD +
         _mspp.radioIndexOPPSP +

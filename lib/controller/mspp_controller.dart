@@ -27,10 +27,33 @@ class MsppController extends GetxController {
   RxList<int> radioIndexHPTD = RxList.filled(5, -1);
   RxList<int> radioIndexEDS = RxList.filled(3, -1);
   RxList<int> radioIndexRPLL = RxList.filled(2, -1);
+  RxList<int> radioIndexCCCD = RxList.filled(7, -1);
+  RxList<int> radioIndexOPOP = RxList.filled(2, -1);
+  RxList<int> radioIndexBSOP = RxList.filled(4, -1);
+  RxList<int> radioIndexRCOP = RxList.filled(8, -1);
+  RxList<int> radioIndexAME = RxList.filled(3, -1);
+  RxList<int> radioIndexPL = RxList.filled(1, -1);
+  RxList<int> radioIndexAR = RxList.filled(4, -1);
+  RxList<int> radioIndexNT = RxList.filled(2, -1);
+  RxList<int> radioIndexTR = RxList.filled(13, -1);
+  RxList<int> radioIndexHPS = RxList.filled(1, -1);
+  RxList<int> radioIndexEJ = RxList.filled(6, -1);
+  RxList<int> radioIndexRE = RxList.filled(2, -1);
+  RxList<int> radioIndexTO = RxList.filled(4, -1);
+  RxList<int> radioIndexIUIP = RxList.filled(8, -1);
+  RxList<int> radioIndexGAR = RxList.filled(3, -1);
+  RxList<int> radioIndexEDR = RxList.filled(2, -1);
+  RxList<int> radioIndexRJ = RxList.filled(3, -1);
   RxList<int> radioIndexCTST = RxList.filled(8, -1);
   RxList<int> radioIndexMTDT = RxList.filled(1, -1);
+  RxList<int> radioIndexPLCBM = RxList.filled(5, -1);
+  RxList<int> radioIndexARCBM = RxList.filled(5, -1);
+  RxList<int> radioIndexTACBM = RxList.filled(6, -1);
+  RxList<int> radioIndexEVCBM = RxList.filled(1, -1);
   RxList<int> radioIndexFIELD = RxList.filled(14, -1);
   RxList<int> radioIndexWORKSHOP = RxList.filled(26, -1);
+  RxList<int> radioIndexAEA = RxList.filled(4, -1);
+  RxList<int> radioIndexAEB = RxList.filled(4, -1);
   RxList<int> radioIndexKM = RxList.filled(4, -1);
   RxList<int> radioIndexLTPP = RxList.filled(4, -1);
 
@@ -50,10 +73,33 @@ class MsppController extends GetxController {
   RxList<String> textFieldHPTD = RxList.filled(5, "");
   RxList<String> textFieldEDS = RxList.filled(3, "");
   RxList<String> textFieldRPLL = RxList.filled(2, "");
+  RxList<String> textFieldCCCD = RxList.filled(7, "");
+  RxList<String> textFieldOPOP = RxList.filled(2, "");
+  RxList<String> textFieldBSOP = RxList.filled(4, "");
+  RxList<String> textFieldRCOP = RxList.filled(8, "");
+  RxList<String> textFieldAME = RxList.filled(3, "");
+  RxList<String> textFieldPL = RxList.filled(1, "");
+  RxList<String> textFieldAR = RxList.filled(4, "");
+  RxList<String> textFieldNT = RxList.filled(2, "");
+  RxList<String> textFieldTR = RxList.filled(13, "");
+  RxList<String> textFieldHPS = RxList.filled(1, "");
+  RxList<String> textFieldEJ = RxList.filled(6, "");
+  RxList<String> textFieldRE = RxList.filled(2, "");
+  RxList<String> textFieldTO = RxList.filled(4, "");
+  RxList<String> textFieldIUIP = RxList.filled(8, "");
+  RxList<String> textFieldGAR = RxList.filled(3, "");
+  RxList<String> textFieldEDR = RxList.filled(2, "");
+  RxList<String> textFieldRJ = RxList.filled(3, "");
   RxList<String> textFieldCTST = RxList.filled(8, "");
   RxList<String> textFieldMTDT = RxList.filled(1, "");
+  RxList<String> textFieldPLCBM = RxList.filled(5, "");
+  RxList<String> textFieldARCBM = RxList.filled(5, "");
+  RxList<String> textFieldTACBM = RxList.filled(6, "");
+  RxList<String> textFieldEVCBM = RxList.filled(1, "");
   RxList<String> textFieldFIELD = RxList.filled(14, "");
   RxList<String> textFieldWORKSHOP = RxList.filled(26, "");
+  RxList<String> textFieldAEA = RxList.filled(4, "");
+  RxList<String> textFieldAEB = RxList.filled(4, "");
   RxList<String> textFieldKM = RxList.filled(4, "");
   RxList<String> textFieldLTPP = RxList.filled(4, "");
 
@@ -127,6 +173,36 @@ class MsppController extends GetxController {
                   .assignAll(value.ketersediaanMekanik['km'].assessmentResult);
               radioIndexLTPP.assignAll(
                   value.leadTimePenyelesaianP['ltpp'].assessmentResult);
+              radioIndexCCCD.assignAll(value.ovhPlan['cccd'].assessmentResult);
+              radioIndexOPOP.assignAll(value.ovhPlan['opop'].assessmentResult);
+              radioIndexBSOP.assignAll(value.ovhPlan['bsop'].assessmentResult);
+              radioIndexRCOP.assignAll(value.ovhPlan['rcop'].assessmentResult);
+              radioIndexAME.assignAll(value.ovhPlan['ame'].assessmentResult);
+              radioIndexPL.assignAll(value.ovh['pl'].assessmentResult);
+              radioIndexAR.assignAll(value.ovh['ar'].assessmentResult);
+              radioIndexNT.assignAll(value.ovh['nt'].assessmentResult);
+              radioIndexTR.assignAll(value.ovh['tr'].assessmentResult);
+              radioIndexHPS.assignAll(value.ovh['hps'].assessmentResult);
+              radioIndexEJ.assignAll(value.ovh['ej'].assessmentResult);
+              radioIndexRE.assignAll(value.ovh['re'].assessmentResult);
+              radioIndexIUIP
+                  .assignAll(value.unscheduleBreakdown['to'].assessmentResult);
+              radioIndexTO.assignAll(
+                  value.unscheduleBreakdown['iuip'].assessmentResult);
+              radioIndexEDR
+                  .assignAll(value.unscheduleBreakdown['gar'].assessmentResult);
+              radioIndexGAR
+                  .assignAll(value.unscheduleBreakdown['edr'].assessmentResult);
+              radioIndexRJ
+                  .assignAll(value.unscheduleBreakdown['rj'].assessmentResult);
+              radioIndexPLCBM.assignAll(value.cbm['plcbm'].assessmentResult);
+              radioIndexARCBM.assignAll(value.cbm['arcbm'].assessmentResult);
+              radioIndexTACBM.assignAll(value.cbm['tacbm'].assessmentResult);
+              radioIndexEVCBM.assignAll(value.cbm['evcbm'].assessmentResult);
+              radioIndexAEA
+                  .assignAll(value.applicationEngineer['aea'].assessmentResult);
+              radioIndexAEB
+                  .assignAll(value.applicationEngineer['aeb'].assessmentResult);
               textFieldPU
                   .assignAll(value.periodicInspection['planUnit'].remark);
               textFieldMeet.assignAll(value.periodicInspection['meet'].remark);
@@ -155,6 +231,29 @@ class MsppController extends GetxController {
               textFieldKM.assignAll(value.ketersediaanMekanik['km'].remark);
               textFieldLTPP
                   .assignAll(value.leadTimePenyelesaianP['ltpp'].remark);
+              textFieldCCCD.assignAll(value.ovhPlan['cccd'].remark);
+              textFieldOPOP.assignAll(value.ovhPlan['opop'].remark);
+              textFieldBSOP.assignAll(value.ovhPlan['bsop'].remark);
+              textFieldRCOP.assignAll(value.ovhPlan['rcop'].remark);
+              textFieldAME.assignAll(value.ovhPlan['ame'].remark);
+              textFieldPL.assignAll(value.ovh['pl'].remark);
+              textFieldAR.assignAll(value.ovh['ar'].remark);
+              textFieldNT.assignAll(value.ovh['nt'].remark);
+              textFieldTR.assignAll(value.ovh['tr'].remark);
+              textFieldHPS.assignAll(value.ovh['hps'].remark);
+              textFieldEJ.assignAll(value.ovh['ej'].remark);
+              textFieldRE.assignAll(value.ovh['re'].remark);
+              textFieldIUIP.assignAll(value.unscheduleBreakdown['to'].remark);
+              textFieldTO.assignAll(value.unscheduleBreakdown['iuip'].remark);
+              textFieldEDR.assignAll(value.unscheduleBreakdown['gar'].remark);
+              textFieldGAR.assignAll(value.unscheduleBreakdown['edr'].remark);
+              textFieldRJ.assignAll(value.unscheduleBreakdown['rj'].remark);
+              textFieldPLCBM.assignAll(value.cbm['plcbm'].remark);
+              textFieldARCBM.assignAll(value.cbm['arcbm'].remark);
+              textFieldTACBM.assignAll(value.cbm['tacbm'].remark);
+              textFieldEVCBM.assignAll(value.cbm['evcbm'].remark);
+              textFieldAEA.assignAll(value.applicationEngineer['aea'].remark);
+              textFieldAEB.assignAll(value.applicationEngineer['aeb'].remark);
             }
           },
         );
@@ -209,36 +308,123 @@ class MsppController extends GetxController {
           MsppData(assessmentResult: radioIndexKM, remark: textFieldKM);
       MsppData msppDataLTPP =
           MsppData(assessmentResult: radioIndexLTPP, remark: textFieldLTPP);
+      MsppData msppDataCCCD =
+          MsppData(assessmentResult: radioIndexCCCD, remark: textFieldCCCD);
+      MsppData msppDataOPOP =
+          MsppData(assessmentResult: radioIndexOPOP, remark: textFieldOPOP);
+      MsppData msppDataBSOP =
+          MsppData(assessmentResult: radioIndexBSOP, remark: textFieldBSOP);
+      MsppData msppDataRCOP =
+          MsppData(assessmentResult: radioIndexRCOP, remark: textFieldRCOP);
+      MsppData msppDataAME =
+          MsppData(assessmentResult: radioIndexAME, remark: textFieldAME);
+      MsppData msppDataPL =
+          MsppData(assessmentResult: radioIndexPL, remark: textFieldPL);
+      MsppData msppDataAR =
+          MsppData(assessmentResult: radioIndexAR, remark: textFieldAR);
+      MsppData msppDataNT =
+          MsppData(assessmentResult: radioIndexNT, remark: textFieldNT);
+      MsppData msppDataTR =
+          MsppData(assessmentResult: radioIndexTR, remark: textFieldTR);
+      MsppData msppDataHPS =
+          MsppData(assessmentResult: radioIndexHPS, remark: textFieldHPS);
+      MsppData msppDataEJ =
+          MsppData(assessmentResult: radioIndexEJ, remark: textFieldEJ);
+      MsppData msppDataRE =
+          MsppData(assessmentResult: radioIndexRE, remark: textFieldRE);
+      MsppData msppDataTO =
+          MsppData(assessmentResult: radioIndexTO, remark: textFieldTO);
+      MsppData msppDataIUIP =
+          MsppData(assessmentResult: radioIndexIUIP, remark: textFieldIUIP);
+      MsppData msppDataGAR =
+          MsppData(assessmentResult: radioIndexGAR, remark: textFieldGAR);
+      MsppData msppDataEDR =
+          MsppData(assessmentResult: radioIndexEDR, remark: textFieldEDR);
+      MsppData msppDataRJ =
+          MsppData(assessmentResult: radioIndexRJ, remark: textFieldRJ);
+      MsppData msppDataPLCBM =
+          MsppData(assessmentResult: radioIndexPLCBM, remark: textFieldPLCBM);
+      MsppData msppDataARCBM =
+          MsppData(assessmentResult: radioIndexARCBM, remark: textFieldARCBM);
+      MsppData msppDataTACBM =
+          MsppData(assessmentResult: radioIndexTACBM, remark: textFieldTACBM);
+      MsppData msppDataEVCBM =
+          MsppData(assessmentResult: radioIndexEVCBM, remark: textFieldEVCBM);
+      MsppData msppDataAEA =
+          MsppData(assessmentResult: radioIndexAEA, remark: textFieldAEA);
+      MsppData msppDataAEB =
+          MsppData(assessmentResult: radioIndexAEB, remark: textFieldAEB);
 
-      Mspp mspp = Mspp(periodicInspection: {
-        'planUnit': msppDataPU,
-        'meet': msppDataMeet,
-        'assess': msppDataAsses
-      }, periodicServicePlan: {
-        'ccd': msppDataCCD,
-        'oppsp': msppDataOPPSP,
-        'bspsp': msppDataBSPSP,
-        'rcpsp': msppDataRCPSP,
-        'ade': msppDataADE
-      }, periodicService: {
-        'pps': msppDataPPS,
-        'appt': msppDataAPPT,
-        'epss': msppDataEPSS,
-        'tpsnp': msppDataTPSNP,
-        'hptd': msppDataHPTD,
-        'eds': msppDataEDS,
-        'rpll': msppDataRPLL
-      }, tools: {
-        'ctst': msppDataCTST,
-        'mtdt': msppDataMTDT
-      }, infrastructur: {
-        'field': msppDataFIELD,
-        'workshop': msppDataWORKSHOP
-      }, ketersediaanMekanik: {
-        'km': msppDataKM
-      }, leadTimePenyelesaianP: {
-        'ltpp': msppDataLTPP
-      });
+      Mspp mspp = Mspp(
+        periodicInspection: {
+          'planUnit': msppDataPU,
+          'meet': msppDataMeet,
+          'assess': msppDataAsses,
+        },
+        periodicServicePlan: {
+          'ccd': msppDataCCD,
+          'oppsp': msppDataOPPSP,
+          'bspsp': msppDataBSPSP,
+          'rcpsp': msppDataRCPSP,
+          'ade': msppDataADE,
+        },
+        periodicService: {
+          'pps': msppDataPPS,
+          'appt': msppDataAPPT,
+          'epss': msppDataEPSS,
+          'tpsnp': msppDataTPSNP,
+          'hptd': msppDataHPTD,
+          'eds': msppDataEDS,
+          'rpll': msppDataRPLL,
+        },
+        tools: {
+          'ctst': msppDataCTST,
+          'mtdt': msppDataMTDT,
+        },
+        infrastructur: {
+          'field': msppDataFIELD,
+          'workshop': msppDataWORKSHOP,
+        },
+        ketersediaanMekanik: {
+          'km': msppDataKM,
+        },
+        leadTimePenyelesaianP: {
+          'ltpp': msppDataLTPP,
+        },
+        ovhPlan: {
+          'cccd': msppDataCCCD,
+          'opop': msppDataOPOP,
+          'bsop': msppDataBSOP,
+          'rcop': msppDataRCOP,
+          'ame': msppDataAME,
+        },
+        ovh: {
+          'pl': msppDataPL,
+          'ar': msppDataAR,
+          'nt': msppDataNT,
+          'tr': msppDataTR,
+          'hps': msppDataHPS,
+          'ej': msppDataEJ,
+          're': msppDataRE,
+        },
+        unscheduleBreakdown: {
+          'to': msppDataTO,
+          'iuip': msppDataIUIP,
+          'gar': msppDataGAR,
+          'edr': msppDataEDR,
+          'rj': msppDataRJ,
+        },
+        cbm: {
+          'plcbm': msppDataPLCBM,
+          'arcbm': msppDataARCBM,
+          'tacbm': msppDataTACBM,
+          'evcbm': msppDataEVCBM,
+        },
+        applicationEngineer: {
+          'aea': msppDataAEA,
+          'aeb': msppDataAEB,
+        },
+      );
       _databaseProvider.saveMSPP(mspp, _loginController.usr.value.username);
     });
     Get.back(closeOverlays: false);
@@ -315,6 +501,75 @@ class MsppController extends GetxController {
       case 'ltpp':
         data = textFieldLTPP;
         break;
+      case 'cccd':
+        data = textFieldCCCD;
+        break;
+      case 'opop':
+        data = textFieldOPOP;
+        break;
+      case 'bsop':
+        data = textFieldBSOP;
+        break;
+      case 'rcop':
+        data = textFieldRCOP;
+        break;
+      case 'ame':
+        data = textFieldAME;
+        break;
+      case 'pl':
+        data = textFieldPL;
+        break;
+      case 'ar':
+        data = textFieldAR;
+        break;
+      case 'nt':
+        data = textFieldNT;
+        break;
+      case 'tr':
+        data = textFieldTR;
+        break;
+      case 'hps':
+        data = textFieldHPS;
+        break;
+      case 'ej':
+        data = textFieldEJ;
+        break;
+      case 're':
+        data = textFieldRE;
+        break;
+      case 'to':
+        data = textFieldTO;
+        break;
+      case 'iuip':
+        data = textFieldIUIP;
+        break;
+      case 'gar':
+        data = textFieldGAR;
+        break;
+      case 'edr':
+        data = textFieldEDR;
+        break;
+      case 'rj':
+        data = textFieldRJ;
+        break;
+      case 'plcbm':
+        data = textFieldPLCBM;
+        break;
+      case 'arcbm':
+        data = textFieldARCBM;
+        break;
+      case 'tacbm':
+        data = textFieldTACBM;
+        break;
+      case 'evcbm':
+        data = textFieldEVCBM;
+        break;
+      case 'aea':
+        data = textFieldAEA;
+        break;
+      case 'aeb':
+        data = textFieldAEB;
+        break;
       default:
     }
     return data;
@@ -385,6 +640,75 @@ class MsppController extends GetxController {
         break;
       case 'ltpp':
         data = radioIndexLTPP;
+        break;
+      case 'cccd':
+        data = radioIndexCCCD;
+        break;
+      case 'opop':
+        data = radioIndexOPOP;
+        break;
+      case 'bsop':
+        data = radioIndexBSOP;
+        break;
+      case 'rcop':
+        data = radioIndexRCOP;
+        break;
+      case 'ame':
+        data = radioIndexAME;
+        break;
+      case 'pl':
+        data = radioIndexPL;
+        break;
+      case 'ar':
+        data = radioIndexAR;
+        break;
+      case 'nt':
+        data = radioIndexNT;
+        break;
+      case 'tr':
+        data = radioIndexTR;
+        break;
+      case 'hps':
+        data = radioIndexHPS;
+        break;
+      case 'ej':
+        data = radioIndexEJ;
+        break;
+      case 're':
+        data = radioIndexRE;
+        break;
+      case 'to':
+        data = radioIndexTO;
+        break;
+      case 'iuip':
+        data = radioIndexIUIP;
+        break;
+      case 'gar':
+        data = radioIndexGAR;
+        break;
+      case 'edr':
+        data = radioIndexEDR;
+        break;
+      case 'rj':
+        data = radioIndexRJ;
+        break;
+      case 'plcbm':
+        data = radioIndexPLCBM;
+        break;
+      case 'arcbm':
+        data = radioIndexARCBM;
+        break;
+      case 'tacbm':
+        data = radioIndexTACBM;
+        break;
+      case 'evcbm':
+        data = radioIndexEVCBM;
+        break;
+      case 'aea':
+        data = radioIndexAEA;
+        break;
+      case 'aeb':
+        data = radioIndexAEB;
         break;
       default:
     }

@@ -1,11 +1,9 @@
-import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
 import 'package:get/get.dart';
 
 class PicaController extends GetxController {
-  LoginController _loginController = Get.find();
   MsppController _mspp = Get.find();
   OtherProgramController _other = Get.find();
   PartProgramController _part = Get.find();
@@ -34,14 +32,53 @@ class PicaController extends GetxController {
 
   @override
   void onInit() {
-    _mspp.loadData(username: _loginController.usr.value.username);
-    _other.loadOtherProgram(username: _loginController.usr.value.username);
-    combineList();
     super.onInit();
   }
 
+  scorePica(List<int> list) {
+    List<int> data = filterList(list);
+    double percentage = 0.0;
+    double score = 0;
+    try {
+      score = data[0].toDouble() / (data[1].toDouble() + data[0].toDouble());
+      percentage = score * 100;
+    } catch (e) {}
+    if (percentage.isNaN) {
+      percentage = 0.1;
+    }
+    print('percent:' + percentage.toString() + '%');
+    return percentage;
+  }
+
+  List<int> filterList(List<int> list) {
+    int yes = 0;
+    int no = 0;
+    int na = 0;
+    for (int i = 0; i <= list.length - 1; i++) {
+      switch (list[i]) {
+        case -1:
+          na++;
+          break;
+        case 0:
+          yes++;
+          break;
+        case 1:
+          no++;
+          break;
+        case 2:
+          na++;
+          break;
+        default:
+          na++;
+      }
+    }
+    List<int> counted = [yes, no, na];
+    return counted;
+  }
+
   combineList() {
-    indexPI = _mspp.radioIndexPU + _mspp.radioIndexMeet + _mspp.radioIndexAsses;
+    indexPI.assignAll(
+        _mspp.radioIndexPU + _mspp.radioIndexMeet + _mspp.radioIndexAsses);
     indexPSP = _mspp.radioIndexCCD +
         _mspp.radioIndexOPPSP +
         _mspp.radioIndexBSPSP +

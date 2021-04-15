@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/audit_table_data.dart';
+import 'package:customer/models/iw_data_table.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/other_program.dart';
 import 'package:customer/models/support_ut.dart';
@@ -95,26 +96,32 @@ class DatabaseProvider {
 
   Future<Mspp> loadMsppData(String username) async {
     Mspp mspp = Mspp();
-    firestore = FirebaseFirestore.instance;
-    DocumentReference doc = firestore.collection('data_customer').doc(username);
-    CollectionReference collection = doc.collection('service_program');
-    var data = await collection.doc('mspp').get();
-    if (data.exists) {
-      mspp = Mspp.fromMap(data.data());
-    }
+    try {
+      firestore = FirebaseFirestore.instance;
+      DocumentReference doc =
+          firestore.collection('data_customer').doc(username);
+      CollectionReference collection = doc.collection('service_program');
+      var data = await collection.doc('mspp').get();
+      if (data.exists) {
+        mspp = Mspp.fromMap(data.data());
+      }
+    } catch (e) {}
     return mspp;
   }
 
   //load other program data from database
   Future<OtherProgram> loadOtherProgramData(String username) async {
     OtherProgram otherProgram = OtherProgram();
-    firestore = FirebaseFirestore.instance;
-    DocumentReference doc = firestore.collection('data_customer').doc(username);
-    CollectionReference collection = doc.collection('service_program');
-    var data = await collection.doc('other_program').get();
-    if (data.exists) {
-      otherProgram = OtherProgram.fromMap(data.data());
-    }
+    try {
+      firestore = FirebaseFirestore.instance;
+      DocumentReference doc =
+          firestore.collection('data_customer').doc(username);
+      CollectionReference collection = doc.collection('service_program');
+      var data = await collection.doc('other_program').get();
+      if (data.exists) {
+        otherProgram = OtherProgram.fromMap(data.data());
+      }
+    } catch (e) {}
     return otherProgram;
   }
 
@@ -210,6 +217,32 @@ class DatabaseProvider {
       tableData = AuditTableData.fromMap(data.data());
     } on Exception catch (e) {}
     return tableData;
+  }
+
+  dummy() async {
+    firestore = FirebaseFirestore.instance;
+    // AuditTableData tableData = AuditTableData();
+    // tableData.description = List<String>.filled(6, 'placeholder');
+    // tableData.guidance = List<String>.filled(6, 'placeholder');
+    // tableData.id = List<int>.filled(6, 0);
+    // tableData.noKlause = List<String>.filled(6, 'placeholder');
+    // tableData.objectiveEvidence = List<String>.filled(6, 'placeholder');
+    // tableData.pic = List<String>.filled(6, 'placeholder');
+    // var data = tableData.toMap();
+    IwDataTable dataTable = IwDataTable();
+    dataTable.description = List<String>.filled(52, 'placeholder');
+    dataTable.dimension = List<String>.filled(52, 'placeholder');
+    dataTable.element = List<String>.filled(52, 'placeholder');
+    dataTable.noKlausul = List<String>.filled(52, 'placeholder');
+    int i = 0;
+    dataTable.id = List<int>.filled(52, i++);
+    var data = dataTable.toMap();
+    CollectionReference collection = firestore.collection('checklist_audit');
+    await collection
+        .doc('part_program')
+        .collection('inventory_warehousing')
+        .doc('op')
+        .set(data);
   }
 
   //menampilkan dialog

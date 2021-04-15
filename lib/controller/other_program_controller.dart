@@ -54,6 +54,7 @@ class OtherProgramController extends GetxController {
   };
 
   RxBool isLoading = false.obs;
+  RxBool isLoaded = false.obs;
 
   TextEditingController textEditingControllerALL;
 
@@ -110,9 +111,12 @@ class OtherProgramController extends GetxController {
             textFieldPL.assignAll(value.co['pl'].remark);
             textFieldPR.assignAll(value.co['pr'].remark);
             textFieldLG.assignAll(value.co['lg'].remark);
+            isLoaded.value = true;
           }
           isLoading.value = false;
         });
+      } else {
+        isLoading.value = false;
       }
     });
   }

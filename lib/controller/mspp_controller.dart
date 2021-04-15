@@ -110,6 +110,7 @@ class MsppController extends GetxController {
   };
 
   RxBool isLoading = false.obs;
+  RxBool isLoaded = false.obs;
 
   TextEditingController textEditingControllerALL;
 
@@ -254,11 +255,16 @@ class MsppController extends GetxController {
               textFieldEVCBM.assignAll(value.cbm['evcbm'].remark);
               textFieldAEA.assignAll(value.applicationEngineer['aea'].remark);
               textFieldAEB.assignAll(value.applicationEngineer['aeb'].remark);
+              isLoading.value = false;
+              isLoaded.value = true;
+            } else {
+              isLoading.value = false;
             }
           },
         );
+      } else {
+        isLoading.value = false;
       }
-      isLoading.value = false;
     });
   }
 

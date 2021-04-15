@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PartProgramController extends GetxController {
-  
   RxList<int> radioIndexKP = RxList.filled(3, -1);
   RxList<int> radioIndexOP = RxList.filled(52, -1);
   RxList<int> radioIndexPE = RxList.filled(15, -1);
@@ -26,6 +25,7 @@ class PartProgramController extends GetxController {
   };
 
   RxBool isLoading = false.obs;
+  RxBool isLoaded = false.obs;
 
   TextEditingController textEditingControllerALL;
 

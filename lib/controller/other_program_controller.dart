@@ -22,6 +22,12 @@ class OtherProgramController extends GetxController {
   RxList<int> radioIndexMTDT = RxList.filled(4, -1);
   RxList<int> radioIndexEV = RxList.filled(4, -1);
   RxList<int> radioIndexRM = RxList.filled(9, -1);
+  RxList<int> radioIndexPLD = RxList.filled(6, -1);
+  RxList<int> radioIndexPRD = RxList.filled(6, -1);
+  RxList<int> radioIndexLD = RxList.filled(6, -1);
+  RxList<int> radioIndexPL = RxList.filled(13, -1);
+  RxList<int> radioIndexPR = RxList.filled(5, -1);
+  RxList<int> radioIndexLG = RxList.filled(4, -1);
 
   RxList<String> textFieldOS = RxList.filled(3, "");
   RxList<String> textFieldPO = RxList.filled(14, "");
@@ -34,6 +40,12 @@ class OtherProgramController extends GetxController {
   RxList<String> textFieldMTDT = RxList.filled(4, "");
   RxList<String> textFieldEV = RxList.filled(4, "");
   RxList<String> textFieldRM = RxList.filled(9, "");
+  RxList<String> textFieldPLD = RxList.filled(6, "");
+  RxList<String> textFieldPRD = RxList.filled(6, "");
+  RxList<String> textFieldLD = RxList.filled(6, "");
+  RxList<String> textFieldPL = RxList.filled(13, "");
+  RxList<String> textFieldPR = RxList.filled(5, "");
+  RxList<String> textFieldLG = RxList.filled(4, "");
 
   Map<int, String> radioData = {
     0: 'Yes',
@@ -75,6 +87,12 @@ class OtherProgramController extends GetxController {
             radioIndexMTDT.assignAll(value.vm['mtdt'].assessmentResult);
             radioIndexEV.assignAll(value.vm['ev'].assessmentResult);
             radioIndexRM.assignAll(value.regM['rm'].assessmentResult);
+            radioIndexPLD.assignAll(value.mr['pld'].assessmentResult);
+            radioIndexPRD.assignAll(value.mr['prd'].assessmentResult);
+            radioIndexLD.assignAll(value.mr['ld'].assessmentResult);
+            radioIndexPL.assignAll(value.co['pl'].assessmentResult);
+            radioIndexPR.assignAll(value.co['pr'].assessmentResult);
+            radioIndexLG.assignAll(value.co['lg'].assessmentResult);
             textFieldOS.assignAll(value.people['os'].remark);
             textFieldPO.assignAll(value.people['po'].remark);
             textFieldLO.assignAll(value.people['lo'].remark);
@@ -86,6 +104,12 @@ class OtherProgramController extends GetxController {
             textFieldMTDT.assignAll(value.vm['mtdt'].remark);
             textFieldEV.assignAll(value.vm['ev'].remark);
             textFieldRM.assignAll(value.regM['rm'].remark);
+            textFieldPLD.assignAll(value.mr['pld'].remark);
+            textFieldPRD.assignAll(value.mr['prd'].remark);
+            textFieldLD.assignAll(value.mr['ld'].remark);
+            textFieldPL.assignAll(value.co['pl'].remark);
+            textFieldPR.assignAll(value.co['pr'].remark);
+            textFieldLG.assignAll(value.co['lg'].remark);
           }
           isLoading.value = false;
         });
@@ -124,22 +148,48 @@ class OtherProgramController extends GetxController {
             MsppData(assessmentResult: radioIndexEV, remark: textFieldEV);
         MsppData otherDataRM =
             MsppData(assessmentResult: radioIndexRM, remark: textFieldRM);
+        MsppData otherPLD =
+            MsppData(assessmentResult: radioIndexPLD, remark: textFieldPLD);
+        MsppData otherPRD =
+            MsppData(assessmentResult: radioIndexPRD, remark: textFieldPRD);
+        MsppData otherLD =
+            MsppData(assessmentResult: radioIndexLD, remark: textFieldLD);
+        MsppData otherPL =
+            MsppData(assessmentResult: radioIndexPL, remark: textFieldPL);
+        MsppData otherPR =
+            MsppData(assessmentResult: radioIndexPR, remark: textFieldPR);
+        MsppData otherLG =
+            MsppData(assessmentResult: radioIndexLG, remark: textFieldLG);
 
-        OtherProgram otherProgram = OtherProgram(people: {
-          'os': otherDataOS,
-          'po': otherDataPO,
-          'lo': otherDataLO,
-          'pro': otherDataPRO,
-          'do': otherDataDO,
-          'ao': otherDataAO,
-          'sheo': otherDataSHEO
-        }, vm: {
-          'pv': otherDataPV,
-          'mtdt': otherDataMTDT,
-          'ev': otherDataEV
-        }, regM: {
-          'rm': otherDataRM
-        });
+        OtherProgram otherProgram = OtherProgram(
+          people: {
+            'os': otherDataOS,
+            'po': otherDataPO,
+            'lo': otherDataLO,
+            'pro': otherDataPRO,
+            'do': otherDataDO,
+            'ao': otherDataAO,
+            'sheo': otherDataSHEO,
+          },
+          vm: {
+            'pv': otherDataPV,
+            'mtdt': otherDataMTDT,
+            'ev': otherDataEV,
+          },
+          regM: {
+            'rm': otherDataRM,
+          },
+          mr: {
+            'pld': otherPLD,
+            'prd': otherPRD,
+            'ld': otherLD,
+          },
+          co: {
+            'pl': otherPL,
+            'pr': otherPR,
+            'lg': otherLG,
+          },
+        );
         _databaseProvider.saveOtherProgram(otherProgram, username);
       }
     });
@@ -187,6 +237,24 @@ class OtherProgramController extends GetxController {
       case 'rm':
         data = textFieldRM;
         break;
+      case 'pld':
+        data = textFieldPLD;
+        break;
+      case 'prd':
+        data = textFieldPRD;
+        break;
+      case 'ld':
+        data = textFieldLD;
+        break;
+      case 'pl':
+        data = textFieldPL;
+        break;
+      case 'pr':
+        data = textFieldPR;
+        break;
+      case 'lg':
+        data = textFieldLG;
+        break;
       default:
     }
     return data;
@@ -227,6 +295,24 @@ class OtherProgramController extends GetxController {
         break;
       case 'rm':
         data = radioIndexRM;
+        break;
+      case 'pld':
+        data = radioIndexPLD;
+        break;
+      case 'prd':
+        data = radioIndexPRD;
+        break;
+      case 'ld':
+        data = radioIndexLD;
+        break;
+      case 'pl':
+        data = radioIndexPL;
+        break;
+      case 'pr':
+        data = radioIndexPR;
+        break;
+      case 'lg':
+        data = radioIndexLG;
         break;
       default:
     }

@@ -11,11 +11,15 @@ class OtherProgram {
     this.people,
     this.vm,
     this.regM,
+    this.mr,
+    this.co,
   });
 
   Map<String, MsppData> people;
   Map<String, MsppData> vm;
   Map<String, MsppData> regM;
+  Map<String, MsppData> mr;
+  Map<String, MsppData> co;
 
   factory OtherProgram.fromJson(String str) =>
       OtherProgram.fromMap(json.decode(str));
@@ -29,6 +33,10 @@ class OtherProgram {
             .map((k, v) => MapEntry<String, MsppData>(k, MsppData.fromMap(v))),
         regM: Map.from(json["regM"])
             .map((k, v) => MapEntry<String, MsppData>(k, MsppData.fromMap(v))),
+        mr: Map.from(json["mr"])
+            .map((k, v) => MapEntry<String, MsppData>(k, MsppData.fromMap(v))),
+        co: Map.from(json["co"])
+            .map((k, v) => MapEntry<String, MsppData>(k, MsppData.fromMap(v))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -38,5 +46,9 @@ class OtherProgram {
             Map.from(vm).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
         "regM": Map.from(regM)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
+        "mr":
+            Map.from(mr).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
+        "co":
+            Map.from(co).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
       };
 }

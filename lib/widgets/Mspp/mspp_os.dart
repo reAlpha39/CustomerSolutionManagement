@@ -1,7 +1,9 @@
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/mspp/mspp_card/mspp_card_ltpp.dart';
+import 'package:customer/widgets/mspp/mspp_card.dart';
 import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MsppOs extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class MsppOs extends StatefulWidget {
 
 class _MsppPsPlanState extends State<MsppOs>
     with AutomaticKeepAliveClientMixin {
+  MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -20,7 +23,15 @@ class _MsppPsPlanState extends State<MsppOs>
         child: Column(
           children: [
             MsppFillHelper(),
-            MsppCardLtpp(),
+            MsppCard(
+              title: 'Lead Time Penyelesaian Pekerjaan',
+              id: 'ltpp',
+              docA: 'mspp',
+              colA: 'lead_time_penyelesaian_pekerjaan',
+              docB: 'lead_time_penyelesaian_pekerjaan',
+              radioIndex: controller.radioIndexLTPP,
+              textFieldIndex: controller.textFieldLTPP,
+            ),
           ],
         ),
       ),

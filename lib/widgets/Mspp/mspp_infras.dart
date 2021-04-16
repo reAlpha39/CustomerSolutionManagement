@@ -1,8 +1,9 @@
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/mspp/mspp_card/mspp_card_field.dart';
-import 'package:customer/widgets/mspp/mspp_card/mspp_card_workshop.dart';
+import 'package:customer/widgets/mspp/mspp_card.dart';
 import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MsppInfras extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class MsppInfras extends StatefulWidget {
 
 class _MsppPsPlanState extends State<MsppInfras>
     with AutomaticKeepAliveClientMixin {
+  MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -21,8 +23,24 @@ class _MsppPsPlanState extends State<MsppInfras>
         child: Column(
           children: [
             MsppFillHelper(),
-            MsppCardField(),
-            MsppCardWorkshop(),
+            MsppCard(
+              title: 'Field',
+              id: 'field',
+              docA: 'mspp',
+              colA: 'infrastructure',
+              docB: 'field',
+              radioIndex: controller.radioIndexFIELD,
+              textFieldIndex: controller.textFieldFIELD,
+            ),
+            MsppCard(
+              title: 'Workshop',
+              id: 'workshop',
+              docA: 'mspp',
+              colA: 'infrastructure',
+              docB: 'workshop',
+              radioIndex: controller.radioIndexWORKSHOP,
+              textFieldIndex: controller.textFieldWORKSHOP,
+            ),
           ],
         ),
       ),

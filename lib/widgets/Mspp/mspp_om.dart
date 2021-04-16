@@ -1,7 +1,9 @@
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/mspp/mspp_card/mspp_card_km.dart';
+import 'package:customer/widgets/mspp/mspp_card.dart';
 import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MsppOm extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class MsppOm extends StatefulWidget {
 
 class _MsppPsPlanState extends State<MsppOm>
     with AutomaticKeepAliveClientMixin {
+  MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -20,7 +23,15 @@ class _MsppPsPlanState extends State<MsppOm>
         child: Column(
           children: [
             MsppFillHelper(),
-            MsppCardKm(),
+            MsppCard(
+              title: 'Ketersediaan Mekanik',
+              id: 'km',
+              docA: 'mspp',
+              colA: 'ketersediaan_mekanik',
+              docB: 'ketersediaan_mekanik',
+              radioIndex: controller.radioIndexKM,
+              textFieldIndex: controller.textFieldKM,
+            ),
           ],
         ),
       ),

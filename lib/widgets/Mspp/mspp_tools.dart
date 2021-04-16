@@ -1,8 +1,9 @@
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
-import 'package:customer/widgets/mspp/mspp_card/mspp_card_ctst.dart';
-import 'package:customer/widgets/mspp/mspp_card/mspp_card_mtdt.dart';
+import 'package:customer/widgets/mspp/mspp_card.dart';
 import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MsppTools extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class MsppTools extends StatefulWidget {
 
 class _MsppPsPlanState extends State<MsppTools>
     with AutomaticKeepAliveClientMixin {
+  MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -21,8 +23,24 @@ class _MsppPsPlanState extends State<MsppTools>
         child: Column(
           children: [
             MsppFillHelper(),
-            MsppCardCtst(),
-            MsppCardMtdt(),
+            MsppCard(
+              title: 'Common Tools & Special Tools',
+              id: 'ctst',
+              docA: 'mspp',
+              colA: 'tools',
+              docB: 'common_tools_and_special_tools',
+              radioIndex: controller.radioIndexCTST,
+              textFieldIndex: controller.textFieldCTST,
+            ),
+            MsppCard(
+              title: 'Measuring Tools & Diagnostic Tools (PPM)',
+              id: 'mtdt',
+              docA: 'mspp',
+              colA: 'tools',
+              docB: 'measuring_tools_and_diagnostic_tools',
+              radioIndex: controller.radioIndexMTDT,
+              textFieldIndex: controller.textFieldMTDT,
+            ),
           ],
         ),
       ),

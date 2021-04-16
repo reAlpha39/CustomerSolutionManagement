@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
@@ -39,7 +41,6 @@ class PicaChart extends StatelessWidget {
                         if (msppController.isLoaded.value &&
                             otherPController.isLoaded.value) {
                           picaController.combineList();
-                          picaController.listedIndex();
                           return Container(
                             width: 500,
                             child: BarChart(
@@ -172,6 +173,7 @@ class PicaChart extends StatelessWidget {
                           );
                         } else {
                           return Container(
+                            color: Colors.red,
                             child: Align(
                               alignment: Alignment.center,
                               child: CircularProgressIndicator(),

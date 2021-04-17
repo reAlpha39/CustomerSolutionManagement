@@ -9,6 +9,7 @@ import 'package:customer/routes/other_program_admin_binding.dart';
 import 'package:customer/routes/other_program_binding.dart';
 import 'package:customer/routes/part_program_binding.dart';
 import 'package:customer/routes/pica_binding.dart';
+import 'package:customer/routes/pica_card_table_binding.dart';
 import 'package:customer/views/login_page.dart';
 import 'package:customer/views/home_page.dart';
 import 'package:customer/views/customer_info.dart';
@@ -89,6 +90,7 @@ class Routes {
         OtherProgramBinding(),
         PartProgramBinding(),
         DataTableBinding(),
+        PicaCardTableBinding(),
       ],
     ),
   ];

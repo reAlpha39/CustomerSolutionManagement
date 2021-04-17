@@ -268,6 +268,10 @@ class MsppController extends GetxController {
     });
   }
 
+  dummy() {
+    _databaseProvider.dummy();
+  }
+
   saveDataMspp() {
     Get.back(closeOverlays: false);
     showProgressDialog();

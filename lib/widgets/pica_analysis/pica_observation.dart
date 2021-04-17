@@ -18,7 +18,7 @@ class _PicaObservationState extends State<PicaObservation>
   Widget build(BuildContext context) {
     super.build(context);
     return Container(
-      color: Colors.red,
+      height: context.height,
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,

@@ -8,16 +8,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 class PicaAnalysisPage extends StatelessWidget {
   final PicaController _controller = Get.find();
   static List<Widget> _widgetOption = <Widget>[
-    Align(
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: PicaChart(),
-      ),
-    ),
-    Center(
-      child: PicaObservation(),
-    ),
+    PicaChart(),
+    PicaObservation(),
     Center(
       child: Text(
         'Profile',
@@ -99,8 +91,14 @@ class PicaAnalysisPage extends StatelessWidget {
               ),
             ),
           ),
-          Obx(
-            () => _widgetOption.elementAt(_controller.navBarIndex.value),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Obx(
+                () => _widgetOption.elementAt(_controller.navBarIndex.value),
+              ),
+            ),
           ),
         ],
       ),

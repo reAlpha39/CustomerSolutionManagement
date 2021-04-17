@@ -106,66 +106,101 @@ class PicaController extends GetxController {
 
   combineList() {
     if (!isLoaded.value) {
-      indexPI =
-          _mspp.radioIndexPU + _mspp.radioIndexMeet + _mspp.radioIndexAsses;
-      indexPSP = _mspp.radioIndexCCD +
-          _mspp.radioIndexOPPSP +
-          _mspp.radioIndexBSPSP +
-          _mspp.radioIndexRCPSP +
-          _mspp.radioIndexADE;
-      indexPS = _mspp.radioIndexPPS +
-          _mspp.radioIndexAPPT +
-          _mspp.radioIndexEPSS +
-          _mspp.radioIndexTPSNP +
-          _mspp.radioIndexHPTD +
-          _mspp.radioIndexEDS +
-          _mspp.radioIndexRPLL;
-      indexOVHP = _mspp.radioIndexCCCD +
-          _mspp.radioIndexOPOP +
-          _mspp.radioIndexBSOP +
-          _mspp.radioIndexRCOP +
-          _mspp.radioIndexAME;
-      indexOVH = _mspp.radioIndexPL +
-          _mspp.radioIndexAR +
-          _mspp.radioIndexNT +
-          _mspp.radioIndexTR +
-          _mspp.radioIndexHPS +
-          _mspp.radioIndexEJ +
-          _mspp.radioIndexRE;
-      indexUSC = _mspp.radioIndexTO +
-          _mspp.radioIndexIUIP +
-          _mspp.radioIndexGAR +
-          _mspp.radioIndexEDR +
-          _mspp.radioIndexRJ;
-      indexTOOLS = _mspp.radioIndexCTST + _mspp.radioIndexMTDT;
-      indexCBM = _mspp.radioIndexPLCBM +
-          _mspp.radioIndexARCBM +
-          _mspp.radioIndexTACBM +
-          _mspp.radioIndexEVCBM;
-      indexINFRAS = _mspp.radioIndexFIELD + _mspp.radioIndexWORKSHOP;
-      indexPEOPLE = _other.radioIndexOS +
-          _other.radioIndexPO +
-          _other.radioIndexLO +
-          _other.radioIndexPRO +
-          _other.radioIndexDO +
-          _other.radioIndexAO +
-          _other.radioIndexSHEO;
-      indexIW = _part.radioIndexOP +
-          _part.radioIndexPE +
-          _part.radioIndexTS +
-          _part.radioIndexCI +
-          _part.radioIndexIF +
-          _part.radioIndexHE;
-      indexVM =
-          _other.radioIndexPV + _other.radioIndexMTDT + _other.radioIndexEV;
-      indexAE = _mspp.radioIndexAEA + _mspp.radioIndexAEB;
-      indexMR =
-          _other.radioIndexPLD + _other.radioIndexPRD + _other.radioIndexLD;
-      indexOM = _mspp.radioIndexKM;
-      indexOP = _part.radioIndexKP;
-      indexOS = _mspp.radioIndexLTPP;
-      indexRM = _other.radioIndexRM;
-      indexCO = _other.radioIndexPL + _other.radioIndexPR + _other.radioIndexLG;
+      indexPI.assignAll([
+        _mspp.radioIndexPU,
+        _mspp.radioIndexMeet,
+        _mspp.radioIndexAsses
+      ].expand((x) => x).toList());
+      indexPSP.assignAll([
+        _mspp.radioIndexCCD,
+        _mspp.radioIndexOPPSP,
+        _mspp.radioIndexBSPSP,
+        _mspp.radioIndexRCPSP,
+        _mspp.radioIndexADE
+      ].expand((element) => element).toList());
+      indexPS.assignAll([
+        _mspp.radioIndexPPS,
+        _mspp.radioIndexAPPT,
+        _mspp.radioIndexEPSS,
+        _mspp.radioIndexTPSNP,
+        _mspp.radioIndexHPTD,
+        _mspp.radioIndexEDS,
+        _mspp.radioIndexRPLL
+      ].expand((element) => element).toList());
+      indexOVHP.assignAll([
+        _mspp.radioIndexCCCD,
+        _mspp.radioIndexOPOP,
+        _mspp.radioIndexBSOP,
+        _mspp.radioIndexRCOP,
+        _mspp.radioIndexAME
+      ].expand((element) => element).toList());
+      indexOVH.assignAll([
+        _mspp.radioIndexPL,
+        _mspp.radioIndexAR,
+        _mspp.radioIndexNT,
+        _mspp.radioIndexTR,
+        _mspp.radioIndexHPS,
+        _mspp.radioIndexEJ,
+        _mspp.radioIndexRE
+      ].expand((element) => element).toList());
+      indexUSC.assignAll([
+        _mspp.radioIndexTO,
+        _mspp.radioIndexIUIP,
+        _mspp.radioIndexGAR,
+        _mspp.radioIndexEDR,
+        _mspp.radioIndexRJ
+      ].expand((element) => element).toList());
+      indexTOOLS.assignAll([_mspp.radioIndexCTST, _mspp.radioIndexMTDT]
+          .expand((element) => element)
+          .toList());
+      indexCBM.assignAll([
+        _mspp.radioIndexPLCBM,
+        _mspp.radioIndexARCBM,
+        _mspp.radioIndexTACBM,
+        _mspp.radioIndexEVCBM
+      ].expand((element) => element).toList());
+      indexINFRAS.assignAll([_mspp.radioIndexFIELD, _mspp.radioIndexWORKSHOP]
+          .expand((element) => element)
+          .toList());
+      indexPEOPLE.assignAll([
+        _other.radioIndexOS,
+        _other.radioIndexPO,
+        _other.radioIndexLO,
+        _other.radioIndexPRO,
+        _other.radioIndexDO,
+        _other.radioIndexAO,
+        _other.radioIndexSHEO
+      ].expand((element) => element).toList());
+      indexIW.assignAll([
+        _part.radioIndexOP,
+        _part.radioIndexPE,
+        _part.radioIndexTS,
+        _part.radioIndexCI,
+        _part.radioIndexIF,
+        _part.radioIndexHE
+      ].expand((element) => element).toList());
+      indexVM.assignAll([
+        _other.radioIndexPV,
+        _other.radioIndexMTDT,
+        _other.radioIndexEV
+      ].expand((element) => element).toList());
+      indexAE.assignAll([_mspp.radioIndexAEA, _mspp.radioIndexAEB]
+          .expand((element) => element)
+          .toList());
+      indexMR.assignAll([
+        _other.radioIndexPLD,
+        _other.radioIndexPRD,
+        _other.radioIndexLD
+      ].expand((element) => element).toList());
+      indexOM.assignAll(_mspp.radioIndexKM);
+      indexOP.assignAll(_part.radioIndexKP);
+      indexOS.assignAll(_mspp.radioIndexLTPP);
+      indexRM.assignAll(_other.radioIndexRM);
+      indexCO.assignAll([
+        _other.radioIndexPL,
+        _other.radioIndexPR,
+        _other.radioIndexLG
+      ].expand((element) => element).toList());
       listedIndex();
       isLoaded.value = true;
     }

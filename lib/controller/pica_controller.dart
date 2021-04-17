@@ -33,6 +33,8 @@ class PicaController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isLoaded = false.obs;
 
+  RxInt navBarIndex = 0.obs;
+
   @override
   void onInit() {
     super.onInit();

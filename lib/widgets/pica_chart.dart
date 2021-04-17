@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
@@ -9,13 +7,20 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PicaChart extends StatelessWidget {
+class PicaChart extends StatefulWidget {
+  @override
+  _PicaChartState createState() => _PicaChartState();
+}
+
+class _PicaChartState extends State<PicaChart> with AutomaticKeepAliveClientMixin {
   final PicaController picaController = Get.find();
   final MsppController msppController = Get.find();
   final OtherProgramController otherPController = Get.find();
   final PartProgramController partPController = Get.find();
+  
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: ConstrainedBox(
@@ -191,4 +196,7 @@ class PicaChart extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -17,52 +17,31 @@ class _PicaObservationState extends State<PicaObservation>
   @mustCallSuper
   Widget build(BuildContext context) {
     super.build(context);
+    controller.listedCard();
     return Container(
       height: context.height,
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          children: [
-            PicaObservationCard(
-              title: 'Plan Unit',
-              id: 'planUnit',
-              tag: 'planUnit',
-              docA: 'mspp',
-              colA: 'periodic_inspection',
-              docB: 'plan_unit',
-              dataTableFilter: true,
-              dataTableListRadio: msppController.radioIndexPU,
-              dataTableRadioIndex: 1,
-              radioIndexA: controller.indexResultA,
-              radioIndexB: controller.indexResultB,
-            ),
-            PicaObservationCard(
-              title: 'Meet',
-              id: 'meet',
-              tag: 'meet',
-              docA: 'mspp',
-              colA: 'periodic_inspection',
-              docB: 'meet',
-              dataTableFilter: true,
-              dataTableListRadio: msppController.radioIndexMeet,
-              dataTableRadioIndex: 1,
-              radioIndexA: controller.indexResultA,
-              radioIndexB: controller.indexResultB,
-            ),
-            PicaObservationCard(
-              title: 'Asses',
-              id: 'asses',
-              tag: 'asses',
-              docA: 'mspp',
-              colA: 'periodic_inspection',
-              docB: 'asses',
-              dataTableFilter: true,
-              dataTableListRadio: msppController.radioIndexAsses,
-              dataTableRadioIndex: 1,
-              radioIndexA: controller.indexResultA,
-              radioIndexB: controller.indexResultB,
-            ),
-          ],
+          children: List<Widget>.generate(
+              controller.listCard.length,
+              (index) => Obx(
+                    () => PicaObservationCard(
+                      title: '${controller.listCard.elementAt(index)[0]}',
+                      id: '${controller.listCard.elementAt(index)[1]}',
+                      indexCard: index,
+                      tag: '${controller.listCard.elementAt(index)[1]}',
+                      docA: '${controller.listCard.elementAt(index)[2][0]}',
+                      colA: '${controller.listCard.elementAt(index)[2][1]}',
+                      docB: '${controller.listCard.elementAt(index)[2][2]}',
+                      dataTableFilter: true,
+                      dataTableListRadio: msppController.radioIndexPI(
+                          controller.listCard.elementAt(index)[1]),
+                      dataTableRadioIndex: 1,
+                      radioIndexA: controller.indexResultA,
+                      radioIndexB: controller.indexResultB,
+                    ),
+                  )),
         ),
       ),
     );

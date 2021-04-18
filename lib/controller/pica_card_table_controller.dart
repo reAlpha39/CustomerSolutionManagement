@@ -4,6 +4,8 @@ class PicaCardTableController extends GetxController {
   RxList<int> indexResultA = RxList<int>.filled(6, 0);
   RxList<int> indexResultB = RxList<int>.filled(6, 0);
   RxList<int> listCounter;
+  RxList listCard;
+  RxMap<String, List> mapCard = RxMap<String, List>();
   RxInt total = 0.obs;
   int count = 0;
   int lastA = 0;
@@ -24,5 +26,36 @@ class PicaCardTableController extends GetxController {
       temp += listCounter[i];
     }
     total.value = temp;
+  }
+
+  sortCard(int index, int value) {
+    if (listCard == null) {
+      listedCard();
+    }
+    listCard[index][3] = value;
+    listCard.sort((a, b) => b[3].compareTo(a[3]));
+  }
+
+  listedCard() {
+    listCard = [
+      [
+        'Plan Unit',
+        'planUnit',
+        ['mspp', 'periodic_inspection', 'plan_unit'],
+        0,
+      ],
+      [
+        'Meet',
+        'meet',
+        ['mspp', 'periodic_inspection', 'meet'],
+        0,
+      ],
+      [
+        'Asses',
+        'asses',
+        ['mspp', 'periodic_inspection', 'asses'],
+        0,
+      ],
+    ].obs;
   }
 }

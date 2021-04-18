@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 class PicaObservationCard extends StatelessWidget {
   final String title;
   final String id;
+  final int indexCard;
   final String tag;
   final String docA;
   final String docB;
@@ -23,6 +24,7 @@ class PicaObservationCard extends StatelessWidget {
     Key key,
     this.title,
     this.id,
+    this.indexCard,
     this.docA,
     this.docB,
     this.colA,
@@ -81,6 +83,7 @@ class PicaObservationCard extends StatelessWidget {
                 expanded: MsppDataTable(
                   id: id,
                   tag: tag,
+                  indexCard: indexCard,
                   docA: docA,
                   colA: colA,
                   docB: docB,
@@ -106,6 +109,7 @@ class MsppDataTable extends StatelessWidget {
   final List<int> radioIndexB;
   final String id;
   final String tag;
+  final int indexCard;
   final String docA;
   final String docB;
   final String colA;
@@ -123,6 +127,7 @@ class MsppDataTable extends StatelessWidget {
     this.colA,
     this.dataTableFilter,
     this.id,
+    this.indexCard,
     this.dataTableListRadio,
     this.dataTableRadioIndex,
     this.tag,
@@ -130,6 +135,7 @@ class MsppDataTable extends StatelessWidget {
 
   Future<bool> resultRadio({int index, bool isA}) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
+    final PicaCardTableController listCardController = Get.find();
     return Get.defaultDialog(
         barrierDismissible: false,
         radius: 17,
@@ -151,6 +157,7 @@ class MsppDataTable extends StatelessWidget {
             totalRow: dtController.auditTableData.value.id.length,
             row: index,
           );
+          listCardController.sortCard(indexCard, controllerPU.total.value);
           Get.back(closeOverlays: false);
         });
   }

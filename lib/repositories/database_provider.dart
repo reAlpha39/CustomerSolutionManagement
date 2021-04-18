@@ -220,28 +220,29 @@ class DatabaseProvider {
   }
 
   dummy() async {
+    // IwDataTable dataTable = IwDataTable();
+    // dataTable.description = List<String>.filled(52, 'placeholder');
+    // dataTable.dimension = List<String>.filled(52, 'placeholder');
+    // dataTable.element = List<String>.filled(52, 'placeholder');
+    // dataTable.noKlausul = List<String>.filled(52, 'placeholder');
+    // int i = 0;
+    // dataTable.id = List<int>.filled(52, i++);
+    // var data = dataTable.toMap();
+    int i = 14;
     firestore = FirebaseFirestore.instance;
-    // AuditTableData tableData = AuditTableData();
-    // tableData.description = List<String>.filled(6, 'placeholder');
-    // tableData.guidance = List<String>.filled(6, 'placeholder');
-    // tableData.id = List<int>.filled(6, 0);
-    // tableData.noKlause = List<String>.filled(6, 'placeholder');
-    // tableData.objectiveEvidence = List<String>.filled(6, 'placeholder');
-    // tableData.pic = List<String>.filled(6, 'placeholder');
-    // var data = tableData.toMap();
-    IwDataTable dataTable = IwDataTable();
-    dataTable.description = List<String>.filled(52, 'placeholder');
-    dataTable.dimension = List<String>.filled(52, 'placeholder');
-    dataTable.element = List<String>.filled(52, 'placeholder');
-    dataTable.noKlausul = List<String>.filled(52, 'placeholder');
-    int i = 0;
-    dataTable.id = List<int>.filled(52, i++);
-    var data = dataTable.toMap();
+    AuditTableData tableData = AuditTableData();
+    tableData.description = List<String>.filled(i, 'placeholder');
+    tableData.guidance = List<String>.filled(i, 'placeholder');
+    tableData.id = List<int>.generate(i, (index) => index);
+    tableData.noKlause = List<String>.filled(i, 'placeholder');
+    tableData.objectiveEvidence = List<String>.filled(i, 'placeholder');
+    tableData.pic = List<String>.filled(i, 'placeholder');
+    var data = tableData.toMap();
     CollectionReference collection = firestore.collection('checklist_audit');
     await collection
-        .doc('part_program')
-        .collection('inventory_warehousing')
-        .doc('op')
+        .doc('mspp')
+        .collection('periodic_service_plan')
+        .doc('compile_and_compute_data')
         .set(data);
   }
 

@@ -224,14 +224,14 @@ class MsppDataTable extends StatelessWidget {
                       (index) => DataRow(
                         cells: [
                           DataCell(Text(
-                              '${dtController.auditTableData.value.noKlause[index]}')),
+                              '${dtController.auditTableData.value.noKlause[index].replaceAll("\\n", "\n")}')),
                           DataCell(
                             Padding(
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
                               child: Container(
                                 width: 160,
                                 child: Text(
-                                    '${dtController.auditTableData.value.description[index]}'),
+                                    '${dtController.auditTableData.value.description[index].replaceAll("\\n", "\n")}'),
                               ),
                             ),
                           ),
@@ -239,7 +239,7 @@ class MsppDataTable extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
                               child: Text(
-                                  '${dtController.auditTableData.value.pic[index]}'),
+                                  '${dtController.auditTableData.value.pic[index].replaceAll("\\n", "\n")}'),
                             ),
                           ),
                           DataCell(
@@ -248,7 +248,7 @@ class MsppDataTable extends StatelessWidget {
                               child: Container(
                                 width: 160,
                                 child: Text(
-                                    '${dtController.auditTableData.value.guidance[index]}'),
+                                    '${dtController.auditTableData.value.guidance[index].replaceAll("\\n", "\n")}'),
                               ),
                             ),
                           ),
@@ -256,7 +256,7 @@ class MsppDataTable extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
                               child: Text(
-                                  '${dtController.auditTableData.value.objectiveEvidence[index]}'),
+                                  '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
                             ),
                           ),
                           DataCell(

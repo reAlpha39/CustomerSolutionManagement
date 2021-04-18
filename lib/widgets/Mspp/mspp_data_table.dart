@@ -1,5 +1,6 @@
 import 'package:customer/controller/data_table_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/mspp/mspp_result.dart';
 import 'package:customer/widgets/mspp/mspp_text_field.dart';
 import 'package:flutter/material.dart';
@@ -129,16 +130,26 @@ class MsppDataTable extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
                               child: Container(
                                 width: 160,
-                                child: Text(
-                                    '${dtController.auditTableData.value.description[index].replaceAll("\\n", "\n")}'),
+                                child: ScrollConfiguration(
+                                  behavior: CustomScrollBehavior(),
+                                  child: SingleChildScrollView(
+                                    child: Text(
+                                        '${dtController.auditTableData.value.description[index].replaceAll("\\n", "\n")}'),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                           DataCell(
                             Padding(
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
-                              child: Text(
-                                  '${dtController.auditTableData.value.pic[index].replaceAll("\\n", "\n")}'),
+                              child: ScrollConfiguration(
+                                behavior: CustomScrollBehavior(),
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                      '${dtController.auditTableData.value.pic[index].replaceAll("\\n", "\n")}'),
+                                ),
+                              ),
                             ),
                           ),
                           DataCell(
@@ -146,16 +157,26 @@ class MsppDataTable extends StatelessWidget {
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
                               child: Container(
                                 width: 160,
-                                child: Text(
-                                    '${dtController.auditTableData.value.guidance[index].replaceAll("\\n", "\n")}'),
+                                child: ScrollConfiguration(
+                                  behavior: CustomScrollBehavior(),
+                                  child: SingleChildScrollView(
+                                    child: Text(
+                                        '${dtController.auditTableData.value.guidance[index].replaceAll("\\n", "\n")}'),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                           DataCell(
                             Padding(
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
-                              child: Text(
-                                  '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
+                              child: ScrollConfiguration(
+                                behavior: CustomScrollBehavior(),
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                      '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
+                                ),
+                              ),
                             ),
                           ),
                           DataCell(

@@ -50,25 +50,27 @@ class PicaCardTableController extends GetxController {
   }
 
   listedCard() {
-    listCard = [
-      [
-        'Plan Unit',
-        'planUnit',
-        ['mspp', 'periodic_inspection', 'plan_unit'],
-        0,
-      ],
-      [
-        'Meet',
-        'meet',
-        ['mspp', 'periodic_inspection', 'meet'],
-        0,
-      ],
-      [
-        'Asses',
-        'asses',
-        ['mspp', 'periodic_inspection', 'asses'],
-        0,
-      ],
-    ].obs;
+    if (listCard == null) {
+      listCard = [
+        [
+          'Plan Unit',
+          'planUnit',
+          ['mspp', 'periodic_inspection', 'plan_unit'],
+          0,
+        ],
+        [
+          'Meet',
+          'meet',
+          ['mspp', 'periodic_inspection', 'meet'],
+          0,
+        ],
+        [
+          'Asses',
+          'asses',
+          ['mspp', 'periodic_inspection', 'asses'],
+          0,
+        ],
+      ].obs;
+    }
   }
 }

@@ -1,6 +1,8 @@
+import 'package:expandable/expandable.dart';
 import 'package:get/get.dart';
 
 class PicaCardTableController extends GetxController {
+  ExpandableController expandableController;
   RxList<int> indexResultA = RxList<int>.filled(6, 0);
   RxList<int> indexResultB = RxList<int>.filled(6, 0);
   RxList<int> listCounter;
@@ -10,6 +12,17 @@ class PicaCardTableController extends GetxController {
   int count = 0;
   int lastA = 0;
   int lastB = 0;
+
+  @override
+  void onInit() {
+    expandableController = ExpandableController();
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    expandableController?.dispose();
+  }
 
   counter({int indexA, int indexB, int totalRow, int row}) {
     if (listCounter == null) {

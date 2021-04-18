@@ -46,6 +46,7 @@ class PicaObservationCard extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
           child: ExpandableNotifier(
+            controller: controller.expandableController,
             child: ScrollOnExpand(
               child: ExpandablePanel(
                 theme: const ExpandableThemeData(

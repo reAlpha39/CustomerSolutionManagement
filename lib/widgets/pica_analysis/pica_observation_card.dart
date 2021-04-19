@@ -74,9 +74,11 @@ class PicaObservationCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Text(
-                        '$title',
-                        style: TextStyle(fontSize: 20),
+                      Flexible(
+                        child: Text(
+                          '$title',
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ),
                     ],
                   ),

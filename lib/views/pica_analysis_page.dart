@@ -4,6 +4,7 @@ import 'package:customer/widgets/pica_analysis/pica_observation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
 
 class PicaAnalysisPage extends StatelessWidget {
   final PicaController _controller = Get.find();
@@ -48,17 +49,17 @@ class PicaAnalysisPage extends StatelessWidget {
                 tabBackgroundColor: Color(0xffffcd29),
                 tabs: [
                   GButton(
-                    icon: Icons.home_outlined,
+                    icon: LineIcons.barChart,
                     iconColor: Color(0xffffcd29),
-                    text: 'Home',
+                    text: 'Score',
                   ),
                   GButton(
-                    icon: Icons.ac_unit_outlined,
+                    icon: LineIcons.tags,
                     iconColor: Color(0xffffcd29),
                     text: 'Observasi',
                   ),
                   GButton(
-                    icon: Icons.accessibility_new_outlined,
+                    icon: LineIcons.thumbtack,
                     iconColor: Color(0xffffcd29),
                     text: 'Matrix',
                   ),

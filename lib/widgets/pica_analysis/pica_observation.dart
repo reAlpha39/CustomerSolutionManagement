@@ -24,9 +24,13 @@ class _PicaObservationState extends State<PicaObservation>
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: List<Widget>.generate(
-              controller.listCard.length,
-              (index) => Obx(
-                    () => PicaObservationCard(
+            controller.listCard.length,
+            (index) => Obx(
+              () => !msppController
+                      .radioIndexPI(controller.listCard.elementAt(index)[1])
+                      .contains(1)
+                  ? Container()
+                  : PicaObservationCard(
                       title: '${controller.listCard.elementAt(index)[0]}',
                       id: '${controller.listCard.elementAt(index)[1]}',
                       indexCard: index,
@@ -41,7 +45,8 @@ class _PicaObservationState extends State<PicaObservation>
                       radioIndexA: controller.indexResultA,
                       radioIndexB: controller.indexResultB,
                     ),
-                  )),
+            ),
+          ),
         ),
       ),
     );

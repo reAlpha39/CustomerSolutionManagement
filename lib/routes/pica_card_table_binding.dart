@@ -9,5 +9,10 @@ class PicaCardTableBinding extends Bindings {
         tag: 'planUnit');
     Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'meet');
     Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'asses');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'ccd');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'oppsp');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'bspsp');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'rcpsp');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'ade');
   }
 }

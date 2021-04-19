@@ -70,6 +70,36 @@ class PicaCardTableController extends GetxController {
           ['mspp', 'periodic_inspection', 'asses'],
           0,
         ],
+        [
+          'Compile & Compute Data',
+          'ccd',
+          ['mspp', 'periodic_service_plan', 'compile_and_compute_data'],
+          0,
+        ],
+        [
+          'Organize & Prioritize PS Plan',
+          'oppsp',
+          ['mspp', 'periodic_service_plan', 'organize_and_prioritize_ps_plan'],
+          0,
+        ],
+        [
+          'Balance & Scheduling PS Plan',
+          'bspsp',
+          ['mspp', 'periodic_service_plan', 'balance_and_scheduling_ps_plan'],
+          0,
+        ],
+        [
+          'Resources & Confirm PS Plan',
+          'rcpsp',
+          ['mspp', 'periodic_service_plan', 'resources_and_confirm_ps_plan'],
+          0,
+        ],
+        [
+          'Adjust Daily for Exception',
+          'ade',
+          ['mspp', 'periodic_service_plan', 'adjust_daily_for_exception'],
+          0,
+        ],
       ].obs;
     }
   }

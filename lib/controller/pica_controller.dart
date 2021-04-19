@@ -1,6 +1,7 @@
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaController extends GetxController {
@@ -76,6 +77,20 @@ class PicaController extends GetxController {
       percentage = 0.1;
     }
     return percentage;
+  }
+
+  List<Color> colorBar(double score) {
+    List<Color> color;
+    if (score < 74.0) {
+      color = [Colors.black, Colors.black87];
+    } else if (score >= 74.0 && score < 83.0) {
+      color = [Colors.red.shade900, Colors.red.shade400];
+    } else if (score >= 83.0 && score < 93.0) {
+      color = [Colors.yellow.shade900, Colors.yellow.shade400];
+    } else if (score >= 93.0) {
+      color = [Colors.green.shade900, Colors.green.shade400];
+    }
+    return color;
   }
 
   List<int> filterList(List<int> list) {

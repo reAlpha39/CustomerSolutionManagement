@@ -12,12 +12,13 @@ class PicaChart extends StatefulWidget {
   _PicaChartState createState() => _PicaChartState();
 }
 
-class _PicaChartState extends State<PicaChart> with AutomaticKeepAliveClientMixin {
+class _PicaChartState extends State<PicaChart>
+    with AutomaticKeepAliveClientMixin {
   final PicaController picaController = Get.find();
   final MsppController msppController = Get.find();
   final OtherProgramController otherPController = Get.find();
   final PartProgramController partPController = Get.find();
-  
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -27,10 +28,10 @@ class _PicaChartState extends State<PicaChart> with AutomaticKeepAliveClientMixi
         constraints: BoxConstraints(
             minHeight: 100, maxHeight: 400, maxWidth: 600, minWidth: 300),
         child: Card(
-          elevation: 0,
+          elevation: 4,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-          color: const Color(0xff2c4260),
+          color: Colors.white,
           child: Padding(
             padding:
                 const EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 8),
@@ -68,7 +69,8 @@ class _PicaChartState extends State<PicaChart> with AutomaticKeepAliveClientMixi
                                       return BarTooltipItem(
                                         rod.y.round().toString(),
                                         TextStyle(
-                                          color: Colors.white,
+                                          fontSize: 10,
+                                          color: Colors.black54,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       );
@@ -163,12 +165,14 @@ class _PicaChartState extends State<PicaChart> with AutomaticKeepAliveClientMixi
                                     x: index,
                                     barRods: [
                                       BarChartRodData(
-                                          y: picaController.scorePica(
-                                              picaController.listIndex[index]),
-                                          colors: [
-                                            Colors.lightBlueAccent,
-                                            Colors.greenAccent
-                                          ])
+                                        y: picaController.scorePica(
+                                            picaController.listIndex[index]),
+                                        colors: picaController.colorBar(
+                                          picaController.scorePica(
+                                            picaController.listIndex[index],
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                     showingTooltipIndicators: [0],
                                   ),
@@ -178,7 +182,6 @@ class _PicaChartState extends State<PicaChart> with AutomaticKeepAliveClientMixi
                           );
                         } else {
                           return Container(
-                            color: Colors.red,
                             child: Align(
                               alignment: Alignment.center,
                               child: CircularProgressIndicator(),

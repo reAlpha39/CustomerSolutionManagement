@@ -42,6 +42,7 @@ class PicaObservationCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: Card(
+        elevation: 4,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
         child: Container(
           padding:

@@ -26,7 +26,7 @@ class _PicaChartState extends State<PicaChart>
       padding: const EdgeInsets.all(12.0),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            minHeight: 100, maxHeight: 400, maxWidth: 600, minWidth: 300),
+            minHeight: 100, maxHeight: 450, maxWidth: 600, minWidth: 300),
         child: Card(
           elevation: 4,
           shape:

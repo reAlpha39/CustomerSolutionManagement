@@ -173,8 +173,11 @@ class MsppDataTable extends StatelessWidget {
                               child: ScrollConfiguration(
                                 behavior: CustomScrollBehavior(),
                                 child: SingleChildScrollView(
-                                  child: Text(
-                                      '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
+                                  child: Container(
+                                    width: 160,
+                                    child: Text(
+                                        '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
+                                  ),
                                 ),
                               ),
                             ),

@@ -21,6 +21,7 @@ class _PicaObservationState extends State<PicaObservation>
     return Container(
       height: context.height,
       child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: List<Widget>.generate(

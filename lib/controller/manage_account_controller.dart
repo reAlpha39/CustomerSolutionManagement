@@ -35,6 +35,14 @@ class ManageAccountController extends GetxController {
     super.onInit();
   }
 
+  @override
+  void onClose() {
+    namaTEC?.dispose();
+    usernameTEC?.dispose();
+    passwordTEC?.dispose();
+    super.onClose();
+  }
+
   // Called ketika panel ditutup
   onPanelClose() {
     titleCard.value = 'Create Account';

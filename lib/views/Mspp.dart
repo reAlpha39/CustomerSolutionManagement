@@ -14,7 +14,7 @@ class Mspp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 7,
+      length: 12,
       child: Scaffold(
         appBar: AppBar(
           title: Text('MSPP'),
@@ -37,6 +37,28 @@ class Mspp extends StatelessWidget {
                 ),
               ),
               Tab(
+                child: Column(
+                  children: [Text('OVH'), Text('Plan')],
+                ),
+              ),
+              Tab(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Text('OVH'),
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Unschedule'), Text('Breakdown')],
+                ),
+              ),
+              Tab(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: Text('CBM'),
+                ),
+              ),
+              Tab(
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 15),
                   child: Text('Tools'),
@@ -46,6 +68,11 @@ class Mspp extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 15),
                   child: Text('Infrastructure'),
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Application'), Text('Engineer')],
                 ),
               ),
               Tab(
@@ -67,24 +94,17 @@ class Mspp extends StatelessWidget {
               controller.isLoading.value
                   ? Center(child: CircularProgressIndicator())
                   : MsppPi(),
-              controller.isLoading.value
-                  ? Center(child: CircularProgressIndicator())
-                  : MsppPsPlan(),
-              controller.isLoading.value
-                  ? Center(child: CircularProgressIndicator())
-                  : MsppPs(),
-              controller.isLoading.value
-                  ? Center(child: CircularProgressIndicator())
-                  : MsppTools(),
-              controller.isLoading.value
-                  ? Center(child: CircularProgressIndicator())
-                  : MsppInfras(),
-              controller.isLoading.value
-                  ? Center(child: CircularProgressIndicator())
-                  : MsppOm(),
-              controller.isLoading.value
-                  ? Center(child: CircularProgressIndicator())
-                  : MsppOs(),
+              MsppPsPlan(),
+              MsppPs(),
+              Container(),
+              Container(),
+              Container(),
+              Container(),
+              MsppTools(),
+              MsppInfras(),
+              Container(),
+              MsppOm(),
+              MsppOs(),
             ],
           ),
         ),

@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class OtherProgramAdminBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<OtherProgramAdminController>(() => OtherProgramAdminController());
+    Get.put<OtherProgramAdminController>(OtherProgramAdminController());
   }
 }

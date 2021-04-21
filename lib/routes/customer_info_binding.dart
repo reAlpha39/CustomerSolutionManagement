@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class CustomerInfoBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<CustomerInfoController>(() => CustomerInfoController());
+    Get.put<CustomerInfoController>(CustomerInfoController());
   }
 }

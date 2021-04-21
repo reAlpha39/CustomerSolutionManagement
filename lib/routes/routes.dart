@@ -51,8 +51,9 @@ class Routes {
       name: '/mspp_admin',
       page: () => MsppAdmin(),
       bindings: [
-        MsppAdminBinding(),
         MsppBinding(),
+        MsppAdminBinding(),
+        DataTableBinding(),
       ],
     ),
     GetPage(
@@ -85,10 +86,10 @@ class Routes {
       name: '/pica_page',
       page: () => PicaAnalysisPage(),
       bindings: [
-        PicaBinding(),
         MsppBinding(),
         OtherProgramBinding(),
         PartProgramBinding(),
+        PicaBinding(),
         DataTableBinding(),
         PicaCardTableBinding(),
       ],

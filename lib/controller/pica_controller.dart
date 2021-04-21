@@ -3,6 +3,7 @@ import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PicaController extends GetxController {
   MsppController _mspp = Get.find();
@@ -35,10 +36,19 @@ class PicaController extends GetxController {
   RxBool isLoaded = false.obs;
 
   RxInt navBarIndex = 0.obs;
+  RxString key = 'periodic_inspection'.obs;
+
+  PanelController panelController;
 
   @override
   void onInit() {
+    panelController = PanelController();
     super.onInit();
+  }
+
+  void showDetailCard(String keyValue) {
+    key.value = keyValue;
+    panelController.open();
   }
 
   listedIndex() {

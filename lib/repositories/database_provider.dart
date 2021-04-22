@@ -4,6 +4,7 @@ import 'package:customer/models/audit_table_data.dart';
 import 'package:customer/models/iw_data_table.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/other_program.dart';
+import 'package:customer/models/pica_data.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -217,6 +218,43 @@ class DatabaseProvider {
       tableData = AuditTableData.fromMap(data.data());
     } on Exception catch (e) {}
     return tableData;
+  }
+
+  Future<bool> savePicaData(PicaData picaData, String username) async {
+    bool isSuccess = false;
+    try {
+      var pica = picaData.toMap();
+      firestore = FirebaseFirestore.instance;
+      DocumentReference doc =
+          firestore.collection('data_customer').doc(username);
+      CollectionReference collection = doc.collection('pica_analysis');
+      var data = await collection.doc('pica_observasi').set(pica).then((_) {
+        showDialog(title: 'Sukses', middleText: 'Data berhasil disimpan');
+        isSuccess = true;
+      });
+    } catch (e) {}
+    return isSuccess;
+  }
+
+  Future<PicaData> loadPicaData(String username) async {
+    PicaData picaData;
+    try {
+      firestore = FirebaseFirestore.instance;
+      DocumentReference doc =
+          firestore.collection('data_customer').doc(username);
+      var data =
+          await doc.collection('pica_analysis').doc('pica_observasi').get();
+      if (data.exists) {
+        picaData = PicaData.fromMap(data.data());
+      } else {
+        DocumentReference doc =
+            firestore.collection('initial_data').doc('pica_observation');
+        CollectionReference collection = doc.collection('pica_analysis');
+        var data = await collection.doc('pica_observasi').get();
+        picaData = PicaData.fromMap(data.data());
+      }
+    } catch (e) {}
+    return picaData;
   }
 
   dummy() async {

@@ -1,6 +1,7 @@
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
+import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -37,6 +38,7 @@ class PicaController extends GetxController {
 
   RxInt navBarIndex = 0.obs;
   RxInt indexDetailData = 0.obs;
+  RxString idDetailData = "".obs;
 
   PanelController panelController;
 
@@ -46,9 +48,24 @@ class PicaController extends GetxController {
     super.onInit();
   }
 
-  void showDetailCard(int indexData) {
+  void showDetailCard(int indexData, String idData) {
     indexDetailData.value = indexData;
+    idDetailData.value = idData;
     panelController.open();
+  }
+
+  void changeOpenedIndexData() {
+    PicaCardTableController picaCTController = Get.find();
+    try {
+      if (panelController.isPanelOpen) {
+        int index = picaCTController.picaData.value.listPica
+            .indexWhere((element) => element[0].contains(idDetailData.value));
+        print(index);
+        indexDetailData.value = index;
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   listedIndex() {

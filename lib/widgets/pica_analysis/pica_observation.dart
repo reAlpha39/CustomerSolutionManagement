@@ -13,9 +13,12 @@ class PicaObservation extends StatelessWidget {
         child: Column(
           children: List<Widget>.generate(
             picaCTController.picaData.value.listPica.length,
-            (index) => PicaObservationCard(
-              indexValue: index,
-              title: picaCTController.picaData.value.listPica[index][1],
+            (index) => Obx(
+              () => PicaObservationCard(
+                indexValue: index,
+                title: picaCTController.picaData.value.listPica[index][1],
+                id: picaCTController.picaData.value.listPica[index][0],
+              ),
             ),
           ),
         ),

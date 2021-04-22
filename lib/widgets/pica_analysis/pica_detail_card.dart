@@ -1,6 +1,7 @@
 import 'package:customer/controller/data_table_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
+import 'package:customer/controller/pica_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/pica_analysis/pica_result.dart';
 import 'package:expandable/expandable.dart';
@@ -151,6 +152,7 @@ class MsppDataTable extends StatelessWidget {
   Future<bool> resultRadio({int index, bool isA}) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
     final PicaCardTableController listCardController = Get.find();
+    final PicaController picaController = Get.find();
     return Get.defaultDialog(
         barrierDismissible: false,
         radius: 17,
@@ -175,6 +177,7 @@ class MsppDataTable extends StatelessWidget {
           listCardController.sortCard(
               indexData, indexCard, controllerPU.total.value);
           Get.back(closeOverlays: false);
+          picaController.changeOpenedIndexData();
         });
   }
 

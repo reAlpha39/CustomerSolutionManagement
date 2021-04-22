@@ -6,14 +6,15 @@ class PicaObservationCard extends StatelessWidget {
   final PicaController _controller = Get.find();
   final String title;
   final int indexValue;
+  final String id;
 
-  PicaObservationCard({Key key, this.title, this.indexValue});
+  PicaObservationCard({Key key, this.title, this.indexValue, this.id});
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: InkWell(
-        onTap: () => _controller.showDetailCard(indexValue),
+        onTap: () => _controller.showDetailCard(indexValue, id),
         child: Card(
           elevation: 4,
           shape:

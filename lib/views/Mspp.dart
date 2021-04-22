@@ -1,4 +1,5 @@
 import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/widgets/mspp/mspp_pi.dart';
 import 'package:customer/widgets/mspp/mspp_ps.dart';
 import 'package:customer/widgets/mspp/mspp_ps_plan.dart';
@@ -120,6 +121,7 @@ class Mspp extends StatelessWidget {
   }
 
   showDialog() {
+    PicaCardTableController picaCTController = Get.find();
     return Get.defaultDialog(
         radius: 17,
         title: 'Simpan data',
@@ -131,6 +133,7 @@ class Mspp extends StatelessWidget {
         cancelTextColor: Colors.black87,
         onConfirm: () {
           controller.saveDataMspp();
+          picaCTController.saveData();
         },
         onCancel: () => Get.toNamed('/mspp'));
   }

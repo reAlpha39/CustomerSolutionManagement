@@ -43,6 +43,7 @@ class Routes {
       name: '/mspp',
       page: () => Mspp(),
       bindings: [
+        PicaCardTableBinding(),
         MsppBinding(),
         DataTableBinding(),
       ],
@@ -51,6 +52,7 @@ class Routes {
       name: '/mspp_admin',
       page: () => MsppAdmin(),
       bindings: [
+        PicaCardTableBinding(),
         MsppBinding(),
         MsppAdminBinding(),
         DataTableBinding(),
@@ -86,12 +88,12 @@ class Routes {
       name: '/pica_page',
       page: () => PicaAnalysisPage(),
       bindings: [
+        PicaCardTableBinding(),
         MsppBinding(),
         OtherProgramBinding(),
         PartProgramBinding(),
         PicaBinding(),
         DataTableBinding(),
-        PicaCardTableBinding(),
       ],
     ),
   ];

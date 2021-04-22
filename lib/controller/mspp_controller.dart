@@ -1,4 +1,5 @@
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/mspp_data.dart';
 import 'package:customer/repositories/database_provider.dart';
@@ -128,9 +129,11 @@ class MsppController extends GetxController {
   }
 
   loadData({String username}) {
+    final PicaCardTableController picaCardTableController = Get.find();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
+        picaCardTableController.loadPicaData(username: username);
         _databaseProvider.loadMsppData(username).then(
           (value) {
             if (value.periodicInspection != null) {

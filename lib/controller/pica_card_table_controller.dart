@@ -1,12 +1,18 @@
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/pica_data.dart';
+import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/utils/connectivity_checker.dart';
 import 'package:expandable/expandable.dart';
 import 'package:get/get.dart';
 
 class PicaCardTableController extends GetxController {
+  DatabaseProvider _databaseProvider = DatabaseProvider();
+  LoginController loginController = Get.find();
   ExpandableController expandableController;
   RxList<int> indexResultA = RxList<int>.filled(6, 0);
   RxList<int> indexResultB = RxList<int>.filled(6, 0);
   RxList<int> listCounter;
+  RxBool isLoading = false.obs;
   Rx<PicaData> picaData = PicaData().obs;
   RxInt total = 0.obs;
   RxInt totalRow = 0.obs;
@@ -25,7 +31,38 @@ class PicaCardTableController extends GetxController {
     expandableController?.dispose();
   }
 
-  counter({int indexA, int indexB, int totalRow, int row}) {
+  void checkData(int value, String id, int index) {
+    int indexA = 0;
+    int indexB = 0;
+    if (value == 1) {
+      int lengthA = picaData.value.picaElement.length;
+      outer:
+      for (int i = 0; i <= lengthA - 1; i++) {
+        int lengthB = picaData.value.picaElement[i].picaDetail.length;
+        inner:
+        for (int j = 0; j <= lengthB - 1; j++) {
+          if (picaData.value.picaElement[i].picaDetail[j].id == id) {
+            indexA = i;
+            indexB = j;
+            break outer;
+          }
+        }
+      }
+      picaData.value.picaElement[indexA].picaDetail[indexB].colResult[index]
+          .isNo = true;
+    } else {
+      picaData.value.picaElement[indexA].picaDetail[indexB].colResult[index]
+          .isNo = false;
+    }
+  }
+
+  counter(
+      {int indexA,
+      int indexB,
+      int totalRow,
+      int row,
+      int indexCard,
+      int indexData}) {
     if (listCounter == null) {
       listCounter = RxList<int>.filled(totalRow, 0);
     }
@@ -33,6 +70,10 @@ class PicaCardTableController extends GetxController {
       count += (indexA - lastA) + (indexB - lastB);
       lastA = indexA;
       lastB = indexB;
+      picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
+          .urgensi = indexA;
+      picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
+          .dampak = indexB;
       listCounter[row] = count;
     }
     int temp = 0;
@@ -43,7 +84,7 @@ class PicaCardTableController extends GetxController {
   }
 
   void sortCard(int indexData, int index, int value) {
-    mappedCard();
+    loadData();
     try {
       picaData.value.picaElement[indexData].picaDetail[index].result = value;
       picaData.value.picaElement[indexData].picaDetail
@@ -77,157 +118,31 @@ class PicaCardTableController extends GetxController {
     }
   }
 
-  mappedCard() {
+  void saveData() {
+    _databaseProvider.savePicaData(
+        picaData.value, loginController.usr.value.username);
+  }
+
+  void loadData() {
+    loadPicaData(username: loginController.usr.value.username);
+  }
+
+  void loadPicaData({String username}) {
     if (picaData.value.picaElement == null) {
-      Map<String, dynamic> listPica = {
-        "picaElement": [
-          {
-            "id": "periodic_inspection",
-            "title": "Periodic Inspection",
-            "score": 0,
-            "picaDetail": [
-              {
-                "title": "Plan Unit",
-                "id": "planUnit",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_inspection",
-                  "docB": "plan_unit"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              },
-              {
-                "title": "Meet",
-                "id": "meet",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_inspection",
-                  "docB": "meet"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              },
-              {
-                "title": "Asses",
-                "id": "asses",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_inspection",
-                  "docB": "asses"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              }
-            ]
-          },
-          {
-            "id": "periodic_service_plan",
-            "title": "Periodic Service Plan",
-            "score": 0,
-            "picaDetail": [
-              {
-                "title": "Compile & Compute Data",
-                "id": "ccd",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_service_plan",
-                  "docB": "compile_and_compute_data"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              },
-              {
-                "title": "Organize & Prioritize PS Plan",
-                "id": "oppsp",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_service_plan",
-                  "docB": "organize_and_prioritize_ps_plan"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              },
-              {
-                "title": "Balance & Scheduling PS Plan",
-                "id": "bspsp",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_service_plan",
-                  "docB": "balance_and_scheduling_ps_plan"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              },
-              {
-                "title": "Resources & Confirm PS Plan",
-                "id": "rcpsp",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_service_plan",
-                  "docB": "resources_and_confirm_ps_plan"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              },
-              {
-                "title": "Adjust Daily for Exception",
-                "id": "ade",
-                "table_path": {
-                  "docA": "mspp",
-                  "colA": "periodic_service_plan",
-                  "docB": "adjust_daily_for_exception"
-                },
-                "colResult": [
-                  {"urgensi": 0, "dampak": 0}
-                ],
-                "result": 0,
-                "actual": "",
-                "target": "",
-                "improv": ""
-              }
-            ]
-          }
-        ]
-      };
-      PicaData data = PicaData.fromMap(listPica);
-      picaData.value = data;
-      picaData.refresh();
+      isLoading.value = true;
+      connectivityChecker().then((conn) {
+        if (conn) {
+          _databaseProvider.loadPicaData(username).then((value) {
+            if (value != null) {
+              picaData.value = value;
+              picaData.refresh();
+              isLoading.value = false;
+            }
+          });
+        } else {
+          isLoading.value = false;
+        }
+      });
     }
   }
 }

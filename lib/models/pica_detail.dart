@@ -10,9 +10,6 @@ class PicaDetail {
         this.tablePath,
         this.colResult,
         this.result,
-        this.actual,
-        this.target,
-        this.improv,
     });
 
     String title;
@@ -20,9 +17,6 @@ class PicaDetail {
     TablePath tablePath;
     List<ColResult> colResult;
     int result;
-    String actual;
-    String target;
-    String improv;
 
     factory PicaDetail.fromJson(String str) => PicaDetail.fromMap(json.decode(str));
 
@@ -34,9 +28,6 @@ class PicaDetail {
         tablePath: TablePath.fromMap(json["table_path"]),
         colResult: List<ColResult>.from(json["colResult"].map((x) => ColResult.fromMap(x))),
         result: json["result"],
-        actual: json["actual"],
-        target: json["target"],
-        improv: json["improv"],
     );
 
     Map<String, dynamic> toMap() => {
@@ -45,8 +36,5 @@ class PicaDetail {
         "table_path": tablePath.toMap(),
         "colResult": List<dynamic>.from(colResult.map((x) => x.toMap())),
         "result": result,
-        "actual": actual,
-        "target": target,
-        "improv": improv,
     };
 }

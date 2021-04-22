@@ -58,8 +58,8 @@ class PicaController extends GetxController {
     PicaCardTableController picaCTController = Get.find();
     try {
       if (panelController.isPanelOpen) {
-        int index = picaCTController.picaData.value.listPica
-            .indexWhere((element) => element[0].contains(idDetailData.value));
+        int index = picaCTController.picaData.value.picaElement
+            .indexWhere((element) => element.id.contains(idDetailData.value));
         print(index);
         indexDetailData.value = index;
       }

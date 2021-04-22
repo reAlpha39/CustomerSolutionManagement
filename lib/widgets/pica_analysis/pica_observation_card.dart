@@ -44,7 +44,8 @@ class PicaObservationCard extends StatelessWidget {
                   child: Center(
                     child: Obx(
                       () => Text(
-                        _picaCTController.picaData.value.listPica[indexValue][2]
+                        _picaCTController
+                            .picaData.value.picaElement[indexValue].score
                             .toString(),
                         style: TextStyle(
                           fontSize: 18,

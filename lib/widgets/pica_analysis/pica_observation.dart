@@ -12,12 +12,12 @@ class PicaObservation extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: List<Widget>.generate(
-            picaCTController.picaData.value.listPica.length,
+            picaCTController.picaData.value.picaElement.length,
             (index) => Obx(
               () => PicaObservationCard(
                 indexValue: index,
-                title: picaCTController.picaData.value.listPica[index][1],
-                id: picaCTController.picaData.value.listPica[index][0],
+                title: picaCTController.picaData.value.picaElement[index].title,
+                id: picaCTController.picaData.value.picaElement[index].id,
               ),
             ),
           ),

@@ -2,28 +2,28 @@ import 'dart:convert';
 
 class TablePath {
     TablePath({
-        this.documentA,
-        this.collectionA,
-        this.documentB,
+        this.docA,
+        this.colA,
+        this.docB,
     });
 
-    String documentA;
-    String collectionA;
-    String documentB;
+    String docA;
+    String colA;
+    String docB;
 
     factory TablePath.fromJson(String str) => TablePath.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
     factory TablePath.fromMap(Map<String, dynamic> json) => TablePath(
-        documentA: json["documentA"],
-        collectionA: json["collectionA"],
-        documentB: json["documentB"],
+        docA: json["docA"],
+        colA: json["colA"],
+        docB: json["docB"],
     );
 
     Map<String, dynamic> toMap() => {
-        "documentA": documentA,
-        "collectionA": collectionA,
-        "documentB": documentB,
+        "docA": docA,
+        "colA": colA,
+        "docB": docB,
     };
 }

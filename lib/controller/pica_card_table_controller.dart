@@ -9,6 +9,7 @@ class PicaCardTableController extends GetxController {
   RxList<int> listCounter;
   Rx<PicaData> picaData = PicaData().obs;
   RxInt total = 0.obs;
+  RxInt totalRow = 0.obs;
   int count = 0;
   int lastA = 0;
   int lastB = 0;
@@ -44,11 +45,9 @@ class PicaCardTableController extends GetxController {
   void sortCard(int indexData, int index, int value) {
     mappedCard();
     try {
-      picaData.value.listPica[indexData][3][index][3] = value;
-      List temp = picaData.value.listPica[indexData][3];
-      temp.sort((a, b) {
-        return b[3].compareTo(a[3]);
-      });
+      picaData.value.picaElement[indexData].picaDetail[index].result = value;
+      picaData.value.picaElement[indexData].picaDetail
+          .sort((a, b) => b.result.compareTo(a.result));
     } catch (e) {
       print(e);
     }
@@ -59,12 +58,12 @@ class PicaCardTableController extends GetxController {
 
   void counterMainCard(int indexData) {
     try {
-      int length = picaData.value.listPica[indexData][3].length;
+      int length = picaData.value.picaElement[indexData].picaDetail.length;
       int counter = 0;
       for (int i = 0; i <= length - 1; i++) {
-        counter += picaData.value.listPica[indexData][3][i][3];
+        counter += picaData.value.picaElement[indexData].picaDetail[i].result;
       }
-      picaData.value.listPica[indexData][2] = counter;
+      picaData.value.picaElement[indexData].score = counter;
     } catch (e) {
       print(e);
     }
@@ -72,98 +71,158 @@ class PicaCardTableController extends GetxController {
 
   void sortMainCard() {
     try {
-      picaData.value.listPica.sort((a, b) => b[2].compareTo(a[2]));
+      picaData.value.picaElement.sort((a, b) => b.score.compareTo(a.score));
     } catch (e) {
       print(e);
     }
   }
 
   mappedCard() {
-    if (picaData.value.listPica == null) {
+    if (picaData.value.picaElement == null) {
       Map<String, dynamic> listPica = {
-        "listPica": [
-          [
-            "periodic_inspection",
-            "Periodic Inspection",
-            0,
-            [
-              [
-                'Plan Unit',
-                'planUnit',
-                ['mspp', 'periodic_inspection', 'plan_unit'],
-                0,
-                ""
-              ],
-              [
-                'Meet',
-                'meet',
-                ['mspp', 'periodic_inspection', 'meet'],
-                0,
-                ""
-              ],
-              [
-                'Asses',
-                'asses',
-                ['mspp', 'periodic_inspection', 'asses'],
-                0,
-                ""
-              ],
+        "picaElement": [
+          {
+            "id": "periodic_inspection",
+            "title": "Periodic Inspection",
+            "score": 0,
+            "picaDetail": [
+              {
+                "title": "Plan Unit",
+                "id": "planUnit",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_inspection",
+                  "docB": "plan_unit"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
+                ],
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              },
+              {
+                "title": "Meet",
+                "id": "meet",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_inspection",
+                  "docB": "meet"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
+                ],
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              },
+              {
+                "title": "Asses",
+                "id": "asses",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_inspection",
+                  "docB": "asses"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
+                ],
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              }
             ]
-          ],
-          [
-            "periodic_service_plan",
-            "Periodic Service Plan",
-            0,
-            [
-              [
-                'Compile & Compute Data',
-                'ccd',
-                ['mspp', 'periodic_service_plan', 'compile_and_compute_data'],
-                0,
-                ""
-              ],
-              [
-                'Organize & Prioritize PS Plan',
-                'oppsp',
-                [
-                  'mspp',
-                  'periodic_service_plan',
-                  'organize_and_prioritize_ps_plan'
+          },
+          {
+            "id": "periodic_service_plan",
+            "title": "Periodic Service Plan",
+            "score": 0,
+            "picaDetail": [
+              {
+                "title": "Compile & Compute Data",
+                "id": "ccd",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_service_plan",
+                  "docB": "compile_and_compute_data"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
                 ],
-                0,
-                ""
-              ],
-              [
-                'Balance & Scheduling PS Plan',
-                'bspsp',
-                [
-                  'mspp',
-                  'periodic_service_plan',
-                  'balance_and_scheduling_ps_plan'
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              },
+              {
+                "title": "Organize & Prioritize PS Plan",
+                "id": "oppsp",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_service_plan",
+                  "docB": "organize_and_prioritize_ps_plan"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
                 ],
-                0,
-                ""
-              ],
-              [
-                'Resources & Confirm PS Plan',
-                'rcpsp',
-                [
-                  'mspp',
-                  'periodic_service_plan',
-                  'resources_and_confirm_ps_plan'
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              },
+              {
+                "title": "Balance & Scheduling PS Plan",
+                "id": "bspsp",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_service_plan",
+                  "docB": "balance_and_scheduling_ps_plan"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
                 ],
-                0,
-                ""
-              ],
-              [
-                'Adjust Daily for Exception',
-                'ade',
-                ['mspp', 'periodic_service_plan', 'adjust_daily_for_exception'],
-                0,
-                ""
-              ],
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              },
+              {
+                "title": "Resources & Confirm PS Plan",
+                "id": "rcpsp",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_service_plan",
+                  "docB": "resources_and_confirm_ps_plan"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
+                ],
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              },
+              {
+                "title": "Adjust Daily for Exception",
+                "id": "ade",
+                "table_path": {
+                  "docA": "mspp",
+                  "colA": "periodic_service_plan",
+                  "docB": "adjust_daily_for_exception"
+                },
+                "colResult": [
+                  {"urgensi": 0, "dampak": 0}
+                ],
+                "result": 0,
+                "actual": "",
+                "target": "",
+                "improv": ""
+              }
             ]
-          ]
+          }
         ]
       };
       PicaData data = PicaData.fromMap(listPica);

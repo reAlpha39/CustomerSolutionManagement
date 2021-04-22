@@ -52,7 +52,30 @@ class PicaCardTableController extends GetxController {
     } catch (e) {
       print(e);
     }
+    counterMainCard(indexData);
+    sortMainCard();
     picaData.refresh();
+  }
+
+  void counterMainCard(int indexData) {
+    try {
+      int length = picaData.value.listPica[indexData][3].length;
+      int counter = 0;
+      for (int i = 0; i <= length - 1; i++) {
+        counter += picaData.value.listPica[indexData][3][i][3];
+      }
+      picaData.value.listPica[indexData][2] = counter;
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void sortMainCard() {
+    try {
+      picaData.value.listPica.sort((a, b) => b[2].compareTo(a[2]));
+    } catch (e) {
+      print(e);
+    }
   }
 
   mappedCard() {

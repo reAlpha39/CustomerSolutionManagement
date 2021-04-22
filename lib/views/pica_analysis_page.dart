@@ -1,3 +1,4 @@
+import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_menu_card.dart';
 import 'package:customer/widgets/pica_analysis/pica_observation.dart';
@@ -10,6 +11,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PicaAnalysisPage extends StatelessWidget {
   final PicaController _controller = Get.find();
+  final PicaCardTableController _picaCTController = Get.find();
   final List<Widget> _widgetOption = <Widget>[
     PicaChart(),
     PicaObservation(),
@@ -86,6 +88,17 @@ class PicaAnalysisPage extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          floatingActionButton: Obx(
+            () => _controller.navBarIndex.value == 1
+                ? FloatingActionButton(
+                    child: Icon(
+                      LineIcons.save,
+                      color: Color(0xffffcd29),
+                    ),
+                    onPressed: () => _picaCTController.saveData(),
+                  )
+                : Container(),
           ),
           body: Stack(
             children: [

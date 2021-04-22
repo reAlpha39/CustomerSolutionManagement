@@ -35,20 +35,21 @@ class PicaCardTableController extends GetxController {
   void checkData(int value, String id, int index) {
     int indexA = 0;
     int indexB = 0;
-    if (value == 1) {
-      int lengthA = picaData.value.picaElement.length;
-      outer:
-      for (int i = 0; i <= lengthA - 1; i++) {
-        int lengthB = picaData.value.picaElement[i].picaDetail.length;
-        inner:
-        for (int j = 0; j <= lengthB - 1; j++) {
-          if (picaData.value.picaElement[i].picaDetail[j].id == id) {
-            indexA = i;
-            indexB = j;
-            break outer;
-          }
+
+    int lengthA = picaData.value.picaElement.length;
+    outer:
+    for (int i = 0; i <= lengthA - 1; i++) {
+      int lengthB = picaData.value.picaElement[i].picaDetail.length;
+      inner:
+      for (int j = 0; j <= lengthB - 1; j++) {
+        if (picaData.value.picaElement[i].picaDetail[j].id == id) {
+          indexA = i;
+          indexB = j;
+          break outer;
         }
       }
+    }
+    if (value == 1) {
       picaData.value.picaElement[indexA].picaDetail[indexB].colResult[index]
           .isNo = true;
     } else {

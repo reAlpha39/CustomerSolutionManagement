@@ -67,20 +67,23 @@ class PicaCardTableController extends GetxController {
       listCounter = RxList<int>.filled(totalRow, 0);
     }
     if (indexA != null || indexB != null) {
-      count += (indexA - lastA) + (indexB - lastB);
-      lastA = indexA;
-      lastB = indexB;
-      picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
-          .urgensi = indexA;
-      picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
-          .dampak = indexB;
-      listCounter[row] = count;
+      if (!isLoading.value) {
+        count += (indexA - lastA) + (indexB - lastB);
+        lastA = indexA;
+        lastB = indexB;
+        picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
+            .urgensi = indexA;
+        picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
+            .dampak = indexB;
+        listCounter[row] = count;
+      }
+      int temp = 0;
+      for (int i = 0; i <= listCounter.length - 1; i++) {
+        temp += listCounter[i];
+      }
+      total.value = temp;
+      picaData.refresh();
     }
-    int temp = 0;
-    for (int i = 0; i <= listCounter.length - 1; i++) {
-      temp += listCounter[i];
-    }
-    total.value = temp;
   }
 
   void sortCard(int indexData, int index, int value) {
@@ -119,8 +122,22 @@ class PicaCardTableController extends GetxController {
   }
 
   void saveData() {
-    _databaseProvider.savePicaData(
-        picaData.value, loginController.usr.value.username);
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        _databaseProvider
+            .savePicaData(picaData.value, loginController.usr.value.username)
+            .then((value) {
+          if (value) {
+            _databaseProvider.showDialog(
+                title: 'Sukses', middleText: 'Data berhasil di update');
+            isLoading.value = false;
+          }
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
   }
 
   void loadData() {

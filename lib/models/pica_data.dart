@@ -4,28 +4,22 @@
 
 import 'dart:convert';
 
-import 'package:customer/models/pica_detail.dart';
-
 class PicaData {
     PicaData({
-        this.periodicInspection,
-        this.periodicServicePlan,
+        this.listPica,
     });
 
-    PicaDetail periodicInspection;
-    PicaDetail periodicServicePlan;
+    List<List<dynamic>> listPica;
 
     factory PicaData.fromJson(String str) => PicaData.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
     factory PicaData.fromMap(Map<String, dynamic> json) => PicaData(
-        periodicInspection: PicaDetail.fromMap(json["periodic_inspection"]),
-        periodicServicePlan: PicaDetail.fromMap(json["periodic_service_plan"]),
+        listPica: List<List<dynamic>>.from(json["listPica"].map((x) => List<dynamic>.from(x.map((x) => x)))),
     );
 
     Map<String, dynamic> toMap() => {
-        "periodic_inspection": periodicInspection.toMap(),
-        "periodic_service_plan": periodicServicePlan.toMap(),
+        "listPica": List<dynamic>.from(listPica.map((x) => List<dynamic>.from(x.map((x) => x)))),
     };
 }

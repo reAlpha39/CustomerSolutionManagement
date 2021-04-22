@@ -67,22 +67,23 @@ class PicaCardTableController extends GetxController {
       listCounter = RxList<int>.filled(totalRow, 0);
     }
     if (indexA != null || indexB != null) {
-      if (!isLoading.value) {
+      if (picaData.value.picaElement != null) {
         count += (indexA - lastA) + (indexB - lastB);
         lastA = indexA;
         lastB = indexB;
-        picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
-            .urgensi = indexA;
-        picaData.value.picaElement[indexData].picaDetail[indexCard].colResult[0]
-            .dampak = indexB;
+        picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[row].urgensi = indexA;
+        picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[row].dampak = indexB;
         listCounter[row] = count;
+        int temp = 0;
+        for (int i = 0; i <= listCounter.length - 1; i++) {
+          temp += listCounter[i];
+        }
+        total.value = temp;
+        picaData.refresh();
+        sortCard(indexData, indexCard, temp);
       }
-      int temp = 0;
-      for (int i = 0; i <= listCounter.length - 1; i++) {
-        temp += listCounter[i];
-      }
-      total.value = temp;
-      picaData.refresh();
     }
   }
 

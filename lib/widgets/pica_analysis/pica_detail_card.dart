@@ -42,6 +42,7 @@ class PicaDetailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PicaCardTableController controller = Get.find(tag: tag);
+    final PicaCardTableController globalController = Get.find(tag: 'global');
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: Card(
@@ -71,7 +72,13 @@ class PicaDetailCard extends StatelessWidget {
                           child: Obx(
                             () => Center(
                                 child: Text(
-                              '${controller.total.value}',
+                              globalController
+                                  .picaData
+                                  .value
+                                  .picaElement[indexData]
+                                  .picaDetail[indexCard]
+                                  .result
+                                  .toString(),
                               style: TextStyle(
                                 color: Color(0xff665210),
                               ),
@@ -119,6 +126,7 @@ class PicaDetailCard extends StatelessWidget {
 class MsppDataTable extends StatelessWidget {
   final MsppController controller = Get.find();
   final DataTableController dtController = Get.find();
+  final PicaCardTableController listCardController = Get.find(tag: 'global');
   final List<int> radioIndexA;
   final List<int> radioIndexB;
   final String id;
@@ -151,7 +159,6 @@ class MsppDataTable extends StatelessWidget {
 
   Future<bool> resultRadio({int index, bool isA}) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
-    final PicaCardTableController listCardController = Get.find(tag: 'global');
     final PicaController picaController = Get.find();
     return Get.defaultDialog(
         barrierDismissible: false,
@@ -168,7 +175,7 @@ class MsppDataTable extends StatelessWidget {
         buttonColor: Color(0xffffcd29),
         confirmTextColor: Colors.black87,
         onConfirm: () {
-          controllerPU.counter(
+          listCardController.counter(
             indexA: controllerPU.indexResultA[index],
             indexB: controllerPU.indexResultB[index],
             totalRow: dtController.auditTableData.value.id.length,
@@ -176,15 +183,12 @@ class MsppDataTable extends StatelessWidget {
             indexCard: indexCard,
             indexData: indexData,
           );
-          listCardController.sortCard(
-              indexData, indexCard, controllerPU.total.value);
           Get.back(closeOverlays: false);
           picaController.changeOpenedIndexData();
         });
   }
 
   ElevatedButton buildTextButtonRemark(int id) {
-    final PicaCardTableController controllerPU = Get.find(tag: tag);
     return ElevatedButton(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0),
@@ -192,12 +196,13 @@ class MsppDataTable extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id, isA: false);
       },
-      child: Obx(() => Text('${controllerPU.indexResultB[id]}')),
+      child: Obx(() => Text(listCardController.picaData.value
+          .picaElement[indexData].picaDetail[indexCard].colResult[id].dampak
+          .toString())),
     );
   }
 
   ElevatedButton buildTextButtonAssessment(int id) {
-    final PicaCardTableController controllerPU = Get.find(tag: tag);
     return ElevatedButton(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0),
@@ -205,7 +210,9 @@ class MsppDataTable extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id, isA: true);
       },
-      child: Obx(() => Text('${controllerPU.indexResultA[id]}')),
+      child: Obx(() => Text(listCardController.picaData.value
+          .picaElement[indexData].picaDetail[indexCard].colResult[id].urgensi
+          .toString())),
     );
   }
 
@@ -312,7 +319,7 @@ class MsppDataTable extends StatelessWidget {
                                     Container(
                                       width: 60,
                                       child: Text(
-                                        'A',
+                                        'Urgensi',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700),
                                       ),
@@ -327,7 +334,7 @@ class MsppDataTable extends StatelessWidget {
                                     Container(
                                       width: 60,
                                       child: Text(
-                                        'B',
+                                        'Dampak',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700),
                                       ),

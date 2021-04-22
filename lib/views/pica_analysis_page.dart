@@ -11,7 +11,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PicaAnalysisPage extends StatelessWidget {
   final PicaController _controller = Get.find();
-  final PicaCardTableController _picaCTController = Get.find();
+  final PicaCardTableController _picaCTController = Get.find(tag: 'global');
   final List<Widget> _widgetOption = <Widget>[
     PicaChart(),
     PicaObservation(),

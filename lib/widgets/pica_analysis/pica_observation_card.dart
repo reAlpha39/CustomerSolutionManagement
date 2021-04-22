@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class PicaObservationCard extends StatelessWidget {
   final PicaController _controller = Get.find();
-  final PicaCardTableController _picaCTController = Get.find();
+  final PicaCardTableController _picaCTController = Get.find(tag: 'global');
   final String title;
   final int indexValue;
   final String id;

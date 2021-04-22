@@ -151,7 +151,7 @@ class MsppDataTable extends StatelessWidget {
 
   Future<bool> resultRadio({int index, bool isA}) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
-    final PicaCardTableController listCardController = Get.find();
+    final PicaCardTableController listCardController = Get.find(tag: 'global');
     final PicaController picaController = Get.find();
     return Get.defaultDialog(
         barrierDismissible: false,

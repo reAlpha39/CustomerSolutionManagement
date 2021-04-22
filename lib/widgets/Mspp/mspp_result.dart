@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class MsppResult extends StatelessWidget {
   final MsppController controller = Get.find();
-  final PicaCardTableController picaCTController = Get.find();
+  final PicaCardTableController picaCTController = Get.find(tag: 'global');
   final List<String> data;
   final int index;
   final String id;

@@ -121,7 +121,7 @@ class Mspp extends StatelessWidget {
   }
 
   showDialog() {
-    PicaCardTableController picaCTController = Get.find();
+    PicaCardTableController picaCTController = Get.find(tag: 'global');
     return Get.defaultDialog(
         radius: 17,
         title: 'Simpan data',

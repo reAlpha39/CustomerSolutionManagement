@@ -129,7 +129,7 @@ class MsppController extends GetxController {
   }
 
   loadData({String username}) {
-    final PicaCardTableController picaCardTableController = Get.find();
+    final PicaCardTableController picaCardTableController = Get.find(tag: 'global');
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {

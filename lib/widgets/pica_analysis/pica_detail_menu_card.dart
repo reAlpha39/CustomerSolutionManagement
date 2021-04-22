@@ -8,11 +8,10 @@ import 'package:line_icons/line_icons.dart';
 
 class PicaDetailMenuCard extends StatelessWidget {
   final PicaController picaController = Get.find();
-  final PicaCardTableController picaCTController = Get.find();
+  final PicaCardTableController picaCTController = Get.find(tag: 'global');
   final MsppController msppController = Get.find();
   @override
   Widget build(BuildContext context) {
-    picaCTController.loadData();
     return Card(
       color: Color(0xffffcd29),
       margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 72.0),

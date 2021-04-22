@@ -10,6 +10,7 @@ class PicaController extends GetxController {
   MsppController _mspp = Get.find();
   OtherProgramController _other = Get.find();
   PartProgramController _part = Get.find();
+  PicaCardTableController _picaCT = Get.find(tag: 'global');
 
   RxList<int> indexPI = RxList<int>();
   RxList<int> indexPSP = RxList<int>();
@@ -49,16 +50,16 @@ class PicaController extends GetxController {
   }
 
   void showDetailCard(int indexData, String idData) {
+    _picaCT.loadData();
     indexDetailData.value = indexData;
     idDetailData.value = idData;
     panelController.open();
   }
 
   void changeOpenedIndexData() {
-    PicaCardTableController picaCTController = Get.find();
     try {
       if (panelController.isPanelOpen) {
-        int index = picaCTController.picaData.value.picaElement
+        int index = _picaCT.picaData.value.picaElement
             .indexWhere((element) => element.id.contains(idDetailData.value));
         print(index);
         indexDetailData.value = index;

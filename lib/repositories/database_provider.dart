@@ -229,7 +229,6 @@ class DatabaseProvider {
           firestore.collection('data_customer').doc(username);
       CollectionReference collection = doc.collection('pica_analysis');
       var data = await collection.doc('pica_observasi').set(pica).then((_) {
-        showDialog(title: 'Sukses', middleText: 'Data berhasil disimpan');
         isSuccess = true;
       });
     } catch (e) {}
@@ -249,8 +248,7 @@ class DatabaseProvider {
       } else {
         DocumentReference doc =
             firestore.collection('initial_data').doc('pica_observation');
-        CollectionReference collection = doc.collection('pica_analysis');
-        var data = await collection.doc('pica_observasi').get();
+        var data = await doc.get();
         picaData = PicaData.fromMap(data.data());
       }
     } catch (e) {}

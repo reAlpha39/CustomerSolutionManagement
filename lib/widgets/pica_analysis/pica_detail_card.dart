@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 class PicaDetailCard extends StatelessWidget {
   final String title;
   final String id;
-  final String mapKey;
+  final int indexData;
   final int indexCard;
   final String tag;
   final String docA;
@@ -26,7 +26,7 @@ class PicaDetailCard extends StatelessWidget {
     Key key,
     this.title,
     this.id,
-    this.mapKey,
+    this.indexData,
     this.indexCard,
     this.docA,
     this.docB,
@@ -95,7 +95,7 @@ class PicaDetailCard extends StatelessWidget {
                 expanded: MsppDataTable(
                   id: id,
                   tag: tag,
-                  mapKey: mapKey,
+                  indexData: indexData,
                   indexCard: indexCard,
                   docA: docA,
                   colA: colA,
@@ -122,7 +122,7 @@ class MsppDataTable extends StatelessWidget {
   final List<int> radioIndexB;
   final String id;
   final String tag;
-  final String mapKey;
+  final int indexData;
   final int indexCard;
   final String docA;
   final String docB;
@@ -141,7 +141,7 @@ class MsppDataTable extends StatelessWidget {
     this.colA,
     this.dataTableFilter,
     this.id,
-    this.mapKey,
+    this.indexData,
     this.indexCard,
     this.dataTableListRadio,
     this.dataTableRadioIndex,
@@ -173,7 +173,7 @@ class MsppDataTable extends StatelessWidget {
             row: index,
           );
           listCardController.sortCard(
-              mapKey, indexCard, controllerPU.total.value);
+              indexData, indexCard, controllerPU.total.value);
           Get.back(closeOverlays: false);
         });
   }

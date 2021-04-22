@@ -36,7 +36,7 @@ class PicaController extends GetxController {
   RxBool isLoaded = false.obs;
 
   RxInt navBarIndex = 0.obs;
-  RxString key = 'periodic_inspection'.obs;
+  RxInt indexDetailData = 0.obs;
 
   PanelController panelController;
 
@@ -46,8 +46,8 @@ class PicaController extends GetxController {
     super.onInit();
   }
 
-  void showDetailCard(String keyValue) {
-    key.value = keyValue;
+  void showDetailCard(int indexData) {
+    indexDetailData.value = indexData;
     panelController.open();
   }
 

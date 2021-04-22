@@ -35,7 +35,8 @@ class PicaDetailMenuCard extends StatelessWidget {
                     ),
                     Obx(
                       () => Text(
-                        '${picaController.key.value}',
+                        picaCTController.picaData.value
+                            .listPica[picaController.indexDetailData.value][1],
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 20,
@@ -81,32 +82,67 @@ class PicaDetailMenuCard extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: List<Widget>.generate(
-                      picaCTController.detailData(picaController.key.value).data.length,
+                      picaCTController
+                          .picaData
+                          .value
+                          .listPica[picaController.indexDetailData.value][3]
+                          .length,
                       (index) => Obx(
                         () => !msppController
                                 .radioIndexPI(picaCTController
-                                    .detailData(picaController.key.value).data
+                                    .picaData
+                                    .value
+                                    .listPica[
+                                        picaController.indexDetailData.value][3]
                                     .elementAt(index)[1])
                                 .contains(1)
                             ? Container()
                             : PicaDetailCard(
-                                title:
-                                    '${picaCTController.detailData(picaController.key.value).data.elementAt(index)[0]}',
-                                id: '${picaCTController.detailData(picaController.key.value).data.elementAt(index)[1]}',
-                                mapKey: picaController.key.value,
+                                title: picaCTController
+                                    .picaData
+                                    .value
+                                    .listPica[
+                                        picaController.indexDetailData.value][3]
+                                    .elementAt(index)[0],
+                                id: picaCTController
+                                    .picaData
+                                    .value
+                                    .listPica[
+                                        picaController.indexDetailData.value][3]
+                                    .elementAt(index)[1],
+                                indexData: picaController.indexDetailData.value,
                                 indexCard: index,
-                                tag:
-                                    '${picaCTController.detailData(picaController.key.value).data.elementAt(index)[1]}',
-                                docA:
-                                    '${picaCTController.detailData(picaController.key.value).data.elementAt(index)[2][0]}',
-                                colA:
-                                    '${picaCTController.detailData(picaController.key.value).data.elementAt(index)[2][1]}',
-                                docB:
-                                    '${picaCTController.detailData(picaController.key.value).data.elementAt(index)[2][2]}',
+                                tag: picaCTController
+                                    .picaData
+                                    .value
+                                    .listPica[
+                                        picaController.indexDetailData.value][3]
+                                    .elementAt(index)[1],
+                                docA: picaCTController
+                                    .picaData
+                                    .value
+                                    .listPica[
+                                        picaController.indexDetailData.value][3]
+                                    .elementAt(index)[2][0],
+                                colA: picaCTController
+                                    .picaData
+                                    .value
+                                    .listPica[
+                                        picaController.indexDetailData.value][3]
+                                    .elementAt(index)[2][1],
+                                docB: picaCTController
+                                    .picaData
+                                    .value
+                                    .listPica[
+                                        picaController.indexDetailData.value][3]
+                                    .elementAt(index)[2][2],
                                 dataTableFilter: true,
                                 dataTableListRadio: msppController.radioIndexPI(
                                     picaCTController
-                                        .detailData(picaController.key.value).data
+                                        .picaData
+                                        .value
+                                        .listPica[picaController
+                                            .indexDetailData.value][3]
                                         .elementAt(index)[1]),
                                 dataTableRadioIndex: 1,
                                 radioIndexA: picaCTController.indexResultA,

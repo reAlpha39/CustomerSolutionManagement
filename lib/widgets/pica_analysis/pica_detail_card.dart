@@ -173,6 +173,8 @@ class MsppDataTable extends StatelessWidget {
             indexB: controllerPU.indexResultB[index],
             totalRow: dtController.auditTableData.value.id.length,
             row: index,
+            indexCard: indexCard,
+            indexData: indexData,
           );
           listCardController.sortCard(
               indexData, indexCard, controllerPU.total.value);

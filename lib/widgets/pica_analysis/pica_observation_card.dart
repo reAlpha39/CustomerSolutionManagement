@@ -1,9 +1,11 @@
+import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaObservationCard extends StatelessWidget {
   final PicaController _controller = Get.find();
+  final PicaCardTableController _picaCTController = Get.find();
   final String title;
   final int indexValue;
   final String id;
@@ -40,14 +42,18 @@ class PicaObservationCard extends StatelessWidget {
                     color: Color(0xffffcd29),
                   ),
                   child: Center(
-                      child: Text(
-                    '39',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Color(0xff665210),
-                      fontWeight: FontWeight.w600,
+                    child: Obx(
+                      () => Text(
+                        _picaCTController.picaData.value.listPica[indexValue][2]
+                            .toString(),
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color(0xff665210),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
-                  )),
+                  ),
                 )
               ],
             ),

@@ -57,11 +57,14 @@ class PicaDetailMenuCard extends StatelessWidget {
                       border: Border.all(color: Colors.black26),
                     ),
                     child: Center(
-                      child: Text(
-                        "0",
+                        child: Obx(
+                      () => Text(
+                        picaCTController.picaData.value
+                            .listPica[picaController.indexDetailData.value][2]
+                            .toString(),
                         style: TextStyle(color: Colors.black87),
                       ),
-                    ),
+                    )),
                   ),
                 ),
               ],

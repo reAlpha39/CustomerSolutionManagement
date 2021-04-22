@@ -11,6 +11,7 @@ class PicaCardTableController extends GetxController {
   ExpandableController expandableController;
   RxList<int> indexResultA = RxList<int>.filled(6, 0);
   RxList<int> indexResultB = RxList<int>.filled(6, 0);
+  RxList<int> loadIndex;
   RxList<int> listCounter;
   RxBool isLoading = false.obs;
   Rx<PicaData> picaData = PicaData().obs;
@@ -71,20 +72,77 @@ class PicaCardTableController extends GetxController {
         count += (indexA - lastA) + (indexB - lastB);
         lastA = indexA;
         lastB = indexB;
-        picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[row].urgensi = indexA;
-        picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[row].dampak = indexB;
-        listCounter[row] = count;
-        int temp = 0;
-        for (int i = 0; i <= listCounter.length - 1; i++) {
-          temp += listCounter[i];
+        try {
+          displayIndex(indexCard, indexData);
+          picaData.value.picaElement[indexData].picaDetail[indexCard]
+              .colResult[loadIndex[row]].urgensi = indexA;
+          picaData.value.picaElement[indexData].picaDetail[indexCard]
+              .colResult[loadIndex[row]].dampak = indexB;
+          listCounter[row] = count;
+          int temp = 0;
+          for (int i = 0; i <= listCounter.length - 1; i++) {
+            temp += listCounter[i];
+          }
+          total.value = temp;
+          picaData.refresh();
+          sortCard(indexData, indexCard, temp);
+        } catch (e) {
+          print(e);
         }
-        total.value = temp;
-        picaData.refresh();
-        sortCard(indexData, indexCard, temp);
       }
     }
+  }
+
+  void displayIndex(int indexCard, int indexData,
+      {bool isGlobal = true, PicaData pica}) {
+    loadIndex = RxList<int>();
+    List data = [];
+    List data2 = [];
+    if (isGlobal) {
+      int length = picaData
+          .value.picaElement[indexData].picaDetail[indexCard].colResult.length;
+      for (int i = 0; i <= length - 1; i++) {
+        if (picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[i].isNo) {
+          loadIndex.add(i);
+        }
+      }
+      for (int j = 0;
+          j <=
+              picaData.value.picaElement[indexData].picaDetail[indexCard]
+                      .colResult.length -
+                  1;
+          j++) {
+        data.add(picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[j].urgensi);
+        data2.add(picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[j].dampak);
+      }
+    } else {
+      int length =
+          pica.picaElement[indexData].picaDetail[indexCard].colResult.length;
+      for (int i = 0; i <= length - 1; i++) {
+        if (pica
+            .picaElement[indexData].picaDetail[indexCard].colResult[i].isNo) {
+          loadIndex.add(i);
+        }
+      }
+      for (int j = 0;
+          j <=
+              pica.picaElement[indexData].picaDetail[indexCard].colResult
+                      .length -
+                  1;
+          j++) {
+        data.add(pica
+            .picaElement[indexData].picaDetail[indexCard].colResult[j].urgensi);
+        data2.add(pica
+            .picaElement[indexData].picaDetail[indexCard].colResult[j].dampak);
+      }
+    }
+
+    print(data);
+    print(data2);
+    print('v');
   }
 
   void sortCard(int indexData, int index, int value) {

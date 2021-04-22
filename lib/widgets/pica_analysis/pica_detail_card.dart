@@ -189,6 +189,7 @@ class MsppDataTable extends StatelessWidget {
   }
 
   ElevatedButton buildTextButtonRemark(int id) {
+    final PicaCardTableController controllerPU = Get.find(tag: tag);
     return ElevatedButton(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0),
@@ -196,13 +197,19 @@ class MsppDataTable extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id, isA: false);
       },
-      child: Obx(() => Text(listCardController.picaData.value
-          .picaElement[indexData].picaDetail[indexCard].colResult[id].dampak
+      child: Obx(() => Text(listCardController
+          .picaData
+          .value
+          .picaElement[indexData]
+          .picaDetail[indexCard]
+          .colResult[controllerPU.loadIndex[id]]
+          .dampak
           .toString())),
     );
   }
 
   ElevatedButton buildTextButtonAssessment(int id) {
+    final PicaCardTableController controllerPU = Get.find(tag: tag);
     return ElevatedButton(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0),
@@ -210,14 +217,22 @@ class MsppDataTable extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id, isA: true);
       },
-      child: Obx(() => Text(listCardController.picaData.value
-          .picaElement[indexData].picaDetail[indexCard].colResult[id].urgensi
-          .toString())),
+      child: Obx(() {
+        var a = listCardController
+            .picaData
+            .value
+            .picaElement[indexData]
+            .picaDetail[indexCard]
+            .colResult[controllerPU.loadIndex[id]]
+            .urgensi;
+        return Text(a.toString());
+      }),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final PicaCardTableController controllerPU = Get.find(tag: tag);
     dtController.loadDataTable(
       docA: '$docA',
       colA: '$colA',
@@ -226,6 +241,8 @@ class MsppDataTable extends StatelessWidget {
       listRadio: dataTableListRadio,
       radioIndex: dataTableRadioIndex,
     );
+    controllerPU.displayIndex(indexCard, indexData,
+        isGlobal: false, pica: listCardController.picaData.value);
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Obx(

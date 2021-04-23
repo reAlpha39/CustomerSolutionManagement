@@ -242,7 +242,7 @@ class MsppDataTable extends StatelessWidget {
       radioIndex: dataTableRadioIndex,
     );
     controllerPU.displayIndex(indexCard, indexData,
-        isGlobal: false, pica: listCardController.picaData.value);
+        isGlobal: false, pica: listCardController.picaData.value, tag: tag);
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Obx(

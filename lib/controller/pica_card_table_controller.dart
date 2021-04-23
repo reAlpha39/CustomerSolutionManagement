@@ -95,7 +95,7 @@ class PicaCardTableController extends GetxController {
   }
 
   void displayIndex(int indexCard, int indexData,
-      {bool isGlobal = true, PicaData pica}) {
+      {bool isGlobal = true, PicaData pica, String tag}) {
     loadIndex = RxList<int>();
     List data = [];
     List data2 = [];
@@ -140,7 +140,8 @@ class PicaCardTableController extends GetxController {
             .picaElement[indexData].picaDetail[indexCard].colResult[j].dampak);
       }
     }
-
+    print("isGlobal: " + isGlobal.toString());
+    print('tag: $tag');
     print(data);
     print(data2);
     print('v');

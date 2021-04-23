@@ -1,3 +1,4 @@
+import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_table.dart';
 import 'package:expandable/expandable.dart';
@@ -5,40 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaDetailCard extends StatelessWidget {
-  final String title;
-  final String id;
-  final int indexData;
-  final int indexCard;
+  final PicaAnalysisController picaAController = Get.find();
+  final PicaCardTableController globalController = Get.find(tag: 'global');
   final String tag;
-  final String docA;
-  final String docB;
-  final String colA;
-  final List<int> radioIndexA;
-  final List<int> radioIndexB;
-  final bool dataTableFilter;
-  final RxList<int> dataTableListRadio;
-  final int dataTableRadioIndex;
 
-  PicaDetailCard({
-    Key key,
-    this.title,
-    this.id,
-    this.indexData,
-    this.indexCard,
-    this.docA,
-    this.docB,
-    this.colA,
-    this.radioIndexA,
-    this.radioIndexB,
-    this.dataTableFilter = false,
-    this.dataTableListRadio,
-    this.dataTableRadioIndex,
-    this.tag,
-  }) : super(key: key);
+  PicaDetailCard({Key key, this.tag}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final PicaCardTableController controller = Get.find(tag: tag);
-    final PicaCardTableController globalController = Get.find(tag: 'global');
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: Card(
@@ -71,8 +46,8 @@ class PicaDetailCard extends StatelessWidget {
                               globalController
                                   .picaData
                                   .value
-                                  .picaElement[indexData]
-                                  .picaDetail[indexCard]
+                                  .picaElement[controller.indexData.value]
+                                  .picaDetail[controller.indexCard.value]
                                   .result
                                   .toString(),
                               style: TextStyle(
@@ -88,7 +63,7 @@ class PicaDetailCard extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          '$title',
+                          controller.title.value,
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -96,20 +71,7 @@ class PicaDetailCard extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: PicaDetailTable(
-                  id: id,
-                  tag: tag,
-                  indexData: indexData,
-                  indexCard: indexCard,
-                  docA: docA,
-                  colA: colA,
-                  docB: docB,
-                  radioIndexB: radioIndexB,
-                  radioIndexA: radioIndexA,
-                  dataTableFilter: dataTableFilter,
-                  dataTableListRadio: dataTableListRadio,
-                  dataTableRadioIndex: dataTableRadioIndex,
-                ),
+                expanded: Obx(() => picaAController.picaTable(tag))
               ),
             ),
           ),
@@ -118,4 +80,3 @@ class PicaDetailCard extends StatelessWidget {
     );
   }
 }
-

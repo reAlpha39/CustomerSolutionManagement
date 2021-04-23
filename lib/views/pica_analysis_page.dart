@@ -15,11 +15,7 @@ class PicaAnalysisPage extends StatelessWidget {
   final List<Widget> _widgetOption = <Widget>[
     PicaChart(),
     PicaObservation(),
-    Center(
-      child: Text(
-        'Profile',
-      ),
-    ),
+    PicaObservation(),
   ];
   @override
   Widget build(BuildContext context) {

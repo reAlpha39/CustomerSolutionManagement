@@ -1,7 +1,6 @@
-import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
-import 'package:customer/widgets/pica_analysis/pica_detail_card.dart';
+import 'package:customer/widgets/pica_analysis/pica_detail_menu_items.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -9,7 +8,6 @@ import 'package:line_icons/line_icons.dart';
 class PicaDetailMenuCard extends StatelessWidget {
   final PicaAnalysisController picaAController = Get.find();
   final PicaCardTableController picaCTController = Get.find(tag: 'global');
-  final MsppController msppController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -97,107 +95,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                           Radius.circular(17),
                         ),
                       ),
-                      child: Container(
-                        height: context.height,
-                        child: SingleChildScrollView(
-                          physics: BouncingScrollPhysics(),
-                          child: Obx(
-                            () => picaCTController.picaData.value.picaElement ==
-                                    null
-                                ? CircularProgressIndicator()
-                                : Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: List<Widget>.generate(
-                                      picaCTController
-                                          .picaData
-                                          .value
-                                          .picaElement[picaAController
-                                              .indexDetailData.value]
-                                          .picaDetail
-                                          .length,
-                                      (index) => Obx(
-                                        () => !msppController
-                                                .radioIndexPI(picaCTController
-                                                    .picaData
-                                                    .value
-                                                    .picaElement[picaAController
-                                                        .indexDetailData.value]
-                                                    .picaDetail[index]
-                                                    .id)
-                                                .contains(1)
-                                            ? Container()
-                                            : PicaDetailCard(
-                                                title: picaCTController
-                                                    .picaData
-                                                    .value
-                                                    .picaElement[picaAController
-                                                        .indexDetailData.value]
-                                                    .picaDetail[index]
-                                                    .title,
-                                                id: picaCTController
-                                                    .picaData
-                                                    .value
-                                                    .picaElement[picaAController
-                                                        .indexDetailData.value]
-                                                    .picaDetail[index]
-                                                    .id,
-                                                indexData: picaAController
-                                                    .indexDetailData.value,
-                                                indexCard: index,
-                                                tag: picaCTController
-                                                    .picaData
-                                                    .value
-                                                    .picaElement[picaAController
-                                                        .indexDetailData.value]
-                                                    .picaDetail[index]
-                                                    .id,
-                                                docA: picaCTController
-                                                    .picaData
-                                                    .value
-                                                    .picaElement[picaAController
-                                                        .indexDetailData.value]
-                                                    .picaDetail[index]
-                                                    .tablePath
-                                                    .docA,
-                                                colA: picaCTController
-                                                    .picaData
-                                                    .value
-                                                    .picaElement[picaAController
-                                                        .indexDetailData.value]
-                                                    .picaDetail[index]
-                                                    .tablePath
-                                                    .colA,
-                                                docB: picaCTController
-                                                    .picaData
-                                                    .value
-                                                    .picaElement[picaAController
-                                                        .indexDetailData.value]
-                                                    .picaDetail[index]
-                                                    .tablePath
-                                                    .docB,
-                                                dataTableFilter: true,
-                                                dataTableListRadio: msppController
-                                                    .radioIndexPI(picaCTController
-                                                        .picaData
-                                                        .value
-                                                        .picaElement[
-                                                            picaAController
-                                                                .indexDetailData
-                                                                .value]
-                                                        .picaDetail[index]
-                                                        .id),
-                                                dataTableRadioIndex: 1,
-                                                radioIndexA: picaCTController
-                                                    .indexResultA,
-                                                radioIndexB: picaCTController
-                                                    .indexResultB,
-                                              ),
-                                      ),
-                                    ),
-                                  ),
-                          ),
-                        ),
-                      ),
+                      child: PicaDetailMenuItems(),
                     ),
                   ),
                 ],

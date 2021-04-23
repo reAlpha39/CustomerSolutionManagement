@@ -11,35 +11,10 @@ class PicaDetailTable extends StatelessWidget {
   final MsppController controller = Get.find();
   final DataTableController dtController = Get.find();
   final PicaCardTableController listCardController = Get.find(tag: 'global');
-  final List<int> radioIndexA;
-  final List<int> radioIndexB;
-  final String id;
-  final String tag;
-  final int indexData;
-  final int indexCard;
-  final String docA;
-  final String docB;
-  final String colA;
-  final bool dataTableFilter;
-  final RxList<int> dataTableListRadio;
-  final int dataTableRadioIndex;
   final List<String> data = ['0', '1', '2', '3', '4', '5'];
+  final String tag;
 
-  PicaDetailTable({
-    Key key,
-    this.radioIndexA,
-    this.radioIndexB,
-    this.docA,
-    this.docB,
-    this.colA,
-    this.dataTableFilter,
-    this.id,
-    this.indexData,
-    this.indexCard,
-    this.dataTableListRadio,
-    this.dataTableRadioIndex,
-    this.tag,
-  }) : super(key: key);
+  PicaDetailTable({Key key, this.tag}) : super(key: key);
 
   Future<bool> resultRadio({int index, bool isA}) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
@@ -49,7 +24,7 @@ class PicaDetailTable extends StatelessWidget {
         radius: 17,
         title: 'Pilih salah satu',
         content: PicaResult(
-          id: id,
+          id: controllerPU.id.value,
           index: index,
           isA: isA,
           data: data,
@@ -63,8 +38,8 @@ class PicaDetailTable extends StatelessWidget {
             indexA: controllerPU.indexResultA[index],
             indexB: controllerPU.indexResultB[index],
             row: index,
-            indexCard: indexCard,
-            indexData: indexData,
+            indexCard: controllerPU.indexCard.value,
+            indexData: controllerPU.indexData.value,
           );
           Get.back(closeOverlays: false);
           picaAController.changeOpenedIndexData();
@@ -83,8 +58,8 @@ class PicaDetailTable extends StatelessWidget {
       child: Obx(() => Text(listCardController
           .picaData
           .value
-          .picaElement[indexData]
-          .picaDetail[indexCard]
+          .picaElement[controllerPU.indexData.value]
+          .picaDetail[controllerPU.indexCard.value]
           .colResult[controllerPU.loadIndex[id]]
           .dampak
           .toString())),
@@ -104,8 +79,8 @@ class PicaDetailTable extends StatelessWidget {
         var a = listCardController
             .picaData
             .value
-            .picaElement[indexData]
-            .picaDetail[indexCard]
+            .picaElement[controllerPU.indexData.value]
+            .picaDetail[controllerPU.indexCard.value]
             .colResult[controllerPU.loadIndex[id]]
             .urgensi;
         return Text(a.toString());
@@ -117,14 +92,15 @@ class PicaDetailTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
     dtController.loadDataTable(
-      docA: '$docA',
-      colA: '$colA',
-      docB: '$docB',
-      filter: dataTableFilter,
-      listRadio: dataTableListRadio,
-      radioIndex: dataTableRadioIndex,
+      docA: controllerPU.docA.value,
+      colA: controllerPU.colA.value,
+      docB: controllerPU.docB.value,
+      filter: controllerPU.dataTableFilter.value,
+      listRadio: controllerPU.dataTableListRadio,
+      radioIndex: controllerPU.dataTableRadioIndex,
     );
-    controllerPU.displayIndex(indexCard, indexData,
+    controllerPU.displayIndex(
+        controllerPU.indexCard.value, controllerPU.indexData.value,
         isGlobal: false, pica: listCardController.picaData.value, tag: tag);
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),

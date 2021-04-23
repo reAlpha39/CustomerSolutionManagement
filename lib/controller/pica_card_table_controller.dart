@@ -1,9 +1,13 @@
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/models/column_result.dart';
 import 'package:customer/models/pica_data.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
+import 'package:customer/widgets/pica_analysis/pica_detail_card.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaCardTableController extends GetxController {
@@ -20,6 +24,22 @@ class PicaCardTableController extends GetxController {
   int lastA = 0;
   int lastB = 0;
 
+  RxString id = "".obs;
+  RxString title = "".obs;
+  RxInt indexData = 0.obs;
+  RxInt indexCard = 0.obs;
+  RxString docA = "".obs;
+  RxString colA = "".obs;
+  RxString docB = "".obs;
+  RxList<int> radioIndexA = RxList<int>();
+  RxList<int> radioIndexB = RxList<int>();
+  RxList<String> textFieldActual = RxList<String>();
+  RxList<String> textFieldTarget = RxList<String>();
+  RxList<String> textFieldImprov = RxList<String>();
+  RxBool dataTableFilter = false.obs;
+  RxList<int> dataTableListRadio = RxList<int>();
+  int dataTableRadioIndex = 1;
+
   @override
   void onInit() {
     expandableController = ExpandableController();
@@ -31,6 +51,56 @@ class PicaCardTableController extends GetxController {
     expandableController?.dispose();
   }
 
+  Widget picaDetailCard(int index, PicaData picaCTCglobal) {
+    MsppController msppController = Get.find();
+    PicaAnalysisController picaAController = Get.find();
+    if (msppController
+        .radioIndexPI(picaCTCglobal
+            .picaElement[picaAController.indexDetailData.value]
+            .picaDetail[index]
+            .id)
+        .contains(1)) {
+      title.value = picaCTCglobal
+          .picaElement[picaAController.indexDetailData.value]
+          .picaDetail[index]
+          .title;
+      id.value = picaCTCglobal
+          .picaElement[picaAController.indexDetailData.value]
+          .picaDetail[index]
+          .id;
+      indexData.value = picaAController.indexDetailData.value;
+      indexCard.value = index;
+      docA.value = picaCTCglobal
+          .picaElement[picaAController.indexDetailData.value]
+          .picaDetail[index]
+          .tablePath
+          .docA;
+      colA.value = picaCTCglobal
+          .picaElement[picaAController.indexDetailData.value]
+          .picaDetail[index]
+          .tablePath
+          .colA;
+      docB.value = picaCTCglobal
+          .picaElement[picaAController.indexDetailData.value]
+          .picaDetail[index]
+          .tablePath
+          .docB;
+      dataTableFilter.value = true;
+      dataTableListRadio = msppController.radioIndexPI(picaCTCglobal
+          .picaElement[picaAController.indexDetailData.value]
+          .picaDetail[index]
+          .id);
+      dataTableRadioIndex = 1;
+      radioIndexA = indexResultA;
+      radioIndexB = indexResultB;
+      return PicaDetailCard(
+          tag: picaCTCglobal.picaElement[picaAController.indexDetailData.value]
+              .picaDetail[index].id);
+    } else {
+      return Container();
+    }
+  }
+
   void checkData(int value, String id, int index) {
     int indexA = 0;
     int indexB = 0;
@@ -39,7 +109,6 @@ class PicaCardTableController extends GetxController {
     outer:
     for (int i = 0; i <= lengthA - 1; i++) {
       int lengthB = picaData.value.picaElement[i].picaDetail.length;
-      inner:
       for (int j = 0; j <= lengthB - 1; j++) {
         if (picaData.value.picaElement[i].picaDetail[j].id == id) {
           indexA = i;

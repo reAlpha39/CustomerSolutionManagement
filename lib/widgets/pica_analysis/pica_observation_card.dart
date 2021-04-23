@@ -1,10 +1,10 @@
 import 'package:customer/controller/pica_card_table_controller.dart';
-import 'package:customer/controller/pica_controller.dart';
+import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaObservationCard extends StatelessWidget {
-  final PicaController _controller = Get.find();
+  final PicaAnalysisController _picaAController = Get.find();
   final PicaCardTableController _picaCTController = Get.find(tag: 'global');
   final String title;
   final int indexValue;
@@ -16,7 +16,7 @@ class PicaObservationCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: InkWell(
-        onTap: () => _controller.showDetailCard(indexValue, id),
+        onTap: () => _picaAController.showDetailCard(indexValue, id),
         child: Card(
           elevation: 4,
           shape:

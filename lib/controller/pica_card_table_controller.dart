@@ -156,7 +156,6 @@ class PicaCardTableController extends GetxController {
       print(e);
     }
     counterMainCard(indexData);
-    sortMainCard();
     picaData.refresh();
   }
 
@@ -168,6 +167,7 @@ class PicaCardTableController extends GetxController {
         counter += picaData.value.picaElement[indexData].picaDetail[i].result;
       }
       picaData.value.picaElement[indexData].score = counter;
+      sortMainCard();
     } catch (e) {
       print(e);
     }

@@ -1,13 +1,13 @@
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
-import 'package:customer/controller/pica_controller.dart';
+import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 class PicaDetailMenuCard extends StatelessWidget {
-  final PicaController picaController = Get.find();
+  final PicaAnalysisController picaAController = Get.find();
   final PicaCardTableController picaCTController = Get.find(tag: 'global');
   final MsppController msppController = Get.find();
   @override
@@ -35,7 +35,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                           children: [
                             TextButton(
                               onPressed: () =>
-                                  picaController.panelController.close(),
+                                  picaAController.panelController.close(),
                               child: Icon(
                                 LineIcons.times,
                                 color: Colors.black87,
@@ -49,7 +49,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                       .picaData
                                       .value
                                       .picaElement[
-                                          picaController.indexDetailData.value]
+                                          picaAController.indexDetailData.value]
                                       .title,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
@@ -78,7 +78,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                     .picaData
                                     .value
                                     .picaElement[
-                                        picaController.indexDetailData.value]
+                                        picaAController.indexDetailData.value]
                                     .score
                                     .toString(),
                                 style: TextStyle(color: Colors.black87),
@@ -111,7 +111,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                       picaCTController
                                           .picaData
                                           .value
-                                          .picaElement[picaController
+                                          .picaElement[picaAController
                                               .indexDetailData.value]
                                           .picaDetail
                                           .length,
@@ -120,7 +120,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                                 .radioIndexPI(picaCTController
                                                     .picaData
                                                     .value
-                                                    .picaElement[picaController
+                                                    .picaElement[picaAController
                                                         .indexDetailData.value]
                                                     .picaDetail[index]
                                                     .id)
@@ -130,31 +130,31 @@ class PicaDetailMenuCard extends StatelessWidget {
                                                 title: picaCTController
                                                     .picaData
                                                     .value
-                                                    .picaElement[picaController
+                                                    .picaElement[picaAController
                                                         .indexDetailData.value]
                                                     .picaDetail[index]
                                                     .title,
                                                 id: picaCTController
                                                     .picaData
                                                     .value
-                                                    .picaElement[picaController
+                                                    .picaElement[picaAController
                                                         .indexDetailData.value]
                                                     .picaDetail[index]
                                                     .id,
-                                                indexData: picaController
+                                                indexData: picaAController
                                                     .indexDetailData.value,
                                                 indexCard: index,
                                                 tag: picaCTController
                                                     .picaData
                                                     .value
-                                                    .picaElement[picaController
+                                                    .picaElement[picaAController
                                                         .indexDetailData.value]
                                                     .picaDetail[index]
                                                     .id,
                                                 docA: picaCTController
                                                     .picaData
                                                     .value
-                                                    .picaElement[picaController
+                                                    .picaElement[picaAController
                                                         .indexDetailData.value]
                                                     .picaDetail[index]
                                                     .tablePath
@@ -162,7 +162,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                                 colA: picaCTController
                                                     .picaData
                                                     .value
-                                                    .picaElement[picaController
+                                                    .picaElement[picaAController
                                                         .indexDetailData.value]
                                                     .picaDetail[index]
                                                     .tablePath
@@ -170,7 +170,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                                 docB: picaCTController
                                                     .picaData
                                                     .value
-                                                    .picaElement[picaController
+                                                    .picaElement[picaAController
                                                         .indexDetailData.value]
                                                     .picaDetail[index]
                                                     .tablePath
@@ -181,7 +181,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                                         .picaData
                                                         .value
                                                         .picaElement[
-                                                            picaController
+                                                            picaAController
                                                                 .indexDetailData
                                                                 .value]
                                                         .picaDetail[index]

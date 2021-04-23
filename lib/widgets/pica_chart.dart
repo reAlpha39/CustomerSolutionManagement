@@ -1,7 +1,7 @@
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
-import 'package:customer/controller/pica_controller.dart';
+import 'package:customer/controller/pica_chart_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class PicaChart extends StatefulWidget {
 
 class _PicaChartState extends State<PicaChart>
     with AutomaticKeepAliveClientMixin {
-  final PicaController picaController = Get.find();
+  final PicaChartController picaCController = Get.find();
   final MsppController msppController = Get.find();
   final OtherProgramController otherPController = Get.find();
   final PartProgramController partPController = Get.find();
@@ -46,7 +46,7 @@ class _PicaChartState extends State<PicaChart>
                       () {
                         if (msppController.isLoaded.value &&
                             otherPController.isLoaded.value) {
-                          picaController.combineList();
+                          picaCController.combineList();
                           return Container(
                             width: 500,
                             child: BarChart(
@@ -160,16 +160,16 @@ class _PicaChartState extends State<PicaChart>
                                   show: false,
                                 ),
                                 barGroups: List<BarChartGroupData>.generate(
-                                  picaController.listIndex.length,
+                                  picaCController.listIndex.length,
                                   (index) => BarChartGroupData(
                                     x: index,
                                     barRods: [
                                       BarChartRodData(
-                                        y: picaController.scorePica(
-                                            picaController.listIndex[index]),
-                                        colors: picaController.colorBar(
-                                          picaController.scorePica(
-                                            picaController.listIndex[index],
+                                        y: picaCController.scorePica(
+                                            picaCController.listIndex[index]),
+                                        colors: picaCController.colorBar(
+                                          picaCController.scorePica(
+                                            picaCController.listIndex[index],
                                           ),
                                         ),
                                       ),

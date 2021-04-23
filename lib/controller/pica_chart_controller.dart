@@ -1,16 +1,13 @@
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
-import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class PicaController extends GetxController {
+class PicaChartController extends GetxController {
   MsppController _mspp = Get.find();
   OtherProgramController _other = Get.find();
   PartProgramController _part = Get.find();
-  PicaCardTableController _picaCT = Get.find(tag: 'global');
 
   RxList<int> indexPI = RxList<int>();
   RxList<int> indexPSP = RxList<int>();
@@ -39,35 +36,7 @@ class PicaController extends GetxController {
 
   RxInt navBarIndex = 0.obs;
   RxInt indexDetailData = 0.obs;
-  RxString idDetailData = "".obs;
 
-  PanelController panelController;
-
-  @override
-  void onInit() {
-    panelController = PanelController();
-    super.onInit();
-  }
-
-  void showDetailCard(int indexData, String idData) {
-    _picaCT.loadData();
-    indexDetailData.value = indexData;
-    idDetailData.value = idData;
-    panelController.open();
-  }
-
-  void changeOpenedIndexData() {
-    try {
-      if (panelController.isPanelOpen) {
-        int index = _picaCT.picaData.value.picaElement
-            .indexWhere((element) => element.id.contains(idDetailData.value));
-        print(index);
-        indexDetailData.value = index;
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
 
   listedIndex() {
     listIndex = {

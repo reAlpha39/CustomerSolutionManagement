@@ -1,5 +1,5 @@
 import 'package:customer/controller/pica_card_table_controller.dart';
-import 'package:customer/controller/pica_controller.dart';
+import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_menu_card.dart';
 import 'package:customer/widgets/pica_analysis/pica_observation.dart';
 import 'package:customer/widgets/pica_chart.dart';
@@ -10,7 +10,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PicaAnalysisPage extends StatelessWidget {
-  final PicaController _controller = Get.find();
+  final PicaAnalysisController _picaAController = Get.find();
   final PicaCardTableController _picaCTController = Get.find(tag: 'global');
   final List<Widget> _widgetOption = <Widget>[
     PicaChart(),
@@ -25,7 +25,7 @@ class PicaAnalysisPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: SlidingUpPanel(
-        controller: _controller.panelController,
+        controller: _picaAController.panelController,
         slideDirection: SlideDirection.DOWN,
         isDraggable: false,
         minHeight: 0,
@@ -80,9 +80,9 @@ class PicaAnalysisPage extends StatelessWidget {
                         text: 'Matrix',
                       ),
                     ],
-                    selectedIndex: _controller.navBarIndex.value,
+                    selectedIndex: _picaAController.navBarIndex.value,
                     onTabChange: (index) {
-                      _controller.navBarIndex.value = index;
+                      _picaAController.navBarIndex.value = index;
                     },
                   ),
                 ),
@@ -90,7 +90,7 @@ class PicaAnalysisPage extends StatelessWidget {
             ),
           ),
           floatingActionButton: Obx(
-            () => _controller.navBarIndex.value == 1
+            () => _picaAController.navBarIndex.value == 1
                 ? FloatingActionButton(
                     child: Icon(
                       LineIcons.save,
@@ -125,7 +125,7 @@ class PicaAnalysisPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Obx(
                     () =>
-                        _widgetOption.elementAt(_controller.navBarIndex.value),
+                        _widgetOption.elementAt(_picaAController.navBarIndex.value),
                   ),
                 ),
               ),

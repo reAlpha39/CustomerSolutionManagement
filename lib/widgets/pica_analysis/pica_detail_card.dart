@@ -178,7 +178,6 @@ class MsppDataTable extends StatelessWidget {
           listCardController.counter(
             indexA: controllerPU.indexResultA[index],
             indexB: controllerPU.indexResultB[index],
-            totalRow: dtController.auditTableData.value.id.length,
             row: index,
             indexCard: indexCard,
             indexData: indexData,

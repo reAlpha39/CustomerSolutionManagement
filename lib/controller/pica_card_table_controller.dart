@@ -1,4 +1,5 @@
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/models/column_result.dart';
 import 'package:customer/models/pica_data.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
@@ -12,10 +13,8 @@ class PicaCardTableController extends GetxController {
   RxList<int> indexResultA = RxList<int>.filled(6, 0);
   RxList<int> indexResultB = RxList<int>.filled(6, 0);
   RxList<int> loadIndex;
-  RxList<int> listCounter;
   RxBool isLoading = false.obs;
   Rx<PicaData> picaData = PicaData().obs;
-  RxInt total = 0.obs;
   RxInt totalRow = 0.obs;
   int count = 0;
   int lastA = 0;
@@ -56,41 +55,36 @@ class PicaCardTableController extends GetxController {
       picaData.value.picaElement[indexA].picaDetail[indexB].colResult[index]
           .isNo = false;
     }
+    counter(indexData: indexA, indexCard: indexB);
   }
 
-  counter(
-      {int indexA,
-      int indexB,
-      int totalRow,
-      int row,
-      int indexCard,
-      int indexData}) {
-    if (listCounter == null) {
-      listCounter = RxList<int>.filled(totalRow, 0);
-    }
-    if (indexA != null || indexB != null) {
-      if (picaData.value.picaElement != null) {
+  counter({int indexA, int indexB, int row, int indexCard, int indexData}) {
+    int temp = 0;
+    if (picaData.value.picaElement != null) {
+      if (indexA != null || indexB != null) {
         count += (indexA - lastA) + (indexB - lastB);
         lastA = indexA;
         lastB = indexB;
-        try {
-          displayIndex(indexCard, indexData);
-          picaData.value.picaElement[indexData].picaDetail[indexCard]
-              .colResult[loadIndex[row]].urgensi = indexA;
-          picaData.value.picaElement[indexData].picaDetail[indexCard]
-              .colResult[loadIndex[row]].dampak = indexB;
-          listCounter[row] = count;
-          int temp = 0;
-          for (int i = 0; i <= listCounter.length - 1; i++) {
-            temp += listCounter[i];
-          }
-          total.value = temp;
-          picaData.refresh();
-          sortCard(indexData, indexCard, temp);
-        } catch (e) {
-          print(e);
+
+        displayIndex(indexCard, indexData);
+        picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[loadIndex[row]].urgensi = indexA;
+        picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[loadIndex[row]].dampak = indexB;
+      }
+      List<ColResult> list =
+          picaData.value.picaElement[indexData].picaDetail[indexCard].colResult;
+      for (int i = 0; i <= list.length - 1; i++) {
+        if (list[i].isNo) {
+          temp += list[i].dampak;
+          temp += list[i].urgensi;
         }
       }
+      picaData.value.picaElement[indexData].picaDetail[indexCard].result = temp;
+      picaData.refresh();
+      sortCard(indexData, indexCard);
+    } else {
+      print("counter's PicaData null");
     }
   }
 
@@ -147,10 +141,9 @@ class PicaCardTableController extends GetxController {
     print('v');
   }
 
-  void sortCard(int indexData, int index, int value) {
+  void sortCard(int indexData, int index) {
     loadData();
     try {
-      picaData.value.picaElement[indexData].picaDetail[index].result = value;
       picaData.value.picaElement[indexData].picaDetail
           .sort((a, b) => b.result.compareTo(a.result));
     } catch (e) {

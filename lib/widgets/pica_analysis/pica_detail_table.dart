@@ -1,0 +1,259 @@
+import 'package:customer/controller/data_table_controller.dart';
+import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/controller/pica_analysis_controller.dart';
+import 'package:customer/controller/pica_card_table_controller.dart';
+import 'package:customer/utils/custom_scroll_behavior.dart';
+import 'package:customer/widgets/pica_analysis/pica_result.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class PicaDetailTable extends StatelessWidget {
+  final MsppController controller = Get.find();
+  final DataTableController dtController = Get.find();
+  final PicaCardTableController listCardController = Get.find(tag: 'global');
+  final List<int> radioIndexA;
+  final List<int> radioIndexB;
+  final String id;
+  final String tag;
+  final int indexData;
+  final int indexCard;
+  final String docA;
+  final String docB;
+  final String colA;
+  final bool dataTableFilter;
+  final RxList<int> dataTableListRadio;
+  final int dataTableRadioIndex;
+  final List<String> data = ['0', '1', '2', '3', '4', '5'];
+
+  PicaDetailTable({
+    Key key,
+    this.radioIndexA,
+    this.radioIndexB,
+    this.docA,
+    this.docB,
+    this.colA,
+    this.dataTableFilter,
+    this.id,
+    this.indexData,
+    this.indexCard,
+    this.dataTableListRadio,
+    this.dataTableRadioIndex,
+    this.tag,
+  }) : super(key: key);
+
+  Future<bool> resultRadio({int index, bool isA}) {
+    final PicaCardTableController controllerPU = Get.find(tag: tag);
+    final PicaAnalysisController picaAController = Get.find();
+    return Get.defaultDialog(
+        barrierDismissible: false,
+        radius: 17,
+        title: 'Pilih salah satu',
+        content: PicaResult(
+          id: id,
+          index: index,
+          isA: isA,
+          data: data,
+          tag: tag,
+        ),
+        textConfirm: 'OK',
+        buttonColor: Color(0xffffcd29),
+        confirmTextColor: Colors.black87,
+        onConfirm: () {
+          listCardController.counter(
+            indexA: controllerPU.indexResultA[index],
+            indexB: controllerPU.indexResultB[index],
+            row: index,
+            indexCard: indexCard,
+            indexData: indexData,
+          );
+          Get.back(closeOverlays: false);
+          picaAController.changeOpenedIndexData();
+        });
+  }
+
+  ElevatedButton buildTextButtonRemark(int id) {
+    final PicaCardTableController controllerPU = Get.find(tag: tag);
+    return ElevatedButton(
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all(0),
+      ),
+      onPressed: () {
+        resultRadio(index: id, isA: false);
+      },
+      child: Obx(() => Text(listCardController
+          .picaData
+          .value
+          .picaElement[indexData]
+          .picaDetail[indexCard]
+          .colResult[controllerPU.loadIndex[id]]
+          .dampak
+          .toString())),
+    );
+  }
+
+  ElevatedButton buildTextButtonAssessment(int id) {
+    final PicaCardTableController controllerPU = Get.find(tag: tag);
+    return ElevatedButton(
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all(0),
+      ),
+      onPressed: () {
+        resultRadio(index: id, isA: true);
+      },
+      child: Obx(() {
+        var a = listCardController
+            .picaData
+            .value
+            .picaElement[indexData]
+            .picaDetail[indexCard]
+            .colResult[controllerPU.loadIndex[id]]
+            .urgensi;
+        return Text(a.toString());
+      }),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final PicaCardTableController controllerPU = Get.find(tag: tag);
+    dtController.loadDataTable(
+      docA: '$docA',
+      colA: '$colA',
+      docB: '$docB',
+      filter: dataTableFilter,
+      listRadio: dataTableListRadio,
+      radioIndex: dataTableRadioIndex,
+    );
+    controllerPU.displayIndex(indexCard, indexData,
+        isGlobal: false, pica: listCardController.picaData.value, tag: tag);
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
+      child: Obx(
+        () => dtController.auditTableData.value.id == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Scrollbar(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
+                    dataRowHeight: 100,
+                    columns: [
+                      DataColumn(label: Text('No. Klausul')),
+                      DataColumn(label: Text('Deskripsi')),
+                      DataColumn(label: Text('PIC')),
+                      DataColumn(label: Text('Guidance')),
+                      DataColumn(label: Text('Objective Evidence')),
+                      DataColumn(label: Text('Result')),
+                    ],
+                    rows: List<DataRow>.generate(
+                      dtController.auditTableData.value.id.length,
+                      (index) => DataRow(
+                        cells: [
+                          DataCell(ScrollConfiguration(
+                            behavior: CustomScrollBehavior(),
+                            child: SingleChildScrollView(
+                              child: Text(
+                                  '${dtController.auditTableData.value.noKlause[index].replaceAll("\\n", "\n")}'),
+                            ),
+                          )),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Container(
+                                width: 160,
+                                child: ScrollConfiguration(
+                                  behavior: CustomScrollBehavior(),
+                                  child: SingleChildScrollView(
+                                    child: Text(
+                                        '${dtController.auditTableData.value.description[index].replaceAll("\\n", "\n")}'),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: ScrollConfiguration(
+                                behavior: CustomScrollBehavior(),
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                      '${dtController.auditTableData.value.pic[index].replaceAll("\\n", "\n")}'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Container(
+                                width: 160,
+                                child: ScrollConfiguration(
+                                  behavior: CustomScrollBehavior(),
+                                  child: SingleChildScrollView(
+                                    child: Text(
+                                        '${dtController.auditTableData.value.guidance[index].replaceAll("\\n", "\n")}'),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: ScrollConfiguration(
+                                behavior: CustomScrollBehavior(),
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                      '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 60,
+                                      child: Text(
+                                        'Urgensi',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
+                                    buildTextButtonAssessment(
+                                      index,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: 60,
+                                      child: Text(
+                                        'Dampak',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
+                                    buildTextButtonRemark(
+                                      index,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+      ),
+    );
+  }
+}

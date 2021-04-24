@@ -21,19 +21,29 @@ class PicaDetailMatrixTable extends StatelessWidget {
       onPressed: () {
         resultTextField(index: id, name: name);
       },
-      child: Obx(
-        () => name == "actual"
-            ? Text(controllerPU.textFieldActual[id] == ""
-                ? 'Klik disini'
-                : "${controllerPU.textFieldActual[id]}")
-            : name == "target"
-                ? Text(controllerPU.textFieldActual[id] == ""
-                    ? 'Klik disini'
-                    : "${controllerPU.textFieldActual[id]}")
-                : Text(controllerPU.textFieldActual[id] == ""
-                    ? 'Klik disini'
-                    : "${controllerPU.textFieldActual[id]}"),
-      ),
+      child: Obx(() {
+        var listText = listCardController
+            .picaData
+            .value
+            .picaElement[controllerPU.indexData.value]
+            .picaDetail[controllerPU.indexCard.value]
+            .colResult;
+        String text = "Klik disini";
+        if (name == "Actual") {
+          if (listText[id].actual != "") {
+            text = listText[id].actual;
+          }
+        } else if (name == "Target") {
+          if (listText[id].target != "") {
+            text = listText[id].target;
+          }
+        } else if (name == "Priority") {
+          if (listText[id].improv != "") {
+            text = listText[id].improv;
+          }
+        }
+        return Text(text);
+      }),
     );
   }
 
@@ -50,9 +60,8 @@ class PicaDetailMatrixTable extends StatelessWidget {
         buttonColor: Color(0xffffcd29),
         confirmTextColor: Colors.black87,
         onConfirm: () {
-          controller.textFieldPI(controllerPU.id.value)[index] =
-              controller.textEditingControllerALL.text;
-          controller.textEditingControllerALL.clear();
+          listCardController.fillTextData(controllerPU.indexData.value,
+              controllerPU.indexCard.value, index, name);
           Get.back(closeOverlays: false);
         });
   }
@@ -136,7 +145,7 @@ class PicaDetailMatrixTable extends StatelessWidget {
                           DataCell(
                             textButton(
                                 dtController.auditTableData.value.id[index],
-                                "Prioritas"),
+                                "Priority"),
                           ),
                         ],
                       ),

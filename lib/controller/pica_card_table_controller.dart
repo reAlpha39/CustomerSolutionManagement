@@ -29,9 +29,6 @@ class PicaCardTableController extends GetxController {
   RxString docA = "".obs;
   RxString colA = "".obs;
   RxString docB = "".obs;
-  RxList<String> textFieldActual = RxList<String>();
-  RxList<String> textFieldTarget = RxList<String>();
-  RxList<String> textFieldImprov = RxList<String>();
   RxBool dataTableFilter = false.obs;
   RxList<int> dataTableListRadio = RxList<int>();
   int dataTableRadioIndex = 1;
@@ -50,6 +47,24 @@ class PicaCardTableController extends GetxController {
 
   void textEditingController() {
     textEditingControllerALL = TextEditingController();
+  }
+
+  void fillTextData(int indexData, int indexCard, int index, String id) {
+    switch (id) {
+      case "Actual":
+        picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[index].actual = textEditingControllerALL.text.toString();
+        break;
+      case "Target":
+        picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[index].target = textEditingControllerALL.text.toString();
+        break;
+      case "Priority":
+        picaData.value.picaElement[indexData].picaDetail[indexCard]
+            .colResult[index].improv = textEditingControllerALL.text.toString();
+        break;
+      default:
+    }
   }
 
   Widget picaDetailCard(int index, PicaData picaCTCglobal) {
@@ -178,11 +193,6 @@ class PicaCardTableController extends GetxController {
     }
     if (boolIndex.length == 0) {
       boolIndex.addAll(data3);
-    }
-    if (textFieldActual.length == 0) {
-      textFieldActual = RxList<String>.filled(data.length, "");
-      textFieldTarget = RxList<String>.filled(data.length, "");
-      textFieldImprov = RxList<String>.filled(data.length, "");
     }
     print("isGlobal: " + isGlobal.toString());
     print('tag: $tag');

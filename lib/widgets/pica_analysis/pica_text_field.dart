@@ -9,13 +9,12 @@ class PicaTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PicaCardTableController globalController = Get.find(tag: "global");
-    final PicaCardTableController controller = Get.find(tag: tag);
-    controller.textEditingController();
+    globalController.textEditingController();
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Container(
         child: TextField(
-          controller: controller.textEditingControllerALL,
+          controller: globalController.textEditingControllerALL,
           decoration: InputDecoration(hintText: 'Isi disini'),
         ),
       ),

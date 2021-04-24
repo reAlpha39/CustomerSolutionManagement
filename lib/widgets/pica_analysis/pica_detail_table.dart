@@ -55,7 +55,8 @@ class PicaDetailTable extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id, isA: false);
       },
-      child: Obx(() => Text(controllerPU.indexResultB[id].toString())),
+      child: Obx(() => Text(
+          controllerPU.indexResultB[controllerPU.loadIndex[id]].toString())),
     );
   }
 
@@ -69,7 +70,7 @@ class PicaDetailTable extends StatelessWidget {
         resultRadio(index: id, isA: true);
       },
       child: Obx(() {
-        var a = controllerPU.indexResultA[id];
+        var a = controllerPU.indexResultA[controllerPU.loadIndex[id]];
         return Text(a.toString());
       }),
     );

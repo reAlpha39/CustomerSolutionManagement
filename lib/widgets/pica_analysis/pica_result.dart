@@ -27,12 +27,15 @@ class PicaResult extends StatelessWidget {
               Container(
                 child: Row(
                   children: [
-                    Obx(() => Radio(
+                    Obx(
+                      () => Radio(
                         visualDensity: VisualDensity.compact,
                         value: i,
                         groupValue: isA
-                            ? _controller.indexResultA[index]
-                            : _controller.indexResultB[index],
+                            ? _controller
+                                .indexResultA[_controller.loadIndex[index]]
+                            : _controller
+                                .indexResultB[_controller.loadIndex[index]],
                         activeColor: Color(0xffffcd29),
                         onChanged: (int value) {
                           if (isA) {
@@ -41,20 +44,24 @@ class PicaResult extends StatelessWidget {
                                 .value
                                 .picaElement[_controller.indexData.value]
                                 .picaDetail[_controller.indexCard.value]
-                                .colResult[index]
+                                .colResult[_controller.loadIndex[index]]
                                 .urgensi = value;
-                            _controller.indexResultA[index] = value;
+                            _controller.indexResultA[
+                                _controller.loadIndex[index]] = value;
                           } else {
                             _globalController
                                 .picaData
                                 .value
                                 .picaElement[_controller.indexData.value]
                                 .picaDetail[_controller.indexCard.value]
-                                .colResult[index]
+                                .colResult[_controller.loadIndex[index]]
                                 .dampak = value;
-                            _controller.indexResultB[index] = value;
+                            _controller.indexResultB[
+                                _controller.loadIndex[index]] = value;
                           }
-                        })),
+                        },
+                      ),
+                    ),
                     Text('${data[i]}'),
                   ],
                 ),

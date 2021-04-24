@@ -14,6 +14,7 @@ class PicaCardTableController extends GetxController {
   DatabaseProvider _databaseProvider = DatabaseProvider();
   LoginController loginController = Get.find();
   ExpandableController expandableController;
+  TextEditingController textEditingControllerALL;
   RxList<int> indexResultA = RxList<int>();
   RxList<int> indexResultB = RxList<int>();
   RxList<bool> boolIndex = RxList<bool>();
@@ -43,7 +44,12 @@ class PicaCardTableController extends GetxController {
 
   @override
   void onClose() {
+    textEditingControllerALL?.dispose();
     expandableController?.dispose();
+  }
+
+  void textEditingController() {
+    textEditingControllerALL = TextEditingController();
   }
 
   Widget picaDetailCard(int index, PicaData picaCTCglobal) {
@@ -172,6 +178,11 @@ class PicaCardTableController extends GetxController {
     }
     if (boolIndex.length == 0) {
       boolIndex.addAll(data3);
+    }
+    if (textFieldActual.length == 0) {
+      textFieldActual = RxList<String>.filled(data.length, "");
+      textFieldTarget = RxList<String>.filled(data.length, "");
+      textFieldImprov = RxList<String>.filled(data.length, "");
     }
     print("isGlobal: " + isGlobal.toString());
     print('tag: $tag');

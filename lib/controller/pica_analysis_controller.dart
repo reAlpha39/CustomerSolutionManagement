@@ -1,4 +1,5 @@
 import 'package:customer/controller/pica_card_table_controller.dart';
+import 'package:customer/widgets/pica_analysis/pica_detail_matrix_table.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_table.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -44,7 +45,7 @@ class PicaAnalysisController extends GetxController {
     if (navBarIndex.value == 1) {
       return PicaDetailTable(tag: tag);
     } else if (navBarIndex.value == 2) {
-      return Center(child: CircularProgressIndicator());
+      return PicaDetailMatrixTable(tag: tag);
     } else {
       return Container();
     }

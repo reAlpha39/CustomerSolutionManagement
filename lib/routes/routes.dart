@@ -1,6 +1,7 @@
 import 'package:customer/routes/customer_info_binding.dart';
 import 'package:customer/routes/data_table_binding.dart';
 import 'package:customer/routes/home_binding.dart';
+import 'package:customer/routes/improve_process_binding.dart';
 import 'package:customer/routes/login_binding.dart';
 import 'package:customer/routes/manage_account_binding.dart';
 import 'package:customer/routes/mspp_admin_binding.dart';
@@ -11,6 +12,7 @@ import 'package:customer/routes/part_program_binding.dart';
 import 'package:customer/routes/pica_analysis_binding.dart';
 import 'package:customer/routes/pica_card_table_binding.dart';
 import 'package:customer/routes/pica_chart_binding.dart';
+import 'package:customer/views/improve_process_page.dart';
 import 'package:customer/views/login_page.dart';
 import 'package:customer/views/home_page.dart';
 import 'package:customer/views/customer_info.dart';
@@ -98,5 +100,10 @@ class Routes {
         DataTableBinding(),
       ],
     ),
+    GetPage(
+      name: '/improve_process',
+      page: () => ImproveProcessPage(),
+      binding: ImproveProcessBinding(),
+    )
   ];
 }

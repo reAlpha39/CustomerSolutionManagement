@@ -1,5 +1,6 @@
 import 'package:customer/controller/data_table_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/mspp/mspp_result.dart';
 import 'package:customer/widgets/mspp/mspp_text_field.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 class MsppDataTable extends StatelessWidget {
   final MsppController controller = Get.find();
   final DataTableController dtController = Get.find();
+  final PicaCardTableController picaCTController = Get.find(tag: 'global');
   final List<int> radioIndex;
   final List<String> textFieldIndex;
   final String id;
@@ -45,7 +47,10 @@ class MsppDataTable extends StatelessWidget {
         textConfirm: 'OK',
         buttonColor: Color(0xffffcd29),
         confirmTextColor: Colors.black87,
-        onConfirm: () => Get.back(closeOverlays: false));
+        onConfirm: () {
+          picaCTController.checkData(radioIndex[index], id, index);
+          Get.back(closeOverlays: false);
+        });
   }
 
   Future<bool> resultTextField({int index}) {

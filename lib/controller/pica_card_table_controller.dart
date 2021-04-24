@@ -16,13 +16,10 @@ class PicaCardTableController extends GetxController {
   ExpandableController expandableController;
   RxList<int> indexResultA = RxList<int>();
   RxList<int> indexResultB = RxList<int>();
+  RxList<bool> boolIndex = RxList<bool>();
   RxList<int> loadIndex;
   RxBool isLoading = false.obs;
   Rx<PicaData> picaData = PicaData().obs;
-  RxInt totalRow = 0.obs;
-  int count = 0;
-  int lastA = 0;
-  int lastB = 0;
 
   RxString id = "".obs;
   RxString title = "".obs;
@@ -31,8 +28,6 @@ class PicaCardTableController extends GetxController {
   RxString docA = "".obs;
   RxString colA = "".obs;
   RxString docB = "".obs;
-  RxList<int> radioIndexA = RxList<int>();
-  RxList<int> radioIndexB = RxList<int>();
   RxList<String> textFieldActual = RxList<String>();
   RxList<String> textFieldTarget = RxList<String>();
   RxList<String> textFieldImprov = RxList<String>();
@@ -115,14 +110,14 @@ class PicaCardTableController extends GetxController {
         }
       }
     }
+    indexData.value = indexA;
+    indexCard.value = indexB;
+    displayIndex(indexB, indexA);
     if (value == 1) {
-      picaData.value.picaElement[indexA].picaDetail[indexB].colResult[index]
-          .isNo = true;
+      boolIndex[index] = true;
     } else {
-      picaData.value.picaElement[indexA].picaDetail[indexB].colResult[index]
-          .isNo = false;
+      boolIndex[index] = false;
     }
-    counter(indexData: indexA, indexCard: indexB);
   }
 
   counter({int indexA, int indexB, int row, int indexCard, int indexData}) {
@@ -148,55 +143,41 @@ class PicaCardTableController extends GetxController {
     loadIndex = RxList<int>();
     List<int> data = [];
     List<int> data2 = [];
+    List<bool> data3 = [];
     if (isGlobal) {
-      int length = picaData
-          .value.picaElement[indexData].picaDetail[indexCard].colResult.length;
-      for (int i = 0; i <= length - 1; i++) {
-        if (picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[i].isNo) {
-          loadIndex.add(i);
-        }
+      pica = picaData.value;
+    }
+    int length =
+        pica.picaElement[indexData].picaDetail[indexCard].colResult.length;
+    for (int i = 0; i <= length - 1; i++) {
+      if (pica.picaElement[indexData].picaDetail[indexCard].colResult[i].isNo) {
+        loadIndex.add(i);
       }
-      for (int j = 0;
-          j <=
-              picaData.value.picaElement[indexData].picaDetail[indexCard]
-                      .colResult.length -
-                  1;
-          j++) {
-        data.add(picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[j].urgensi);
-        data2.add(picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[j].dampak);
-      }
-    } else {
-      int length =
-          pica.picaElement[indexData].picaDetail[indexCard].colResult.length;
-      for (int i = 0; i <= length - 1; i++) {
-        if (pica
-            .picaElement[indexData].picaDetail[indexCard].colResult[i].isNo) {
-          loadIndex.add(i);
-        }
-      }
-      for (int j = 0;
-          j <=
-              pica.picaElement[indexData].picaDetail[indexCard].colResult
-                      .length -
-                  1;
-          j++) {
-        data.add(pica
-            .picaElement[indexData].picaDetail[indexCard].colResult[j].urgensi);
-        data2.add(pica
-            .picaElement[indexData].picaDetail[indexCard].colResult[j].dampak);
-      }
+    }
+    for (int j = 0;
+        j <=
+            pica.picaElement[indexData].picaDetail[indexCard].colResult.length -
+                1;
+        j++) {
+      data.add(pica
+          .picaElement[indexData].picaDetail[indexCard].colResult[j].urgensi);
+      data2.add(pica
+          .picaElement[indexData].picaDetail[indexCard].colResult[j].dampak);
+      data3.add(
+          pica.picaElement[indexData].picaDetail[indexCard].colResult[j].isNo);
     }
     if (indexResultA.length == 0 || indexResultB.length == 0) {
       indexResultA.addAll(data);
       indexResultB.addAll(data2);
     }
+    if (boolIndex.length == 0) {
+      boolIndex.addAll(data3);
+    }
     print("isGlobal: " + isGlobal.toString());
     print('tag: $tag');
     print(data);
     print(data2);
+    print(data3);
     print('v');
   }
 
@@ -236,6 +217,12 @@ class PicaCardTableController extends GetxController {
 
   void saveData() {
     isLoading.value = true;
+    for (int i = 0; i <= boolIndex.length - 1; i++) {
+      picaData.value.picaElement[indexData.value].picaDetail[indexCard.value]
+          .colResult[i].isNo = boolIndex[i];
+    }
+    picaData.refresh();
+    counter(indexData: indexData.value, indexCard: indexCard.value);
     connectivityChecker().then((conn) {
       if (conn) {
         _databaseProvider

@@ -55,14 +55,7 @@ class PicaDetailTable extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id, isA: false);
       },
-      child: Obx(() => Text(listCardController
-          .picaData
-          .value
-          .picaElement[controllerPU.indexData.value]
-          .picaDetail[controllerPU.indexCard.value]
-          .colResult[controllerPU.loadIndex[id]]
-          .dampak
-          .toString())),
+      child: Obx(() => Text(controllerPU.indexResultB[id].toString())),
     );
   }
 
@@ -76,13 +69,7 @@ class PicaDetailTable extends StatelessWidget {
         resultRadio(index: id, isA: true);
       },
       child: Obx(() {
-        var a = listCardController
-            .picaData
-            .value
-            .picaElement[controllerPU.indexData.value]
-            .picaDetail[controllerPU.indexCard.value]
-            .colResult[controllerPU.loadIndex[id]]
-            .urgensi;
+        var a = controllerPU.indexResultA[id];
         return Text(a.toString());
       }),
     );

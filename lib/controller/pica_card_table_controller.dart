@@ -14,8 +14,8 @@ class PicaCardTableController extends GetxController {
   DatabaseProvider _databaseProvider = DatabaseProvider();
   LoginController loginController = Get.find();
   ExpandableController expandableController;
-  RxList<int> indexResultA = RxList<int>.filled(6, 0);
-  RxList<int> indexResultB = RxList<int>.filled(6, 0);
+  RxList<int> indexResultA = RxList<int>();
+  RxList<int> indexResultB = RxList<int>();
   RxList<int> loadIndex;
   RxBool isLoading = false.obs;
   Rx<PicaData> picaData = PicaData().obs;
@@ -91,8 +91,6 @@ class PicaCardTableController extends GetxController {
           .picaDetail[index]
           .id);
       dataTableRadioIndex = 1;
-      radioIndexA = indexResultA;
-      radioIndexB = indexResultB;
       return PicaDetailCard(
           tag: picaCTCglobal.picaElement[picaAController.indexDetailData.value]
               .picaDetail[index].id);
@@ -130,17 +128,6 @@ class PicaCardTableController extends GetxController {
   counter({int indexA, int indexB, int row, int indexCard, int indexData}) {
     int temp = 0;
     if (picaData.value.picaElement != null) {
-      if (indexA != null || indexB != null) {
-        count += (indexA - lastA) + (indexB - lastB);
-        lastA = indexA;
-        lastB = indexB;
-
-        displayIndex(indexCard, indexData);
-        picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[loadIndex[row]].urgensi = indexA;
-        picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[loadIndex[row]].dampak = indexB;
-      }
       List<ColResult> list =
           picaData.value.picaElement[indexData].picaDetail[indexCard].colResult;
       for (int i = 0; i <= list.length - 1; i++) {
@@ -150,7 +137,6 @@ class PicaCardTableController extends GetxController {
         }
       }
       picaData.value.picaElement[indexData].picaDetail[indexCard].result = temp;
-      picaData.refresh();
       sortCard(indexData, indexCard);
     } else {
       print("counter's PicaData null");
@@ -160,8 +146,8 @@ class PicaCardTableController extends GetxController {
   void displayIndex(int indexCard, int indexData,
       {bool isGlobal = true, PicaData pica, String tag}) {
     loadIndex = RxList<int>();
-    List data = [];
-    List data2 = [];
+    List<int> data = [];
+    List<int> data2 = [];
     if (isGlobal) {
       int length = picaData
           .value.picaElement[indexData].picaDetail[indexCard].colResult.length;
@@ -202,6 +188,10 @@ class PicaCardTableController extends GetxController {
         data2.add(pica
             .picaElement[indexData].picaDetail[indexCard].colResult[j].dampak);
       }
+    }
+    if (indexResultA.length == 0 || indexResultB.length == 0) {
+      indexResultA.addAll(data);
+      indexResultB.addAll(data2);
     }
     print("isGlobal: " + isGlobal.toString());
     print('tag: $tag');

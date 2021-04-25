@@ -1,7 +1,9 @@
+import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
+import 'package:customer/widgets/mspp/mspp_card.dart';
 import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_rm.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OtherRegm extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class OtherRegm extends StatefulWidget {
 
 class _MsppPsPlanState extends State<OtherRegm>
     with AutomaticKeepAliveClientMixin {
+      final OtherProgramController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -20,7 +23,15 @@ class _MsppPsPlanState extends State<OtherRegm>
         child: Column(
           children: [
             MsppFillHelper(),
-            OtherCardRm(),
+            MsppCard(
+              title: 'Regular Meeting',
+              id: 'rm',
+              docA: 'other_program',
+              colA: 'regular_meeting',
+              docB: 'regular_meeting',
+              radioIndex: controller.radioIndexRM,
+              textFieldIndex: controller.textFieldRM,
+            )
           ],
         ),
       ),

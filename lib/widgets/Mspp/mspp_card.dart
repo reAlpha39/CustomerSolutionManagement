@@ -1,4 +1,5 @@
 import 'package:customer/widgets/mspp/mspp_data_table.dart';
+import 'package:customer/widgets/other_program/other_data_table.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,17 +54,33 @@ class MsppCard extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: MsppDataTable(
-                  id: id,
-                  docA: docA,
-                  colA: colA,
-                  docB: docB,
-                  textFieldIndex: textFieldIndex,
-                  radioIndex: radioIndex,
-                  dataTableFilter: dataTableFilter,
-                  dataTableListRadio: dataTableListRadio,
-                  dataTableRadioIndex: dataTableRadioIndex,
-                ),
+                expanded: docA == "mspp"
+                    ? MsppDataTable(
+                        id: id,
+                        docA: docA,
+                        colA: colA,
+                        docB: docB,
+                        textFieldIndex: textFieldIndex,
+                        radioIndex: radioIndex,
+                        dataTableFilter: dataTableFilter,
+                        dataTableListRadio: dataTableListRadio,
+                        dataTableRadioIndex: dataTableRadioIndex,
+                      )
+                    : docA == "other_program"
+                        ? OtherDataTable(
+                            id: id,
+                            docA: docA,
+                            colA: colA,
+                            docB: docB,
+                            textFieldIndex: textFieldIndex,
+                            radioIndex: radioIndex,
+                            dataTableFilter: dataTableFilter,
+                            dataTableListRadio: dataTableListRadio,
+                            dataTableRadioIndex: dataTableRadioIndex,
+                          )
+                        : docA == "part_program"
+                            ? Container()
+                            : Container(),
               ),
             ),
           ),

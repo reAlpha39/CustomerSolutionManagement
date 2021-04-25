@@ -64,14 +64,20 @@ class Routes {
     GetPage(
       name: '/other_program',
       page: () => OtherProgramPage(),
-      binding: OtherProgramBinding(),
+      bindings: [
+        PicaCardTableBinding(),
+        OtherProgramBinding(),
+        DataTableBinding(),
+      ]
     ),
     GetPage(
       name: '/other_program_admin',
       page: () => OtherProgramAdminPage(),
       bindings: [
+        PicaCardTableBinding(),
         OtherProgramBinding(),
         OtherProgramAdminBinding(),
+        DataTableBinding(),
       ],
     ),
     GetPage(

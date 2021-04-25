@@ -1,13 +1,9 @@
+import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
+import 'package:customer/widgets/mspp/mspp_card.dart';
 import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_ao.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_do.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_lo.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_os.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_po.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_pro.dart';
-import 'package:customer/widgets/other_program/other_card/other_card_sheo.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class OtherPeople extends StatefulWidget {
   @override
@@ -16,6 +12,7 @@ class OtherPeople extends StatefulWidget {
 
 class _MsppPsPlanState extends State<OtherPeople>
     with AutomaticKeepAliveClientMixin {
+      final OtherProgramController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -26,13 +23,68 @@ class _MsppPsPlanState extends State<OtherPeople>
         child: Column(
           children: [
             MsppFillHelper(),
-            OtherCardOs(),
-            OtherCardPo(),
-            OtherCardLo(),
-            OtherCardPro(),
-            OtherCardDo(),
-            OtherCardAo(),
-            OtherCardSheo(),
+            MsppCard(
+              title: 'Organization Structure',
+              id: 'os',
+              docA: 'other_program',
+              colA: 'people',
+              docB: 'organization_structure',
+              radioIndex: controller.radioIndexOS,
+              textFieldIndex: controller.textFieldOS,
+            ),
+            MsppCard(
+              title: 'Plant Organization',
+              id: 'po',
+              docA: 'other_program',
+              colA: 'people',
+              docB: 'plant_organization',
+              radioIndex: controller.radioIndexPO,
+              textFieldIndex: controller.textFieldPO,
+            ),
+            MsppCard(
+              title: 'Logistic Organization',
+              id: 'lo',
+              docA: 'other_program',
+              colA: 'people',
+              docB: 'logistic_organization',
+              radioIndex: controller.radioIndexLO,
+              textFieldIndex: controller.textFieldLO,
+            ),
+            MsppCard(
+              title: 'Production Organization',
+              id: 'pro',
+              docA: 'other_program',
+              colA: 'people',
+              docB: 'production_organization',
+              radioIndex: controller.radioIndexPRO,
+              textFieldIndex: controller.textFieldPRO,
+            ),
+            MsppCard(
+              title: 'Development Organization',
+              id: 'do',
+              docA: 'other_program',
+              colA: 'people',
+              docB: 'development_organization',
+              radioIndex: controller.radioIndexDO,
+              textFieldIndex: controller.textFieldDO,
+            ),MsppCard(
+              title: 'Administration Organization',
+              id: 'ao',
+              docA: 'other_program',
+              colA: 'people',
+              docB: 'administration_organization',
+              radioIndex: controller.radioIndexAO,
+              textFieldIndex: controller.textFieldAO,
+            ),
+            MsppCard(
+              title: 'SHE Organization',
+              id: 'sheo',
+              docA: 'other_program',
+              colA: 'people',
+              docB: 'she_organization',
+              radioIndex: controller.radioIndexSHEO,
+              textFieldIndex: controller.textFieldSHEO,
+            ),
           ],
         ),
       ),

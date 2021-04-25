@@ -1,8 +1,11 @@
+import 'package:customer/controller/imrpove_process_controller.dart';
 import 'package:customer/widgets/improve_process/improve_main_content.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ImproveMainCard extends StatelessWidget {
+  final ImproveProcessController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -92,7 +95,7 @@ class ImproveMainCard extends StatelessWidget {
             bottom: 8,
             right: 5,
             child: InkWell(
-              onTap: () {},
+              onTap: () => controller.panelController.open(),
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(100),

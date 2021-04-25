@@ -41,6 +41,7 @@ class ImprovePanelCard extends StatelessWidget {
             ),
           ),
           Flexible(
+            fit: FlexFit.tight,
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,

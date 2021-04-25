@@ -16,6 +16,7 @@ class ImprovePanelContent extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: controller.textEditingController,
                   maxLines: 3,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(

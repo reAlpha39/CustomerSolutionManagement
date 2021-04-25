@@ -1,11 +1,14 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ImproveProcessController extends GetxController {
   PanelController panelController;
+  TextEditingController textEditingController;
+  RxString description;
   final _picker = ImagePicker();
   RxBool isPicked = false.obs;
   Rx<File> image;
@@ -13,7 +16,24 @@ class ImproveProcessController extends GetxController {
   @override
   void onInit() {
     panelController = PanelController();
+    textEditingController = TextEditingController();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    textEditingController?.dispose();
+    resetPanel();
+  }
+
+  void saveData() {}
+
+  void resetPanel() {
+    textEditingController.clear();
+    isPicked.value = false;
+    if (image != null) {
+      image.value.delete();
+    }
   }
 
   Future imageFromCamera() async {

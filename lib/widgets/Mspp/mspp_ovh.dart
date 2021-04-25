@@ -1,0 +1,100 @@
+import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/utils/custom_scroll_behavior.dart';
+import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
+import 'package:customer/widgets/mspp/mspp_card.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class MsppOVH extends StatefulWidget {
+  const MsppOVH({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  _MsppOVHState createState() => _MsppOVHState();
+}
+
+class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
+  final MsppController controller = Get.find();
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return ScrollConfiguration(
+      behavior: CustomScrollBehavior(),
+      child: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Column(
+          children: [
+            MsppFillHelper(),
+            MsppCard(
+              title: 'Arrange',
+              id: 'ar',
+              docA: 'mspp',
+              colA: 'ovh',
+              docB: 'arrange',
+              radioIndex: controller.radioIndexAR,
+              textFieldIndex: controller.textFieldAR,
+            ),
+            MsppCard(
+              title: 'End Job',
+              id: 'ej',
+              docA: 'mspp',
+              colA: 'ovh',
+              docB: 'end_job',
+              radioIndex: controller.radioIndexEJ,
+              textFieldIndex: controller.textFieldEJ,
+            ),
+            MsppCard(
+              title: 'Have Problem Solving',
+              id: 'hps',
+              docA: 'mspp',
+              colA: 'ovh',
+              docB: 'have_problem_solving',
+              radioIndex: controller.radioIndexHPS,
+              textFieldIndex: controller.textFieldHPS,
+            ),
+            MsppCard(
+              title: 'Notify',
+              id: 'nt',
+              docA: 'mspp',
+              colA: 'ovh',
+              docB: 'notify',
+              radioIndex: controller.radioIndexNT,
+              textFieldIndex: controller.textFieldNT,
+            ),
+            MsppCard(
+              title: 'Plan',
+              id: 'pl',
+              docA: 'mspp',
+              colA: 'ovh',
+              docB: 'plan',
+              radioIndex: controller.radioIndexPL,
+              textFieldIndex: controller.textFieldPL,
+            ),
+            MsppCard(
+              title: 'Review',
+              id: 're',
+              docA: 'mspp',
+              colA: 'ovh',
+              docB: 'review',
+              radioIndex: controller.radioIndexRE,
+              textFieldIndex: controller.textFieldRE,
+            ),
+            MsppCard(
+              title: 'Track',
+              id: 'tr',
+              docA: 'mspp',
+              colA: 'ovh',
+              docB: 'track',
+              radioIndex: controller.radioIndexTR,
+              textFieldIndex: controller.textFieldTR,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}

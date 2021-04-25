@@ -1,5 +1,9 @@
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
+import 'package:customer/widgets/mspp/mspp_ae.dart';
+import 'package:customer/widgets/mspp/mspp_cbm.dart';
+import 'package:customer/widgets/mspp/mspp_ovh.dart';
+import 'package:customer/widgets/mspp/mspp_ovh_plan.dart';
 import 'package:customer/widgets/mspp/mspp_pi.dart';
 import 'package:customer/widgets/mspp/mspp_ps.dart';
 import 'package:customer/widgets/mspp/mspp_ps_plan.dart';
@@ -7,6 +11,7 @@ import 'package:customer/widgets/mspp/mspp_infras.dart';
 import 'package:customer/widgets/mspp/mspp_om.dart';
 import 'package:customer/widgets/mspp/mspp_os.dart';
 import 'package:customer/widgets/mspp/mspp_tools.dart';
+import 'package:customer/widgets/mspp/mspp_ub.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -97,13 +102,13 @@ class Mspp extends StatelessWidget {
                   : MsppPi(),
               MsppPsPlan(),
               MsppPs(),
-              Container(),
-              Container(),
-              Container(),
-              Container(),
+              MsppOvhPlan(),
+              MsppOVH(),
+              MsppUb(),
+              MsppCbm(),
               MsppTools(),
               MsppInfras(),
-              Container(),
+              MsppAE(),
               MsppOm(),
               MsppOs(),
             ],

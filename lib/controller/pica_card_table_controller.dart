@@ -1,5 +1,7 @@
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/controller/other_program_controller.dart';
+import 'package:customer/controller/part_program_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/models/column_result.dart';
 import 'package:customer/models/pica_data.dart';
@@ -69,13 +71,30 @@ class PicaCardTableController extends GetxController {
 
   Widget picaDetailCard(int index, PicaData picaCTCglobal) {
     MsppController msppController = Get.find();
+    OtherProgramController otherController = Get.find();
+    PartProgramController partController = Get.find();
     PicaAnalysisController picaAController = Get.find();
-    if (msppController
-        .radioIndexPI(picaCTCglobal
-            .picaElement[picaAController.indexDetailData.value]
-            .picaDetail[index]
-            .id)
-        .contains(1)) {
+    bool isNo = false;
+    String idData = picaCTCglobal
+        .picaElement[picaAController.indexDetailData.value]
+        .picaDetail[index]
+        .id;
+
+    if (msppController.radioIndexPI(idData) != null) {
+      if (msppController.radioIndexPI(idData).contains(1)) {
+        isNo = true;
+      }
+    } else if (otherController.radioIndexOP(idData) != null) {
+      if (otherController.radioIndexOP(idData).contains(1)) {
+        isNo = true;
+      }
+    } else if (partController.radioIndexPP(idData) != null) {
+      if (partController.radioIndexPP(idData).contains(1)) {
+        isNo = true;
+      }
+    }
+
+    if (isNo) {
       title.value = picaCTCglobal
           .picaElement[picaAController.indexDetailData.value]
           .picaDetail[index]
@@ -102,11 +121,15 @@ class PicaCardTableController extends GetxController {
           .tablePath
           .docB;
       dataTableFilter.value = true;
-      dataTableListRadio = msppController.radioIndexPI(picaCTCglobal
-          .picaElement[picaAController.indexDetailData.value]
-          .picaDetail[index]
-          .id);
       dataTableRadioIndex = 1;
+      if (msppController.radioIndexPI(idData) != null) {
+        dataTableListRadio = msppController.radioIndexPI(idData);
+      } else if (otherController.radioIndexOP(idData) != null) {
+        dataTableListRadio = otherController.radioIndexOP(idData);
+      } else if (partController.radioIndexPP(idData) != null) {
+        dataTableListRadio = partController.radioIndexPP(idData);
+      }
+
       return PicaDetailCard(
           tag: picaCTCglobal.picaElement[picaAController.indexDetailData.value]
               .picaDetail[index].id);

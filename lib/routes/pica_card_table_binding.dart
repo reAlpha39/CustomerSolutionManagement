@@ -51,5 +51,29 @@ class PicaCardTableBinding extends Bindings {
     Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'evcbm');
     Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'aea');
     Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'aeb');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'os');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'po');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'lo');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'pro');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'do');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'ao');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'sheo');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'pv');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'mtdt');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'ev');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'rm');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'pld');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'prd');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'ld');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'pl');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'pr');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'lg');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'kp');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'op');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'pe');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'ts');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'ci');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'if');
+    Get.put<PicaCardTableController>(PicaCardTableController(), tag: 'he');
   }
 }

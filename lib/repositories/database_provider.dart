@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/audit_table_data.dart';
 import 'package:customer/models/iw_data_table.dart';
+import 'package:customer/models/model_unit.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/other_program.dart';
 import 'package:customer/models/pica_data.dart';
@@ -253,6 +254,19 @@ class DatabaseProvider {
       }
     } catch (e) {}
     return picaData;
+  }
+
+  Future<ModelUnit> loadModelUnit() async {
+    ModelUnit unit;
+    try {
+      firestore = FirebaseFirestore.instance;
+      var data =
+          await firestore.collection('initial_data').doc('model_unit').get();
+      unit = ModelUnit.fromMap(data.data());
+    } catch (e) {
+      print(e);
+    }
+    return unit;
   }
 
   dummy() async {

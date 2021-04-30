@@ -6,6 +6,7 @@ import 'dart:convert';
 
 class ModelUnit {
     ModelUnit({
+        this.modelId,
         this.bd,
         this.gd,
         this.hd,
@@ -16,6 +17,7 @@ class ModelUnit {
         this.bw,
     });
 
+    List<String> modelId;
     List<String> bd;
     List<String> gd;
     List<String> hd;
@@ -30,6 +32,7 @@ class ModelUnit {
     String toJson() => json.encode(toMap());
 
     factory ModelUnit.fromMap(Map<String, dynamic> json) => ModelUnit(
+        modelId: List<String>.from(json["model_id"].map((x) => x)),
         bd: List<String>.from(json["BD"].map((x) => x)),
         gd: List<String>.from(json["GD"].map((x) => x)),
         hd: List<String>.from(json["HD"].map((x) => x)),
@@ -41,6 +44,7 @@ class ModelUnit {
     );
 
     Map<String, dynamic> toMap() => {
+        "model_id": List<dynamic>.from(modelId.map((x) => x)),
         "BD": List<dynamic>.from(bd.map((x) => x)),
         "GD": List<dynamic>.from(gd.map((x) => x)),
         "HD": List<dynamic>.from(hd.map((x) => x)),

@@ -1,6 +1,9 @@
 import 'package:customer/controller/imrpove_process_controller.dart';
 import 'package:customer/widgets/improve_process/improve_main_card.dart';
 import 'package:customer/widgets/improve_process/improve_panel_card.dart';
+import 'package:customer/widgets/improve_process/matrix_selector.dart';
+import 'package:customer/widgets/improve_process/model_unit_selector.dart';
+import 'package:customer/widgets/improve_process/type_unit_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -8,6 +11,40 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ImproveProcessPage extends StatelessWidget {
   final ImproveProcessController controller = Get.find();
+
+  showDialogTypeUnit() {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Pilih Type Unit',
+      content: TypeUnitSelector(),
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+    );
+  }
+
+  showDialogModelUnit() {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Pilih Model Unit',
+      content: ModelUnitSelector(),
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+    );
+  }
+
+  showDialogMatrixList() {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Pilih Model Unit',
+      content: MatrixSelector(),
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -39,43 +76,98 @@ class ImproveProcessPage extends StatelessWidget {
             width: context.width,
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(17),
-                      ),
-                      color: Colors.white,
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minWidth: 120,
-                          maxWidth: 120,
-                          maxHeight: 40,
-                          minHeight: 40,
-                        ),
-                        child: Center(
-                          child: Text('Plant'),
-                        ),
-                      ),
-                    ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(17),
-                      ),
-                      color: Colors.white,
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minWidth: 120,
-                          maxWidth: 120,
-                          maxHeight: 40,
-                          minHeight: 40,
-                        ),
-                        child: Center(
-                          child: Text('Type Unit'),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () => showDialogMatrixList(),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          color: Colors.white,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: 120,
+                              maxWidth: 120,
+                              maxHeight: 40,
+                              minHeight: 40,
+                            ),
+                            child: Center(
+                              child: Obx(
+                                () => controller.modelUnit.value == null
+                                    ? CircularProgressIndicator()
+                                    : controller.matrixText.value == ""
+                                        ? Text('Matrix')
+                                        : Text(controller.matrixText.value),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      InkWell(
+                        onTap: () {
+                          if (controller.matrixText.value != "") {
+                            showDialogModelUnit();
+                          }
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          color: Colors.white,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: 120,
+                              maxWidth: 120,
+                              maxHeight: 40,
+                              minHeight: 40,
+                            ),
+                            child: Center(
+                              child: Obx(
+                                () => controller.modelUnit.value == null
+                                    ? CircularProgressIndicator()
+                                    : controller.modelUnitText.value == ""
+                                        ? Text('Model Unit')
+                                        : Text(controller.modelUnitText.value),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          if (controller.modelUnitText.value != "") {
+                            controller.loadTypeUnit();
+                            showDialogTypeUnit();
+                          }
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          color: Colors.white,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: 120,
+                              maxWidth: 120,
+                              maxHeight: 40,
+                              minHeight: 40,
+                            ),
+                            child: Center(
+                              child:
+                                  Obx(() => controller.modelUnit.value == null
+                                      ? CircularProgressIndicator()
+                                      : controller.typeUnit.value == ""
+                                          ? Text('Type Unit')
+                                          : Text(controller.typeUnit.value)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -89,6 +181,7 @@ class ImproveProcessPage extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
+                          ImproveMainCard(),
                           ImproveMainCard(),
                         ],
                       ),

@@ -13,10 +13,36 @@ class ImproveProcessController extends GetxController {
   PanelController panelController;
   TextEditingController textEditingController;
   Rx<ModelUnit> modelUnit = ModelUnit().obs;
+  RxList<String> typeUnits = RxList<String>();
+  RxString matrixText = "".obs;
+  RxString modelUnitText = "".obs;
+  RxString typeUnit = "".obs;
   RxString description;
   final _picker = ImagePicker();
   RxBool isPicked = false.obs;
   Rx<File> image;
+
+  List<String> matrixList = [
+    "PI",
+    "PS Plan",
+    "PS",
+    "OVH Plan",
+    "OVH",
+    "INFRAS",
+    "USC",
+    "TOOLS",
+    "CBM",
+    "PEOPLE",
+    "IW",
+    "VM",
+    "AE",
+    "MR",
+    "OM",
+    "OP",
+    "OS",
+    "RegM",
+    "CO"
+  ];
 
   @override
   void onInit() {
@@ -41,6 +67,39 @@ class ImproveProcessController extends GetxController {
         });
       }
     });
+  }
+
+  List<String> loadTypeUnit() {
+    List<String> data;
+    switch (modelUnitText.value) {
+      case "BD":
+        data = modelUnit.value.bd;
+        break;
+      case "GD":
+        data = modelUnit.value.gd;
+        break;
+      case "HD":
+        data = modelUnit.value.hd;
+        break;
+      case "PC":
+        data = modelUnit.value.pc;
+        break;
+      case "SCN":
+        data = modelUnit.value.scn;
+        break;
+      case "WA":
+        data = modelUnit.value.wa;
+        break;
+      case "TDN":
+        data = modelUnit.value.tdn;
+        break;
+      case "BW":
+        data = modelUnit.value.bw;
+        break;
+      default:
+    }
+    typeUnits.value = data;
+    return data;
   }
 
   void saveData() {}

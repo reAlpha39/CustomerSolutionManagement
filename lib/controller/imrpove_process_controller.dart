@@ -22,8 +22,8 @@ class ImproveProcessController extends GetxController {
 
   @override
   void onClose() {
-    textEditingController?.dispose();
     resetPanel();
+    textEditingController?.dispose();
   }
 
   void saveData() {}

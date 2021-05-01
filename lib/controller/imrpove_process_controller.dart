@@ -173,8 +173,8 @@ class ImproveProcessController extends GetxController {
   void resetPanel() {
     textEditingController.clear();
     isPicked.value = false;
-    if (imageBefore != null) {
-      imageBefore.value.delete();
+    if (image != null) {
+      image.value.delete();
     }
   }
 
@@ -182,8 +182,8 @@ class ImproveProcessController extends GetxController {
     isPicked.value = false;
     var file = await _picker.getImage(source: ImageSource.camera);
     if (file != null) {
-      imageBefore = Rx<File>(File(file.path));
-      imageBefore.refresh();
+      image = Rx<File>(File(file.path));
+      image.refresh();
       isPicked.value = true;
     } else {
       print('No image selected');
@@ -195,8 +195,8 @@ class ImproveProcessController extends GetxController {
     var file =
         await _picker.getImage(source: ImageSource.gallery, imageQuality: 50);
     if (file != null) {
-      imageBefore = Rx<File>(File(file.path));
-      imageBefore.refresh();
+      image = Rx<File>(File(file.path));
+      image.refresh();
       isPicked.value = true;
     } else {
       print('No image selected');

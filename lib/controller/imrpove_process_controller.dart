@@ -58,6 +58,7 @@ class ImproveProcessController extends GetxController {
     panelController = PanelController();
     textEditingController = TextEditingController();
     loadModelUnit();
+    loadData();
     super.onInit();
   }
 
@@ -111,11 +112,31 @@ class ImproveProcessController extends GetxController {
     return data;
   }
 
+  void loadData() {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        databaseProvider
+            .loadImproveProcessData(loginController.usr.value.username)
+            .then((value) {
+          if (value != null) {
+            improveProcess.value = ImproveProcess();
+            improveProcess.value = value;
+            improveProcess.refresh();
+          }
+          isLoading.value = false;
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
   void saveData({File image, bool isBefore, bool isUpdate, int indexUpdate}) {
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
-        String name = fileName(isBefore: isBefore, index: indexUpdate);
+        String name = fileName(isBefore: isBefore);
         databaseProvider
             .uploadImproveProcessImage(
                 image, name, loginController.usr.value.username)
@@ -139,6 +160,7 @@ class ImproveProcessController extends GetxController {
             } else {
               improveProcess.value.improveProcesData.add(ipData.value);
             }
+            improveProcess.refresh();
             databaseProvider
                 .saveImproveProcessData(
                     improveProcess.value, loginController.usr.value.username)
@@ -157,24 +179,32 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  String fileName({bool isBefore, int index}) {
+  String fileName({bool isBefore}) {
     String name = "";
-    if (index == null) {
-      index = 1;
-    }
+    var currentTime = DateTime.now().toString();
+    var trim = currentTime
+        .replaceAll("-", "")
+        .replaceAll(" ", "")
+        .replaceAll(":", "")
+        .split(".");
+    String formatTime = trim[0];
     if (isBefore) {
-      name = "before_" + index.toString();
+      name = "before_" + formatTime;
     } else {
-      name = "after_" + index.toString();
+      name = "after_" + formatTime;
     }
     return name;
   }
 
   void resetPanel() {
-    textEditingController.clear();
-    isPicked.value = false;
-    if (image != null) {
-      image.value.delete();
+    try {
+      textEditingController.clear();
+      isPicked.value = false;
+      if (image != null) {
+        image.value.delete();
+      }
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -217,6 +247,8 @@ class ImproveProcessController extends GetxController {
         onConfirm: () {
           panelController.close();
           resetPanel();
+          loadData();
+          print(improveProcess.value.toMap());
           Get.back(closeOverlays: false);
         });
   }

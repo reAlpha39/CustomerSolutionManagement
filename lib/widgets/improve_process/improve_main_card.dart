@@ -12,6 +12,10 @@ class ImproveMainCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: BoxConstraints(
+        maxWidth: 600,
+        minWidth: 400,
+      ),
       child: Stack(
         children: [
           Padding(
@@ -24,20 +28,23 @@ class ImproveMainCard extends StatelessWidget {
                   elevation: 12,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(17)),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minWidth: 550,
-                      maxWidth: 600,
-                      maxHeight: 200,
-                      minHeight: 150,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 12,
-                        horizontal: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minWidth: 550,
+                        maxWidth: 600,
+                        maxHeight: 200,
+                        minHeight: 150,
                       ),
-                      child: ImproveMainContent(
-                        index: index,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: 16,
+                        ),
+                        child: ImproveMainContent(
+                          index: index,
+                        ),
                       ),
                     ),
                   ),
@@ -92,32 +99,6 @@ class ImproveMainCard extends StatelessWidget {
                       ),
                     )
                   ],
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 8,
-            right: 5,
-            child: InkWell(
-              onTap: () => controller.panelController.open(),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xffffcd29),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      LineIcons.edit,
-                      size: 20,
-                    ),
-                  ),
                 ),
               ),
             ),

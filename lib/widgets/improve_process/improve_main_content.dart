@@ -1,6 +1,7 @@
 import 'package:customer/controller/imrpove_process_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 class ImproveMainContent extends StatelessWidget {
   final ImproveProcessController controller = Get.find(tag: 'global');
@@ -10,43 +11,80 @@ class ImproveMainContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 12),
+      padding: const EdgeInsets.only(top: 14, left: 12, right: 12),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            flex: 4,
-            child: Container(
-              height: 100,
-              child: Obx(() => Text(controller.improveProcess.value
-                  .improveProcesData[index].descriptionBefore)),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 5),
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: 300,
-                    maxWidth: 300,
-                    minHeight: 30,
-                    maxHeight: 300,
-                  ),
-                  child: Container(
-                    child: ClipRRect(
-                      child: Image.network(
-                        controller.improveProcess.value.improveProcesData[index]
-                            .picturePathBefore,
-                        loadingBuilder: (context, child, progress) {
-                          return progress == null
-                              ? child
-                              : LinearProgressIndicator();
-                        },
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(right: 12, top: 12, bottom: 12),
+                child: Obx(() => Text(controller.improveProcess.value
+                    .improveProcesData[index].descriptionBefore)),
+              ),
+              Row(
+                children: [
+                  InkWell(
+                    onTap: () {},
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xffffcd29),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            LineIcons.trash,
+                            size: 20,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  InkWell(
+                    onTap: () => controller.panelController.open(),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xffffcd29),
+                        ),
+                        child: Center(
+                          child: Icon(
+                            LineIcons.edit,
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          AspectRatio(
+            aspectRatio: 3 / 4,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+              child: Image.network(
+                controller.improveProcess.value.improveProcesData[index]
+                    .picturePathBefore,
+                loadingBuilder: (context, child, progress) {
+                  return progress == null ? child : LinearProgressIndicator();
+                },
+                fit: BoxFit.cover,
               ),
             ),
           ),

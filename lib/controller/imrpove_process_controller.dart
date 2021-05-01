@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:customer/controller/login_controller.dart';
+import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/model_unit.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
@@ -9,18 +11,25 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ImproveProcessController extends GetxController {
+  LoginController loginController = Get.find();
   DatabaseProvider databaseProvider = DatabaseProvider();
   PanelController panelController;
   TextEditingController textEditingController;
+  Rx<ImproveProcess> improveProcess = ImproveProcess().obs;
+  Rx<IpData> ipData = IpData().obs;
   Rx<ModelUnit> modelUnit = ModelUnit().obs;
   RxList<String> typeUnits = RxList<String>();
   RxString matrixText = "".obs;
   RxString modelUnitText = "".obs;
   RxString typeUnit = "".obs;
-  RxString description;
   final _picker = ImagePicker();
   RxBool isPicked = false.obs;
+  RxBool isLoading = false.obs;
+  RxString descriptionBefore = "".obs;
+  RxString descriptionAfter = "".obs;
   Rx<File> image;
+  Rx<File> imageBefore;
+  Rx<File> imageAfter;
 
   List<String> matrixList = [
     "PI",
@@ -102,13 +111,70 @@ class ImproveProcessController extends GetxController {
     return data;
   }
 
-  void saveData() {}
+  void saveData({File image, bool isBefore, bool isUpdate, int indexUpdate}) {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        String name = fileName(isBefore: isBefore, index: indexUpdate);
+        databaseProvider
+            .uploadImproveProcessImage(
+                image, name, loginController.usr.value.username)
+            .then((downloadUrl) {
+          if (downloadUrl != null) {
+            if (isBefore) {
+              ipData.value.matrix = matrixText.value;
+              ipData.value.model = modelUnitText.value;
+              ipData.value.type = typeUnit.value;
+              ipData.value.picturePathBefore = downloadUrl;
+              ipData.value.descriptionBefore = textEditingController.text;
+            } else {
+              ipData.value.picturePathAfter = downloadUrl;
+              ipData.value.descriptionAfter = textEditingController.text;
+            }
+            if (isUpdate) {
+              improveProcess.value.improveProcesData[indexUpdate] =
+                  ipData.value;
+            } else if (improveProcess.value.improveProcesData == null) {
+              improveProcess.value.improveProcesData = [ipData.value];
+            } else {
+              improveProcess.value.improveProcesData.add(ipData.value);
+            }
+            databaseProvider
+                .saveImproveProcessData(
+                    improveProcess.value, loginController.usr.value.username)
+                .then((value) {
+              if (value) {
+                showDialog(
+                    title: 'Sukses', middleText: 'Data berhasil ditambahkan');
+                isLoading.value = false;
+              }
+            });
+          }
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
+  String fileName({bool isBefore, int index}) {
+    String name = "";
+    if (index == null) {
+      index = 1;
+    }
+    if (isBefore) {
+      name = "before_" + index.toString();
+    } else {
+      name = "after_" + index.toString();
+    }
+    return name;
+  }
 
   void resetPanel() {
     textEditingController.clear();
     isPicked.value = false;
-    if (image != null) {
-      image.value.delete();
+    if (imageBefore != null) {
+      imageBefore.value.delete();
     }
   }
 
@@ -116,8 +182,8 @@ class ImproveProcessController extends GetxController {
     isPicked.value = false;
     var file = await _picker.getImage(source: ImageSource.camera);
     if (file != null) {
-      image = Rx<File>(File(file.path));
-      image.refresh();
+      imageBefore = Rx<File>(File(file.path));
+      imageBefore.refresh();
       isPicked.value = true;
     } else {
       print('No image selected');
@@ -129,11 +195,29 @@ class ImproveProcessController extends GetxController {
     var file =
         await _picker.getImage(source: ImageSource.gallery, imageQuality: 50);
     if (file != null) {
-      image = Rx<File>(File(file.path));
-      image.refresh();
+      imageBefore = Rx<File>(File(file.path));
+      imageBefore.refresh();
       isPicked.value = true;
     } else {
       print('No image selected');
     }
+  }
+
+  showDialog({String title, String middleText}) {
+    Get.defaultDialog(
+        barrierDismissible: false,
+        titleStyle: TextStyle(fontSize: 24),
+        middleTextStyle: TextStyle(fontSize: 18),
+        title: title,
+        middleText: middleText,
+        textConfirm: 'OK',
+        radius: 17,
+        buttonColor: Colors.yellow.shade600,
+        confirmTextColor: Colors.black87,
+        onConfirm: () {
+          panelController.close();
+          resetPanel();
+          Get.back(closeOverlays: false);
+        });
   }
 }

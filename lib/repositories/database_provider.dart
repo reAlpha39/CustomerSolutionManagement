@@ -272,7 +272,24 @@ class DatabaseProvider {
     return unit;
   }
 
-  Future loadImproveProcessData() async {}
+  Future loadImproveProcessData(String username) async {
+    ImproveProcess improveProcess;
+    try {
+      firestore = FirebaseFirestore.instance;
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('improve_process')
+          .doc('data');
+      var data = await docRef.get();
+      if (data.exists) {
+        improveProcess = ImproveProcess.fromMap(data.data());
+      }
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return improveProcess;
+  }
 
   Future downloadImproveProcessImage() async {}
 

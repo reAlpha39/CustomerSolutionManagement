@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/audit_table_data.dart';
-import 'package:customer/models/iw_data_table.dart';
+import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/model_unit.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/other_program.dart';
@@ -9,6 +11,7 @@ import 'package:customer/models/pica_data.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -267,6 +270,44 @@ class DatabaseProvider {
       print(e);
     }
     return unit;
+  }
+
+  Future loadImproveProcessData() async {}
+
+  Future downloadImproveProcessImage() async {}
+
+  Future<bool> saveImproveProcessData(
+      ImproveProcess data, String username) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      var map = data.toMap();
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('improve_process')
+          .doc('data');
+      await docRef.set(map);
+      isSuccess = true;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future<String> uploadImproveProcessImage(
+      File image, String filename, String username) async {
+    String downloadUrl;
+    try {
+      var task = await firebase_storage.FirebaseStorage.instance
+          .ref("improve_process/" + username)
+          .child(filename)
+          .putFile(image);
+      downloadUrl = await task.ref.getDownloadURL();
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return downloadUrl;
   }
 
   dummy() async {

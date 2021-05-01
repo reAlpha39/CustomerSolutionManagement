@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ImprovePanelCard extends StatelessWidget {
-  final ImproveProcessController controller = Get.find();
+  final ImproveProcessController controller = Get.find(tag: 'global');
   @override
   Widget build(BuildContext context) {
     return Card(

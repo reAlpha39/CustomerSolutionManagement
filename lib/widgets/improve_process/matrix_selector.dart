@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MatrixSelector extends StatelessWidget {
-  final ImproveProcessController controller = Get.find();
+  final ImproveProcessController controller = Get.find(tag: 'global');
   @override
   Widget build(BuildContext context) {
     return Container(

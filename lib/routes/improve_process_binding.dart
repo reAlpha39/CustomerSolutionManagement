@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 class ImproveProcessBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<ImproveProcessController>(ImproveProcessController());
+    Get.put<ImproveProcessController>(ImproveProcessController(),
+        tag: 'global');
+    Get.create<ImproveProcessController>(() => ImproveProcessController());
   }
 }

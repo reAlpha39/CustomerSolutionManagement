@@ -10,7 +10,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ImproveProcessPage extends StatelessWidget {
-  final ImproveProcessController controller = Get.find();
+  final ImproveProcessController controller = Get.find(tag: 'global');
 
   showDialogTypeUnit() {
     return Get.defaultDialog(

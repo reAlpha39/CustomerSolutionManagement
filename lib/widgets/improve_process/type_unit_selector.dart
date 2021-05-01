@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TypeUnitSelector extends StatelessWidget {
-  final ImproveProcessController controller = Get.find();
+  final ImproveProcessController controller = Get.find(tag: 'global');
   final String id;
 
   TypeUnitSelector({Key key, this.id});

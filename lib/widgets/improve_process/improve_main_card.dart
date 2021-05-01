@@ -5,7 +5,10 @@ import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ImproveMainCard extends StatelessWidget {
+  final int index;
   final ImproveProcessController controller = Get.find(tag: 'global');
+
+  ImproveMainCard({Key key, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +36,9 @@ class ImproveMainCard extends StatelessWidget {
                         vertical: 12,
                         horizontal: 8,
                       ),
-                      child: ImproveMainContent(),
+                      child: ImproveMainContent(
+                        index: index,
+                      ),
                     ),
                   ),
                 ),

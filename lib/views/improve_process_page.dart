@@ -195,11 +195,20 @@ class ImproveProcessPage extends StatelessWidget {
                       ),
                     ),
                     child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ImproveMainCard(),
-                          ImproveMainCard(),
-                        ],
+                      child: Obx(
+                        () =>
+                            controller.improveProcess.value.improveProcesData ==
+                                    null
+                                ? Container()
+                                : Column(
+                                    children: List<Widget>.generate(
+                                      controller.improveProcess.value
+                                          .improveProcesData.length,
+                                      (index) => ImproveMainCard(
+                                        index: index,
+                                      ),
+                                    ).reversed.toList(),
+                                  ),
                       ),
                     ),
                   ),

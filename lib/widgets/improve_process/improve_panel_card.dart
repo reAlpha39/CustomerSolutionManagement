@@ -97,7 +97,11 @@ class ImprovePanelCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () => controller.saveData(),
+                    onPressed: () => controller.saveData(
+                      image: controller.image.value,
+                      isBefore: true,
+                      isUpdate: false,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Container(

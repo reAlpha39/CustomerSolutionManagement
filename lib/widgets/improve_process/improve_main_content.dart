@@ -1,6 +1,12 @@
+import 'package:customer/controller/imrpove_process_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ImproveMainContent extends StatelessWidget {
+  final ImproveProcessController controller = Get.find(tag: 'global');
+  final int index;
+
+  ImproveMainContent({Key key, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,28 +17,32 @@ class ImproveMainContent extends StatelessWidget {
             flex: 4,
             child: Container(
               height: 100,
-              child: Text("Before"),
+              child: Obx(() => Text(controller.improveProcess.value
+                  .improveProcesData[index].descriptionBefore)),
             ),
           ),
           Expanded(
             flex: 3,
             child: Container(
-              height: 100,
+              padding: const EdgeInsets.symmetric(vertical: 5),
               child: Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    minWidth: 50,
-                    maxWidth: 100,
-                    minHeight: 50,
-                    maxHeight: 100,
+                    minWidth: 300,
+                    maxWidth: 300,
+                    minHeight: 30,
+                    maxHeight: 300,
                   ),
                   child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black54),
-                      borderRadius: BorderRadius.all(Radius.circular(17)),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/images/service_program.png'),
+                    child: ClipRRect(
+                      child: Image.network(
+                        controller.improveProcess.value.improveProcesData[index]
+                            .picturePathBefore,
+                        loadingBuilder: (context, child, progress) {
+                          return progress == null
+                              ? child
+                              : LinearProgressIndicator();
+                        },
                       ),
                     ),
                   ),

@@ -68,7 +68,23 @@ class ImproveProcessPage extends StatelessWidget {
             child: Icon(
               LineIcons.plus,
             ),
-            onPressed: () => controller.panelController.open(),
+            onPressed: () {
+              if (controller.matrixText.value != "" &&
+                  controller.modelUnitText.value != "" &&
+                  controller.typeUnit.value != "") {
+                controller.panelController.open();
+              } else {
+                Get.snackbar(
+                  'Gagal',
+                  'Isi kategori pada bagian atas terlebih dahulu',
+                  backgroundColor: Colors.white70,
+                  borderWidth: 1,
+                  borderColor: Colors.black54,
+                  snackPosition: SnackPosition.BOTTOM,
+                  margin: const EdgeInsets.all(24),
+                );
+              }
+            },
           ),
           body: Container(
             color: Color(0xffffccd29),

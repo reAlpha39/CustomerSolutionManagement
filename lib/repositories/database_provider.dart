@@ -283,8 +283,10 @@ class DatabaseProvider {
           .collection('improve_process')
           .get();
       for (int i = 0; i <= docRef.docs.length - 1; i++) {
-        var data = docRef.docs[i].data();
+        QueryDocumentSnapshot doc = docRef.docs[i];
+        var data = doc.data();
         IpData ipData = IpData.fromMap(data);
+        ipData.id = doc.id;
         improveProcess.improveProcesData.add(ipData);
       }
     } on FirebaseException catch (e) {

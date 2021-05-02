@@ -26,6 +26,7 @@ class ImproveProcess {
 
 class IpData {
     IpData({
+        this.id,
         this.matrix,
         this.model,
         this.type,
@@ -35,6 +36,7 @@ class IpData {
         this.picturePathAfter,
     });
 
+    String id;
     String matrix;
     String model;
     String type;
@@ -48,6 +50,7 @@ class IpData {
     String toJson() => json.encode(toMap());
 
     factory IpData.fromMap(Map<String, dynamic> json) => IpData(
+        id: json["id"],
         matrix: json["matrix"],
         model: json["model"],
         type: json["type"],
@@ -58,6 +61,7 @@ class IpData {
     );
 
     Map<String, dynamic> toMap() => {
+        "id": id,
         "matrix": matrix,
         "model": model,
         "type": type,

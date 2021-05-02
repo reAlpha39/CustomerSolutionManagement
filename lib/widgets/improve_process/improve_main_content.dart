@@ -27,7 +27,7 @@ class ImproveMainContent extends StatelessWidget {
               Row(
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () => controller.deleteData(index),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),

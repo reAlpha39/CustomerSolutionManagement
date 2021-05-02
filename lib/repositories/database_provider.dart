@@ -329,6 +329,33 @@ class DatabaseProvider {
     return downloadUrl;
   }
 
+  Future<bool> deleteImproveProcess({IpData ipData, String username}) async {
+    bool isDeleted = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('improve_process')
+          .doc(ipData.id);
+      if (ipData.picturePathBefore != null) {
+        await firebase_storage.FirebaseStorage.instance
+            .refFromURL(ipData.picturePathBefore)
+            .delete();
+      }
+      if (ipData.picturePathAfter != null) {
+        await firebase_storage.FirebaseStorage.instance
+            .refFromURL(ipData.picturePathAfter)
+            .delete();
+      }
+      await docRef.delete();
+      isDeleted = true;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return isDeleted;
+  }
+
   dummy() async {
     // IwDataTable dataTable = IwDataTable();
     // dataTable.description = List<String>.filled(52, 'placeholder');

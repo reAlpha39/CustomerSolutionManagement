@@ -175,6 +175,26 @@ class ImproveProcessController extends GetxController {
     });
   }
 
+  void deleteData(int index) {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        databaseProvider
+            .deleteImproveProcess(
+                ipData: improveProcess.value.improveProcesData[index],
+                username: loginController.usr.value.username)
+            .then((value) {
+          if (value) {
+            isLoading.value = false;
+            showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
+          }
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
   String formatTime() {
     var currentTime = DateTime.now().toString();
     var trim = currentTime

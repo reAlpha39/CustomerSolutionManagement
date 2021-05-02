@@ -41,21 +41,47 @@ class ImprovePanelContent extends StatelessWidget {
                       () => !controller.isPicked.value
                           ? Align(
                               alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 12),
-                                child: Text(
-                                  'Photo Before Improvement',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
+                              child: controller.isUpdate.value
+                                  ? ClipRRect(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(17),
+                                      ),
+                                      child: Image.network(
+                                        controller
+                                            .improveProcess
+                                            .value
+                                            .improveProcesData[
+                                                controller.indexUpdate.value]
+                                            .picturePathBefore,
+                                        loadingBuilder:
+                                            (context, child, progress) {
+                                          return progress == null
+                                              ? child
+                                              : LinearProgressIndicator();
+                                        },
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Photo Before Improvement',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
                             )
-                          : Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.file(controller.image.value),
+                          : ClipRRect(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(17),
+                              ),
+                              child: Image.file(
+                                controller.image.value,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                     ),
                   ),

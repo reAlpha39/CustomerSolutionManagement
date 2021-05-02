@@ -28,13 +28,24 @@ class ImprovePanelCard extends StatelessWidget {
                 ),
                 Container(
                   width: 220,
-                  child: Text(
-                    "Panel",
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  child: Obx(
+                    () => controller.isUpdate.value
+                        ? Text(
+                            "Update",
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        : Text(
+                            "Create ",
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                   ),
                 ),
               ],
@@ -108,7 +119,11 @@ class ImprovePanelCard extends StatelessWidget {
                         width: 50,
                         height: 30,
                         child: Center(
-                          child: Text('Save'),
+                          child: Obx(
+                            () => controller.isUpdate.value
+                                ? Text('Update')
+                                : Text('Save'),
+                          ),
                         ),
                       ),
                     ),

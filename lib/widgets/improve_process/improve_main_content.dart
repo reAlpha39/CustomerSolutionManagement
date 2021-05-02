@@ -49,7 +49,13 @@ class ImproveMainContent extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () => controller.panelController.open(),
+                    onTap: () {
+                      controller.openPanel(
+                        isCreate: false,
+                        isBefore: true,
+                        index: index,
+                      );
+                    },
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),

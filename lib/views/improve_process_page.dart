@@ -72,7 +72,7 @@ class ImproveProcessPage extends StatelessWidget {
               if (controller.matrixText.value != "" &&
                   controller.modelUnitText.value != "" &&
                   controller.typeUnit.value != "") {
-                controller.panelController.open();
+                controller.openPanel(isCreate: true);
               } else {
                 Get.snackbar(
                   'Gagal',

@@ -30,6 +30,8 @@ class ImproveProcessController extends GetxController {
   Rx<File> image;
   Rx<File> imageBefore;
   Rx<File> imageAfter;
+  RxBool isUpdate = false.obs;
+  RxInt indexUpdate = (-1).obs;
 
   List<String> matrixList = [
     "PI",
@@ -193,6 +195,24 @@ class ImproveProcessController extends GetxController {
         isLoading.value = false;
       }
     });
+  }
+
+  void openPanel({bool isCreate, int index, bool isBefore}) {
+    if (isCreate) {
+      isUpdate.value = false;
+      panelController.open();
+    } else {
+      if (isBefore) {
+        isUpdate.value = true;
+        textEditingController.text =
+            improveProcess.value.improveProcesData[index].descriptionBefore;
+      } else {
+        textEditingController.text =
+            improveProcess.value.improveProcesData[index].descriptionBefore;
+      }
+      indexUpdate.value = index;
+      panelController.open();
+    }
   }
 
   String formatTime() {

@@ -27,7 +27,7 @@ class ImproveProcessController extends GetxController {
   RxBool isLoading = false.obs;
   RxString descriptionBefore = "".obs;
   RxString descriptionAfter = "".obs;
-  Rx<File> image;
+  Rx<File> image = File("").obs;
   Rx<File> imageBefore;
   Rx<File> imageAfter;
   RxBool isUpdate = false.obs;
@@ -134,28 +134,41 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  void saveData({File image, bool isBefore, bool isUpdate, int indexUpdate}) {
+  void saveData({bool isBefore, int indexUpdate}) {
     isLoading.value = true;
+    String time = "";
+    String name = "";
     connectivityChecker().then((conn) {
       if (conn) {
-        String time = formatTime();
-        String name = renameFile(isBefore: isBefore, name: time);
+        if (isUpdate.value) {
+          time = ipData.value.id;
+        } else {
+          time = formatTime();
+        }
+        name = renameFile(isBefore: isBefore, name: time);
+
         databaseProvider
             .uploadImproveProcessImage(
-                image, name, loginController.usr.value.username)
+                image.value, name, loginController.usr.value.username)
             .then((downloadUrl) {
           if (downloadUrl != null) {
-            if (isBefore) {
-              ipData.value.matrix = matrixText.value;
-              ipData.value.model = modelUnitText.value;
-              ipData.value.type = typeUnit.value;
-              ipData.value.picturePathBefore = downloadUrl;
-              ipData.value.descriptionBefore = textEditingController.text;
-            } else {
-              ipData.value.picturePathAfter = downloadUrl;
-              ipData.value.descriptionAfter = textEditingController.text;
-            }
-            if (isUpdate) {
+            _fillData(
+              isBefore: isBefore,
+              isUpdate: isUpdate.value,
+              downloadUrl: downloadUrl,
+            );
+            if (isUpdate.value) {
+              databaseProvider
+                  .updateImproveProcessData(ipData.value,
+                      loginController.usr.value.username, ipData.value.id)
+                  .then((value) {
+                if (value) {
+                  showDialog(
+                      title: 'Sukses',
+                      middleText: 'Data berhasil diperbaharui');
+                  isLoading.value = false;
+                }
+              });
             } else {
               databaseProvider
                   .saveImproveProcessData(
@@ -175,6 +188,33 @@ class ImproveProcessController extends GetxController {
         isLoading.value = false;
       }
     });
+  }
+
+  void _fillData({bool isBefore, bool isUpdate, String downloadUrl}) {
+    if (isBefore) {
+      if (isUpdate) {
+        if (downloadUrl != "") {
+          ipData.value.picturePathBefore = downloadUrl;
+        }
+        ipData.value.descriptionBefore = textEditingController.text;
+      } else {
+        ipData.value.matrix = matrixText.value;
+        ipData.value.model = modelUnitText.value;
+        ipData.value.type = typeUnit.value;
+        ipData.value.picturePathBefore = downloadUrl;
+        ipData.value.descriptionBefore = textEditingController.text;
+      }
+    } else {
+      if (isUpdate) {
+        if (downloadUrl != "") {
+          ipData.value.picturePathAfter = downloadUrl;
+        }
+        ipData.value.descriptionAfter = textEditingController.text;
+      } else {
+        ipData.value.picturePathAfter = downloadUrl;
+        ipData.value.descriptionAfter = textEditingController.text;
+      }
+    }
   }
 
   void deleteData(int index) {
@@ -210,6 +250,8 @@ class ImproveProcessController extends GetxController {
         textEditingController.text =
             improveProcess.value.improveProcesData[index].descriptionBefore;
       }
+      ipData.value = improveProcess.value.improveProcesData[index];
+      ipData.refresh();
       indexUpdate.value = index;
       panelController.open();
     }
@@ -241,7 +283,10 @@ class ImproveProcessController extends GetxController {
       textEditingController.clear();
       isPicked.value = false;
       if (image != null) {
-        image.value.delete();
+        if (image.value.existsSync()) {
+          image.value.delete();
+          image.refresh();
+        }
       }
     } catch (e) {
       print(e);

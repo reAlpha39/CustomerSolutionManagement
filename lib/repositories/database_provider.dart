@@ -318,15 +318,38 @@ class DatabaseProvider {
       File image, String filename, String username) async {
     String downloadUrl;
     try {
-      var task = await firebase_storage.FirebaseStorage.instance
-          .ref("improve_process/" + username)
-          .child(filename)
-          .putFile(image);
-      downloadUrl = await task.ref.getDownloadURL();
+      if (image.existsSync()) {
+        var task = await firebase_storage.FirebaseStorage.instance
+            .ref("improve_process/" + username)
+            .child(filename)
+            .putFile(image);
+        downloadUrl = await task.ref.getDownloadURL();
+      } else {
+        downloadUrl = "";
+      }
     } on FirebaseException catch (e) {
       print(e);
     }
     return downloadUrl;
+  }
+
+  Future<bool> updateImproveProcessData(
+      IpData data, String username, String docName) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      var map = data.toMap();
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('improve_process')
+          .doc(docName);
+      await docRef.update(map);
+      isSuccess = true;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return isSuccess;
   }
 
   Future<bool> deleteImproveProcess({IpData ipData, String username}) async {

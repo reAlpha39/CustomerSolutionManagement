@@ -136,7 +136,8 @@ class ImproveProcessController extends GetxController {
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
-        String name = fileName(isBefore: isBefore);
+        String time = formatTime();
+        String name = renameFile(isBefore: isBefore, name: time);
         databaseProvider
             .uploadImproveProcessImage(
                 image, name, loginController.usr.value.username)
@@ -153,24 +154,19 @@ class ImproveProcessController extends GetxController {
               ipData.value.descriptionAfter = textEditingController.text;
             }
             if (isUpdate) {
-              improveProcess.value.improveProcesData[indexUpdate] =
-                  ipData.value;
-            } else if (improveProcess.value.improveProcesData == null) {
-              improveProcess.value.improveProcesData = [ipData.value];
             } else {
-              improveProcess.value.improveProcesData.add(ipData.value);
+              databaseProvider
+                  .saveImproveProcessData(
+                      ipData.value, loginController.usr.value.username, time)
+                  .then((value) {
+                if (value) {
+                  showDialog(
+                      title: 'Sukses', middleText: 'Data berhasil ditambahkan');
+                  isLoading.value = false;
+                }
+              });
             }
             improveProcess.refresh();
-            databaseProvider
-                .saveImproveProcessData(
-                    improveProcess.value, loginController.usr.value.username)
-                .then((value) {
-              if (value) {
-                showDialog(
-                    title: 'Sukses', middleText: 'Data berhasil ditambahkan');
-                isLoading.value = false;
-              }
-            });
           }
         });
       } else {
@@ -179,8 +175,7 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  String fileName({bool isBefore}) {
-    String name = "";
+  String formatTime() {
     var currentTime = DateTime.now().toString();
     var trim = currentTime
         .replaceAll("-", "")
@@ -188,12 +183,17 @@ class ImproveProcessController extends GetxController {
         .replaceAll(":", "")
         .split(".");
     String formatTime = trim[0];
+    return formatTime;
+  }
+
+  String renameFile({bool isBefore, String name}) {
+    String str = "";
     if (isBefore) {
-      name = "before_" + formatTime;
+      str = "before_" + name;
     } else {
-      name = "after_" + formatTime;
+      str = "after_" + name;
     }
-    return name;
+    return str;
   }
 
   void resetPanel() {

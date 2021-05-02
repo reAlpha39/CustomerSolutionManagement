@@ -273,17 +273,19 @@ class DatabaseProvider {
   }
 
   Future loadImproveProcessData(String username) async {
-    ImproveProcess improveProcess;
+    ImproveProcess improveProcess = ImproveProcess();
+    improveProcess.improveProcesData = [];
     try {
       firestore = FirebaseFirestore.instance;
-      DocumentReference docRef = firestore
+      QuerySnapshot docRef = await firestore
           .collection('data_customer')
           .doc(username)
           .collection('improve_process')
-          .doc('data');
-      var data = await docRef.get();
-      if (data.exists) {
-        improveProcess = ImproveProcess.fromMap(data.data());
+          .get();
+      for (int i = 0; i <= docRef.docs.length - 1; i++) {
+        var data = docRef.docs[i].data();
+        IpData ipData = IpData.fromMap(data);
+        improveProcess.improveProcesData.add(ipData);
       }
     } on FirebaseException catch (e) {
       print(e);
@@ -291,10 +293,8 @@ class DatabaseProvider {
     return improveProcess;
   }
 
-  Future downloadImproveProcessImage() async {}
-
   Future<bool> saveImproveProcessData(
-      ImproveProcess data, String username) async {
+      IpData data, String username, String docName) async {
     bool isSuccess = false;
     firestore = FirebaseFirestore.instance;
     try {
@@ -303,7 +303,7 @@ class DatabaseProvider {
           .collection('data_customer')
           .doc(username)
           .collection('improve_process')
-          .doc('data');
+          .doc(docName);
       await docRef.set(map);
       isSuccess = true;
     } on FirebaseException catch (e) {

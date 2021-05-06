@@ -41,7 +41,14 @@ class ImprovePanelContent extends StatelessWidget {
                       () => !controller.isPicked.value
                           ? Align(
                               alignment: Alignment.centerLeft,
-                              child: controller.isUpdate.value
+                              child: controller.isUpdate.value &&
+                                      controller
+                                              .improveProcess
+                                              .value
+                                              .improveProcesData[
+                                                  controller.indexUpdate.value]
+                                              .picturePathBefore !=
+                                          ""
                                   ? ClipRRect(
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(17),

@@ -11,87 +11,111 @@ class ImproveMainContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 14, left: 12, right: 12),
+      padding: const EdgeInsets.only(top: 14, left: 8, right: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: const EdgeInsets.only(right: 12, top: 12, bottom: 12),
-                child: Obx(() => Text(controller.improveProcess.value
-                    .improveProcesData[index].descriptionBefore)),
-              ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () => controller.deleteData(index),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(100),
+          Flexible(
+            fit: FlexFit.tight,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 110,
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Obx(
+                    () => SingleChildScrollView(
+                      child: Text(
+                        controller.improveProcess.value.improveProcesData[index]
+                            .descriptionBefore,
+                        style: TextStyle(fontSize: 12),
                       ),
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xffffcd29),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    InkWell(
+                      onTap: () => controller.deleteData(index),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
                         ),
-                        child: Center(
-                          child: Icon(
-                            LineIcons.trash,
-                            size: 20,
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xffffcd29),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              LineIcons.trash,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      controller.openPanel(
-                        isCreate: false,
-                        isBefore: true,
-                        index: index,
-                      );
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xffffcd29),
+                    InkWell(
+                      onTap: () {
+                        controller.openPanel(
+                          isCreate: false,
+                          isBefore: true,
+                          index: index,
+                        );
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
                         ),
-                        child: Center(
-                          child: Icon(
-                            LineIcons.edit,
-                            size: 20,
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xffffcd29),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              LineIcons.edit,
+                              size: 20,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-          AspectRatio(
-            aspectRatio: 3 / 4,
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              child: Image.network(
-                controller.improveProcess.value.improveProcesData[index]
-                    .picturePathBefore,
-                loadingBuilder: (context, child, progress) {
-                  return progress == null ? child : LinearProgressIndicator();
-                },
-                fit: BoxFit.cover,
-              ),
+          Flexible(
+            child: AspectRatio(
+              aspectRatio: 3 / 4,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  child: Obx(
+                    () => controller.improveProcess.value
+                                .improveProcesData[index].picturePathBefore !=
+                            ""
+                        ? Image.network(
+                            controller.improveProcess.value
+                                .improveProcesData[index].picturePathBefore,
+                            loadingBuilder: (context, child, progress) {
+                              return progress == null
+                                  ? child
+                                  : LinearProgressIndicator();
+                            },
+                            fit: BoxFit.cover,
+                          )
+                        : Image.asset(
+                            "assets/images/no_image.jpg",
+                            fit: BoxFit.cover,
+                          ),
+                  )),
             ),
           ),
         ],

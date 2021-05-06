@@ -69,6 +69,7 @@ flutter:
     - assets/images/icon_admin.png
     - assets/images/icon_tc.png
     - assets/images/icon_customer.png
+    - assets/images/no_image.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

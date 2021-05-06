@@ -146,7 +146,6 @@ class ImproveProcessController extends GetxController {
           time = formatTime();
         }
         name = renameFile(isBefore: isBefore, name: time);
-
         databaseProvider
             .uploadImproveProcessImage(
                 image.value, name, loginController.usr.value.username)
@@ -158,33 +157,38 @@ class ImproveProcessController extends GetxController {
               downloadUrl: downloadUrl,
             );
             if (isUpdate.value) {
-              databaseProvider
-                  .updateImproveProcessData(ipData.value,
-                      loginController.usr.value.username, ipData.value.id)
-                  .then((value) {
-                if (value) {
-                  showDialog(
-                      title: 'Sukses',
-                      middleText: 'Data berhasil diperbaharui');
-                  isLoading.value = false;
-                }
-              });
+              _updateData();
             } else {
-              databaseProvider
-                  .saveImproveProcessData(
-                      ipData.value, loginController.usr.value.username, time)
-                  .then((value) {
-                if (value) {
-                  showDialog(
-                      title: 'Sukses', middleText: 'Data berhasil ditambahkan');
-                  isLoading.value = false;
-                }
-              });
+              _createData(time);
             }
             improveProcess.refresh();
           }
         });
       } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
+  void _updateData() {
+    databaseProvider
+        .updateImproveProcessData(
+            ipData.value, loginController.usr.value.username, ipData.value.id)
+        .then((value) {
+      if (value) {
+        showDialog(title: 'Sukses', middleText: 'Data berhasil diperbaharui');
+        isLoading.value = false;
+      }
+    });
+  }
+
+  void _createData(String time) {
+    databaseProvider
+        .saveImproveProcessData(
+            ipData.value, loginController.usr.value.username, time)
+        .then((value) {
+      if (value) {
+        showDialog(title: 'Sukses', middleText: 'Data berhasil ditambahkan');
         isLoading.value = false;
       }
     });
@@ -238,12 +242,13 @@ class ImproveProcessController extends GetxController {
   }
 
   void openPanel({bool isCreate, int index, bool isBefore}) {
+    textEditingController.clear();
     if (isCreate) {
       isUpdate.value = false;
       panelController.open();
     } else {
+      isUpdate.value = true;
       if (isBefore) {
-        isUpdate.value = true;
         textEditingController.text =
             improveProcess.value.improveProcesData[index].descriptionBefore;
       } else {

@@ -71,32 +71,89 @@ class Shapeground extends StatelessWidget {
                 ),
               ),
               margin: const EdgeInsets.all(24.0),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 7),
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: Colors.black26,
-                        borderRadius: BorderRadius.circular(7),
+              child: Stack(
+                children: [
+                  ScrollConfiguration(
+                    behavior: CustomScrollBehavior(),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Container(
+                        padding: _loginController.usr.value.type == 'internal'
+                            ? EdgeInsets.only(top: 80)
+                            : EdgeInsets.only(top: 32),
+                        child: _homeController.userView,
                       ),
-                      width: 40,
                     ),
-                    Expanded(
-                      child: ScrollConfiguration(
-                        behavior: CustomScrollBehavior(),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          child: Container(
-                            child: _homeController.userView,
-                          ),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Material(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(24.0),
+                        topRight: Radius.circular(24.0),
+                      ),
+                      elevation: 5,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(bottom: 7),
+                              height: 5,
+                              decoration: BoxDecoration(
+                                color: Colors.black26,
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              width: 40,
+                            ),
+                            _loginController.usr.value.type == 'internal'
+                                ? Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 32),
+                                    height: 50,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        _homeController.user.value == ""
+                                            ? Text('Pilih User')
+                                            : Text(_homeController.user.value),
+                                        ConstrainedBox(
+                                          constraints: BoxConstraints.tightFor(
+                                              width: 35, height: 35),
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(
+                                              backgroundColor:
+                                                  Color(0xffffcd29),
+                                              shape: CircleBorder(),
+                                            ),
+                                            child: Obx(
+                                              () => _homeController
+                                                      .isLoading.value
+                                                  ? CircularProgressIndicator(
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                    )
+                                                  : Icon(
+                                                      Icons.refresh_outlined,
+                                                      size: 18,
+                                                      color: Color(0xff4c3d0c),
+                                                    ),
+                                            ),
+                                            onPressed: () => listCustomer(),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Container(),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
           ),
@@ -190,8 +247,71 @@ class Shapeground extends StatelessWidget {
       ),
     );
   }
+
+  Future<bool> listCustomer() {
+    return Get.defaultDialog(
+      barrierDismissible: false,
+      radius: 17,
+      title: 'Pilih customer',
+      content: Center(
+        child: SizedBox.fromSize(
+          child: ListCustomer(),
+        ),
+      ),
+      confirm: ElevatedButton(
+        style: ButtonStyle(
+          elevation: MaterialStateProperty.all<double>(0),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(17),
+            ),
+          ),
+        ),
+        onPressed: () => Get.back(closeOverlays: false),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: Text('Kembali'),
+        ),
+      ),
+    );
+  }
 }
 
 loginPage(BuildContext context) {
   Navigator.pop(context);
+}
+
+class ListCustomer extends StatelessWidget {
+  final HomeController _homeController = Get.find();
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: SingleChildScrollView(
+        child: Column(
+          children: List<Widget>.generate(
+            _homeController.listCustomer.length,
+            (index) => Column(
+              children: [
+                ListTile(
+                  title: Text('${_homeController.listCustomer[index]}'),
+                  onTap: () {
+                    _homeController.idCustomer.value =
+                        _homeController.listCustomer[index];
+                    Get.back(closeOverlays: false);
+                  },
+                ),
+                index != _homeController.listCustomer.length - 1
+                    ? Divider(
+                        height: 3,
+                        color: Colors.black45,
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

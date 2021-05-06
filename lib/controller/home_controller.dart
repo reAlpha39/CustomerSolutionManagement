@@ -1,4 +1,5 @@
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/widgets/home/home_admin.dart';
 import 'package:customer/widgets/home/home_customer.dart';
 import 'package:customer/widgets/home/home_internal.dart';
@@ -6,15 +7,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  final DatabaseProvider _databaseProvider = DatabaseProvider();
   final LoginController _loginController = Get.find();
 
   RxString msppPage = ''.obs;
   Widget userView;
   String iconUser = '';
 
+  RxString user = "".obs;
+  RxList<String> listCustomer;
+  RxString idCustomer = ''.obs;
+  RxBool isLoading = false.obs;
+
   @override
   void onInit() {
     userType();
+    _loadListCustomer();
     super.onInit();
   }
 
@@ -29,7 +37,7 @@ class HomeController extends GetxController {
         break;
       case 'internal':
         //command here
-        userView = HomeInternal();
+        userView = HomeCustomer();
         iconUser = 'assets/images/icon_tc.png';
         break;
       case 'customer':
@@ -42,5 +50,19 @@ class HomeController extends GetxController {
         //command unknown
         userView = Container();
     }
+  }
+
+  _loadListCustomer() {
+    try {
+      isLoading.value = true;
+      print(isLoading.value);
+      _databaseProvider.listCustomer().then((value) {
+        listCustomer = [''].obs;
+        listCustomer.addAll(value);
+        listCustomer.removeAt(0);
+        isLoading.value = false;
+        print(isLoading.value);
+      });
+    } catch (Exception) {}
   }
 }

@@ -31,7 +31,9 @@ class ImprovePanelCard extends StatelessWidget {
                   child: Obx(
                     () => controller.isUpdate.value
                         ? Text(
-                            "Update",
+                            controller.isBefore.value
+                                ? "Update Before"
+                                : "Update After",
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: 20,
@@ -108,9 +110,7 @@ class ImprovePanelCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () => controller.saveData(
-                      isBefore: true,
-                    ),
+                    onPressed: () => controller.saveData(),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Container(

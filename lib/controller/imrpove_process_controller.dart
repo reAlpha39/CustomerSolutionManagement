@@ -25,12 +25,11 @@ class ImproveProcessController extends GetxController {
   final _picker = ImagePicker();
   RxBool isPicked = false.obs;
   RxBool isLoading = false.obs;
-  RxString descriptionBefore = "".obs;
-  RxString descriptionAfter = "".obs;
   Rx<File> image = File("").obs;
   Rx<File> imageBefore;
   Rx<File> imageAfter;
   RxBool isUpdate = false.obs;
+  RxBool isBefore = false.obs;
   RxInt indexUpdate = (-1).obs;
 
   List<String> matrixList = [
@@ -134,7 +133,7 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  void saveData({bool isBefore, int indexUpdate}) {
+  void saveData() {
     isLoading.value = true;
     String time = "";
     String name = "";
@@ -145,14 +144,14 @@ class ImproveProcessController extends GetxController {
         } else {
           time = formatTime();
         }
-        name = renameFile(isBefore: isBefore, name: time);
+        name = renameFile(isBefore: isBefore.value, name: time);
         databaseProvider
             .uploadImproveProcessImage(
                 image.value, name, loginController.usr.value.username)
             .then((downloadUrl) {
           if (downloadUrl != null) {
             _fillData(
-              isBefore: isBefore,
+              isBefore: isBefore.value,
               isUpdate: isUpdate.value,
               downloadUrl: downloadUrl,
             );
@@ -207,6 +206,8 @@ class ImproveProcessController extends GetxController {
         ipData.value.type = typeUnit.value;
         ipData.value.picturePathBefore = downloadUrl;
         ipData.value.descriptionBefore = textEditingController.text;
+        ipData.value.descriptionAfter = "";
+        ipData.value.picturePathAfter = "";
       }
     } else {
       if (isUpdate) {
@@ -241,19 +242,22 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  void openPanel({bool isCreate, int index, bool isBefore}) {
+  void openPanel({bool isCreate, int index, bool isBeforeData}) {
     textEditingController.clear();
     if (isCreate) {
       isUpdate.value = false;
+      isBefore.value = true;
       panelController.open();
     } else {
       isUpdate.value = true;
-      if (isBefore) {
+      if (isBeforeData) {
+        isBefore.value = true;
         textEditingController.text =
             improveProcess.value.improveProcesData[index].descriptionBefore;
       } else {
+        isBefore.value = false;
         textEditingController.text =
-            improveProcess.value.improveProcesData[index].descriptionBefore;
+            improveProcess.value.improveProcesData[index].descriptionAfter;
       }
       ipData.value = improveProcess.value.improveProcesData[index];
       ipData.refresh();

@@ -77,7 +77,7 @@ class ImproveMainContent extends StatelessWidget {
                       onTap: () {
                         controller.openPanel(
                           isCreate: false,
-                          isBefore: isBefore,
+                          isBeforeData: isBefore,
                           index: index,
                         );
                       },

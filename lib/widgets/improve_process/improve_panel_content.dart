@@ -15,14 +15,21 @@ class ImprovePanelContent extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  controller: controller.textEditingController,
-                  maxLines: 3,
-                  decoration: InputDecoration(
+                child: Obx(
+                  () => TextFormField(
+                    controller: controller.textEditingController,
+                    maxLines: 3,
+                    decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(17),
                       ),
-                      labelText: 'Deskripsi Before Improvement'),
+                      labelText: controller.isUpdate.value
+                          ? controller.isBefore.value
+                              ? 'Deskripsi Before Improvement'
+                              : 'Deskripsi After Improvement'
+                          : 'Deskripsi Before Improvement',
+                    ),
+                  ),
                 ),
               ),
               ConstrainedBox(
@@ -39,48 +46,29 @@ class ImprovePanelContent extends StatelessWidget {
                     ),
                     child: Obx(
                       () => !controller.isPicked.value
-                          ? Align(
-                              alignment: Alignment.centerLeft,
-                              child: controller.isUpdate.value &&
-                                      controller
-                                              .improveProcess
-                                              .value
-                                              .improveProcesData[
-                                                  controller.indexUpdate.value]
-                                              .picturePathBefore !=
-                                          ""
-                                  ? ClipRRect(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(17),
-                                      ),
-                                      child: Image.network(
-                                        controller
-                                            .improveProcess
-                                            .value
-                                            .improveProcesData[
-                                                controller.indexUpdate.value]
-                                            .picturePathBefore,
-                                        loadingBuilder:
-                                            (context, child, progress) {
-                                          return progress == null
-                                              ? child
-                                              : LinearProgressIndicator();
-                                        },
-                                        fit: BoxFit.cover,
-                                      ),
+                          ? controller.isUpdate.value
+                              ? controller.isBefore.value
+                                  ? PreviewImage(
+                                      isBefore: true,
+                                      pathPicture: controller
+                                          .improveProcess
+                                          .value
+                                          .improveProcesData[
+                                              controller.indexUpdate.value]
+                                          .picturePathBefore,
                                     )
-                                  : Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Photo Before Improvement',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.black54,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ),
-                            )
+                                  : PreviewImage(
+                                      isBefore: false,
+                                      pathPicture: controller
+                                          .improveProcess
+                                          .value
+                                          .improveProcesData[
+                                              controller.indexUpdate.value]
+                                          .picturePathAfter,
+                                    )
+                              : PreviewImage(
+                                  isBefore: true,
+                                )
                           : ClipRRect(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(17),
@@ -175,6 +163,46 @@ class ImprovePanelContent extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class PreviewImage extends StatelessWidget {
+  final String pathPicture;
+  final bool isBefore;
+
+  const PreviewImage({Key key, this.pathPicture, this.isBefore})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: pathPicture != "" && pathPicture != null
+          ? ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular(17),
+              ),
+              child: Image.network(
+                pathPicture,
+                loadingBuilder: (context, child, progress) {
+                  return progress == null ? child : LinearProgressIndicator();
+                },
+                fit: BoxFit.cover,
+              ),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                isBefore
+                    ? 'Photo Before Improvement'
+                    : 'Photo After Improvement',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
     );
   }
 }

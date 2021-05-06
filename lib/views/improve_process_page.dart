@@ -1,4 +1,5 @@
 import 'package:customer/controller/imrpove_process_controller.dart';
+import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/improve_process/improve_main_card.dart';
 import 'package:customer/widgets/improve_process/improve_panel_card.dart';
 import 'package:customer/widgets/improve_process/matrix_selector.dart';
@@ -204,8 +205,37 @@ class ImproveProcessPage extends StatelessWidget {
                                     children: List<Widget>.generate(
                                       controller.improveProcess.value
                                           .improveProcesData.length,
-                                      (index) => ImproveMainCard(
-                                        index: index,
+                                      (index) => ScrollConfiguration(
+                                        behavior: CustomScrollBehavior(),
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              ImproveMainCard(
+                                                index: index,
+                                                isBefore: true,
+                                              ),
+                                              Container(
+                                                height: 40,
+                                                width: 40,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xffffcd29),
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Icon(
+                                                  LineIcons.arrowCircleRight,
+                                                  size: 30,
+                                                ),
+                                              ),
+                                              ImproveMainCard(
+                                                index: index,
+                                                isBefore: false,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     ).reversed.toList(),
                                   ),

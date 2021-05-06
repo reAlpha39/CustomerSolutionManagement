@@ -6,8 +6,9 @@ import 'package:line_icons/line_icons.dart';
 class ImproveMainContent extends StatelessWidget {
   final ImproveProcessController controller = Get.find(tag: 'global');
   final int index;
+  final bool isBefore;
 
-  ImproveMainContent({Key key, this.index}) : super(key: key);
+  ImproveMainContent({Key key, this.index, this.isBefore}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,11 +27,24 @@ class ImproveMainContent extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12),
                   child: Obx(
                     () => SingleChildScrollView(
-                      child: Text(
-                        controller.improveProcess.value.improveProcesData[index]
-                            .descriptionBefore,
-                        style: TextStyle(fontSize: 12),
-                      ),
+                      child: isBefore
+                          ? Text(
+                              controller.improveProcess.value
+                                  .improveProcesData[index].descriptionBefore,
+                              style: TextStyle(fontSize: 12),
+                            )
+                          : Text(
+                              controller
+                                          .improveProcess
+                                          .value
+                                          .improveProcesData[index]
+                                          .descriptionAfter !=
+                                      null
+                                  ? controller.improveProcess.value
+                                      .improveProcesData[index].descriptionAfter
+                                  : "",
+                              style: TextStyle(fontSize: 12),
+                            ),
                     ),
                   ),
                 ),
@@ -63,7 +77,7 @@ class ImproveMainContent extends StatelessWidget {
                       onTap: () {
                         controller.openPanel(
                           isCreate: false,
-                          isBefore: true,
+                          isBefore: isBefore,
                           index: index,
                         );
                       },
@@ -96,29 +110,49 @@ class ImproveMainContent extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 3 / 4,
               child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  child: Obx(
-                    () => controller.improveProcess.value
-                                .improveProcesData[index].picturePathBefore !=
-                            ""
-                        ? Image.network(
-                            controller.improveProcess.value
-                                .improveProcesData[index].picturePathBefore,
-                            loadingBuilder: (context, child, progress) {
-                              return progress == null
-                                  ? child
-                                  : LinearProgressIndicator();
-                            },
-                            fit: BoxFit.cover,
-                          )
-                        : Image.asset(
-                            "assets/images/no_image.jpg",
-                            fit: BoxFit.cover,
-                          ),
-                  )),
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                child: Obx(
+                  () => isBefore
+                      ? BoxImage(
+                          pathPicture: controller.improveProcess.value
+                              .improveProcesData[index].picturePathBefore,
+                        )
+                      : BoxImage(
+                          pathPicture: controller.improveProcess.value
+                              .improveProcesData[index].picturePathAfter,
+                        ),
+                ),
+              ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BoxImage extends StatelessWidget {
+  final String pathPicture;
+
+  const BoxImage({Key key, this.pathPicture}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 3 / 4,
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+        child: pathPicture != "" && pathPicture != null
+            ? Image.network(
+                pathPicture,
+                loadingBuilder: (context, child, progress) {
+                  return progress == null ? child : LinearProgressIndicator();
+                },
+                fit: BoxFit.cover,
+              )
+            : Image.asset(
+                "assets/images/no_image.jpg",
+                fit: BoxFit.cover,
+              ),
       ),
     );
   }

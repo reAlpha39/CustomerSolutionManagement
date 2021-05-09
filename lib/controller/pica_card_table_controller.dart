@@ -80,19 +80,19 @@ class PicaCardTableController extends GetxController {
         .picaDetail[index]
         .id;
 
-    if (msppController.radioIndexPI(idData) != null) {
-      if (msppController.radioIndexPI(idData).contains(1)) {
-        isNo = true;
-      }
-    } else if (otherController.radioIndexOP(idData) != null) {
-      if (otherController.radioIndexOP(idData).contains(1)) {
-        isNo = true;
-      }
-    } else if (partController.radioIndexPP(idData) != null) {
-      if (partController.radioIndexPP(idData).contains(1)) {
-        isNo = true;
-      }
-    }
+    // if (msppController.radioIndexPI(idData) != null) {
+    //   if (msppController.radioIndexPI(idData).contains(1)) {
+    //     isNo = true;
+    //   }
+    // } else if (otherController.radioIndexOP(idData) != null) {
+    //   if (otherController.radioIndexOP(idData).contains(1)) {
+    //     isNo = true;
+    //   }
+    // } else if (partController.radioIndexPP(idData) != null) {
+    //   if (partController.radioIndexPP(idData).contains(1)) {
+    //     isNo = true;
+    //   }
+    // }
 
     if (isNo) {
       title.value = picaCTCglobal
@@ -122,13 +122,13 @@ class PicaCardTableController extends GetxController {
           .docB;
       dataTableFilter.value = true;
       dataTableRadioIndex = 1;
-      if (msppController.radioIndexPI(idData) != null) {
-        dataTableListRadio = msppController.radioIndexPI(idData);
-      } else if (otherController.radioIndexOP(idData) != null) {
-        dataTableListRadio = otherController.radioIndexOP(idData);
-      } else if (partController.radioIndexPP(idData) != null) {
-        dataTableListRadio = partController.radioIndexPP(idData);
-      }
+      // if (msppController.radioIndexPI(idData) != null) {
+      //   dataTableListRadio = msppController.radioIndexPI(idData);
+      // } else if (otherController.radioIndexOP(idData) != null) {
+      //   dataTableListRadio = otherController.radioIndexOP(idData);
+      // } else if (partController.radioIndexPP(idData) != null) {
+      //   dataTableListRadio = partController.radioIndexPP(idData);
+      // }
 
       return PicaDetailCard(
           tag: picaCTCglobal.picaElement[picaAController.indexDetailData.value]

@@ -32,8 +32,6 @@ class _MsppPiState extends State<MsppPi> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'periodic_inspection',
               docB: 'plan_unit',
-              radioIndex: controller.radioIndexPU,
-              textFieldIndex: controller.textFieldPU,
             ),
             MsppCard(
               title: 'Meet',
@@ -41,8 +39,6 @@ class _MsppPiState extends State<MsppPi> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'periodic_inspection',
               docB: 'meet',
-              radioIndex: controller.radioIndexMeet,
-              textFieldIndex: controller.textFieldMeet,
             ),
             MsppCard(
               title: 'Asses',
@@ -50,8 +46,6 @@ class _MsppPiState extends State<MsppPi> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'periodic_inspection',
               docB: 'asses',
-              radioIndex: controller.radioIndexAsses,
-              textFieldIndex: controller.textFieldAsses,
             ),
           ],
         ),
@@ -60,6 +54,5 @@ class _MsppPiState extends State<MsppPi> with AutomaticKeepAliveClientMixin {
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }

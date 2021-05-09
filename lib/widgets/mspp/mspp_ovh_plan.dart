@@ -33,8 +33,6 @@ class _MsppOvhPlanState extends State<MsppOvhPlan>
               docA: 'mspp',
               colA: 'ovh_plan',
               docB: 'adjust_and_manage_exceptions',
-              radioIndex: controller.radioIndexAME,
-              textFieldIndex: controller.textFieldAME,
             ),
             MsppCard(
               title: 'Balanced and Schedule OVH Plan',
@@ -42,8 +40,6 @@ class _MsppOvhPlanState extends State<MsppOvhPlan>
               docA: 'mspp',
               colA: 'ovh_plan',
               docB: 'balanced_and_schedule_ovh_plan',
-              radioIndex: controller.radioIndexBSOP,
-              textFieldIndex: controller.textFieldBSOP,
             ),
             MsppCard(
               title: 'Compile and Compute Data',
@@ -51,8 +47,6 @@ class _MsppOvhPlanState extends State<MsppOvhPlan>
               docA: 'mspp',
               colA: 'ovh_plan',
               docB: 'compile_and_compute_data',
-              radioIndex: controller.radioIndexCCCD,
-              textFieldIndex: controller.textFieldCCCD,
             ),
             MsppCard(
               title: 'Organize and Prioritize OVH Plan',
@@ -60,8 +54,6 @@ class _MsppOvhPlanState extends State<MsppOvhPlan>
               docA: 'mspp',
               colA: 'ovh_plan',
               docB: 'organize_and_prioritize_ovh_plan',
-              radioIndex: controller.radioIndexOPOP,
-              textFieldIndex: controller.textFieldOPOP,
             ),
             MsppCard(
               title: 'Resource and Confirm OVH Plan',
@@ -69,8 +61,6 @@ class _MsppOvhPlanState extends State<MsppOvhPlan>
               docA: 'mspp',
               colA: 'ovh_plan',
               docB: 'resource_and_confirm_ovh_plan',
-              radioIndex: controller.radioIndexRCOP,
-              textFieldIndex: controller.textFieldRCOP,
             ),
           ],
         ),

@@ -66,16 +66,16 @@ class Routes {
       page: () => OtherProgramPage(),
       bindings: [
         PicaCardTableBinding(),
-        OtherProgramBinding(),
+        MsppBinding(),
         DataTableBinding(),
-      ]
+      ],
     ),
     GetPage(
       name: '/other_program_admin',
       page: () => OtherProgramAdminPage(),
       bindings: [
         PicaCardTableBinding(),
-        OtherProgramBinding(),
+        MsppBinding(),
         OtherProgramAdminBinding(),
         DataTableBinding(),
       ],

@@ -220,7 +220,7 @@ class ListCustomer extends StatelessWidget {
                 onTap: () {
                   msppAdminController.idCustomer.value =
                       msppAdminController.listCustomer[index];
-                  msppController.loadData(
+                  msppController.loadMsppChecklistAudit(
                       username: msppAdminController.idCustomer.value);
                   Get.back(closeOverlays: false);
                 },

@@ -32,8 +32,6 @@ class _MsppCbmState extends State<MsppCbm> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'cbm',
               docB: 'analyze_and_reccomendation',
-              radioIndex: controller.radioIndexARCBM,
-              textFieldIndex: controller.textFieldARCBM,
             ),
             MsppCard(
               title: 'Evaluation',
@@ -41,8 +39,6 @@ class _MsppCbmState extends State<MsppCbm> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'cbm',
               docB: 'evaluation',
-              radioIndex: controller.radioIndexEVCBM,
-              textFieldIndex: controller.textFieldEVCBM,
             ),
             MsppCard(
               title: 'Plan',
@@ -50,8 +46,6 @@ class _MsppCbmState extends State<MsppCbm> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'cbm',
               docB: 'plan',
-              radioIndex: controller.radioIndexPLCBM,
-              textFieldIndex: controller.textFieldPLCBM,
             ),
             MsppCard(
               title: 'Take Action',
@@ -59,8 +53,6 @@ class _MsppCbmState extends State<MsppCbm> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'cbm',
               docB: 'take_action',
-              radioIndex: controller.radioIndexTACBM,
-              textFieldIndex: controller.textFieldTACBM,
             ),
           ],
         ),

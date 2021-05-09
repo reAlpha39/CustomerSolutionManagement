@@ -1,4 +1,4 @@
-import 'package:customer/controller/other_program_controller.dart';
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/other_program/other_people.dart';
 import 'package:customer/widgets/other_program/other_regm.dart';
 import 'package:customer/widgets/other_program/other_vm.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OtherProgramPage extends StatelessWidget {
-  final OtherProgramController controller = Get.find();
+  final MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -36,12 +36,18 @@ class OtherProgramPage extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            OtherPeople(),
-            OtherVm(),
-            OtherRegm(),
-          ],
+        body: Obx(
+          () => controller.tempListChecklistAudit.value.checklistAudit == null
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : TabBarView(
+                  children: [
+                    OtherPeople(),
+                    OtherVm(),
+                    OtherRegm(),
+                  ],
+                ),
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(
@@ -65,7 +71,7 @@ class OtherProgramPage extends StatelessWidget {
       buttonColor: Color(0xffffcd29),
       cancelTextColor: Colors.black87,
       onConfirm: () {
-        controller.saveData();
+        // controller.saveData();
       },
       onCancel: () => Get.toNamed('/other_program'),
     );

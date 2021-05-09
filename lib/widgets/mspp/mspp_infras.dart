@@ -29,8 +29,6 @@ class _MsppPsPlanState extends State<MsppInfras>
               docA: 'mspp',
               colA: 'infrastructure',
               docB: 'field',
-              radioIndex: controller.radioIndexFIELD,
-              textFieldIndex: controller.textFieldFIELD,
             ),
             MsppCard(
               title: 'Workshop',
@@ -38,8 +36,6 @@ class _MsppPsPlanState extends State<MsppInfras>
               docA: 'mspp',
               colA: 'infrastructure',
               docB: 'workshop',
-              radioIndex: controller.radioIndexWORKSHOP,
-              textFieldIndex: controller.textFieldWORKSHOP,
             ),
           ],
         ),
@@ -48,6 +44,5 @@ class _MsppPsPlanState extends State<MsppInfras>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }

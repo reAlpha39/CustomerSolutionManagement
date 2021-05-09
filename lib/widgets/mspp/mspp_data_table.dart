@@ -11,8 +11,6 @@ class MsppDataTable extends StatelessWidget {
   final MsppController controller = Get.find();
   final DataTableController dtController = Get.find();
   final PicaCardTableController picaCTController = Get.find(tag: 'global');
-  final List<int> radioIndex;
-  final List<String> textFieldIndex;
   final String id;
   final String docA;
   final String docB;
@@ -23,8 +21,6 @@ class MsppDataTable extends StatelessWidget {
 
   MsppDataTable({
     Key key,
-    this.radioIndex,
-    this.textFieldIndex,
     this.docA,
     this.docB,
     this.colA,

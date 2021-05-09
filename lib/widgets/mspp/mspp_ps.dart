@@ -29,8 +29,6 @@ class _MsppPsPlanState extends State<MsppPs>
               docA: 'mspp',
               colA: 'periodic_service',
               docB: 'plan_periodic_service',
-              radioIndex: controller.radioIndexPPS,
-              textFieldIndex: controller.textFieldPPS,
             ),
             MsppCard(
               title: 'Assemble people, parts and tools',
@@ -38,8 +36,6 @@ class _MsppPsPlanState extends State<MsppPs>
               docA: 'mspp',
               colA: 'periodic_service',
               docB: 'assemble_people_parts_and_tools',
-              radioIndex: controller.radioIndexAPPT,
-              textFieldIndex: controller.textFieldAPPT,
             ),
             MsppCard(
               title: 'Ensure proper site setup',
@@ -47,8 +43,6 @@ class _MsppPsPlanState extends State<MsppPs>
               docA: 'mspp',
               colA: 'periodic_service',
               docB: 'ensure_proper_site_setup',
-              radioIndex: controller.radioIndexEPSS,
-              textFieldIndex: controller.textFieldEPSS,
             ),
             MsppCard(
               title: 'Track PS and Notify progress',
@@ -56,8 +50,6 @@ class _MsppPsPlanState extends State<MsppPs>
               docA: 'mspp',
               colA: 'periodic_service',
               docB: 'track_ps_and_notify_progress',
-              radioIndex: controller.radioIndexTPSNP,
-              textFieldIndex: controller.textFieldTPSNP,
             ),
             MsppCard(
               title: 'Handover parts, tools and documents',
@@ -65,8 +57,6 @@ class _MsppPsPlanState extends State<MsppPs>
               docA: 'mspp',
               colA: 'periodic_service',
               docB: 'handover_parts_tools_and_documents',
-              radioIndex: controller.radioIndexHPTD,
-              textFieldIndex: controller.textFieldHPTD,
             ),
             MsppCard(
               title: 'Enter Data Into System',
@@ -74,8 +64,6 @@ class _MsppPsPlanState extends State<MsppPs>
               docA: 'mspp',
               colA: 'periodic_service',
               docB: 'enter_data_into_system',
-              radioIndex: controller.radioIndexEDS,
-              textFieldIndex: controller.textFieldEDS,
             ),
             MsppCard(
               title: 'Review performance and lessons learned',
@@ -83,8 +71,6 @@ class _MsppPsPlanState extends State<MsppPs>
               docA: 'mspp',
               colA: 'periodic_service',
               docB: 'review_performance_and_lessons_learned',
-              radioIndex: controller.radioIndexRPLL,
-              textFieldIndex: controller.textFieldRPLL,
             ),
           ],
         ),

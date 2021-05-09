@@ -29,8 +29,6 @@ class _MsppPsPlanState extends State<MsppPsPlan>
               docA: 'mspp',
               colA: 'periodic_service_plan',
               docB: 'compile_and_compute_data',
-              radioIndex: controller.radioIndexCCD,
-              textFieldIndex: controller.textFieldCCD,
             ),
             MsppCard(
               title: 'Organize & Prioritize PS Plan',
@@ -38,8 +36,6 @@ class _MsppPsPlanState extends State<MsppPsPlan>
               docA: 'mspp',
               colA: 'periodic_service_plan',
               docB: 'organize_and_prioritize_ps_plan',
-              radioIndex: controller.radioIndexOPPSP,
-              textFieldIndex: controller.textFieldOPPSP,
             ),
             MsppCard(
               title: 'Balance & Scheduling PS Plan',
@@ -47,8 +43,6 @@ class _MsppPsPlanState extends State<MsppPsPlan>
               docA: 'mspp',
               colA: 'periodic_service_plan',
               docB: 'balance_and_scheduling_ps_plan',
-              radioIndex: controller.radioIndexBSPSP,
-              textFieldIndex: controller.textFieldBSPSP,
             ),
             MsppCard(
               title: 'Resources & Confirm PS Plan',
@@ -56,8 +50,6 @@ class _MsppPsPlanState extends State<MsppPsPlan>
               docA: 'mspp',
               colA: 'periodic_service_plan',
               docB: 'resources_and_confirm_ps_plan',
-              radioIndex: controller.radioIndexRCPSP,
-              textFieldIndex: controller.textFieldRCPSP,
             ),
             MsppCard(
               title: 'Adjust Daily for Exception',
@@ -65,8 +57,6 @@ class _MsppPsPlanState extends State<MsppPsPlan>
               docA: 'mspp',
               colA: 'periodic_service_plan',
               docB: 'adjust_daily_for_exception',
-              radioIndex: controller.radioIndexADE,
-              textFieldIndex: controller.textFieldADE,
             ),
           ],
         ),
@@ -75,6 +65,5 @@ class _MsppPsPlanState extends State<MsppPsPlan>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }

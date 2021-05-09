@@ -29,8 +29,6 @@ class _MsppPsPlanState extends State<MsppTools>
               docA: 'mspp',
               colA: 'tools',
               docB: 'common_tools_and_special_tools',
-              radioIndex: controller.radioIndexCTST,
-              textFieldIndex: controller.textFieldCTST,
             ),
             MsppCard(
               title: 'Measuring Tools & Diagnostic Tools (PPM)',
@@ -38,8 +36,6 @@ class _MsppPsPlanState extends State<MsppTools>
               docA: 'mspp',
               colA: 'tools',
               docB: 'measuring_tools_and_diagnostic_tools',
-              radioIndex: controller.radioIndexMTDT,
-              textFieldIndex: controller.textFieldMTDT,
             ),
           ],
         ),

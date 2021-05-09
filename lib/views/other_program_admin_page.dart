@@ -65,7 +65,7 @@ class OtherProgramAdminPage extends StatelessWidget {
       buttonColor: Color(0xffffcd29),
       cancelTextColor: Colors.black87,
       onConfirm: () {
-        controller.saveData();
+        // controller.saveData();
       },
       onCancel: () => Get.toNamed('/other_program_admin'),
     );

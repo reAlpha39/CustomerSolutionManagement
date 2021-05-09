@@ -1,5 +1,4 @@
 import 'package:customer/widgets/mspp/mspp_data_table.dart';
-import 'package:customer/widgets/other_program/other_data_table.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,8 +9,6 @@ class MsppCard extends StatelessWidget {
   final String docA;
   final String docB;
   final String colA;
-  final List<int> radioIndex;
-  final List<String> textFieldIndex;
   final bool dataTableFilter;
   final RxList<int> dataTableListRadio;
   final int dataTableRadioIndex;
@@ -23,8 +20,6 @@ class MsppCard extends StatelessWidget {
     this.docA,
     this.docB,
     this.colA,
-    this.radioIndex,
-    this.textFieldIndex,
     this.dataTableFilter = false,
     this.dataTableListRadio,
     this.dataTableRadioIndex,
@@ -54,33 +49,15 @@ class MsppCard extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: docA == "mspp"
-                    ? MsppDataTable(
-                        id: id,
-                        docA: docA,
-                        colA: colA,
-                        docB: docB,
-                        textFieldIndex: textFieldIndex,
-                        radioIndex: radioIndex,
-                        dataTableFilter: dataTableFilter,
-                        dataTableListRadio: dataTableListRadio,
-                        dataTableRadioIndex: dataTableRadioIndex,
-                      )
-                    : docA == "other_program"
-                        ? OtherDataTable(
-                            id: id,
-                            docA: docA,
-                            colA: colA,
-                            docB: docB,
-                            textFieldIndex: textFieldIndex,
-                            radioIndex: radioIndex,
-                            dataTableFilter: dataTableFilter,
-                            dataTableListRadio: dataTableListRadio,
-                            dataTableRadioIndex: dataTableRadioIndex,
-                          )
-                        : docA == "part_program"
-                            ? Container()
-                            : Container(),
+                expanded: MsppDataTable(
+                  id: id,
+                  docA: docA,
+                  colA: colA,
+                  docB: docB,
+                  dataTableFilter: dataTableFilter,
+                  dataTableListRadio: dataTableListRadio,
+                  dataTableRadioIndex: dataTableRadioIndex,
+                ),
               ),
             ),
           ),

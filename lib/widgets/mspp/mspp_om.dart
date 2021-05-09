@@ -29,8 +29,6 @@ class _MsppPsPlanState extends State<MsppOm>
               docA: 'mspp',
               colA: 'ketersediaan_mekanik',
               docB: 'ketersediaan_mekanik',
-              radioIndex: controller.radioIndexKM,
-              textFieldIndex: controller.textFieldKM,
             ),
           ],
         ),
@@ -39,6 +37,5 @@ class _MsppPsPlanState extends State<MsppOm>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }

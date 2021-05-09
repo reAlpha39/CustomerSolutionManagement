@@ -139,8 +139,8 @@ class Mspp extends StatelessWidget {
         buttonColor: Color(0xffffcd29),
         cancelTextColor: Colors.black87,
         onConfirm: () {
-          controller.saveDataMspp();
-          picaCTController.saveData();
+          // controller.saveDataMspp();
+          // picaCTController.saveData();
         },
         onCancel: () => Get.toNamed('/mspp'));
   }

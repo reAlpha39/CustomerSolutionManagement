@@ -32,8 +32,6 @@ class _MsppUbState extends State<MsppUb> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'unschedule_breakdown',
               docB: 'enter_data_in_report',
-              radioIndex: controller.radioIndexEDR,
-              textFieldIndex: controller.textFieldEDR,
             ),
             MsppCard(
               title: 'Go Ahead and Do The Repair',
@@ -41,8 +39,6 @@ class _MsppUbState extends State<MsppUb> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'unschedule_breakdown',
               docB: 'go_ahead_and_do_the_repair',
-              radioIndex: controller.radioIndexGAR,
-              textFieldIndex: controller.textFieldGAR,
             ),
             MsppCard(
               title: 'Inspect Unit and Investigate Problem',
@@ -50,8 +46,6 @@ class _MsppUbState extends State<MsppUb> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'unschedule_breakdown',
               docB: 'inspect_unit_and_investigate_problem',
-              radioIndex: controller.radioIndexIUIP,
-              textFieldIndex: controller.textFieldIUIP,
             ),
             MsppCard(
               title: 'Review Job',
@@ -59,8 +53,6 @@ class _MsppUbState extends State<MsppUb> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'unschedule_breakdown',
               docB: 'review_job',
-              radioIndex: controller.radioIndexRJ,
-              textFieldIndex: controller.textFieldRJ,
             ),
             MsppCard(
               title: 'Talk to the Operator',
@@ -68,8 +60,6 @@ class _MsppUbState extends State<MsppUb> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'unschedule_breakdown',
               docB: 'talk_to_the_operator',
-              radioIndex: controller.radioIndexTO,
-              textFieldIndex: controller.textFieldTO,
             ),
           ],
         ),

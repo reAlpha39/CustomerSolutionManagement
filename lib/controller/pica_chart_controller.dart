@@ -1,13 +1,9 @@
 import 'package:customer/controller/mspp_controller.dart';
-import 'package:customer/controller/other_program_controller.dart';
-import 'package:customer/controller/part_program_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaChartController extends GetxController {
   MsppController _mspp = Get.find();
-  OtherProgramController _other = Get.find();
-  PartProgramController _part = Get.find();
 
   RxList<int> indexPI = RxList<int>();
   RxList<int> indexPSP = RxList<int>();
@@ -36,7 +32,6 @@ class PicaChartController extends GetxController {
 
   RxInt navBarIndex = 0.obs;
   RxInt indexDetailData = 0.obs;
-
 
   listedIndex() {
     listIndex = {
@@ -116,105 +111,22 @@ class PicaChartController extends GetxController {
     return counted;
   }
 
-  combineList() {
-    if (!isLoaded.value) {
-      indexPI.assignAll([
-        _mspp.radioIndexPU,
-        _mspp.radioIndexMeet,
-        _mspp.radioIndexAsses
-      ].expand((x) => x).toList());
-      indexPSP.assignAll([
-        _mspp.radioIndexCCD,
-        _mspp.radioIndexOPPSP,
-        _mspp.radioIndexBSPSP,
-        _mspp.radioIndexRCPSP,
-        _mspp.radioIndexADE
-      ].expand((element) => element).toList());
-      indexPS.assignAll([
-        _mspp.radioIndexPPS,
-        _mspp.radioIndexAPPT,
-        _mspp.radioIndexEPSS,
-        _mspp.radioIndexTPSNP,
-        _mspp.radioIndexHPTD,
-        _mspp.radioIndexEDS,
-        _mspp.radioIndexRPLL
-      ].expand((element) => element).toList());
-      indexOVHP.assignAll([
-        _mspp.radioIndexCCCD,
-        _mspp.radioIndexOPOP,
-        _mspp.radioIndexBSOP,
-        _mspp.radioIndexRCOP,
-        _mspp.radioIndexAME
-      ].expand((element) => element).toList());
-      indexOVH.assignAll([
-        _mspp.radioIndexPL,
-        _mspp.radioIndexAR,
-        _mspp.radioIndexNT,
-        _mspp.radioIndexTR,
-        _mspp.radioIndexHPS,
-        _mspp.radioIndexEJ,
-        _mspp.radioIndexRE
-      ].expand((element) => element).toList());
-      indexUSC.assignAll([
-        _mspp.radioIndexTO,
-        _mspp.radioIndexIUIP,
-        _mspp.radioIndexGAR,
-        _mspp.radioIndexEDR,
-        _mspp.radioIndexRJ
-      ].expand((element) => element).toList());
-      indexTOOLS.assignAll([_mspp.radioIndexCTST, _mspp.radioIndexMTDT]
-          .expand((element) => element)
-          .toList());
-      indexCBM.assignAll([
-        _mspp.radioIndexPLCBM,
-        _mspp.radioIndexARCBM,
-        _mspp.radioIndexTACBM,
-        _mspp.radioIndexEVCBM
-      ].expand((element) => element).toList());
-      indexINFRAS.assignAll([_mspp.radioIndexFIELD, _mspp.radioIndexWORKSHOP]
-          .expand((element) => element)
-          .toList());
-      indexPEOPLE.assignAll([
-        _other.radioIndexOS,
-        _other.radioIndexPO,
-        _other.radioIndexLO,
-        _other.radioIndexPRO,
-        _other.radioIndexDO,
-        _other.radioIndexAO,
-        _other.radioIndexSHEO
-      ].expand((element) => element).toList());
-      indexIW.assignAll([
-        _part.radioIndexOP,
-        _part.radioIndexPE,
-        _part.radioIndexTS,
-        _part.radioIndexCI,
-        _part.radioIndexIF,
-        _part.radioIndexHE
-      ].expand((element) => element).toList());
-      indexVM.assignAll([
-        _other.radioIndexPV,
-        _other.radioIndexMTDT,
-        _other.radioIndexEV
-      ].expand((element) => element).toList());
-      indexAE.assignAll([_mspp.radioIndexAEA, _mspp.radioIndexAEB]
-          .expand((element) => element)
-          .toList());
-      indexMR.assignAll([
-        _other.radioIndexPLD,
-        _other.radioIndexPRD,
-        _other.radioIndexLD
-      ].expand((element) => element).toList());
-      indexOM.assignAll(_mspp.radioIndexKM);
-      indexOP.assignAll(_part.radioIndexKP);
-      indexOS.assignAll(_mspp.radioIndexLTPP);
-      indexRM.assignAll(_other.radioIndexRM);
-      indexCO.assignAll([
-        _other.radioIndexPL,
-        _other.radioIndexPR,
-        _other.radioIndexLG
-      ].expand((element) => element).toList());
+  void combineList() {
+    if (_mspp.tempListChecklistAudit.value.checklistAudit != null) {
       listedIndex();
-      isLoaded.value = true;
+      var dataA = _mspp.tempListChecklistAudit.value.checklistAudit;
+      dataA.sort(((a, b) => a.index.compareTo(b.index)));
+      for (int i = 0; i <= dataA.length - 1; i++) {
+        List<int> temp = [];
+        var dataB = dataA[i].checklistElement;
+        for (int j = 0; j <= dataB.length - 1; j++) {
+          var dataC = dataB[j].checklistData;
+          for (int k = 0; k <= dataC.length - 1; k++) {
+            temp.add(dataC[k].assessmentResult);
+          }
+        }
+        listIndex[i].assignAll(temp);
+      }
     }
   }
 }

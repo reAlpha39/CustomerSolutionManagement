@@ -29,8 +29,6 @@ class _MsppPsPlanState extends State<MsppOs>
               docA: 'mspp',
               colA: 'lead_time_penyelesaian_pekerjaan',
               docB: 'lead_time_penyelesaian_pekerjaan',
-              radioIndex: controller.radioIndexLTPP,
-              textFieldIndex: controller.textFieldLTPP,
             ),
           ],
         ),
@@ -39,6 +37,5 @@ class _MsppPsPlanState extends State<MsppOs>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }

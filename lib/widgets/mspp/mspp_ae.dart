@@ -32,8 +32,6 @@ class _MsppAEState extends State<MsppAE> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'application_engineer',
               docB: 'application_engineer_a',
-              radioIndex: controller.radioIndexAEA,
-              textFieldIndex: controller.textFieldAEA,
             ),
             MsppCard(
               title: 'Application Engineer B',
@@ -41,10 +39,7 @@ class _MsppAEState extends State<MsppAE> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'application_engineer',
               docB: 'application_engineer_b',
-              radioIndex: controller.radioIndexAEB,
-              textFieldIndex: controller.textFieldAEB,
             ),
-            
           ],
         ),
       ),

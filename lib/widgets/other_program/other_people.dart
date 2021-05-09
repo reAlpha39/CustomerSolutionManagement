@@ -1,4 +1,4 @@
-import 'package:customer/controller/other_program_controller.dart';
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/mspp/mspp_card.dart';
 import 'package:customer/widgets/mspp/mspp_fill_helper.dart';
@@ -12,7 +12,7 @@ class OtherPeople extends StatefulWidget {
 
 class _MsppPsPlanState extends State<OtherPeople>
     with AutomaticKeepAliveClientMixin {
-      final OtherProgramController controller = Get.find();
+      final MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -29,8 +29,6 @@ class _MsppPsPlanState extends State<OtherPeople>
               docA: 'other_program',
               colA: 'people',
               docB: 'organization_structure',
-              radioIndex: controller.radioIndexOS,
-              textFieldIndex: controller.textFieldOS,
             ),
             MsppCard(
               title: 'Plant Organization',
@@ -38,8 +36,6 @@ class _MsppPsPlanState extends State<OtherPeople>
               docA: 'other_program',
               colA: 'people',
               docB: 'plant_organization',
-              radioIndex: controller.radioIndexPO,
-              textFieldIndex: controller.textFieldPO,
             ),
             MsppCard(
               title: 'Logistic Organization',
@@ -47,8 +43,6 @@ class _MsppPsPlanState extends State<OtherPeople>
               docA: 'other_program',
               colA: 'people',
               docB: 'logistic_organization',
-              radioIndex: controller.radioIndexLO,
-              textFieldIndex: controller.textFieldLO,
             ),
             MsppCard(
               title: 'Production Organization',
@@ -56,8 +50,6 @@ class _MsppPsPlanState extends State<OtherPeople>
               docA: 'other_program',
               colA: 'people',
               docB: 'production_organization',
-              radioIndex: controller.radioIndexPRO,
-              textFieldIndex: controller.textFieldPRO,
             ),
             MsppCard(
               title: 'Development Organization',
@@ -65,16 +57,12 @@ class _MsppPsPlanState extends State<OtherPeople>
               docA: 'other_program',
               colA: 'people',
               docB: 'development_organization',
-              radioIndex: controller.radioIndexDO,
-              textFieldIndex: controller.textFieldDO,
             ),MsppCard(
               title: 'Administration Organization',
               id: 'ao',
               docA: 'other_program',
               colA: 'people',
               docB: 'administration_organization',
-              radioIndex: controller.radioIndexAO,
-              textFieldIndex: controller.textFieldAO,
             ),
             MsppCard(
               title: 'SHE Organization',
@@ -82,8 +70,6 @@ class _MsppPsPlanState extends State<OtherPeople>
               docA: 'other_program',
               colA: 'people',
               docB: 'she_organization',
-              radioIndex: controller.radioIndexSHEO,
-              textFieldIndex: controller.textFieldSHEO,
             ),
           ],
         ),

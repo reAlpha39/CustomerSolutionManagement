@@ -32,8 +32,6 @@ class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'ovh',
               docB: 'arrange',
-              radioIndex: controller.radioIndexAR,
-              textFieldIndex: controller.textFieldAR,
             ),
             MsppCard(
               title: 'End Job',
@@ -41,8 +39,6 @@ class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'ovh',
               docB: 'end_job',
-              radioIndex: controller.radioIndexEJ,
-              textFieldIndex: controller.textFieldEJ,
             ),
             MsppCard(
               title: 'Have Problem Solving',
@@ -50,8 +46,6 @@ class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'ovh',
               docB: 'have_problem_solving',
-              radioIndex: controller.radioIndexHPS,
-              textFieldIndex: controller.textFieldHPS,
             ),
             MsppCard(
               title: 'Notify',
@@ -59,8 +53,6 @@ class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'ovh',
               docB: 'notify',
-              radioIndex: controller.radioIndexNT,
-              textFieldIndex: controller.textFieldNT,
             ),
             MsppCard(
               title: 'Plan',
@@ -68,8 +60,6 @@ class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'ovh',
               docB: 'plan',
-              radioIndex: controller.radioIndexPL,
-              textFieldIndex: controller.textFieldPL,
             ),
             MsppCard(
               title: 'Review',
@@ -77,8 +67,6 @@ class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'ovh',
               docB: 'review',
-              radioIndex: controller.radioIndexRE,
-              textFieldIndex: controller.textFieldRE,
             ),
             MsppCard(
               title: 'Track',
@@ -86,8 +74,6 @@ class _MsppOVHState extends State<MsppOVH> with AutomaticKeepAliveClientMixin {
               docA: 'mspp',
               colA: 'ovh',
               docB: 'track',
-              radioIndex: controller.radioIndexTR,
-              textFieldIndex: controller.textFieldTR,
             ),
           ],
         ),

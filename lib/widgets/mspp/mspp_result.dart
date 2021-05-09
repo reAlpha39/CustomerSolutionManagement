@@ -6,9 +6,11 @@ class MsppResult extends StatelessWidget {
   final MsppController controller = Get.find();
   final List<String> data;
   final int index;
+  final String colA;
   final String id;
+  final int res;
 
-  MsppResult({this.data, this.index, this.id});
+  MsppResult({this.data, this.index, this.id, this.colA, this.res});
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +27,10 @@ class MsppResult extends StatelessWidget {
                   Obx(() => Radio(
                       visualDensity: VisualDensity.compact,
                       value: i,
-                      groupValue: controller.radioIndexPI(id)[index],
+                      groupValue: controller.assessmentResult.value,
                       activeColor: Color(0xffffcd29),
                       onChanged: (int value) {
-                        controller.radioIndexPI(id)[index] = value;
+                        controller.assessmentResult.value = value;
                       })),
                   Text('${data[i]}'),
                 ],

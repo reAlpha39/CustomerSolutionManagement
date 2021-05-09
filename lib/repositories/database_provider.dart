@@ -2,11 +2,16 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/initial_data.dart';
 import 'package:customer/models/audit_table_data.dart';
+import 'package:customer/models/checklist_audit/checklist_audit.dart';
+import 'package:customer/models/checklist_audit/checklist_element.dart';
+import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/model_unit.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/other_program.dart';
+import 'package:customer/models/part_program.dart';
 import 'package:customer/models/pica_data.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
@@ -99,6 +104,17 @@ class DatabaseProvider {
     });
   }
 
+  savePartProgram(PartProgram partProgram, String username) {
+    firestore = FirebaseFirestore.instance;
+    var data = partProgram.toMap();
+    DocumentReference doc = firestore.collection('data_customer').doc(username);
+    CollectionReference collection = doc.collection('service_program');
+    collection.get().then((value) {
+      collection.doc('part_program').set(data).then((_) =>
+          showDialog(title: "Sukses", middleText: "Data berhasil dimasukkan"));
+    });
+  }
+
   Future<Mspp> loadMsppData(String username) async {
     Mspp mspp = Mspp();
     try {
@@ -128,6 +144,23 @@ class DatabaseProvider {
       }
     } catch (e) {}
     return otherProgram;
+  }
+
+  Future<PartProgram> loadPartProgramController(String username) async {
+    PartProgram partProgram = PartProgram();
+    try {
+      firestore = FirebaseFirestore.instance;
+      DocumentReference doc =
+          firestore.collection('data_customer').doc(username);
+      CollectionReference collection = doc.collection('service_program');
+      var data = await collection.doc('part_program').get();
+      if (data.exists) {
+        partProgram = PartProgram.fromMap(data.data());
+      }
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return partProgram;
   }
 
   Future<List<String>> listCustomer() async {
@@ -251,7 +284,7 @@ class DatabaseProvider {
         picaData = PicaData.fromMap(data.data());
       } else {
         DocumentReference doc =
-            firestore.collection('initial_data').doc('pica_observation');
+            firestore.collection('initial_data').doc('pica_observation_t');
         var data = await doc.get();
         picaData = PicaData.fromMap(data.data());
       }
@@ -378,6 +411,97 @@ class DatabaseProvider {
     }
     return isDeleted;
   }
+
+  Future<ListChecklistAudit> loadCheckListData(
+      {String username, String part}) async {
+    firestore = FirebaseFirestore.instance;
+    ListChecklistAudit listChecklistAudit = ListChecklistAudit();
+    ChecklistAudit checklistAudit = ChecklistAudit();
+    try {
+      CollectionReference colRef;
+      colRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('checklist_audit');
+      DocumentSnapshot checkData =
+          await colRef.doc('periodic_inspection').get();
+      QuerySnapshot data;
+      if (!checkData.exists) {
+        colRef = firestore
+            .collection('initial_data')
+            .doc('checklist_audit')
+            .collection('data');
+      }
+      if (part != null) {
+        data = await colRef.where('part', isEqualTo: part).get();
+      } else {
+        data = await colRef.get();
+      }
+      List<ChecklistAudit> tempA = [];
+      for (int i = 0; i <= data.docs.length - 1; i++) {
+        checklistAudit = ChecklistAudit.fromMap(data.docs[i].data());
+        List<ChecklistElement> tempB = [];
+        QuerySnapshot dataB =
+            await colRef.doc(data.docs[i].id).collection('element').get();
+        for (int j = 0; j <= dataB.docs.length - 1; j++) {
+          tempB.add(ChecklistElement.fromMap(dataB.docs[j].data()));
+        }
+        checklistAudit.checklistElement = tempB;
+        tempA.add(checklistAudit);
+      }
+      listChecklistAudit.checklistAudit = tempA;
+    } catch (e) {
+      print(e);
+    }
+    return listChecklistAudit;
+  }
+
+  testMspp(String username) {
+    firestore = FirebaseFirestore.instance;
+    ListChecklistAudit listChecklistAudit = ListChecklistAudit();
+    ChecklistElement checklistElement = ChecklistElement();
+
+    try {
+      CollectionReference colRef = firestore
+          .collection('initial_data')
+          .doc('checklist_audit')
+          .collection('data');
+      var initialData = initialDataMspp();
+      listChecklistAudit = ListChecklistAudit.fromJson(initialData);
+      DocumentReference docRefA;
+      DocumentReference docRefB;
+      var temp;
+      for (int i = 0; i <= listChecklistAudit.checklistAudit.length - 1; i++) {
+        docRefA = colRef.doc(listChecklistAudit.checklistAudit[i].id);
+        docRefA.set(listChecklistAudit.checklistAudit[i].toMap());
+        for (int j = 0;
+            j <=
+                listChecklistAudit.checklistAudit[i].checklistElement.length -
+                    1;
+            j++) {
+          temp =
+              listChecklistAudit.checklistAudit[i].checklistElement[j].toMap();
+          checklistElement = ChecklistElement.fromMap(temp);
+          docRefB = colRef
+              .doc(listChecklistAudit.checklistAudit[i].id)
+              .collection('element')
+              .doc(checklistElement.id);
+          docRefB.set(checklistElement.toMap());
+        }
+      }
+    } catch (e, s) {
+      print(e);
+      print(s);
+    }
+  }
+
+  // loadInitialData() async {
+  //   firestore = FirebaseFirestore.instance;
+  //   DocumentReference doc =
+  //       firestore.collection('initial_data').doc('pica_observation_t');
+  //   var data =
+  //       await doc.set(initialData().toMap()).then((value) => print('done'));
+  // }
 
   dummy() async {
     // IwDataTable dataTable = IwDataTable();

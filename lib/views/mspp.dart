@@ -95,24 +95,26 @@ class Mspp extends StatelessWidget {
           ),
         ),
         body: Obx(
-          () => TabBarView(
-            children: [
-              controller.isLoading.value
-                  ? Center(child: CircularProgressIndicator())
-                  : MsppPi(),
-              MsppPsPlan(),
-              MsppPs(),
-              MsppOvhPlan(),
-              MsppOVH(),
-              MsppUb(),
-              MsppCbm(),
-              MsppTools(),
-              MsppInfras(),
-              MsppAE(),
-              MsppOm(),
-              MsppOs(),
-            ],
-          ),
+          () => controller.tempListChecklistAudit.value.checklistAudit == null
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : TabBarView(
+                  children: [
+                    MsppPi(),
+                    MsppPsPlan(),
+                    MsppPs(),
+                    MsppOvhPlan(),
+                    MsppOVH(),
+                    MsppUb(),
+                    MsppCbm(),
+                    MsppTools(),
+                    MsppInfras(),
+                    MsppAE(),
+                    MsppOm(),
+                    MsppOs(),
+                  ],
+                ),
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(

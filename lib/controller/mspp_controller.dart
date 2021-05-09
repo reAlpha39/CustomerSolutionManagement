@@ -1,5 +1,7 @@
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
+import 'package:customer/models/checklist_audit/checklist_audit.dart';
+import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/mspp_data.dart';
 import 'package:customer/repositories/database_provider.dart';
@@ -110,14 +112,18 @@ class MsppController extends GetxController {
     2: 'N/A',
   };
 
+  Rx<Mspp> msppData;
+  Rx<ListChecklistAudit> tempListChecklistAudit = ListChecklistAudit().obs;
   RxBool isLoading = false.obs;
   RxBool isLoaded = false.obs;
+  RxList<int> itemIndex = [0].obs;
+  RxInt assessmentResult = (-1).obs;
 
   TextEditingController textEditingControllerALL;
 
   @override
   void onInit() {
-    loadData(username: _loginController.usr.value.username);
+    loadMsppChecklistAudit(username: _loginController.usr.value.username);
     textEditingControllerALL = TextEditingController();
     super.onInit();
   }
@@ -128,8 +134,72 @@ class MsppController extends GetxController {
     super.onClose();
   }
 
+  void loadMsppChecklistAudit({String username}) {
+    isLoading.value = true;
+    connectivityChecker().then((conn) {
+      if (conn) {
+        _databaseProvider.loadCheckListData(username: username).then((value) {
+          tempListChecklistAudit.value = value;
+          tempListChecklistAudit.refresh();
+          isLoading.value = false;
+        });
+      } else {
+        isLoading.value = false;
+      }
+    });
+  }
+
+  loadItem({String docA, String docB, int index, isAssessmentResult}) {
+    List<ChecklistAudit> data = tempListChecklistAudit.value.checklistAudit;
+    int indexA = data.indexWhere((element) => element.id == docA);
+    int indexB = data[indexA]
+        .checklistElement
+        .indexWhere((element) => element.id == docB);
+    var result;
+    if (isAssessmentResult) {
+      result = tempListChecklistAudit.value.checklistAudit[indexA]
+          .checklistElement[indexB].checklistData[index].assessmentResult;
+      assessmentResult.value = result;
+    } else {
+      result = tempListChecklistAudit.value.checklistAudit[indexA]
+          .checklistElement[indexB].checklistData[index].remark;
+    }
+    return result;
+  }
+
+  void searchItemIndex({String docA, String docB, int index}) {
+    List<ChecklistAudit> data = tempListChecklistAudit.value.checklistAudit;
+    int indexA = data.indexWhere((element) => element.id == docA);
+    int indexB = data[indexA]
+        .checklistElement
+        .indexWhere((element) => element.id == docB);
+    itemIndex.assignAll([indexA, indexB]);
+  }
+
+  void saveItem({String docA, String docB, int index, isAssessmentResult}) {
+    searchItemIndex(docA: docA, docB: docB, index: index);
+    if (isAssessmentResult) {
+      tempListChecklistAudit
+          .value
+          .checklistAudit[itemIndex[0]]
+          .checklistElement[itemIndex[1]]
+          .checklistData[index]
+          .assessmentResult = assessmentResult.value;
+    } else {
+      tempListChecklistAudit
+          .value
+          .checklistAudit[itemIndex[0]]
+          .checklistElement[itemIndex[1]]
+          .checklistData[index]
+          .remark = textEditingControllerALL.text;
+      textEditingControllerALL.clear();
+    }
+    tempListChecklistAudit.refresh();
+  }
+
   loadData({String username}) {
-    final PicaCardTableController picaCardTableController = Get.find(tag: 'global');
+    final PicaCardTableController picaCardTableController =
+        Get.find(tag: 'global');
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -368,7 +438,7 @@ class MsppController extends GetxController {
       MsppData msppDataAEB =
           MsppData(assessmentResult: radioIndexAEB, remark: textFieldAEB);
 
-      Mspp mspp = Mspp(
+      msppData.value = Mspp(
         periodicInspection: {
           'planUnit': msppDataPU,
           'meet': msppDataMeet,
@@ -438,7 +508,9 @@ class MsppController extends GetxController {
           'aeb': msppDataAEB,
         },
       );
-      _databaseProvider.saveMSPP(mspp, _loginController.usr.value.username);
+      msppData.refresh();
+      _databaseProvider.saveMSPP(
+          msppData.value, _loginController.usr.value.username);
     });
     Get.back(closeOverlays: false);
   }

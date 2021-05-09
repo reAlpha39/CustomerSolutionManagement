@@ -35,22 +35,28 @@ class MsppDataTable extends StatelessWidget {
   }) : super(key: key);
 
   Future<bool> resultRadio({int index}) {
+    controller.loadItem(
+        docA: colA, docB: id, index: index, isAssessmentResult: true);
     return Get.defaultDialog(
-        barrierDismissible: false,
-        radius: 17,
-        title: 'Pilih salah satu',
-        content: (MsppResult(
-          data: ['Yes', 'No', 'N/A'],
-          index: index,
-          id: id,
-        )),
-        textConfirm: 'OK',
-        buttonColor: Color(0xffffcd29),
-        confirmTextColor: Colors.black87,
-        onConfirm: () {
-          picaCTController.checkData(radioIndex[index], id, index);
-          Get.back(closeOverlays: false);
-        });
+      barrierDismissible: false,
+      radius: 17,
+      title: 'Pilih salah satu',
+      content: (MsppResult(
+        data: ['Yes', 'No', 'N/A'],
+        index: index,
+        colA: colA,
+        id: id,
+      )),
+      textConfirm: 'OK',
+      buttonColor: Color(0xffffcd29),
+      confirmTextColor: Colors.black87,
+      onConfirm: () {
+        controller.saveItem(
+            docA: colA, docB: id, index: index, isAssessmentResult: true);
+        // picaCTController.checkData(radioIndex[index], id, index);
+        Get.back(closeOverlays: false);
+      },
+    );
   }
 
   Future<bool> resultTextField({int index}) {
@@ -63,33 +69,45 @@ class MsppDataTable extends StatelessWidget {
         buttonColor: Color(0xffffcd29),
         confirmTextColor: Colors.black87,
         onConfirm: () {
-          controller.textFieldPI(id)[index] =
-              controller.textEditingControllerALL.text;
-          controller.textEditingControllerALL.clear();
+          controller.saveItem(
+              docA: colA, docB: id, index: index, isAssessmentResult: false);
           Get.back(closeOverlays: false);
         });
   }
 
-  TextButton buildTextButtonRemark(int id) {
+  TextButton buildTextButtonRemark(int index) {
     return TextButton(
       onPressed: () {
-        resultTextField(index: id);
+        resultTextField(index: index);
       },
-      child: Obx(
-        () => Text(
-            textFieldIndex[id] == "" ? 'Klik disini' : "${textFieldIndex[id]}"),
-      ),
+      child: Obx(() {
+        String res = controller.loadItem(
+            docA: colA, docB: id, index: index, isAssessmentResult: false);
+        if (res == "") {
+          return Text('Pilih disini');
+        } else {
+          return Text(res);
+        }
+      }),
     );
   }
 
-  TextButton buildTextButtonAssessment(int id) {
+  TextButton buildTextButtonAssessment(int index) {
     return TextButton(
       onPressed: () {
-        resultRadio(index: id);
+        resultRadio(index: index);
       },
-      child: Obx(() => Text(radioIndex[id] == -1
-          ? 'Pilih disini'
-          : '${controller.radioData[radioIndex[id]]}')),
+      child: Obx(
+        () {
+          int res = controller.loadItem(
+              docA: colA, docB: id, index: index, isAssessmentResult: true);
+          if (res == -1) {
+            return Text('Pilih disini');
+          } else {
+            return Text(controller.radioData[res]);
+          }
+        },
+      ),
     );
   }
 

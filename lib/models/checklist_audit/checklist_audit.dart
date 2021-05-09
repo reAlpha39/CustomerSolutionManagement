@@ -3,37 +3,45 @@ import 'dart:convert';
 import 'package:customer/models/checklist_audit/checklist_element.dart';
 
 class ChecklistAudit {
-    ChecklistAudit({
-        this.id,
-        this.title,
-        this.score,
-        this.part,
-        this.checklistElement,
-    });
+  ChecklistAudit({
+    this.id,
+    this.title,
+    this.index,
+    this.score,
+    this.part,
+    this.checklistElement,
+  });
 
-    String id;
-    String title;
-    int score;
-    String part;
-    List<ChecklistElement> checklistElement;
+  String id;
+  String title;
+  int index;
+  int score;
+  String part;
+  List<ChecklistElement> checklistElement;
 
-    factory ChecklistAudit.fromJson(String str) => ChecklistAudit.fromMap(json.decode(str));
+  factory ChecklistAudit.fromJson(String str) =>
+      ChecklistAudit.fromMap(json.decode(str));
 
-    String toJson() => json.encode(toMap());
+  String toJson() => json.encode(toMap());
 
-    factory ChecklistAudit.fromMap(Map<String, dynamic> json) => ChecklistAudit(
+  factory ChecklistAudit.fromMap(Map<String, dynamic> json) => ChecklistAudit(
         id: json["id"],
         title: json["title"],
+        index: json["index"],
         score: json["score"],
         part: json["part"],
-        checklistElement: json["checklistElement"] == null ? null : List<ChecklistElement>.from(json["checklistElement"].map((x) => ChecklistElement.fromMap(x))),
-    );
+        checklistElement: json["checklistElement"] == null
+            ? null
+            : List<ChecklistElement>.from(json["checklistElement"]
+                .map((x) => ChecklistElement.fromMap(x))),
+      );
 
-    Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() => {
         "id": id,
         "title": title,
+        "index": index,
         "score": score,
         "part": part,
         // "checklistElement": checklistElement == null ? null : List<dynamic>.from(checklistElement.map((x) => x.toMap())),
-    };
+      };
 }

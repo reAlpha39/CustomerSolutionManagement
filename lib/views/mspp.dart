@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/widgets/mspp/mspp_ae.dart';
@@ -16,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Mspp extends StatelessWidget {
-  final MsppController controller = Get.find();
+  final HomeController _homeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -95,7 +96,7 @@ class Mspp extends StatelessWidget {
           ),
         ),
         body: Obx(
-          () => controller.tempListChecklistAudit.value.checklistAudit == null
+          () => !_homeController.isLoaded.value
               ? Center(
                   child: CircularProgressIndicator(),
                 )

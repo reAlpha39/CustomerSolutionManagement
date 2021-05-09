@@ -1,4 +1,4 @@
-import 'package:customer/controller/mspp_controller.dart';
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/controller/part_program_controller.dart';
 import 'package:customer/controller/pica_chart_controller.dart';
@@ -15,7 +15,7 @@ class PicaChart extends StatefulWidget {
 class _PicaChartState extends State<PicaChart>
     with AutomaticKeepAliveClientMixin {
   final PicaChartController picaCController = Get.find();
-  final MsppController msppController = Get.find();
+  final HomeController _homeController = Get.find();
   final OtherProgramController otherPController = Get.find();
   final PartProgramController partPController = Get.find();
 
@@ -44,9 +44,7 @@ class _PicaChartState extends State<PicaChart>
                   child: Container(
                     child: Obx(
                       () {
-                        if (msppController
-                                .tempListChecklistAudit.value.checklistAudit !=
-                            null) {
+                        if (_homeController.isLoaded.value) {
                           picaCController.combineList();
                           return Container(
                             width: 500,

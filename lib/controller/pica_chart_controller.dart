@@ -1,9 +1,10 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaChartController extends GetxController {
-  MsppController _mspp = Get.find();
+  HomeController _homeController = Get.find();
 
   RxList<int> indexPI = RxList<int>();
   RxList<int> indexPSP = RxList<int>();
@@ -112,9 +113,9 @@ class PicaChartController extends GetxController {
   }
 
   void combineList() {
-    if (_mspp.tempListChecklistAudit.value.checklistAudit != null) {
+    if (_homeController.isLoaded.value) {
       listedIndex();
-      var dataA = _mspp.tempListChecklistAudit.value.checklistAudit;
+      var dataA = _homeController.tempListChecklistAudit.value.checklistAudit;
       dataA.sort(((a, b) => a.index.compareTo(b.index)));
       for (int i = 0; i <= dataA.length - 1; i++) {
         List<int> temp = [];

@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/mspp_admin_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/mspp/mspp_infras.dart';
@@ -204,7 +205,7 @@ class MsppAdmin extends StatelessWidget {
 
 class ListCustomer extends StatelessWidget {
   final MsppAdminController msppAdminController = Get.find();
-  final MsppController msppController = Get.find();
+  final HomeController _homeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -220,7 +221,7 @@ class ListCustomer extends StatelessWidget {
                 onTap: () {
                   msppAdminController.idCustomer.value =
                       msppAdminController.listCustomer[index];
-                  msppController.loadMsppChecklistAudit(
+                  _homeController.loadMsppChecklistAudit(
                       username: msppAdminController.idCustomer.value);
                   Get.back(closeOverlays: false);
                 },

@@ -1,5 +1,7 @@
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/utils/connectivity_checker.dart';
 import 'package:customer/widgets/home/home_admin.dart';
 import 'package:customer/widgets/home/home_customer.dart';
 import 'package:customer/widgets/home/home_internal.dart';
@@ -18,15 +20,38 @@ class HomeController extends GetxController {
   RxList<String> listCustomer;
   RxString idCustomer = ''.obs;
   RxBool isLoading = false.obs;
+  RxBool isLoaded = false.obs;
+  Rx<ListChecklistAudit> tempListChecklistAudit = ListChecklistAudit().obs;
 
   @override
   void onInit() {
-    userType();
+    _userType();
     _loadListCustomer();
+    _loadCustomerChecklistData();
     super.onInit();
   }
 
-  void userType() {
+  void _loadCustomerChecklistData() {
+    if (_loginController.usr.value.type == 'customer') {
+      loadMsppChecklistAudit(username: _loginController.usr.value.username);
+    }
+  }
+
+  void loadMsppChecklistAudit({String username, String part}) {
+    connectivityChecker().then((conn) {
+      if (conn) {
+        _databaseProvider
+            .loadCheckListData(username: username, part: part)
+            .then((value) {
+          tempListChecklistAudit.value = value;
+          tempListChecklistAudit.refresh();
+          isLoaded.value = true;
+        });
+      }
+    });
+  }
+
+  void _userType() {
     String type = _loginController.usr.value.type;
     switch (type) {
       case 'admin':
@@ -54,15 +79,17 @@ class HomeController extends GetxController {
 
   _loadListCustomer() {
     try {
-      isLoading.value = true;
-      print(isLoading.value);
-      _databaseProvider.listCustomer().then((value) {
-        listCustomer = [''].obs;
-        listCustomer.addAll(value);
-        listCustomer.removeAt(0);
-        isLoading.value = false;
+      if (_loginController.usr.value.type == 'internal') {
+        isLoading.value = true;
         print(isLoading.value);
-      });
+        _databaseProvider.listCustomer().then((value) {
+          listCustomer = [''].obs;
+          listCustomer.addAll(value);
+          listCustomer.removeAt(0);
+          isLoading.value = false;
+          print(isLoading.value);
+        });
+      }
     } catch (Exception) {}
   }
 }

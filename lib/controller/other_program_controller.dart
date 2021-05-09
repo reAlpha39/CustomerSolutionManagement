@@ -1,14 +1,9 @@
 import 'package:customer/models/other_program.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../models/mspp_data.dart';
 import '../repositories/database_provider.dart';
-import '../utils/connectivity_checker.dart';
-import 'login_controller.dart';
 
 class OtherProgramController extends GetxController {
-  final LoginController _loginController = Get.find();
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
   Map<int, String> radioData = {
@@ -24,7 +19,7 @@ class OtherProgramController extends GetxController {
 
   @override
   void onInit() {
-    // loadOtherProgram(username: _loginController.usr.value.username);
+    // loadOtherP\rogram(username: _loginController.usr.value.username);
     textEditingControllerALL = TextEditingController();
     super.onInit();
   }

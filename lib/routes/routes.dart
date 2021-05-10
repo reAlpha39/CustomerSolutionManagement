@@ -89,7 +89,9 @@ class Routes {
       name: '/part_program',
       page: () => PartProgramPage(),
       bindings: [
+        PicaCardTableBinding(),
         PartProgramBinding(),
+        MsppBinding(),
         DataTableBinding(),
       ],
     ),

@@ -1,9 +1,16 @@
+import 'package:customer/controller/home_controller.dart';
+import 'package:customer/widgets/other_program/other_co.dart';
+import 'package:customer/widgets/other_program/other_mr.dart';
+import 'package:customer/widgets/other_program/other_people.dart';
+import 'package:customer/widgets/other_program/other_regm.dart';
+import 'package:customer/widgets/other_program/other_vm.dart';
 import 'package:customer/widgets/part_program/part_iw.dart';
 import 'package:customer/widgets/part_program/part_kp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PartProgramPage extends StatelessWidget {
+  final HomeController _homeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -27,11 +34,18 @@ class PartProgramPage extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            PartIw(),
-            PartKp(),
-          ],
+        body: Obx(
+          () => _homeController.tempListChecklistAudit.value.checklistAudit ==
+                  null
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : TabBarView(
+                  children: [
+                    PartIw(),
+                    PartKp(),
+                  ],
+                ),
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(
@@ -57,7 +71,7 @@ class PartProgramPage extends StatelessWidget {
       onConfirm: () {
         // controller.saveData();
       },
-      onCancel: () => Get.toNamed('/part_program'),
+      onCancel: () => Get.toNamed('/other_program'),
     );
   }
 }

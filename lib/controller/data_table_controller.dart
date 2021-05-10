@@ -1,4 +1,5 @@
 import 'package:customer/models/audit_table_data.dart';
+import 'package:customer/models/iw_data_table.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ class DataTableController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
   Rx<AuditTableData> auditTableData = AuditTableData().obs;
+  Rx<IwDataTable> iwDataTable = IwDataTable().obs;
   RxBool isLoading = false.obs;
 
   loadDataTable(
@@ -23,10 +25,21 @@ class DataTableController extends GetxController {
             .auditDataTable(docA: docA, collectionA: colA, docB: docB)
             .then((value) {
           if (filter) {
-            filterTable(data: value, radioIndex: radioIndex, listRadio: listRadio);
+            if (value.runtimeType == AuditTableData) {
+              _msppfilterTable(
+                  data: value, radioIndex: radioIndex, listRadio: listRadio);
+            } else {
+              _iwfilterTable(
+                  data: value, radioIndex: radioIndex, listRadio: listRadio);
+            }
           } else {
-            auditTableData.value = value;
-            auditTableData.refresh();
+            if (value.runtimeType == AuditTableData) {
+              auditTableData.value = value;
+              auditTableData.refresh();
+            } else {
+              iwDataTable.value = value;
+              iwDataTable.refresh();
+            }
             isLoading.value = false;
           }
         });
@@ -36,7 +49,33 @@ class DataTableController extends GetxController {
     }).timeout(Duration(seconds: 20));
   }
 
-  filterTable(
+  void _iwfilterTable(
+      {IwDataTable data, int radioIndex, RxList<int> listRadio}) {
+    isLoading.value = true;
+    IwDataTable tableData = IwDataTable();
+    tableData.description = [];
+    tableData.dimension = [];
+    tableData.id = [];
+    tableData.element = [];
+    tableData.noKlausul = [];
+
+    if (listRadio != null) {
+      for (int i = 0; i <= listRadio.length - 1; i++) {
+        if (listRadio[i] == radioIndex) {
+          tableData.description.add(data.description[i]);
+          tableData.dimension.add(data.dimension[i]);
+          tableData.id.add(data.id[i]);
+          tableData.element.add(data.element[i]);
+          tableData.noKlausul.add(data.noKlausul[i]);
+        }
+      }
+      iwDataTable.value = tableData;
+      iwDataTable.refresh();
+      isLoading.value = false;
+    }
+  }
+
+  _msppfilterTable(
       {AuditTableData data, int radioIndex, RxList<int> listRadio}) {
     isLoading.value = true;
     AuditTableData tableData = AuditTableData();

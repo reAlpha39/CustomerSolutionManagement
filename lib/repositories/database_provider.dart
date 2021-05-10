@@ -7,6 +7,7 @@ import 'package:customer/models/checklist_audit/checklist_audit.dart';
 import 'package:customer/models/checklist_audit/checklist_element.dart';
 import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/models/improve_process.dart';
+import 'package:customer/models/iw_data_table.dart';
 import 'package:customer/models/model_unit.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/models/other_program.dart';
@@ -243,16 +244,21 @@ class DatabaseProvider {
     return list;
   }
 
-  Future<AuditTableData> auditDataTable(
-      {String docA, String collectionA, String docB}) async {
-    AuditTableData tableData = AuditTableData();
+  Future auditDataTable({String docA, String collectionA, String docB}) async {
+    var tableData;
     try {
       firestore = FirebaseFirestore.instance;
       CollectionReference collection = firestore.collection('checklist_audit');
       DocumentSnapshot data =
           await collection.doc(docA).collection(collectionA).doc(docB).get();
-      tableData = AuditTableData.fromMap(data.data());
-    } on Exception catch (e) {}
+      if (collectionA == 'inventory_warehousing') {
+        tableData = IwDataTable.fromMap(data.data());
+      } else {
+        tableData = AuditTableData.fromMap(data.data());
+      }
+    } on Exception catch (e) {
+      print("auditDataTable: " + e.toString());
+    }
     return tableData;
   }
 

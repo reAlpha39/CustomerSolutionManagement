@@ -1,4 +1,5 @@
 import 'package:customer/widgets/mspp/mspp_data_table.dart';
+import 'package:customer/widgets/part_program/part_data_table.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ class MsppCard extends StatelessWidget {
   final String docA;
   final String docB;
   final String colA;
+  final bool isIwTable;
   final bool dataTableFilter;
   final RxList<int> dataTableListRadio;
   final int dataTableRadioIndex;
@@ -23,6 +25,7 @@ class MsppCard extends StatelessWidget {
     this.dataTableFilter = false,
     this.dataTableListRadio,
     this.dataTableRadioIndex,
+    this.isIwTable = false,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -49,15 +52,25 @@ class MsppCard extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: MsppDataTable(
-                  id: id,
-                  docA: docA,
-                  colA: colA,
-                  docB: docB,
-                  dataTableFilter: dataTableFilter,
-                  dataTableListRadio: dataTableListRadio,
-                  dataTableRadioIndex: dataTableRadioIndex,
-                ),
+                expanded: isIwTable
+                    ? PartDataTable(
+                        id: id,
+                        docA: docA,
+                        colA: colA,
+                        docB: docB,
+                        dataTableFilter: dataTableFilter,
+                        dataTableListRadio: dataTableListRadio,
+                        dataTableRadioIndex: dataTableRadioIndex,
+                      )
+                    : MsppDataTable(
+                        id: id,
+                        docA: docA,
+                        colA: colA,
+                        docB: docB,
+                        dataTableFilter: dataTableFilter,
+                        dataTableListRadio: dataTableListRadio,
+                        dataTableRadioIndex: dataTableRadioIndex,
+                      ),
               ),
             ),
           ),

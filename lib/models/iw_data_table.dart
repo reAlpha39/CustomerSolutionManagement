@@ -28,7 +28,7 @@ class IwDataTable {
         dimension: List<String>.from(json["dimension"].map((x) => x)),
         element: List<String>.from(json["element"].map((x) => x)),
         description: List<String>.from(json["description"].map((x) => x)),
-        noKlausul: List<String>.from(json["noKlausul"].map((x) => x)),
+        noKlausul: List<String>.from(json["noKlause"].map((x) => x)),
     );
 
     Map<String, dynamic> toMap() => {
@@ -36,6 +36,6 @@ class IwDataTable {
         "dimension": List<dynamic>.from(dimension.map((x) => x)),
         "element": List<dynamic>.from(element.map((x) => x)),
         "description": List<dynamic>.from(description.map((x) => x)),
-        "noKlausul": List<dynamic>.from(noKlausul.map((x) => x)),
+        "noKlause": List<dynamic>.from(noKlausul.map((x) => x)),
     };
 }

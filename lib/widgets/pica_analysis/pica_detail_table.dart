@@ -35,11 +35,8 @@ class PicaDetailTable extends StatelessWidget {
         confirmTextColor: Colors.black87,
         onConfirm: () {
           listCardController.counter(
-            indexA: controllerPU.indexResultA[index],
-            indexB: controllerPU.indexResultB[index],
-            row: index,
-            indexCard: controllerPU.indexCard.value,
-            indexData: controllerPU.indexData.value,
+            indexB: controllerPU.indexCard.value,
+            indexA: controllerPU.indexData.value,
           );
           Get.back(closeOverlays: false);
           picaAController.changeOpenedIndexData();

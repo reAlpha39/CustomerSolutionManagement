@@ -141,22 +141,22 @@ class PicaCardTableController extends GetxController {
     }
   }
 
-  counter({int indexA, int indexB, int row, int indexCard, int indexData}) {
+  counter({int indexB, int indexA}) {
     int temp = 0;
     List<ChecklistAudit> dataA =
         _homeController.tempListChecklistAudit.value.checklistAudit;
     if (dataA != null) {
       List<ChecklistData> list =
-          dataA[indexData].checklistElement[indexCard].checklistData;
+          dataA[indexA].checklistElement[indexB].checklistData;
       for (int i = 0; i <= list.length - 1; i++) {
         if (list[i].isNo) {
           temp += list[i].dampak;
           temp += list[i].urgensi;
         }
       }
-      _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
-          .checklistElement[indexCard].result = temp;
-      _sortCard(indexData, indexCard, dataA);
+      _homeController.tempListChecklistAudit.value.checklistAudit[indexA]
+          .checklistElement[indexB].result = temp;
+      _sortCard(indexA, dataA);
     } else {
       print("counter's PicaData null");
     }
@@ -197,7 +197,7 @@ class PicaCardTableController extends GetxController {
     print('v');
   }
 
-  void _sortCard(int indexData, int index, List<ChecklistAudit> listCA) {
+  void _sortCard(int indexData, List<ChecklistAudit> listCA) {
     try {
       _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
           .checklistElement
@@ -245,7 +245,7 @@ class PicaCardTableController extends GetxController {
           .isNo = boolIndex[i];
     }
     _homeController.tempListChecklistAudit.refresh();
-    counter(indexData: indexData.value, indexCard: indexCard.value);
+    counter(indexA: indexData.value, indexB: indexCard.value);
     connectivityChecker().then((conn) {
       if (conn) {
         // _databaseProvider

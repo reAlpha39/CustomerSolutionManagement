@@ -1,4 +1,5 @@
 import 'package:customer/controller/home_controller.dart';
+import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/models/checklist_audit/checklist_audit.dart';
 import 'package:customer/models/mspp.dart';
 import 'package:customer/repositories/database_provider.dart';
@@ -75,6 +76,7 @@ class MsppController extends GetxController {
   }
 
   void saveItem({String docA, String docB, int index, isAssessmentResult}) {
+    PicaCardTableController _picaCT = Get.find(tag: 'global');
     searchItemIndex(docA: docA, docB: docB, index: index);
     if (isAssessmentResult) {
       _homeController
@@ -101,7 +103,7 @@ class MsppController extends GetxController {
             .checklistData[index]
             .isNo = false;
       }
-      
+      _picaCT.counter(indexA: itemIndex[0], indexB: itemIndex[1]);
     } else {
       _homeController
           .tempListChecklistAudit
@@ -111,8 +113,8 @@ class MsppController extends GetxController {
           .checklistData[index]
           .remark = textEditingControllerALL.text;
       textEditingControllerALL.clear();
+      _homeController.tempListChecklistAudit.refresh();
     }
-    _homeController.tempListChecklistAudit.refresh();
   }
 
   dummy() {

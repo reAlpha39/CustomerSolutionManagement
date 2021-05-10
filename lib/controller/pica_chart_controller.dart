@@ -66,7 +66,7 @@ class PicaChartController extends GetxController {
       score = data[0].toDouble() / (data[1].toDouble() + data[0].toDouble());
       percentage = score * 100;
     } catch (e) {}
-    if (percentage.isNaN) {
+    if (percentage.isNaN || percentage == 0.0) {
       percentage = 0.1;
     }
     return percentage;
@@ -113,7 +113,7 @@ class PicaChartController extends GetxController {
   }
 
   void combineList() {
-    if (_homeController.isLoaded.value) {
+    if (_homeController.tempListChecklistAudit.value.checklistAudit != null) {
       listedIndex();
       var dataA = _homeController.tempListChecklistAudit.value.checklistAudit;
       dataA.sort(((a, b) => a.index.compareTo(b.index)));

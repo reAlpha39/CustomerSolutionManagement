@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 
 class PicaObservationCard extends StatelessWidget {
   final PicaAnalysisController _picaAController = Get.find();
+  final HomeController _homeController = Get.find();
   final PicaCardTableController _picaCTController = Get.find(tag: 'global');
   final String title;
   final int indexValue;
@@ -44,8 +46,9 @@ class PicaObservationCard extends StatelessWidget {
                   child: Center(
                     child: Obx(
                       () => Text(
-                        _picaCTController
-                            .picaData.value.picaElement[indexValue].score
+                        _homeController.tempListChecklistAudit.value
+                            .checklistAudit
+                            [indexValue].score
                             .toString(),
                         style: TextStyle(
                           fontSize: 18,

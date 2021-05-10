@@ -1,11 +1,9 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/login_controller.dart';
-import 'package:customer/controller/mspp_controller.dart';
-import 'package:customer/controller/other_program_controller.dart';
-import 'package:customer/controller/part_program_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
-import 'package:customer/models/column_result.dart';
-import 'package:customer/models/pica_data.dart';
-import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/models/checklist_audit/checklist_audit.dart';
+import 'package:customer/models/checklist_audit/checklist_data.dart';
+import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/utils/connectivity_checker.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_card.dart';
 import 'package:expandable/expandable.dart';
@@ -13,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaCardTableController extends GetxController {
-  DatabaseProvider _databaseProvider = DatabaseProvider();
-  LoginController loginController = Get.find();
+  final LoginController loginController = Get.find();
+  final HomeController _homeController = Get.find();
   ExpandableController expandableController;
   TextEditingController textEditingControllerALL;
   RxList<int> indexResultA = RxList<int>();
@@ -22,7 +20,6 @@ class PicaCardTableController extends GetxController {
   RxList<bool> boolIndex = RxList<bool>();
   RxList<int> loadIndex;
   RxBool isLoading = false.obs;
-  Rx<PicaData> picaData = PicaData().obs;
 
   RxString id = "".obs;
   RxString title = "".obs;
@@ -54,86 +51,66 @@ class PicaCardTableController extends GetxController {
   void fillTextData(int indexData, int indexCard, int index, String id) {
     switch (id) {
       case "Actual":
-        picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[index].actual = textEditingControllerALL.text.toString();
+        _homeController
+            .tempListChecklistAudit
+            .value
+            .checklistAudit[indexData]
+            .checklistElement[indexCard]
+            .checklistData[index]
+            .actual = textEditingControllerALL.text.toString();
         break;
       case "Target":
-        picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[index].target = textEditingControllerALL.text.toString();
+        _homeController
+            .tempListChecklistAudit
+            .value
+            .checklistAudit[indexData]
+            .checklistElement[indexCard]
+            .checklistData[index]
+            .target = textEditingControllerALL.text.toString();
         break;
       case "Priority":
-        picaData.value.picaElement[indexData].picaDetail[indexCard]
-            .colResult[index].improv = textEditingControllerALL.text.toString();
+        _homeController
+            .tempListChecklistAudit
+            .value
+            .checklistAudit[indexData]
+            .checklistElement[indexCard]
+            .checklistData[index]
+            .improv = textEditingControllerALL.text.toString();
         break;
       default:
     }
   }
 
-  Widget picaDetailCard(int index, PicaData picaCTCglobal) {
-    MsppController msppController = Get.find();
-    OtherProgramController otherController = Get.find();
-    PartProgramController partController = Get.find();
+  Widget picaDetailCard(int index, ListChecklistAudit listChecklistAudit) {
     PicaAnalysisController picaAController = Get.find();
     bool isNo = false;
-    String idData = picaCTCglobal
-        .picaElement[picaAController.indexDetailData.value]
-        .picaDetail[index]
-        .id;
+    List<int> radioData = [];
+    var data = listChecklistAudit
+        .checklistAudit[picaAController.indexDetailData.value]
+        .checklistElement[index];
+    for (int i = 0; i < data.checklistData.length; i++) {
+      radioData.add(data.checklistData[i].assessmentResult);
+    }
 
-    // if (msppController.radioIndexPI(idData) != null) {
-    //   if (msppController.radioIndexPI(idData).contains(1)) {
-    //     isNo = true;
-    //   }
-    // } else if (otherController.radioIndexOP(idData) != null) {
-    //   if (otherController.radioIndexOP(idData).contains(1)) {
-    //     isNo = true;
-    //   }
-    // } else if (partController.radioIndexPP(idData) != null) {
-    //   if (partController.radioIndexPP(idData).contains(1)) {
-    //     isNo = true;
-    //   }
-    // }
+    if (radioData.contains(1)) {
+      isNo = true;
+    }
 
     if (isNo) {
-      title.value = picaCTCglobal
-          .picaElement[picaAController.indexDetailData.value]
-          .picaDetail[index]
-          .title;
-      id.value = picaCTCglobal
-          .picaElement[picaAController.indexDetailData.value]
-          .picaDetail[index]
-          .id;
+      title.value = data.title;
+      id.value = data.id;
       indexData.value = picaAController.indexDetailData.value;
       indexCard.value = index;
-      docA.value = picaCTCglobal
-          .picaElement[picaAController.indexDetailData.value]
-          .picaDetail[index]
-          .tablePath
-          .docA;
-      colA.value = picaCTCglobal
-          .picaElement[picaAController.indexDetailData.value]
-          .picaDetail[index]
-          .tablePath
-          .colA;
-      docB.value = picaCTCglobal
-          .picaElement[picaAController.indexDetailData.value]
-          .picaDetail[index]
-          .tablePath
-          .docB;
+      docA.value = data.tablePath.docA;
+      colA.value = data.tablePath.colA;
+      docB.value = data.tablePath.docB;
       dataTableFilter.value = true;
       dataTableRadioIndex = 1;
-      // if (msppController.radioIndexPI(idData) != null) {
-      //   dataTableListRadio = msppController.radioIndexPI(idData);
-      // } else if (otherController.radioIndexOP(idData) != null) {
-      //   dataTableListRadio = otherController.radioIndexOP(idData);
-      // } else if (partController.radioIndexPP(idData) != null) {
-      //   dataTableListRadio = partController.radioIndexPP(idData);
-      // }
-
-      return PicaDetailCard(
-          tag: picaCTCglobal.picaElement[picaAController.indexDetailData.value]
-              .picaDetail[index].id);
+      dataTableListRadio.value = radioData;
+      print("in list: " + data.id);
+      return PicaDetailCard(tag: data.id);
     } else {
+      print("not in list: " + data.id);
       return Container();
     }
   }
@@ -141,13 +118,13 @@ class PicaCardTableController extends GetxController {
   void checkData(int value, String id, int index) {
     int indexA = 0;
     int indexB = 0;
-
-    int lengthA = picaData.value.picaElement.length;
+    List<ChecklistAudit> dataA =
+        _homeController.tempListChecklistAudit.value.checklistAudit;
     outer:
-    for (int i = 0; i <= lengthA - 1; i++) {
-      int lengthB = picaData.value.picaElement[i].picaDetail.length;
-      for (int j = 0; j <= lengthB - 1; j++) {
-        if (picaData.value.picaElement[i].picaDetail[j].id == id) {
+    for (int i = 0; i <= dataA.length - 1; i++) {
+      var dataB = dataA[i].checklistElement;
+      for (int j = 0; j <= dataB.length - 1; j++) {
+        if (dataB[j].id == id) {
           indexA = i;
           indexB = j;
           break outer;
@@ -166,49 +143,44 @@ class PicaCardTableController extends GetxController {
 
   counter({int indexA, int indexB, int row, int indexCard, int indexData}) {
     int temp = 0;
-    if (picaData.value.picaElement != null) {
-      List<ColResult> list =
-          picaData.value.picaElement[indexData].picaDetail[indexCard].colResult;
+    List<ChecklistAudit> dataA =
+        _homeController.tempListChecklistAudit.value.checklistAudit;
+    if (dataA != null) {
+      List<ChecklistData> list =
+          dataA[indexData].checklistElement[indexCard].checklistData;
       for (int i = 0; i <= list.length - 1; i++) {
         if (list[i].isNo) {
           temp += list[i].dampak;
           temp += list[i].urgensi;
         }
       }
-      picaData.value.picaElement[indexData].picaDetail[indexCard].result = temp;
-      sortCard(indexData, indexCard);
+      _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
+          .checklistElement[indexCard].result = temp;
+      _sortCard(indexData, indexCard, dataA);
     } else {
       print("counter's PicaData null");
     }
   }
 
   void displayIndex(int indexCard, int indexData,
-      {bool isGlobal = true, PicaData pica, String tag}) {
+      {bool isGlobal = true, String tag}) {
+    List<ChecklistAudit> dataA =
+        _homeController.tempListChecklistAudit.value.checklistAudit;
     loadIndex = RxList<int>();
     List<int> data = [];
     List<int> data2 = [];
     List<bool> data3 = [];
-    if (isGlobal) {
-      pica = picaData.value;
-    }
-    int length =
-        pica.picaElement[indexData].picaDetail[indexCard].colResult.length;
-    for (int i = 0; i <= length - 1; i++) {
-      if (pica.picaElement[indexData].picaDetail[indexCard].colResult[i].isNo) {
+    List<ChecklistData> dataB =
+        dataA[indexData].checklistElement[indexCard].checklistData;
+    for (int i = 0; i <= dataB.length - 1; i++) {
+      if (dataB[i].isNo) {
         loadIndex.add(i);
       }
     }
-    for (int j = 0;
-        j <=
-            pica.picaElement[indexData].picaDetail[indexCard].colResult.length -
-                1;
-        j++) {
-      data.add(pica
-          .picaElement[indexData].picaDetail[indexCard].colResult[j].urgensi);
-      data2.add(pica
-          .picaElement[indexData].picaDetail[indexCard].colResult[j].dampak);
-      data3.add(
-          pica.picaElement[indexData].picaDetail[indexCard].colResult[j].isNo);
+    for (int j = 0; j <= dataB.length - 1; j++) {
+      data.add(dataB[j].urgensi);
+      data2.add(dataB[j].dampak);
+      data3.add(dataB[j].isNo);
     }
     if (indexResultA.length == 0 || indexResultB.length == 0) {
       indexResultA.addAll(data);
@@ -225,85 +197,69 @@ class PicaCardTableController extends GetxController {
     print('v');
   }
 
-  void sortCard(int indexData, int index) {
-    loadData();
+  void _sortCard(int indexData, int index, List<ChecklistAudit> listCA) {
     try {
-      picaData.value.picaElement[indexData].picaDetail
+      _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
+          .checklistElement
           .sort((a, b) => b.result.compareTo(a.result));
     } catch (e) {
       print(e);
     }
-    counterMainCard(indexData);
-    picaData.refresh();
+    _counterMainCard(indexData, listCA);
   }
 
-  void counterMainCard(int indexData) {
+  void _counterMainCard(int indexData, List<ChecklistAudit> listCA) {
     try {
-      int length = picaData.value.picaElement[indexData].picaDetail.length;
+      int length = listCA[indexData].checklistElement.length;
       int counter = 0;
       for (int i = 0; i <= length - 1; i++) {
-        counter += picaData.value.picaElement[indexData].picaDetail[i].result;
+        counter += listCA[indexData].checklistElement[i].result;
       }
-      picaData.value.picaElement[indexData].score = counter;
-      sortMainCard();
+      _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
+          .score = counter;
+      _sortMainCard();
     } catch (e) {
-      print(e);
+      print("counterMainCard: " + e.toString());
     }
   }
 
-  void sortMainCard() {
+  void _sortMainCard() {
     try {
-      picaData.value.picaElement.sort((a, b) => b.score.compareTo(a.score));
+      _homeController.tempListChecklistAudit.value.checklistAudit
+          .sort((a, b) => b.score.compareTo(a.score));
+      _homeController.tempListChecklistAudit.refresh();
     } catch (e) {
-      print(e);
+      print("sortMainCard: " + e.toString());
     }
   }
 
   void saveData() {
     isLoading.value = true;
     for (int i = 0; i <= boolIndex.length - 1; i++) {
-      picaData.value.picaElement[indexData.value].picaDetail[indexCard.value]
-          .colResult[i].isNo = boolIndex[i];
+      _homeController
+          .tempListChecklistAudit
+          .value
+          .checklistAudit[indexData.value]
+          .checklistElement[indexCard.value]
+          .checklistData[i]
+          .isNo = boolIndex[i];
     }
-    picaData.refresh();
+    _homeController.tempListChecklistAudit.refresh();
     counter(indexData: indexData.value, indexCard: indexCard.value);
     connectivityChecker().then((conn) {
       if (conn) {
-        _databaseProvider
-            .savePicaData(picaData.value, loginController.usr.value.username)
-            .then((value) {
-          if (value) {
-            _databaseProvider.showDialog(
-                title: 'Sukses', middleText: 'Data berhasil di update');
-            isLoading.value = false;
-          }
-        });
+        // _databaseProvider
+        //     .savePicaData(picaData.value, loginController.usr.value.username)
+        //     .then((value) {
+        //   if (value) {
+        //     _databaseProvider.showDialog(
+        //         title: 'Sukses', middleText: 'Data berhasil di update');
+        //     isLoading.value = false;
+        //   }
+        // });
       } else {
         isLoading.value = false;
       }
     });
-  }
-
-  void loadData() {
-    loadPicaData(username: loginController.usr.value.username);
-  }
-
-  void loadPicaData({String username}) {
-    if (picaData.value.picaElement == null) {
-      isLoading.value = true;
-      connectivityChecker().then((conn) {
-        if (conn) {
-          _databaseProvider.loadPicaData(username).then((value) {
-            if (value != null) {
-              picaData.value = value;
-              picaData.refresh();
-              isLoading.value = false;
-            }
-          });
-        } else {
-          isLoading.value = false;
-        }
-      });
-    }
   }
 }

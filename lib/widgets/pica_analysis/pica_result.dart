@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,8 +14,8 @@ class PicaResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PicaCardTableController _globalController = Get.find(tag: 'global');
     final PicaCardTableController _controller = Get.find(tag: tag);
+    final HomeController _homeController = Get.find();
     return Container(
       padding: EdgeInsets.only(right: 5),
       child: SingleChildScrollView(
@@ -39,22 +40,22 @@ class PicaResult extends StatelessWidget {
                         activeColor: Color(0xffffcd29),
                         onChanged: (int value) {
                           if (isA) {
-                            _globalController
-                                .picaData
+                            _homeController
+                                .tempListChecklistAudit
                                 .value
-                                .picaElement[_controller.indexData.value]
-                                .picaDetail[_controller.indexCard.value]
-                                .colResult[_controller.loadIndex[index]]
+                                .checklistAudit[_controller.indexData.value]
+                                .checklistElement[_controller.indexCard.value]
+                                .checklistData[_controller.loadIndex[index]]
                                 .urgensi = value;
                             _controller.indexResultA[
                                 _controller.loadIndex[index]] = value;
                           } else {
-                            _globalController
-                                .picaData
+                            _homeController
+                                .tempListChecklistAudit
                                 .value
-                                .picaElement[_controller.indexData.value]
-                                .picaDetail[_controller.indexCard.value]
-                                .colResult[_controller.loadIndex[index]]
+                                .checklistAudit[_controller.indexData.value]
+                                .checklistElement[_controller.indexCard.value]
+                                .checklistData[_controller.loadIndex[index]]
                                 .dampak = value;
                             _controller.indexResultB[
                                 _controller.loadIndex[index]] = value;

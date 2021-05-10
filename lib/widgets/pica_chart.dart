@@ -44,7 +44,9 @@ class _PicaChartState extends State<PicaChart>
                   child: Container(
                     child: Obx(
                       () {
-                        if (_homeController.isLoaded.value) {
+                        if (_homeController
+                                .tempListChecklistAudit.value.checklistAudit !=
+                            null) {
                           picaCController.combineList();
                           return Container(
                             width: 500,

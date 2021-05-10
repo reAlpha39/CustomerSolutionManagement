@@ -1,4 +1,5 @@
 import 'package:customer/controller/data_table_controller.dart';
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaDetailMatrixTable extends StatelessWidget {
-  final MsppController controller = Get.find();
+  final HomeController _homeController = Get.find();
   final DataTableController dtController = Get.find();
   final PicaCardTableController listCardController = Get.find(tag: 'global');
   final List<String> data = ['0', '1', '2', '3', '4', '5'];
@@ -22,12 +23,12 @@ class PicaDetailMatrixTable extends StatelessWidget {
         resultTextField(index: id, name: name);
       },
       child: Obx(() {
-        var listText = listCardController
-            .picaData
+        var listText = _homeController
+            .tempListChecklistAudit
             .value
-            .picaElement[controllerPU.indexData.value]
-            .picaDetail[controllerPU.indexCard.value]
-            .colResult;
+            .checklistAudit[controllerPU.indexData.value]
+            .checklistElement[controllerPU.indexCard.value]
+            .checklistData;
         String text = "Klik disini";
         if (name == "Actual") {
           if (listText[id].actual != "") {
@@ -79,7 +80,7 @@ class PicaDetailMatrixTable extends StatelessWidget {
     );
     controllerPU.displayIndex(
         controllerPU.indexCard.value, controllerPU.indexData.value,
-        isGlobal: false, pica: listCardController.picaData.value, tag: tag);
+        isGlobal: false, tag: tag);
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Obx(

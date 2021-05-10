@@ -18,7 +18,6 @@ class MsppController extends GetxController {
 
   Rx<Mspp> msppData;
   RxBool isLoading = false.obs;
-  RxBool isLoaded = false.obs;
   RxList<int> itemIndex = [0].obs;
   RxInt assessmentResult = (-1).obs;
 
@@ -37,25 +36,37 @@ class MsppController extends GetxController {
   }
 
   loadItem({String docA, String docB, int index, isAssessmentResult}) {
-    List<ChecklistAudit> data = _homeController.tempListChecklistAudit.value.checklistAudit;
+    List<ChecklistAudit> data =
+        _homeController.tempListChecklistAudit.value.checklistAudit;
     int indexA = data.indexWhere((element) => element.id == docA);
     int indexB = data[indexA]
         .checklistElement
         .indexWhere((element) => element.id == docB);
     var result;
     if (isAssessmentResult) {
-      result = _homeController.tempListChecklistAudit.value.checklistAudit[indexA]
-          .checklistElement[indexB].checklistData[index].assessmentResult;
+      result = _homeController
+          .tempListChecklistAudit
+          .value
+          .checklistAudit[indexA]
+          .checklistElement[indexB]
+          .checklistData[index]
+          .assessmentResult;
       assessmentResult.value = result;
     } else {
-      result = _homeController.tempListChecklistAudit.value.checklistAudit[indexA]
-          .checklistElement[indexB].checklistData[index].remark;
+      result = _homeController
+          .tempListChecklistAudit
+          .value
+          .checklistAudit[indexA]
+          .checklistElement[indexB]
+          .checklistData[index]
+          .remark;
     }
     return result;
   }
 
   void searchItemIndex({String docA, String docB, int index}) {
-    List<ChecklistAudit> data = _homeController.tempListChecklistAudit.value.checklistAudit;
+    List<ChecklistAudit> data =
+        _homeController.tempListChecklistAudit.value.checklistAudit;
     int indexA = data.indexWhere((element) => element.id == docA);
     int indexB = data[indexA]
         .checklistElement
@@ -66,14 +77,34 @@ class MsppController extends GetxController {
   void saveItem({String docA, String docB, int index, isAssessmentResult}) {
     searchItemIndex(docA: docA, docB: docB, index: index);
     if (isAssessmentResult) {
-      _homeController.tempListChecklistAudit
+      _homeController
+          .tempListChecklistAudit
           .value
           .checklistAudit[itemIndex[0]]
           .checklistElement[itemIndex[1]]
           .checklistData[index]
           .assessmentResult = assessmentResult.value;
+      if (assessmentResult.value == 1) {
+        _homeController
+            .tempListChecklistAudit
+            .value
+            .checklistAudit[itemIndex[0]]
+            .checklistElement[itemIndex[1]]
+            .checklistData[index]
+            .isNo = true;
+      } else {
+        _homeController
+            .tempListChecklistAudit
+            .value
+            .checklistAudit[itemIndex[0]]
+            .checklistElement[itemIndex[1]]
+            .checklistData[index]
+            .isNo = false;
+      }
+      
     } else {
-      _homeController.tempListChecklistAudit
+      _homeController
+          .tempListChecklistAudit
           .value
           .checklistAudit[itemIndex[0]]
           .checklistElement[itemIndex[1]]

@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_menu_items.dart';
@@ -8,6 +9,7 @@ import 'package:line_icons/line_icons.dart';
 class PicaDetailMenuCard extends StatelessWidget {
   final PicaAnalysisController picaAController = Get.find();
   final PicaCardTableController picaCTController = Get.find(tag: 'global');
+  final HomeController _homeController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,7 +17,8 @@ class PicaDetailMenuCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 72.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
       child: Obx(
-        () => picaCTController.picaData.value.picaElement == null
+        () => _homeController.tempListChecklistAudit.value.checklistAudit ==
+                null
             ? Center(
                 child: CircularProgressIndicator(
                   backgroundColor: Colors.white,
@@ -43,10 +46,10 @@ class PicaDetailMenuCard extends StatelessWidget {
                               () => Container(
                                 width: 220,
                                 child: Text(
-                                  picaCTController
-                                      .picaData
+                                  _homeController
+                                      .tempListChecklistAudit
                                       .value
-                                      .picaElement[
+                                      .checklistAudit[
                                           picaAController.indexDetailData.value]
                                       .title,
                                   overflow: TextOverflow.ellipsis,
@@ -72,10 +75,10 @@ class PicaDetailMenuCard extends StatelessWidget {
                             child: Center(
                                 child: Obx(
                               () => Text(
-                                picaCTController
-                                    .picaData
+                                _homeController
+                                    .tempListChecklistAudit
                                     .value
-                                    .picaElement[
+                                    .checklistAudit[
                                         picaAController.indexDetailData.value]
                                     .score
                                     .toString(),

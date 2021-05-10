@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 class PicaDetailMenuItems extends StatelessWidget {
   final PicaAnalysisController picaAController = Get.find();
   final PicaCardTableController picaCTController = Get.find(tag: 'global');
+  final HomeController _homeController = Get.find();
   final MsppController msppController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -15,30 +17,29 @@ class PicaDetailMenuItems extends StatelessWidget {
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Obx(
-          () => picaCTController.picaData.value.picaElement == null
+          () => _homeController.tempListChecklistAudit.value.checklistAudit ==
+                  null
               ? CircularProgressIndicator()
               : Column(
                   mainAxisSize: MainAxisSize.max,
                   children: List<Widget>.generate(
-                    picaCTController
-                        .picaData
-                        .value
-                        .picaElement[picaAController.indexDetailData.value]
-                        .picaDetail
-                        .length,
-                    (index) => Obx(() {
-                      PicaCardTableController picaCTCTag = Get.find(
-                          tag: picaCTController
-                              .picaData
-                              .value
-                              .picaElement[
-                                  picaAController.indexDetailData.value]
-                              .picaDetail[index]
-                              .id);
-                      return picaCTCTag.picaDetailCard(
-                          index, picaCTController.picaData.value);
-                    }),
-                  ),
+                      _homeController
+                          .tempListChecklistAudit
+                          .value
+                          .checklistAudit[picaAController.indexDetailData.value]
+                          .checklistElement
+                          .length, (index) {
+                    PicaCardTableController picaCTCTag = Get.find(
+                        tag: _homeController
+                            .tempListChecklistAudit
+                            .value
+                            .checklistAudit[
+                                picaAController.indexDetailData.value]
+                            .checklistElement[index]
+                            .id);
+                    return picaCTCTag.picaDetailCard(
+                        index, _homeController.tempListChecklistAudit.value);
+                  }),
                 ),
         ),
       ),

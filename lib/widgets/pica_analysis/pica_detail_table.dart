@@ -89,7 +89,7 @@ class PicaDetailTable extends StatelessWidget {
     );
     controllerPU.displayIndex(
         controllerPU.indexCard.value, controllerPU.indexData.value,
-        isGlobal: false, pica: listCardController.picaData.value, tag: tag);
+        isGlobal: false, tag: tag);
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Obx(

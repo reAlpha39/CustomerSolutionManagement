@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_table.dart';
@@ -7,7 +8,8 @@ import 'package:get/get.dart';
 
 class PicaDetailCard extends StatelessWidget {
   final PicaAnalysisController picaAController = Get.find();
-  final PicaCardTableController globalController = Get.find(tag: 'global');
+  final HomeController _homeController = Get.find();
+  // final PicaCardTableController globalController = Get.find(tag: 'global');
   final String tag;
 
   PicaDetailCard({Key key, this.tag}) : super(key: key);
@@ -43,11 +45,11 @@ class PicaDetailCard extends StatelessWidget {
                           child: Obx(
                             () => Center(
                                 child: Text(
-                              globalController
-                                  .picaData
+                              _homeController
+                                  .tempListChecklistAudit
                                   .value
-                                  .picaElement[controller.indexData.value]
-                                  .picaDetail[controller.indexCard.value]
+                                  .checklistAudit[controller.indexData.value]
+                                  .checklistElement[controller.indexCard.value]
                                   .result
                                   .toString(),
                               style: TextStyle(
@@ -71,7 +73,9 @@ class PicaDetailCard extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: Obx(() => picaAController.picaTable(tag))
+                expanded: Obx(
+                  () => picaAController.picaTable(tag),
+                ),
               ),
             ),
           ),

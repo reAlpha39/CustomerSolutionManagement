@@ -4,7 +4,6 @@ import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
 import 'package:customer/widgets/home/home_admin.dart';
 import 'package:customer/widgets/home/home_customer.dart';
-import 'package:customer/widgets/home/home_internal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +19,6 @@ class HomeController extends GetxController {
   RxList<String> listCustomer;
   RxString idCustomer = ''.obs;
   RxBool isLoading = false.obs;
-  RxBool isLoaded = false.obs;
   Rx<ListChecklistAudit> tempListChecklistAudit = ListChecklistAudit().obs;
 
   @override
@@ -45,7 +43,6 @@ class HomeController extends GetxController {
             .then((value) {
           tempListChecklistAudit.value = value;
           tempListChecklistAudit.refresh();
-          isLoaded.value = true;
         });
       }
     });

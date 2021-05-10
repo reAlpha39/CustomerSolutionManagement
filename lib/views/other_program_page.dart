@@ -37,7 +37,8 @@ class OtherProgramPage extends StatelessWidget {
           ),
         ),
         body: Obx(
-          () => !_homeController.isLoaded.value
+          () => _homeController.tempListChecklistAudit.value.checklistAudit ==
+                  null
               ? Center(
                   child: CircularProgressIndicator(),
                 )

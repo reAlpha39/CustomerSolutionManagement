@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer/controller/login_controller.dart';
-import 'package:customer/initial_data.dart';
 import 'package:customer/models/audit_table_data.dart';
 import 'package:customer/models/checklist_audit/checklist_audit.dart';
 import 'package:customer/models/checklist_audit/checklist_element.dart';
@@ -456,44 +455,44 @@ class DatabaseProvider {
     return listChecklistAudit;
   }
 
-  testMspp(String username) {
-    firestore = FirebaseFirestore.instance;
-    ListChecklistAudit listChecklistAudit = ListChecklistAudit();
-    ChecklistElement checklistElement = ChecklistElement();
+  // testMspp(String username) {
+  //   firestore = FirebaseFirestore.instance;
+  //   ListChecklistAudit listChecklistAudit = ListChecklistAudit();
+  //   ChecklistElement checklistElement = ChecklistElement();
 
-    try {
-      CollectionReference colRef = firestore
-          .collection('initial_data')
-          .doc('checklist_audit')
-          .collection('data');
-      var initialData = initialDataMspp();
-      listChecklistAudit = ListChecklistAudit.fromJson(initialData);
-      DocumentReference docRefA;
-      DocumentReference docRefB;
-      var temp;
-      for (int i = 0; i <= listChecklistAudit.checklistAudit.length - 1; i++) {
-        docRefA = colRef.doc(listChecklistAudit.checklistAudit[i].id);
-        docRefA.set(listChecklistAudit.checklistAudit[i].toMap());
-        for (int j = 0;
-            j <=
-                listChecklistAudit.checklistAudit[i].checklistElement.length -
-                    1;
-            j++) {
-          temp =
-              listChecklistAudit.checklistAudit[i].checklistElement[j].toMap();
-          checklistElement = ChecklistElement.fromMap(temp);
-          docRefB = colRef
-              .doc(listChecklistAudit.checklistAudit[i].id)
-              .collection('element')
-              .doc(checklistElement.id);
-          docRefB.set(checklistElement.toMap());
-        }
-      }
-    } catch (e, s) {
-      print(e);
-      print(s);
-    }
-  }
+  //   try {
+  //     CollectionReference colRef = firestore
+  //         .collection('initial_data')
+  //         .doc('checklist_audit')
+  //         .collection('data');
+  //     var initialData = initialDataMspp();
+  //     listChecklistAudit = ListChecklistAudit.fromJson(initialData);
+  //     DocumentReference docRefA;
+  //     DocumentReference docRefB;
+  //     var temp;
+  //     for (int i = 0; i <= listChecklistAudit.checklistAudit.length - 1; i++) {
+  //       docRefA = colRef.doc(listChecklistAudit.checklistAudit[i].id);
+  //       docRefA.set(listChecklistAudit.checklistAudit[i].toMap());
+  //       for (int j = 0;
+  //           j <=
+  //               listChecklistAudit.checklistAudit[i].checklistElement.length -
+  //                   1;
+  //           j++) {
+  //         temp =
+  //             listChecklistAudit.checklistAudit[i].checklistElement[j].toMap();
+  //         checklistElement = ChecklistElement.fromMap(temp);
+  //         docRefB = colRef
+  //             .doc(listChecklistAudit.checklistAudit[i].id)
+  //             .collection('element')
+  //             .doc(checklistElement.id);
+  //         docRefB.set(checklistElement.toMap());
+  //       }
+  //     }
+  //   } catch (e, s) {
+  //     print(e);
+  //     print(s);
+  //   }
+  // }
 
   // loadInitialData() async {
   //   firestore = FirebaseFirestore.instance;

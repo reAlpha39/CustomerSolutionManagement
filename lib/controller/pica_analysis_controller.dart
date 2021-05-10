@@ -1,3 +1,4 @@
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_matrix_table.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_table.dart';
@@ -7,6 +8,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PicaAnalysisController extends GetxController {
   PicaCardTableController _picaCT = Get.find(tag: 'global');
+  HomeController _homeController = Get.find();
 
   RxInt navBarIndex = 0.obs;
   RxInt indexDetailData = 0.obs;
@@ -21,8 +23,7 @@ class PicaAnalysisController extends GetxController {
   }
 
   void showDetailCard(int indexData, String idData) {
-    _picaCT.loadData();
-    _picaCT.counterMainCard(indexData);
+    // _picaCT.counterMainCard(indexData);
     indexDetailData.value = indexData;
     idDetailData.value = idData;
     panelController.open();
@@ -31,7 +32,7 @@ class PicaAnalysisController extends GetxController {
   void changeOpenedIndexData() {
     try {
       if (panelController.isPanelOpen) {
-        int index = _picaCT.picaData.value.picaElement
+        int index = _homeController.tempListChecklistAudit.value.checklistAudit
             .indexWhere((element) => element.id.contains(idDetailData.value));
         print(index);
         indexDetailData.value = index;

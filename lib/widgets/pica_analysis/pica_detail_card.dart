@@ -1,7 +1,6 @@
 import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
-import 'package:customer/widgets/pica_analysis/pica_detail_table.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,10 +8,10 @@ import 'package:get/get.dart';
 class PicaDetailCard extends StatelessWidget {
   final PicaAnalysisController picaAController = Get.find();
   final HomeController _homeController = Get.find();
-  // final PicaCardTableController globalController = Get.find(tag: 'global');
   final String tag;
+  final Widget picaData;
 
-  PicaDetailCard({Key key, this.tag}) : super(key: key);
+  PicaDetailCard({Key key, this.tag, this.picaData}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final PicaCardTableController controller = Get.find(tag: tag);
@@ -73,9 +72,7 @@ class PicaDetailCard extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: Obx(
-                  () => picaAController.picaTable(tag),
-                ),
+                expanded: picaData,
               ),
             ),
           ),

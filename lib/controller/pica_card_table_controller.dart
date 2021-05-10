@@ -6,6 +6,8 @@ import 'package:customer/models/checklist_audit/checklist_data.dart';
 import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/utils/connectivity_checker.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_card.dart';
+import 'package:customer/widgets/pica_analysis/pica_detail_matrix_table.dart';
+import 'package:customer/widgets/pica_analysis/pica_detail_table.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -84,6 +86,7 @@ class PicaCardTableController extends GetxController {
   Widget picaDetailCard(int index, ListChecklistAudit listChecklistAudit) {
     PicaAnalysisController picaAController = Get.find();
     bool isNo = false;
+    Widget picaData;
     List<int> radioData = [];
     var data = listChecklistAudit
         .checklistAudit[picaAController.indexDetailData.value]
@@ -108,7 +111,17 @@ class PicaCardTableController extends GetxController {
       dataTableRadioIndex = 1;
       dataTableListRadio.value = radioData;
       print("in list: " + data.id);
-      return PicaDetailCard(tag: data.id);
+      if (picaAController.navBarIndex.value == 1) {
+        picaData = PicaDetailTable(tag: data.id);
+      } else if (picaAController.navBarIndex.value == 2) {
+        picaData = PicaDetailMatrixTable(tag: data.id);
+      } else {
+        picaData = Container();
+      }
+      return PicaDetailCard(
+        tag: data.id,
+        picaData: picaData,
+      );
     } else {
       print("not in list: " + data.id);
       return Container();

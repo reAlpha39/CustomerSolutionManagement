@@ -83,76 +83,78 @@ class PicaDetailMatrixTable extends StatelessWidget {
         isGlobal: false, tag: tag);
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
-      child: dtController.auditTableData.value.id == null
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : Scrollbar(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: DataTable(
-                  dataRowHeight: 100,
-                  columns: [
-                    DataColumn(label: Text('Deskripsi Problem')),
-                    DataColumn(label: Text('PIC')),
-                    DataColumn(label: Text('Actual')),
-                    DataColumn(label: Text('Target')),
-                    DataColumn(label: Text('Prioritas Improve')),
-                  ],
-                  rows: List<DataRow>.generate(
-                    dtController.auditTableData.value.id.length,
-                    (index) => DataRow(
-                      cells: [
-                        DataCell(
-                          Padding(
-                            padding: const EdgeInsets.only(top: 7, bottom: 7),
-                            child: Container(
-                              width: 160,
+      child: Obx(
+        () => dtController.auditTableData.value.id == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Scrollbar(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: DataTable(
+                    dataRowHeight: 100,
+                    columns: [
+                      DataColumn(label: Text('Deskripsi Problem')),
+                      DataColumn(label: Text('PIC')),
+                      DataColumn(label: Text('Actual')),
+                      DataColumn(label: Text('Target')),
+                      DataColumn(label: Text('Prioritas Improve')),
+                    ],
+                    rows: List<DataRow>.generate(
+                      dtController.auditTableData.value.id.length,
+                      (index) => DataRow(
+                        cells: [
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
+                              child: Container(
+                                width: 160,
+                                child: ScrollConfiguration(
+                                  behavior: CustomScrollBehavior(),
+                                  child: SingleChildScrollView(
+                                    child: Text(dtController
+                                        .auditTableData.value.description[index]
+                                        .replaceAll("\\n", "\n")),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(
+                            Padding(
+                              padding: const EdgeInsets.only(top: 7, bottom: 7),
                               child: ScrollConfiguration(
                                 behavior: CustomScrollBehavior(),
                                 child: SingleChildScrollView(
                                   child: Text(dtController
-                                      .auditTableData.value.description[index]
+                                      .auditTableData.value.pic[index]
                                       .replaceAll("\\n", "\n")),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        DataCell(
-                          Padding(
-                            padding: const EdgeInsets.only(top: 7, bottom: 7),
-                            child: ScrollConfiguration(
-                              behavior: CustomScrollBehavior(),
-                              child: SingleChildScrollView(
-                                child: Text(dtController
-                                    .auditTableData.value.pic[index]
-                                    .replaceAll("\\n", "\n")),
-                              ),
-                            ),
+                          DataCell(
+                            textButton(
+                                dtController.auditTableData.value.id[index],
+                                "Actual"),
                           ),
-                        ),
-                        DataCell(
-                          textButton(
-                              dtController.auditTableData.value.id[index],
-                              "Actual"),
-                        ),
-                        DataCell(
-                          textButton(
-                              dtController.auditTableData.value.id[index],
-                              "Target"),
-                        ),
-                        DataCell(
-                          textButton(
-                              dtController.auditTableData.value.id[index],
-                              "Priority"),
-                        ),
-                      ],
+                          DataCell(
+                            textButton(
+                                dtController.auditTableData.value.id[index],
+                                "Target"),
+                          ),
+                          DataCell(
+                            textButton(
+                                dtController.auditTableData.value.id[index],
+                                "Priority"),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
+      ),
     );
   }
 }

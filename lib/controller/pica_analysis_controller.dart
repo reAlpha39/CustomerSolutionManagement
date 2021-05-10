@@ -1,7 +1,5 @@
 import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
-import 'package:customer/widgets/pica_analysis/pica_detail_matrix_table.dart';
-import 'package:customer/widgets/pica_analysis/pica_detail_table.dart';
 import 'package:customer/widgets/pica_analysis/pica_observation.dart';
 import 'package:customer/widgets/pica_chart.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +31,7 @@ class PicaAnalysisController extends GetxController {
       case 1:
         _picaCT.sortMainCard();
         display = PicaObservation();
+
         break;
       case 2:
         _picaCT.sortMainCard();
@@ -59,16 +58,6 @@ class PicaAnalysisController extends GetxController {
       }
     } catch (e) {
       print(e);
-    }
-  }
-
-  Widget picaTable(String tag) {
-    if (navBarIndex.value == 1) {
-      return PicaDetailTable(tag: tag);
-    } else if (navBarIndex.value == 2) {
-      return PicaDetailMatrixTable(tag: tag);
-    } else {
-      return Container();
     }
   }
 }

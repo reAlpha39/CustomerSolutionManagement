@@ -1,4 +1,6 @@
 import 'package:customer/controller/home_controller.dart';
+import 'package:customer/widgets/other_program/other_co.dart';
+import 'package:customer/widgets/other_program/other_mr.dart';
 import 'package:customer/widgets/other_program/other_people.dart';
 import 'package:customer/widgets/other_program/other_regm.dart';
 import 'package:customer/widgets/other_program/other_vm.dart';
@@ -10,7 +12,7 @@ class OtherProgramPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: Text('Other Program'),
@@ -30,7 +32,17 @@ class OtherProgramPage extends StatelessWidget {
               ),
               Tab(
                 child: Column(
+                  children: [Text('Management'), Text('Review')],
+                ),
+              ),
+              Tab(
+                child: Column(
                   children: [Text('Regular'), Text('Meeting')],
+                ),
+              ),
+              Tab(
+                child: Column(
+                  children: [Text('Customer'), Text('Overview')],
                 ),
               ),
             ],
@@ -46,7 +58,9 @@ class OtherProgramPage extends StatelessWidget {
                   children: [
                     OtherPeople(),
                     OtherVm(),
+                    OtherMr(),
                     OtherRegm(),
+                    OtherCo(),
                   ],
                 ),
         ),

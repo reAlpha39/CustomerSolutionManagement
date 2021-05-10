@@ -115,32 +115,6 @@ class PicaCardTableController extends GetxController {
     }
   }
 
-  void checkData(int value, String id, int index) {
-    int indexA = 0;
-    int indexB = 0;
-    List<ChecklistAudit> dataA =
-        _homeController.tempListChecklistAudit.value.checklistAudit;
-    outer:
-    for (int i = 0; i <= dataA.length - 1; i++) {
-      var dataB = dataA[i].checklistElement;
-      for (int j = 0; j <= dataB.length - 1; j++) {
-        if (dataB[j].id == id) {
-          indexA = i;
-          indexB = j;
-          break outer;
-        }
-      }
-    }
-    indexData.value = indexA;
-    indexCard.value = indexB;
-    displayIndex(indexB, indexA);
-    if (value == 1) {
-      boolIndex[index] = true;
-    } else {
-      boolIndex[index] = false;
-    }
-  }
-
   counter({int indexB, int indexA}) {
     int temp = 0;
     List<ChecklistAudit> dataA =
@@ -218,6 +192,7 @@ class PicaCardTableController extends GetxController {
       _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
           .score = counter;
       sortMainCard();
+      _homeController.tempListChecklistAudit.refresh();
     } catch (e) {
       print("counterMainCard: " + e.toString());
     }
@@ -227,7 +202,6 @@ class PicaCardTableController extends GetxController {
     try {
       _homeController.tempListChecklistAudit.value.checklistAudit
           .sort((a, b) => b.score.compareTo(a.score));
-      _homeController.tempListChecklistAudit.refresh();
     } catch (e) {
       print("sortMainCard: " + e.toString());
     }

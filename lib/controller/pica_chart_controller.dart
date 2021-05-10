@@ -1,10 +1,9 @@
 import 'package:customer/controller/home_controller.dart';
-import 'package:customer/controller/mspp_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaChartController extends GetxController {
-  HomeController _homeController = Get.find();
+  final HomeController _homeController = Get.find();
 
   RxList<int> indexPI = RxList<int>();
   RxList<int> indexPSP = RxList<int>();
@@ -58,8 +57,8 @@ class PicaChartController extends GetxController {
     }.obs;
   }
 
-  scorePica(List<int> list) {
-    List<int> data = filterList(list);
+  double scorePica(List<int> list) {
+    List<int> data = _filterList(list);
     double percentage = 0.0;
     double score = 0;
     try {
@@ -86,7 +85,7 @@ class PicaChartController extends GetxController {
     return color;
   }
 
-  List<int> filterList(List<int> list) {
+  List<int> _filterList(List<int> list) {
     int yes = 0;
     int no = 0;
     int na = 0;

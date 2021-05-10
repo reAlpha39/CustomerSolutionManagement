@@ -1,8 +1,6 @@
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_menu_card.dart';
-import 'package:customer/widgets/pica_analysis/pica_observation.dart';
-import 'package:customer/widgets/pica_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -12,11 +10,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 class PicaAnalysisPage extends StatelessWidget {
   final PicaAnalysisController _picaAController = Get.find();
   final PicaCardTableController _picaCTController = Get.find(tag: 'global');
-  final List<Widget> _widgetOption = <Widget>[
-    PicaChart(),
-    PicaObservation(),
-    PicaObservation(),
-  ];
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -121,7 +114,7 @@ class PicaAnalysisPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Obx(
                     () =>
-                        _widgetOption.elementAt(_picaAController.navBarIndex.value),
+                    _picaAController.widgetOptions()
                   ),
                 ),
               ),

@@ -217,13 +217,13 @@ class PicaCardTableController extends GetxController {
       }
       _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
           .score = counter;
-      _sortMainCard();
+      sortMainCard();
     } catch (e) {
       print("counterMainCard: " + e.toString());
     }
   }
 
-  void _sortMainCard() {
+  void sortMainCard() {
     try {
       _homeController.tempListChecklistAudit.value.checklistAudit
           .sort((a, b) => b.score.compareTo(a.score));

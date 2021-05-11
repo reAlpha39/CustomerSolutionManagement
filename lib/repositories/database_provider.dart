@@ -75,8 +75,8 @@ class DatabaseProvider {
 
   int searchLastId(QuerySnapshot querySnapshot) {
     int id;
-    var data = querySnapshot.docs.last.data();
-    id = int.tryParse(data['id']);
+    var data = querySnapshot.docs.last.id;
+    id = int.tryParse(data);
     return id;
   }
 

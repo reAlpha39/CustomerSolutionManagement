@@ -34,7 +34,7 @@ dependencies:
   firebase_auth: ^1.1.4
   get: ^4.1.4
   expandable: ^5.0.1
-  data_connection_checker: ^0.3.4
+  internet_connection_checker: ^0.0.1
   sliding_up_panel: ^2.0.0+1
   fl_chart: ^0.36.1
   google_nav_bar: ^5.0.5

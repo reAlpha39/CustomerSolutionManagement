@@ -38,8 +38,8 @@ class HomePage extends StatelessWidget {
             textCancel: 'Batal',
             confirmTextColor: Colors.black87,
             onConfirm: () => exit(0),
-            onCancel: () => Get.back()) ??
-        false;
+            onCancel: () => Get.back()) as Future<bool>? ??
+        false as Future<bool>;
   }
 }
 
@@ -248,7 +248,7 @@ class Shapeground extends StatelessWidget {
     );
   }
 
-  Future<bool> listCustomer() {
+  Future<bool?> listCustomer() {
     return Get.defaultDialog(
       barrierDismissible: false,
       radius: 17,
@@ -287,30 +287,36 @@ class ListCustomer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: SingleChildScrollView(
-        child: Column(
-          children: List<Widget>.generate(
-            _homeController.listCustomer.length,
-            (index) => Column(
-              children: [
-                ListTile(
-                  title: Text('${_homeController.listCustomer[index]}'),
-                  onTap: () {
-                    _homeController.idCustomer.value =
-                        _homeController.listCustomer[index];
-                    Get.back(closeOverlays: false);
-                  },
+      child: Obx(
+        () => _homeController.listCustomer == null
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  children: List<Widget>.generate(
+                    _homeController.listCustomer!.length,
+                    (index) => Column(
+                      children: [
+                        ListTile(
+                          title: Text('${_homeController.listCustomer![index]}'),
+                          onTap: () {
+                            _homeController.idCustomer.value =
+                                _homeController.listCustomer![index];
+                            Get.back(closeOverlays: false);
+                          },
+                        ),
+                        index != _homeController.listCustomer!.length - 1
+                            ? Divider(
+                                height: 3,
+                                color: Colors.black45,
+                              )
+                            : Container(),
+                      ],
+                    ),
+                  ),
                 ),
-                index != _homeController.listCustomer.length - 1
-                    ? Divider(
-                        height: 3,
-                        color: Colors.black45,
-                      )
-                    : Container(),
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }

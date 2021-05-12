@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeCard extends StatelessWidget {
-  final String route;
-  final String imageAsset;
-  final String titleText;
+  final String? route;
+  final String? imageAsset;
+  final String? titleText;
 
-  const HomeCard({Key key, this.route, this.imageAsset, this.titleText})
+  const HomeCard({Key? key, this.route, this.imageAsset, this.titleText})
       : super(key: key);
 
   @override
@@ -20,13 +20,13 @@ class HomeCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(17)),
               child: ListTile(
-                  title: Text(titleText),
+                  title: Text(titleText!),
                   contentPadding: EdgeInsets.all(20),
-                  onTap: () => Get.toNamed(route),
+                  onTap: () => Get.toNamed(route!),
                   trailing: ConstrainedBox(
                     constraints: BoxConstraints(maxHeight: 100, maxWidth: 100),
                     child: Image.asset(
-                      imageAsset,
+                      imageAsset!,
                     ),
                   ))),
         ));

@@ -23,28 +23,28 @@ import 'package:get/get.dart';
 class DatabaseProvider {
   LoginController loginController = LoginController();
   Users users = Users();
-  FirebaseFirestore firestore;
+  late FirebaseFirestore firestore;
 
   //Inisialisasi Firebase instance
-  Future<FirebaseApp> getFirestore() async {
-    FirebaseApp firebaseApp;
+  Future<FirebaseApp?> getFirestore() async {
+    FirebaseApp? firebaseApp;
     await Firebase.initializeApp().then((value) => firebaseApp = value);
     return firebaseApp;
   }
 
   //validate username
-  Future<Users> validateUser(String username) async {
-    Users user;
+  Future<Users?> validateUser(String username) async {
+    Users? user;
     try {
       firestore = FirebaseFirestore.instance;
-      List<QueryDocumentSnapshot> dataUser;
+      late List<QueryDocumentSnapshot> dataUser;
       await firestore
           .collection('users')
           .where('username', isEqualTo: username)
           .get()
           .then((value) => dataUser = value.docs);
       if (dataUser.length == 1) {
-        user = Users.fromMap(dataUser[0].data());
+        user = Users.fromMap(dataUser[0].data() as Map<String, dynamic>);
       }
     } on FirebaseException catch (e) {
       loginController.isLoading.value = false;
@@ -65,7 +65,7 @@ class DatabaseProvider {
             showDialog(
                 title: "Sukses", middleText: "Data berhasil dimasukkan"));
       } else {
-        supportUt.id = '${searchLastId(value) + 1}';
+        supportUt.id = '${searchLastId(value)! + 1}';
         collection.doc(supportUt.id).set(supportUt.toMap()).then((_) =>
             showDialog(
                 title: "Sukses", middleText: "Data berhasil dimasukkan"));
@@ -73,8 +73,8 @@ class DatabaseProvider {
     });
   }
 
-  int searchLastId(QuerySnapshot querySnapshot) {
-    int id;
+  int? searchLastId(QuerySnapshot querySnapshot) {
+    int? id;
     var data = querySnapshot.docs.last.id;
     id = int.tryParse(data);
     return id;
@@ -124,7 +124,7 @@ class DatabaseProvider {
       CollectionReference collection = doc.collection('service_program');
       var data = await collection.doc('mspp').get();
       if (data.exists) {
-        mspp = Mspp.fromMap(data.data());
+        mspp = Mspp.fromMap(data.data() as Map<String, dynamic>);
       }
     } catch (e) {}
     return mspp;
@@ -140,7 +140,7 @@ class DatabaseProvider {
       CollectionReference collection = doc.collection('service_program');
       var data = await collection.doc('other_program').get();
       if (data.exists) {
-        otherProgram = OtherProgram.fromMap(data.data());
+        otherProgram = OtherProgram.fromMap(data.data() as Map<String, dynamic>);
       }
     } catch (e) {}
     return otherProgram;
@@ -155,7 +155,7 @@ class DatabaseProvider {
       CollectionReference collection = doc.collection('service_program');
       var data = await collection.doc('part_program').get();
       if (data.exists) {
-        partProgram = PartProgram.fromMap(data.data());
+        partProgram = PartProgram.fromMap(data.data() as Map<String, dynamic>);
       }
     } on FirebaseException catch (e) {
       print(e);
@@ -169,9 +169,9 @@ class DatabaseProvider {
     QuerySnapshot snapshot = await firestore.collection('users').get();
     var docs = snapshot.docs;
     for (int i = 0; i <= docs.length - 1; i++) {
-      Users users = Users.fromMap(docs[i].data());
+      Users users = Users.fromMap(docs[i].data() as Map<String, dynamic>);
       if (users.type == 'customer') {
-        listCustomer.add(users.username);
+        listCustomer.add(users.username!);
       }
     }
     return listCustomer;
@@ -219,7 +219,7 @@ class DatabaseProvider {
   }
 
   //Delete akun
-  Future<bool> deleteAccount(String username) async {
+  Future<bool> deleteAccount(String? username) async {
     bool isSuccess = false;
     firestore = FirebaseFirestore.instance;
     CollectionReference collection = firestore.collection('users');
@@ -235,16 +235,16 @@ class DatabaseProvider {
     List<Users> list = [];
     firestore = FirebaseFirestore.instance;
     CollectionReference collection = firestore.collection('users');
-    var data = await collection.get().then((value) {
+    dynamic data = await collection.get().then((value) {
       for (int i = 0; i <= value.docs.length - 1; i++) {
-        Users user = Users.fromMap(value.docs[i].data());
+        Users user = Users.fromMap(value.docs[i].data() as Map<String, dynamic>);
         list.add(user);
       }
     });
     return list;
   }
 
-  Future auditDataTable({String docA, String collectionA, String docB}) async {
+  Future auditDataTable({String? docA, required String collectionA, String? docB}) async {
     var tableData;
     try {
       firestore = FirebaseFirestore.instance;
@@ -252,9 +252,9 @@ class DatabaseProvider {
       DocumentSnapshot data =
           await collection.doc(docA).collection(collectionA).doc(docB).get();
       if (collectionA == 'inventory_warehousing') {
-        tableData = IwDataTable.fromMap(data.data());
+        tableData = IwDataTable.fromMap(data.data() as Map<String, dynamic>);
       } else {
-        tableData = AuditTableData.fromMap(data.data());
+        tableData = AuditTableData.fromMap(data.data() as Map<String, dynamic>);
       }
     } on Exception catch (e) {
       print("auditDataTable: " + e.toString());
@@ -270,15 +270,15 @@ class DatabaseProvider {
       DocumentReference doc =
           firestore.collection('data_customer').doc(username);
       CollectionReference collection = doc.collection('pica_analysis');
-      var data = await collection.doc('pica_observasi').set(pica).then((_) {
+      dynamic data = await collection.doc('pica_observasi').set(pica).then((_) {
         isSuccess = true;
       });
     } catch (e) {}
     return isSuccess;
   }
 
-  Future<PicaData> loadPicaData(String username) async {
-    PicaData picaData;
+  Future<PicaData?> loadPicaData(String username) async {
+    PicaData? picaData;
     try {
       firestore = FirebaseFirestore.instance;
       DocumentReference doc =
@@ -286,31 +286,31 @@ class DatabaseProvider {
       var data =
           await doc.collection('pica_analysis').doc('pica_observasi').get();
       if (data.exists) {
-        picaData = PicaData.fromMap(data.data());
+        picaData = PicaData.fromMap(data.data()!);
       } else {
         DocumentReference doc =
             firestore.collection('initial_data').doc('pica_observation_t');
         var data = await doc.get();
-        picaData = PicaData.fromMap(data.data());
+        picaData = PicaData.fromMap(data.data() as Map<String, dynamic>);
       }
     } catch (e) {}
     return picaData;
   }
 
-  Future<ModelUnit> loadModelUnit() async {
-    ModelUnit unit;
+  Future<ModelUnit?> loadModelUnit() async {
+    ModelUnit? unit;
     try {
       firestore = FirebaseFirestore.instance;
       var data =
           await firestore.collection('initial_data').doc('model_unit').get();
-      unit = ModelUnit.fromMap(data.data());
+      unit = ModelUnit.fromMap(data.data()!);
     } catch (e) {
       print(e);
     }
     return unit;
   }
 
-  Future loadImproveProcessData(String username) async {
+  Future loadImproveProcessData(String? username) async {
     ImproveProcess improveProcess = ImproveProcess();
     improveProcess.improveProcesData = [];
     try {
@@ -323,9 +323,9 @@ class DatabaseProvider {
       for (int i = 0; i <= docRef.docs.length - 1; i++) {
         QueryDocumentSnapshot doc = docRef.docs[i];
         var data = doc.data();
-        IpData ipData = IpData.fromMap(data);
+        IpData ipData = IpData.fromMap(data as Map<String, dynamic>);
         ipData.id = doc.id;
-        improveProcess.improveProcesData.add(ipData);
+        improveProcess.improveProcesData!.add(ipData);
       }
     } on FirebaseException catch (e) {
       print(e);
@@ -334,7 +334,7 @@ class DatabaseProvider {
   }
 
   Future<bool> saveImproveProcessData(
-      IpData data, String username, String docName) async {
+      IpData data, String? username, String? docName) async {
     bool isSuccess = false;
     firestore = FirebaseFirestore.instance;
     try {
@@ -352,13 +352,13 @@ class DatabaseProvider {
     return isSuccess;
   }
 
-  Future<String> uploadImproveProcessImage(
-      File image, String filename, String username) async {
-    String downloadUrl;
+  Future<String?> uploadImproveProcessImage(
+      File image, String filename, String? username) async {
+    String? downloadUrl;
     try {
       if (image.existsSync()) {
         var task = await firebase_storage.FirebaseStorage.instance
-            .ref("improve_process/" + username)
+            .ref("improve_process/" + username!)
             .child(filename)
             .putFile(image);
         downloadUrl = await task.ref.getDownloadURL();
@@ -372,7 +372,7 @@ class DatabaseProvider {
   }
 
   Future<bool> updateImproveProcessData(
-      IpData data, String username, String docName) async {
+      IpData data, String? username, String? docName) async {
     bool isSuccess = false;
     firestore = FirebaseFirestore.instance;
     try {
@@ -390,7 +390,7 @@ class DatabaseProvider {
     return isSuccess;
   }
 
-  Future<bool> deleteImproveProcess({IpData ipData, String username}) async {
+  Future<bool> deleteImproveProcess({required IpData ipData, String? username}) async {
     bool isDeleted = false;
     firestore = FirebaseFirestore.instance;
     try {
@@ -401,12 +401,12 @@ class DatabaseProvider {
           .doc(ipData.id);
       if (ipData.picturePathBefore != null) {
         await firebase_storage.FirebaseStorage.instance
-            .refFromURL(ipData.picturePathBefore)
+            .refFromURL(ipData.picturePathBefore!)
             .delete();
       }
       if (ipData.picturePathAfter != null) {
         await firebase_storage.FirebaseStorage.instance
-            .refFromURL(ipData.picturePathAfter)
+            .refFromURL(ipData.picturePathAfter!)
             .delete();
       }
       await docRef.delete();
@@ -418,7 +418,7 @@ class DatabaseProvider {
   }
 
   Future<ListChecklistAudit> loadCheckListData(
-      {String username, String part}) async {
+      {String? username, String? part}) async {
     firestore = FirebaseFirestore.instance;
     ListChecklistAudit listChecklistAudit = ListChecklistAudit();
     ChecklistAudit checklistAudit = ChecklistAudit();
@@ -444,12 +444,12 @@ class DatabaseProvider {
       }
       List<ChecklistAudit> tempA = [];
       for (int i = 0; i <= data.docs.length - 1; i++) {
-        checklistAudit = ChecklistAudit.fromMap(data.docs[i].data());
+        checklistAudit = ChecklistAudit.fromMap(data.docs[i].data() as Map<String, dynamic>);
         List<ChecklistElement> tempB = [];
         QuerySnapshot dataB =
             await colRef.doc(data.docs[i].id).collection('element').get();
         for (int j = 0; j <= dataB.docs.length - 1; j++) {
-          tempB.add(ChecklistElement.fromMap(dataB.docs[j].data()));
+          tempB.add(ChecklistElement.fromMap(dataB.docs[j].data() as Map<String, dynamic>));
         }
         checklistAudit.checklistElement = tempB;
         tempA.add(checklistAudit);
@@ -536,7 +536,7 @@ class DatabaseProvider {
   }
 
   //menampilkan dialog
-  showDialog({String title, String middleText}) {
+  showDialog({required String title, required String middleText}) {
     Get.defaultDialog(
         barrierDismissible: false,
         titleStyle: TextStyle(fontSize: 24),

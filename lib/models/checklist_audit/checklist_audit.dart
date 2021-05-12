@@ -12,12 +12,12 @@ class ChecklistAudit {
     this.checklistElement,
   });
 
-  String id;
-  String title;
-  int index;
-  int score;
-  String part;
-  List<ChecklistElement> checklistElement;
+  String? id;
+  String? title;
+  int? index;
+  int? score;
+  String? part;
+  List<ChecklistElement>? checklistElement;
 
   factory ChecklistAudit.fromJson(String str) =>
       ChecklistAudit.fromMap(json.decode(str));

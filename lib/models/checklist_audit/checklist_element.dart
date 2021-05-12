@@ -12,11 +12,11 @@ class ChecklistElement {
         this.checklistData,
     });
 
-    String title;
-    String id;
-    int result;
-    TablePath tablePath;
-    List<ChecklistData> checklistData;
+    String? title;
+    String? id;
+    int? result;
+    TablePath? tablePath;
+    List<ChecklistData>? checklistData;
 
     factory ChecklistElement.fromJson(String str) => ChecklistElement.fromMap(json.decode(str));
 
@@ -34,7 +34,7 @@ class ChecklistElement {
         "title": title,
         "id": id,
         "result": result,
-        "table_path": tablePath.toMap(),
-        "checklistData": List<dynamic>.from(checklistData.map((x) => x.toMap())),
+        "table_path": tablePath!.toMap(),
+        "checklistData": List<dynamic>.from(checklistData!.map((x) => x.toMap())),
     };
 }

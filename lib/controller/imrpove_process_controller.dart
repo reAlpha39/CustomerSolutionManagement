@@ -13,11 +13,11 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 class ImproveProcessController extends GetxController {
   LoginController loginController = Get.find();
   DatabaseProvider databaseProvider = DatabaseProvider();
-  PanelController panelController;
-  TextEditingController textEditingController;
+  PanelController? panelController;
+  TextEditingController? textEditingController;
   Rx<ImproveProcess> improveProcess = ImproveProcess().obs;
   Rx<IpData> ipData = IpData().obs;
-  Rx<ModelUnit> modelUnit = ModelUnit().obs;
+  Rx<ModelUnit?> modelUnit = ModelUnit().obs;
   RxList<String> typeUnits = RxList<String>();
   RxString matrixText = "".obs;
   RxString modelUnitText = "".obs;
@@ -26,8 +26,8 @@ class ImproveProcessController extends GetxController {
   RxBool isPicked = false.obs;
   RxBool isLoading = false.obs;
   Rx<File> image = File("").obs;
-  Rx<File> imageBefore;
-  Rx<File> imageAfter;
+  Rx<File>? imageBefore;
+  Rx<File>? imageAfter;
   RxBool isUpdate = false.obs;
   RxBool isBefore = false.obs;
   RxInt indexUpdate = (-1).obs;
@@ -80,36 +80,36 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  List<String> loadTypeUnit() {
-    List<String> data;
+  List<String>? loadTypeUnit() {
+    List<String>? data;
     switch (modelUnitText.value) {
       case "BD":
-        data = modelUnit.value.bd;
+        data = modelUnit.value!.bd;
         break;
       case "GD":
-        data = modelUnit.value.gd;
+        data = modelUnit.value!.gd;
         break;
       case "HD":
-        data = modelUnit.value.hd;
+        data = modelUnit.value!.hd;
         break;
       case "PC":
-        data = modelUnit.value.pc;
+        data = modelUnit.value!.pc;
         break;
       case "SCN":
-        data = modelUnit.value.scn;
+        data = modelUnit.value!.scn;
         break;
       case "WA":
-        data = modelUnit.value.wa;
+        data = modelUnit.value!.wa;
         break;
       case "TDN":
-        data = modelUnit.value.tdn;
+        data = modelUnit.value!.tdn;
         break;
       case "BW":
-        data = modelUnit.value.bw;
+        data = modelUnit.value!.bw;
         break;
       default:
     }
-    typeUnits.value = data;
+    typeUnits.value = data!;
     return data;
   }
 
@@ -135,7 +135,7 @@ class ImproveProcessController extends GetxController {
 
   void saveData() {
     isLoading.value = true;
-    String time = "";
+    String? time = "";
     String name = "";
     connectivityChecker().then((conn) {
       if (conn) {
@@ -181,7 +181,7 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  void _createData(String time) {
+  void _createData(String? time) {
     databaseProvider
         .saveImproveProcessData(
             ipData.value, loginController.usr.value.username, time)
@@ -193,42 +193,42 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  void _fillData({bool isBefore, bool isUpdate, String downloadUrl}) {
+  void _fillData({required bool isBefore, bool? isUpdate, String? downloadUrl}) {
     if (isBefore) {
-      if (isUpdate) {
+      if (isUpdate!) {
         if (downloadUrl != "") {
           ipData.value.picturePathBefore = downloadUrl;
         }
-        ipData.value.descriptionBefore = textEditingController.text;
+        ipData.value.descriptionBefore = textEditingController!.text;
       } else {
         ipData.value.matrix = matrixText.value;
         ipData.value.model = modelUnitText.value;
         ipData.value.type = typeUnit.value;
         ipData.value.picturePathBefore = downloadUrl;
-        ipData.value.descriptionBefore = textEditingController.text;
+        ipData.value.descriptionBefore = textEditingController!.text;
         ipData.value.descriptionAfter = "";
         ipData.value.picturePathAfter = "";
       }
     } else {
-      if (isUpdate) {
+      if (isUpdate!) {
         if (downloadUrl != "") {
           ipData.value.picturePathAfter = downloadUrl;
         }
-        ipData.value.descriptionAfter = textEditingController.text;
+        ipData.value.descriptionAfter = textEditingController!.text;
       } else {
         ipData.value.picturePathAfter = downloadUrl;
-        ipData.value.descriptionAfter = textEditingController.text;
+        ipData.value.descriptionAfter = textEditingController!.text;
       }
     }
   }
 
-  void deleteData(int index) {
+  void deleteData(int? index) {
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
         databaseProvider
             .deleteImproveProcess(
-                ipData: improveProcess.value.improveProcesData[index],
+                ipData: improveProcess.value.improveProcesData![index!],
                 username: loginController.usr.value.username)
             .then((value) {
           if (value) {
@@ -242,27 +242,27 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  void openPanel({bool isCreate, int index, bool isBeforeData}) {
-    textEditingController.clear();
+  void openPanel({required bool isCreate, int? index, bool? isBeforeData}) {
+    textEditingController!.clear();
     if (isCreate) {
       isUpdate.value = false;
       isBefore.value = true;
-      panelController.open();
+      panelController!.open();
     } else {
       isUpdate.value = true;
-      if (isBeforeData) {
+      if (isBeforeData!) {
         isBefore.value = true;
-        textEditingController.text =
-            improveProcess.value.improveProcesData[index].descriptionBefore;
+        textEditingController!.text =
+            improveProcess.value.improveProcesData![index!].descriptionBefore!;
       } else {
         isBefore.value = false;
-        textEditingController.text =
-            improveProcess.value.improveProcesData[index].descriptionAfter;
+        textEditingController!.text =
+            improveProcess.value.improveProcesData![index!].descriptionAfter!;
       }
-      ipData.value = improveProcess.value.improveProcesData[index];
+      ipData.value = improveProcess.value.improveProcesData![index];
       ipData.refresh();
       indexUpdate.value = index;
-      panelController.open();
+      panelController!.open();
     }
   }
 
@@ -277,19 +277,19 @@ class ImproveProcessController extends GetxController {
     return formatTime;
   }
 
-  String renameFile({bool isBefore, String name}) {
+  String renameFile({required bool isBefore, String? name}) {
     String str = "";
     if (isBefore) {
-      str = "before_" + name;
+      str = "before_" + name!;
     } else {
-      str = "after_" + name;
+      str = "after_" + name!;
     }
     return str;
   }
 
   void resetPanel() {
     try {
-      textEditingController.clear();
+      textEditingController!.clear();
       isPicked.value = false;
       if (image != null) {
         if (image.value.existsSync()) {
@@ -327,7 +327,7 @@ class ImproveProcessController extends GetxController {
     }
   }
 
-  showDialog({String title, String middleText}) {
+  showDialog({required String title, required String middleText}) {
     Get.defaultDialog(
         barrierDismissible: false,
         titleStyle: TextStyle(fontSize: 24),
@@ -339,7 +339,7 @@ class ImproveProcessController extends GetxController {
         buttonColor: Colors.yellow.shade600,
         confirmTextColor: Colors.black87,
         onConfirm: () {
-          panelController.close();
+          panelController!.close();
           resetPanel();
           loadData();
           print(improveProcess.value.toMap());

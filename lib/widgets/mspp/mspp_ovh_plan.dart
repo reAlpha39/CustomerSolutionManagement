@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 class MsppOvhPlan extends StatefulWidget {
   const MsppOvhPlan({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

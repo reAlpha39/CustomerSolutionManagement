@@ -15,7 +15,7 @@ class OtherProgramController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isLoaded = false.obs;
 
-  TextEditingController textEditingControllerALL;
+  TextEditingController? textEditingControllerALL;
 
   @override
   void onInit() {

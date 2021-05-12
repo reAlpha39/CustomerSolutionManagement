@@ -204,7 +204,7 @@ class ImproveProcessPage extends StatelessWidget {
                                 : Column(
                                     children: List<Widget>.generate(
                                       controller.improveProcess.value
-                                          .improveProcesData.length,
+                                          .improveProcesData!.length,
                                       (index) => ScrollConfiguration(
                                         behavior: CustomScrollBehavior(),
                                         child: SingleChildScrollView(

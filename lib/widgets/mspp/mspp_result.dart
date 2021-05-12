@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 
 class MsppResult extends StatelessWidget {
   final MsppController controller = Get.find();
-  final List<String> data;
-  final int index;
-  final String colA;
-  final String id;
-  final int res;
+  final List<String>? data;
+  final int? index;
+  final String? colA;
+  final String? id;
+  final int? res;
 
   MsppResult({this.data, this.index, this.id, this.colA, this.res});
 
@@ -20,7 +20,7 @@ class MsppResult extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          for (int i = 0; i <= data.length - 1; i++)
+          for (int i = 0; i <= data!.length - 1; i++)
             Container(
               child: Row(
                 children: [
@@ -29,10 +29,10 @@ class MsppResult extends StatelessWidget {
                       value: i,
                       groupValue: controller.assessmentResult.value,
                       activeColor: Color(0xffffcd29),
-                      onChanged: (int value) {
-                        controller.assessmentResult.value = value;
+                      onChanged: (int? value) {
+                        controller.assessmentResult.value = value!;
                       })),
-                  Text('${data[i]}'),
+                  Text('${data![i]}'),
                 ],
               ),
             ),

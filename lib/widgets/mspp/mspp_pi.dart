@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 class MsppPi extends StatefulWidget {
   const MsppPi({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

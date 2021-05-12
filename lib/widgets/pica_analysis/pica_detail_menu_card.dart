@@ -36,7 +36,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                           children: [
                             TextButton(
                               onPressed: () =>
-                                  picaAController.panelController.close(),
+                                  picaAController.panelController!.close(),
                               child: Icon(
                                 LineIcons.times,
                                 color: Colors.black87,
@@ -49,9 +49,9 @@ class PicaDetailMenuCard extends StatelessWidget {
                                   _homeController
                                       .tempListChecklistAudit
                                       .value
-                                      .checklistAudit[
+                                      .checklistAudit![
                                           picaAController.indexDetailData.value]
-                                      .title,
+                                      .title!,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     fontSize: 20,
@@ -78,7 +78,7 @@ class PicaDetailMenuCard extends StatelessWidget {
                                 _homeController
                                     .tempListChecklistAudit
                                     .value
-                                    .checklistAudit[
+                                    .checklistAudit![
                                         picaAController.indexDetailData.value]
                                     .score
                                     .toString(),

@@ -53,7 +53,7 @@ class ImprovePanelContent extends StatelessWidget {
                                       pathPicture: controller
                                           .improveProcess
                                           .value
-                                          .improveProcesData[
+                                          .improveProcesData![
                                               controller.indexUpdate.value]
                                           .picturePathBefore,
                                     )
@@ -62,7 +62,7 @@ class ImprovePanelContent extends StatelessWidget {
                                       pathPicture: controller
                                           .improveProcess
                                           .value
-                                          .improveProcesData[
+                                          .improveProcesData![
                                               controller.indexUpdate.value]
                                           .picturePathAfter,
                                     )
@@ -168,10 +168,10 @@ class ImprovePanelContent extends StatelessWidget {
 }
 
 class PreviewImage extends StatelessWidget {
-  final String pathPicture;
-  final bool isBefore;
+  final String? pathPicture;
+  final bool? isBefore;
 
-  const PreviewImage({Key key, this.pathPicture, this.isBefore})
+  const PreviewImage({Key? key, this.pathPicture, this.isBefore})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -183,7 +183,7 @@ class PreviewImage extends StatelessWidget {
                 Radius.circular(17),
               ),
               child: Image.network(
-                pathPicture,
+                pathPicture!,
                 loadingBuilder: (context, child, progress) {
                   return progress == null ? child : LinearProgressIndicator();
                 },
@@ -193,7 +193,7 @@ class PreviewImage extends StatelessWidget {
           : Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                isBefore
+                isBefore!
                     ? 'Photo Before Improvement'
                     : 'Photo After Improvement',
                 style: TextStyle(

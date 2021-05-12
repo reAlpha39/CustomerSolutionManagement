@@ -8,10 +8,10 @@ class Users {
         this.type,
     });
 
-    String nama;
-    String username;
-    String password;
-    String type;
+    String? nama;
+    String? username;
+    String? password;
+    String? type;
 
     factory Users.fromJson(String str) => Users.fromMap(json.decode(str));
 

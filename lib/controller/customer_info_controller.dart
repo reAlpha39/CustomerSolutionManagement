@@ -27,24 +27,24 @@ class CustomerInfoController extends GetxController {
   RxBool checkBoxB = false.obs;
   RxBool checkBoxC = false.obs;
 
-  GlobalKey<FormState> formKeyCustomer;
-  GlobalKey<FormState> formKeyProduk;
-  GlobalKey<FormState> formKeyOther;
+  GlobalKey<FormState>? formKeyCustomer;
+  GlobalKey<FormState>? formKeyProduk;
+  GlobalKey<FormState>? formKeyOther;
 
-  TextEditingController namaTextController;
-  TextEditingController alamatTextController;
-  TextEditingController misiTextController;
-  TextEditingController visiTextController;
-  TextEditingController csOtherTextController;
-  TextEditingController tpUnitedTractorTextController;
-  TextEditingController tpTrakindoTextController;
-  TextEditingController tdKobelDoTextController;
-  TextEditingController tpHitachiTextController;
-  TextEditingController tpSunyTextController;
-  TextEditingController tpOtherTextController;
-  TextEditingController planBudgetTextController;
-  TextEditingController problemTextController;
-  TextEditingController targetTextController;
+  TextEditingController? namaTextController;
+  TextEditingController? alamatTextController;
+  TextEditingController? misiTextController;
+  TextEditingController? visiTextController;
+  TextEditingController? csOtherTextController;
+  TextEditingController? tpUnitedTractorTextController;
+  TextEditingController? tpTrakindoTextController;
+  TextEditingController? tdKobelDoTextController;
+  TextEditingController? tpHitachiTextController;
+  TextEditingController? tpSunyTextController;
+  TextEditingController? tpOtherTextController;
+  TextEditingController? planBudgetTextController;
+  TextEditingController? problemTextController;
+  TextEditingController? targetTextController;
 
   @override
   void onInit() {
@@ -87,7 +87,7 @@ class CustomerInfoController extends GetxController {
   String radioValue() {
     String data = '';
     if (radioIndex.value == 5) {
-      data = csOtherTextController.text;
+      data = csOtherTextController!.text;
     } else {
       data = listCustomerSegment[radioIndex.value];
     }
@@ -113,28 +113,28 @@ class CustomerInfoController extends GetxController {
     showProgressDialog();
     connectivityChecker().then((conn) {
       if (conn) {
-        var formP = formKeyProduk.currentState;
-        var formC = formKeyCustomer.currentState;
-        var formO = formKeyOther.currentState;
-        if (formC.validate() && formP.validate() && formO.validate()) {
+        var formP = formKeyProduk!.currentState;
+        var formC = formKeyCustomer!.currentState!;
+        var formO = formKeyOther!.currentState;
+        if (formC.validate() && formP!.validate() && formO!.validate()) {
           TotalProduct totalProduct = TotalProduct(
-              unitedTractor: tpUnitedTractorTextController.text,
-              trakindo: tpTrakindoTextController.text,
-              kobelDo: tdKobelDoTextController.text,
-              hitachi: tpHitachiTextController.text,
-              suny: tpSunyTextController.text,
-              lainnya: tpOtherTextController.text);
+              unitedTractor: tpUnitedTractorTextController!.text,
+              trakindo: tpTrakindoTextController!.text,
+              kobelDo: tdKobelDoTextController!.text,
+              hitachi: tpHitachiTextController!.text,
+              suny: tpSunyTextController!.text,
+              lainnya: tpOtherTextController!.text);
           SupportUt dataCustomer = SupportUt(
               namaCustomer: _loginController.usr.value.username,
-              namaPerusahaan: namaTextController.text,
-              alamatPerusahaan: alamatTextController.text,
-              misiPerusahaan: misiTextController.text,
-              visiPerusahaan: visiTextController.text,
+              namaPerusahaan: namaTextController!.text,
+              alamatPerusahaan: alamatTextController!.text,
+              misiPerusahaan: misiTextController!.text,
+              visiPerusahaan: visiTextController!.text,
               customerSegment: radioValue(),
               totalProduct: totalProduct,
-              planBudget: planBudgetTextController.text,
-              problem: problemTextController.text,
-              target: targetTextController.text,
+              planBudget: planBudgetTextController!.text,
+              problem: problemTextController!.text,
+              target: targetTextController!.text,
               ketidakpuasan: checkBoxValue());
           _databaseProvider.saveData(dataCustomer);
           clearText();
@@ -150,20 +150,20 @@ class CustomerInfoController extends GetxController {
   }
 
   void clearText() {
-    namaTextController.clear();
-    alamatTextController.clear();
-    misiTextController.clear();
-    visiTextController.clear();
-    csOtherTextController.clear();
-    tpUnitedTractorTextController.clear();
-    tpTrakindoTextController.clear();
-    tdKobelDoTextController.clear();
-    tpHitachiTextController.clear();
-    tpSunyTextController.clear();
-    tpOtherTextController.clear();
-    planBudgetTextController.clear();
-    problemTextController.clear();
-    targetTextController.clear();
+    namaTextController!.clear();
+    alamatTextController!.clear();
+    misiTextController!.clear();
+    visiTextController!.clear();
+    csOtherTextController!.clear();
+    tpUnitedTractorTextController!.clear();
+    tpTrakindoTextController!.clear();
+    tdKobelDoTextController!.clear();
+    tpHitachiTextController!.clear();
+    tpSunyTextController!.clear();
+    tpOtherTextController!.clear();
+    planBudgetTextController!.clear();
+    problemTextController!.clear();
+    targetTextController!.clear();
     radioIndex.value = 0;
     checkBoxA.value = false;
     checkBoxB.value = false;

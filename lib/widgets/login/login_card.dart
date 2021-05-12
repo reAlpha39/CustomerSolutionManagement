@@ -114,7 +114,7 @@ class _LoginInputState extends State<LoginCard> {
   }
 
   _submitData() {
-    var form = _formKey.currentState;
+    var form = _formKey.currentState!;
     if (form.validate()) {
       form.save();
       _loginController.userLogin();

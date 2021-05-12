@@ -16,12 +16,12 @@ class ModelUnitSelector extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: List<Widget>.generate(
-              controller.modelUnit.value.modelId.length,
+              controller.modelUnit.value!.modelId!.length,
               (index) => ListTile(
-                title: Text(controller.modelUnit.value.modelId[index]),
+                title: Text(controller.modelUnit.value!.modelId![index]),
                 onTap: () {
                   controller.modelUnitText.value =
-                      controller.modelUnit.value.modelId[index];
+                      controller.modelUnit.value!.modelId![index];
                   controller.typeUnit.value = "";
                   Get.back(closeOverlays: false);
                 },

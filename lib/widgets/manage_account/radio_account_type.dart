@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class RadioAccount extends StatelessWidget {
   final ManageAccountController controller = Get.find();
-  final List<String> data;
+  final List<String>? data;
 
   RadioAccount({this.data});
 
@@ -15,7 +15,7 @@ class RadioAccount extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (int i = 0; i <= data.length - 1; i++)
+          for (int i = 0; i <= data!.length - 1; i++)
             Container(
               child: Row(
                 children: [
@@ -24,9 +24,9 @@ class RadioAccount extends StatelessWidget {
                       value: i,
                       groupValue: controller.radio.value,
                       activeColor: Color(0xffffcd29),
-                      onChanged: (int value) =>
-                          controller.radio.value = value)),
-                  Text('${data[i]}'),
+                      onChanged: (int? value) =>
+                          controller.radio.value = value!)),
+                  Text('${data![i]}'),
                 ],
               ),
             ),

@@ -8,10 +8,10 @@ import 'package:get/get.dart';
 class PicaDetailCard extends StatelessWidget {
   final PicaAnalysisController picaAController = Get.find();
   final HomeController _homeController = Get.find();
-  final String tag;
-  final Widget picaData;
+  final String? tag;
+  final Widget? picaData;
 
-  PicaDetailCard({Key key, this.tag, this.picaData}) : super(key: key);
+  PicaDetailCard({Key? key, this.tag, this.picaData}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final PicaCardTableController controller = Get.find(tag: tag);
@@ -47,8 +47,8 @@ class PicaDetailCard extends StatelessWidget {
                               _homeController
                                   .tempListChecklistAudit
                                   .value
-                                  .checklistAudit[controller.indexData.value]
-                                  .checklistElement[controller.indexCard.value]
+                                  .checklistAudit![controller.indexData.value]
+                                  .checklistElement![controller.indexCard.value]
                                   .result
                                   .toString(),
                               style: TextStyle(
@@ -72,7 +72,7 @@ class PicaDetailCard extends StatelessWidget {
                   ),
                 ),
                 collapsed: Container(),
-                expanded: picaData,
+                expanded: picaData!,
               ),
             ),
           ),

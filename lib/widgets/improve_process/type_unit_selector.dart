@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 
 class TypeUnitSelector extends StatelessWidget {
   final ImproveProcessController controller = Get.find(tag: 'global');
-  final String id;
+  final String? id;
 
-  TypeUnitSelector({Key key, this.id});
+  TypeUnitSelector({Key? key, this.id});
   @override
   Widget build(BuildContext context) {
     return Container(

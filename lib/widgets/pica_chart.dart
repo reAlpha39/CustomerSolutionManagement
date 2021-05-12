@@ -167,10 +167,10 @@ class _PicaChartState extends State<PicaChart>
                                     barRods: [
                                       BarChartRodData(
                                         y: picaCController.scorePica(
-                                            picaCController.listIndex[index]),
+                                            picaCController.listIndex[index]!),
                                         colors: picaCController.colorBar(
                                           picaCController.scorePica(
-                                            picaCController.listIndex[index],
+                                            picaCController.listIndex[index]!,
                                           ),
                                         ),
                                       ),

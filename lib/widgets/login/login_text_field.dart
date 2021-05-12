@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class LoginTextField extends StatelessWidget {
   const LoginTextField({
-    Key key,
-    @required TextEditingController textEditingController,
+    Key? key,
+    required TextEditingController? textEditingController,
     this.labelText,
     this.returnError,
     this.isObsecure,
@@ -11,17 +11,17 @@ class LoginTextField extends StatelessWidget {
   })  : _textEditingController = textEditingController,
         super(key: key);
 
-  final TextEditingController _textEditingController;
-  final String labelText;
-  final String returnError;
-  final bool isObsecure;
-  final IconData iconData;
+  final TextEditingController? _textEditingController;
+  final String? labelText;
+  final String? returnError;
+  final bool? isObsecure;
+  final IconData? iconData;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: _textEditingController,
-      obscureText: isObsecure,
+      obscureText: isObsecure!,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(17)),
           labelText: labelText,

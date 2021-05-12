@@ -21,14 +21,14 @@ class PicaObservation extends StatelessWidget {
               : Column(
                   children: List<Widget>.generate(
                     _homeController
-                        .tempListChecklistAudit.value.checklistAudit.length,
+                        .tempListChecklistAudit.value.checklistAudit!.length,
                     (index) => Obx(
                       () => PicaObservationCard(
                         indexValue: index,
                         title: _homeController.tempListChecklistAudit.value
-                            .checklistAudit[index].title,
+                            .checklistAudit![index].title,
                         id: _homeController.tempListChecklistAudit.value
-                            .checklistAudit[index].id,
+                            .checklistAudit![index].id,
                       ),
                     ),
                   ),

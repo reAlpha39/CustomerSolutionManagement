@@ -14,7 +14,7 @@ class PicaAnalysisController extends GetxController {
   RxInt indexDetailData = 0.obs;
   RxString idDetailData = "".obs;
 
-  PanelController panelController;
+  PanelController? panelController;
 
   @override
   void onInit() {
@@ -22,8 +22,8 @@ class PicaAnalysisController extends GetxController {
     super.onInit();
   }
 
-  Widget widgetOptions() {
-    Widget display;
+  Widget? widgetOptions() {
+    Widget? display;
     switch (navBarIndex.value) {
       case 0:
         display = PicaChart();
@@ -45,14 +45,14 @@ class PicaAnalysisController extends GetxController {
   void showDetailCard(int indexData, String idData) {
     indexDetailData.value = indexData;
     idDetailData.value = idData;
-    panelController.open();
+    panelController!.open();
   }
 
   void changeOpenedIndexData() {
     try {
-      if (panelController.isPanelOpen) {
-        int index = _homeController.tempListChecklistAudit.value.checklistAudit
-            .indexWhere((element) => element.id.contains(idDetailData.value));
+      if (panelController!.isPanelOpen) {
+        int index = _homeController.tempListChecklistAudit.value.checklistAudit!
+            .indexWhere((element) => element.id!.contains(idDetailData.value));
         print(index);
         indexDetailData.value = index;
       }

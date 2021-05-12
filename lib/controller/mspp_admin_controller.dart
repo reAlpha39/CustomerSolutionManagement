@@ -6,7 +6,7 @@ class MsppAdminController extends GetxController {
   final DatabaseProvider databaseProvider = DatabaseProvider();
   final MsppController msppController = Get.find();
 
-  RxList<String> listCustomer = [''].obs;
+  RxList<String?> listCustomer = [''].obs;
   RxString idCustomer = ''.obs;
   RxBool isLoading = false.obs;
 

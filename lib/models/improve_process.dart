@@ -9,7 +9,7 @@ class ImproveProcess {
         this.improveProcesData,
     });
 
-    List<IpData> improveProcesData;
+    List<IpData>? improveProcesData;
 
     factory ImproveProcess.fromJson(String str) => ImproveProcess.fromMap(json.decode(str));
 
@@ -20,7 +20,7 @@ class ImproveProcess {
     );
 
     Map<String, dynamic> toMap() => {
-        "improveProcesData": List<dynamic>.from(improveProcesData.map((x) => x.toMap())),
+        "improveProcesData": List<dynamic>.from(improveProcesData!.map((x) => x.toMap())),
     };
 }
 
@@ -36,14 +36,14 @@ class IpData {
         this.picturePathAfter,
     });
 
-    String id;
-    String matrix;
-    String model;
-    String type;
-    String descriptionBefore;
-    String descriptionAfter;
-    String picturePathBefore;
-    String picturePathAfter;
+    String? id;
+    String? matrix;
+    String? model;
+    String? type;
+    String? descriptionBefore;
+    String? descriptionAfter;
+    String? picturePathBefore;
+    String? picturePathAfter;
 
     factory IpData.fromJson(String str) => IpData.fromMap(json.decode(str));
 

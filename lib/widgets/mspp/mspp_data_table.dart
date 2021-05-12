@@ -11,16 +11,16 @@ class MsppDataTable extends StatelessWidget {
   final MsppController controller = Get.find();
   final DataTableController dtController = Get.find();
   final PicaCardTableController picaCTController = Get.find(tag: 'global');
-  final String id;
-  final String docA;
-  final String docB;
-  final String colA;
+  final String? id;
+  final String? docA;
+  final String? docB;
+  final String? colA;
   final bool dataTableFilter;
-  final RxList<int> dataTableListRadio;
-  final int dataTableRadioIndex;
+  final RxList<int>? dataTableListRadio;
+  final int? dataTableRadioIndex;
 
   MsppDataTable({
-    Key key,
+    Key? key,
     this.docA,
     this.docB,
     this.colA,
@@ -30,7 +30,7 @@ class MsppDataTable extends StatelessWidget {
     this.dataTableRadioIndex,
   }) : super(key: key);
 
-  Future<bool> resultRadio({int index}) {
+  Future<bool?> resultRadio({int? index}) {
     controller.loadItem(
         docA: colA, docB: id, index: index, isAssessmentResult: true);
     return Get.defaultDialog(
@@ -55,7 +55,7 @@ class MsppDataTable extends StatelessWidget {
     );
   }
 
-  Future<bool> resultTextField({int index}) {
+  Future<bool?> resultTextField({int? index}) {
     return Get.defaultDialog(
         barrierDismissible: false,
         radius: 17,
@@ -77,12 +77,12 @@ class MsppDataTable extends StatelessWidget {
         resultTextField(index: index);
       },
       child: Obx(() {
-        String res = controller.loadItem(
+        String? res = controller.loadItem(
             docA: colA, docB: id, index: index, isAssessmentResult: false);
         if (res == "") {
           return Text('Pilih disini');
         } else {
-          return Text(res);
+          return Text(res!);
         }
       }),
     );
@@ -95,12 +95,12 @@ class MsppDataTable extends StatelessWidget {
       },
       child: Obx(
         () {
-          int res = controller.loadItem(
+          int? res = controller.loadItem(
               docA: colA, docB: id, index: index, isAssessmentResult: true);
           if (res == -1) {
             return Text('Pilih disini');
           } else {
-            return Text(controller.radioData[res]);
+            return Text(controller.radioData[res!]!);
           }
         },
       ),
@@ -120,7 +120,7 @@ class MsppDataTable extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Obx(
-        () => dtController.auditTableData.value.id == null
+        () => dtController.auditTableData.value!.id == null
             ? Center(
                 child: CircularProgressIndicator(),
               )
@@ -139,11 +139,11 @@ class MsppDataTable extends StatelessWidget {
                       DataColumn(label: Text('Remark')),
                     ],
                     rows: List<DataRow>.generate(
-                      dtController.auditTableData.value.id.length,
+                      dtController.auditTableData.value!.id!.length,
                       (index) => DataRow(
                         cells: [
                           DataCell(Text(
-                              '${dtController.auditTableData.value.noKlause[index].replaceAll("\\n", "\n")}')),
+                              '${dtController.auditTableData.value!.noKlause![index].replaceAll("\\n", "\n")}')),
                           DataCell(
                             Padding(
                               padding: const EdgeInsets.only(top: 7, bottom: 7),
@@ -153,7 +153,7 @@ class MsppDataTable extends StatelessWidget {
                                   behavior: CustomScrollBehavior(),
                                   child: SingleChildScrollView(
                                     child: Text(
-                                        '${dtController.auditTableData.value.description[index].replaceAll("\\n", "\n")}'),
+                                        '${dtController.auditTableData.value!.description![index].replaceAll("\\n", "\n")}'),
                                   ),
                                 ),
                               ),
@@ -166,7 +166,7 @@ class MsppDataTable extends StatelessWidget {
                                 behavior: CustomScrollBehavior(),
                                 child: SingleChildScrollView(
                                   child: Text(
-                                      '${dtController.auditTableData.value.pic[index].replaceAll("\\n", "\n")}'),
+                                      '${dtController.auditTableData.value!.pic![index].replaceAll("\\n", "\n")}'),
                                 ),
                               ),
                             ),
@@ -180,7 +180,7 @@ class MsppDataTable extends StatelessWidget {
                                   behavior: CustomScrollBehavior(),
                                   child: SingleChildScrollView(
                                     child: Text(
-                                        '${dtController.auditTableData.value.guidance[index].replaceAll("\\n", "\n")}'),
+                                        '${dtController.auditTableData.value!.guidance![index].replaceAll("\\n", "\n")}'),
                                   ),
                                 ),
                               ),
@@ -195,7 +195,7 @@ class MsppDataTable extends StatelessWidget {
                                   child: Container(
                                     width: 160,
                                     child: Text(
-                                        '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
+                                        '${dtController.auditTableData.value!.objectiveEvidence![index].replaceAll("\\n", "\n")}'),
                                   ),
                                 ),
                               ),
@@ -203,12 +203,12 @@ class MsppDataTable extends StatelessWidget {
                           ),
                           DataCell(
                             buildTextButtonAssessment(
-                              dtController.auditTableData.value.id[index],
+                              dtController.auditTableData.value!.id![index],
                             ),
                           ),
                           DataCell(
                             buildTextButtonRemark(
-                              dtController.auditTableData.value.id[index],
+                              dtController.auditTableData.value!.id![index],
                             ),
                           ),
                         ],

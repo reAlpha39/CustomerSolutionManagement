@@ -8,8 +8,8 @@ class PartProgram {
     this.op,
   });
 
-  Map<String, MsppData> iw;
-  Map<String, MsppData> op;
+  Map<String, MsppData>? iw;
+  Map<String, MsppData>? op;
 
   factory PartProgram.fromJson(String str) =>
       PartProgram.fromMap(json.decode(str));
@@ -24,9 +24,9 @@ class PartProgram {
       );
 
   Map<String, dynamic> toMap() => {
-        "iw": Map.from(iw)
+        "iw": Map.from(iw!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
         "op":
-            Map.from(op).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
+            Map.from(op!).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
       };
 }

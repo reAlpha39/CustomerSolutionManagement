@@ -8,7 +8,7 @@ class ListChecklistAudit {
         this.checklistAudit,
     });
 
-    List<ChecklistAudit> checklistAudit;
+    List<ChecklistAudit>? checklistAudit;
 
     factory ListChecklistAudit.fromJson(String str) => ListChecklistAudit.fromMap(json.decode(str));
 
@@ -19,6 +19,6 @@ class ListChecklistAudit {
     );
 
     Map<String, dynamic> toMap() => {
-        "ChecklistAudit": List<dynamic>.from(checklistAudit.map((x) => x.toMap())),
+        "ChecklistAudit": List<dynamic>.from(checklistAudit!.map((x) => x.toMap())),
     };
 }

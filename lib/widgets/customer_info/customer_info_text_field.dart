@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomerInfoTextField extends StatelessWidget {
-  final TextEditingController controller;
-  final String labelText;
-  final int maxLines;
-  final TextInputType keyboardType;
+  final TextEditingController? controller;
+  final String? labelText;
+  final int? maxLines;
+  final TextInputType? keyboardType;
 
   CustomerInfoTextField(
       {this.controller, this.labelText, this.maxLines, this.keyboardType});

@@ -11,7 +11,7 @@ class PicaData {
         this.picaElement,
     });
 
-    List<PicaElement> picaElement;
+    List<PicaElement>? picaElement;
 
     factory PicaData.fromJson(String str) => PicaData.fromMap(json.decode(str));
 
@@ -22,6 +22,6 @@ class PicaData {
     );
 
     Map<String, dynamic> toMap() => {
-        "picaElement": List<dynamic>.from(picaElement.map((x) => x.toMap())),
+        "picaElement": List<dynamic>.from(picaElement!.map((x) => x.toMap())),
     };
 }

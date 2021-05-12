@@ -10,12 +10,12 @@ class ColResult {
         this.improv,
     });
 
-    int urgensi;
-    int dampak;
-    bool isNo;
-    String actual;
-    String target;
-    String improv;
+    int? urgensi;
+    int? dampak;
+    bool? isNo;
+    String? actual;
+    String? target;
+    String? improv;
 
     factory ColResult.fromJson(String str) => ColResult.fromMap(json.decode(str));
 

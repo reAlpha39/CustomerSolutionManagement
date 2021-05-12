@@ -10,10 +10,10 @@ class PicaElement {
         this.picaDetail,
     });
 
-    String id;
-    String title;
-    int score;
-    List<PicaDetail> picaDetail;
+    String? id;
+    String? title;
+    int? score;
+    List<PicaDetail>? picaDetail;
 
     factory PicaElement.fromJson(String str) => PicaElement.fromMap(json.decode(str));
 
@@ -30,6 +30,6 @@ class PicaElement {
         "id": id,
         "title": title,
         "score": score,
-        "picaDetail": List<dynamic>.from(picaDetail.map((x) => x.toMap())),
+        "picaDetail": List<dynamic>.from(picaDetail!.map((x) => x.toMap())),
     };
 }

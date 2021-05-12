@@ -170,7 +170,7 @@ class MsppAdmin extends StatelessWidget {
     );
   }
 
-  Future<bool> listCustomer() {
+  Future<bool?> listCustomer() {
     return Get.defaultDialog(
       barrierDismissible: false,
       radius: 17,
@@ -178,7 +178,7 @@ class MsppAdmin extends StatelessWidget {
       content: Align(
         alignment: Alignment.center,
         child: Container(
-          height: Get.context.isLandscape ? Get.height / 3 : Get.height / 2,
+          height: Get.context!.isLandscape ? Get.height / 3 : Get.height / 2,
           constraints:
               BoxConstraints(minHeight: 100, minWidth: 250, maxWidth: 250),
           child: ListCustomer(),
@@ -220,7 +220,7 @@ class ListCustomer extends StatelessWidget {
                 title: Text('${msppAdminController.listCustomer[index]}'),
                 onTap: () {
                   msppAdminController.idCustomer.value =
-                      msppAdminController.listCustomer[index];
+                      msppAdminController.listCustomer[index]!;
                   _homeController.loadMsppChecklistAudit(
                       username: msppAdminController.idCustomer.value);
                   Get.back(closeOverlays: false);

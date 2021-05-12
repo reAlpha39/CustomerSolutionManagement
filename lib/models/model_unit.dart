@@ -17,15 +17,15 @@ class ModelUnit {
         this.bw,
     });
 
-    List<String> modelId;
-    List<String> bd;
-    List<String> gd;
-    List<String> hd;
-    List<String> pc;
-    List<String> scn;
-    List<String> wa;
-    List<String> tdn;
-    List<String> bw;
+    List<String>? modelId;
+    List<String>? bd;
+    List<String>? gd;
+    List<String>? hd;
+    List<String>? pc;
+    List<String>? scn;
+    List<String>? wa;
+    List<String>? tdn;
+    List<String>? bw;
 
     factory ModelUnit.fromJson(String str) => ModelUnit.fromMap(json.decode(str));
 
@@ -44,14 +44,14 @@ class ModelUnit {
     );
 
     Map<String, dynamic> toMap() => {
-        "model_id": List<dynamic>.from(modelId.map((x) => x)),
-        "BD": List<dynamic>.from(bd.map((x) => x)),
-        "GD": List<dynamic>.from(gd.map((x) => x)),
-        "HD": List<dynamic>.from(hd.map((x) => x)),
-        "PC": List<dynamic>.from(pc.map((x) => x)),
-        "SCN": List<dynamic>.from(scn.map((x) => x)),
-        "WA": List<dynamic>.from(wa.map((x) => x)),
-        "TDN": List<dynamic>.from(tdn.map((x) => x)),
-        "BW": List<dynamic>.from(bw.map((x) => x)),
+        "model_id": List<dynamic>.from(modelId!.map((x) => x)),
+        "BD": List<dynamic>.from(bd!.map((x) => x)),
+        "GD": List<dynamic>.from(gd!.map((x) => x)),
+        "HD": List<dynamic>.from(hd!.map((x) => x)),
+        "PC": List<dynamic>.from(pc!.map((x) => x)),
+        "SCN": List<dynamic>.from(scn!.map((x) => x)),
+        "WA": List<dynamic>.from(wa!.map((x) => x)),
+        "TDN": List<dynamic>.from(tdn!.map((x) => x)),
+        "BW": List<dynamic>.from(bw!.map((x) => x)),
     };
 }

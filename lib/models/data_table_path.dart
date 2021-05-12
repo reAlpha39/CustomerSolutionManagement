@@ -21,17 +21,17 @@ class DataTablePath {
     this.leadTimePP,
   });
 
-  TablePath periodicInspection;
-  TablePath periodicService;
-  TablePath periodicServicePlan;
-  TablePath ovhPlan;
-  TablePath ovh;
-  TablePath unscheduleBreakdown;
-  TablePath tools;
-  TablePath cbm;
-  TablePath infrastructure;
-  TablePath ketersediaanM;
-  TablePath leadTimePP;
+  TablePath? periodicInspection;
+  TablePath? periodicService;
+  TablePath? periodicServicePlan;
+  TablePath? ovhPlan;
+  TablePath? ovh;
+  TablePath? unscheduleBreakdown;
+  TablePath? tools;
+  TablePath? cbm;
+  TablePath? infrastructure;
+  TablePath? ketersediaanM;
+  TablePath? leadTimePP;
 
   factory DataTablePath.fromJson(String str) =>
       DataTablePath.fromMap(json.decode(str));
@@ -52,16 +52,16 @@ class DataTablePath {
       );
 
   Map<String, dynamic> toMap() => {
-        "periodic_inspection": periodicInspection.toMap(),
-        "periodic_service": periodicService.toMap(),
-        "periodic_service_plan": periodicServicePlan.toMap(),
-        "ovh_plan": ovhPlan.toMap(),
-        "ovh": ovh.toMap(),
-        "unscheduleBreakdown": unscheduleBreakdown.toMap(),
-        "tools": tools.toMap(),
-        "cbm": cbm.toMap(),
-        "infrastructure": infrastructure.toMap(),
-        "ketersediaan_m": ketersediaanM.toMap(),
-        "leadTimePP": leadTimePP.toMap(),
+        "periodic_inspection": periodicInspection!.toMap(),
+        "periodic_service": periodicService!.toMap(),
+        "periodic_service_plan": periodicServicePlan!.toMap(),
+        "ovh_plan": ovhPlan!.toMap(),
+        "ovh": ovh!.toMap(),
+        "unscheduleBreakdown": unscheduleBreakdown!.toMap(),
+        "tools": tools!.toMap(),
+        "cbm": cbm!.toMap(),
+        "infrastructure": infrastructure!.toMap(),
+        "ketersediaan_m": ketersediaanM!.toMap(),
+        "leadTimePP": leadTimePP!.toMap(),
       };
 }

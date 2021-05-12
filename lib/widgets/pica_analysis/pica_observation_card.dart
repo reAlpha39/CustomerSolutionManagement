@@ -8,17 +8,17 @@ class PicaObservationCard extends StatelessWidget {
   final PicaAnalysisController _picaAController = Get.find();
   final HomeController _homeController = Get.find();
   final PicaCardTableController _picaCTController = Get.find(tag: 'global');
-  final String title;
-  final int indexValue;
-  final String id;
+  final String? title;
+  final int? indexValue;
+  final String? id;
 
-  PicaObservationCard({Key key, this.title, this.indexValue, this.id});
+  PicaObservationCard({Key? key, this.title, this.indexValue, this.id});
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
       child: InkWell(
-        onTap: () => _picaAController.showDetailCard(indexValue, id),
+        onTap: () => _picaAController.showDetailCard(indexValue!, id!),
         child: Card(
           elevation: 4,
           shape:
@@ -47,8 +47,8 @@ class PicaObservationCard extends StatelessWidget {
                     child: Obx(
                       () => Text(
                         _homeController.tempListChecklistAudit.value
-                            .checklistAudit
-                            [indexValue].score
+                            .checklistAudit!
+                            [indexValue!].score
                             .toString(),
                         style: TextStyle(
                           fontSize: 18,

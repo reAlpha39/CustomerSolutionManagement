@@ -7,9 +7,9 @@ class TablePath {
         this.docB,
     });
 
-    String docA;
-    String colA;
-    String docB;
+    String? docA;
+    String? colA;
+    String? docB;
 
     factory TablePath.fromJson(String str) => TablePath.fromMap(json.decode(str));
 

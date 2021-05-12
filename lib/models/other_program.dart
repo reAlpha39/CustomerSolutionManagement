@@ -15,11 +15,11 @@ class OtherProgram {
     this.co,
   });
 
-  Map<String, MsppData> people;
-  Map<String, MsppData> vm;
-  Map<String, MsppData> regM;
-  Map<String, MsppData> mr;
-  Map<String, MsppData> co;
+  Map<String, MsppData>? people;
+  Map<String, MsppData>? vm;
+  Map<String, MsppData>? regM;
+  Map<String, MsppData>? mr;
+  Map<String, MsppData>? co;
 
   factory OtherProgram.fromJson(String str) =>
       OtherProgram.fromMap(json.decode(str));
@@ -40,15 +40,15 @@ class OtherProgram {
       );
 
   Map<String, dynamic> toMap() => {
-        "people": Map.from(people)
+        "people": Map.from(people!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
         "vm":
-            Map.from(vm).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "regM": Map.from(regM)
+            Map.from(vm!).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
+        "regM": Map.from(regM!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
         "mr":
-            Map.from(mr).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
+            Map.from(mr!).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
         "co":
-            Map.from(co).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
+            Map.from(co!).map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
       };
 }

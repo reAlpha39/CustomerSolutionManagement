@@ -114,7 +114,7 @@ class PicaAnalysisPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Obx(
                     () =>
-                    _picaAController.widgetOptions()
+                    _picaAController.widgetOptions()!
                   ),
                 ),
               ),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PartProgramController extends GetxController {
-  RxList<int> radioIndexKP = RxList.filled(3, -1);
-  RxList<int> radioIndexOP = RxList.filled(52, -1);
-  RxList<int> radioIndexPE = RxList.filled(15, -1);
-  RxList<int> radioIndexTS = RxList.filled(7, -1);
-  RxList<int> radioIndexCI = RxList.filled(9, -1);
-  RxList<int> radioIndexIF = RxList.filled(21, -1);
-  RxList<int> radioIndexHE = RxList.filled(6, -1);
+  RxList<int?> radioIndexKP = RxList.filled(3, -1);
+  RxList<int?> radioIndexOP = RxList.filled(52, -1);
+  RxList<int?> radioIndexPE = RxList.filled(15, -1);
+  RxList<int?> radioIndexTS = RxList.filled(7, -1);
+  RxList<int?> radioIndexCI = RxList.filled(9, -1);
+  RxList<int?> radioIndexIF = RxList.filled(21, -1);
+  RxList<int?> radioIndexHE = RxList.filled(6, -1);
 
   RxList<String> textFieldKP = RxList.filled(3, "");
   RxList<String> textFieldOP = RxList.filled(52, "");
@@ -27,7 +27,7 @@ class PartProgramController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isLoaded = false.obs;
 
-  TextEditingController textEditingControllerALL;
+  TextEditingController? textEditingControllerALL;
 
   @override
   void onInit() {
@@ -41,8 +41,8 @@ class PartProgramController extends GetxController {
     super.onClose();
   }
 
-  RxList<String> textFieldPP(String i) {
-    RxList<String> data;
+  RxList<String>? textFieldPP(String i) {
+    RxList<String>? data;
     switch (i) {
       case 'kp':
         data = textFieldKP;
@@ -70,8 +70,8 @@ class PartProgramController extends GetxController {
     return data;
   }
 
-  RxList<int> radioIndexPP(String i) {
-    RxList<int> data;
+  RxList<int?>? radioIndexPP(String? i) {
+    RxList<int?>? data;
     switch (i) {
       case 'kp':
         data = radioIndexKP;

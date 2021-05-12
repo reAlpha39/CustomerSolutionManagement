@@ -25,7 +25,7 @@ class PicaChartController extends GetxController {
   RxList<int> indexRM = RxList<int>();
   RxList<int> indexCO = RxList<int>();
 
-  RxMap<int, RxList<int>> listIndex;
+  late RxMap<int, RxList<int>> listIndex;
 
   RxBool isLoading = false.obs;
   RxBool isLoaded = false.obs;
@@ -71,8 +71,8 @@ class PicaChartController extends GetxController {
     return percentage;
   }
 
-  List<Color> colorBar(double score) {
-    List<Color> color;
+  List<Color>? colorBar(double score) {
+    List<Color>? color;
     if (score < 74.0) {
       color = [Colors.black, Colors.black87];
     } else if (score >= 74.0 && score < 83.0) {
@@ -114,18 +114,18 @@ class PicaChartController extends GetxController {
   void combineList() {
     if (_homeController.tempListChecklistAudit.value.checklistAudit != null) {
       listedIndex();
-      var dataA = _homeController.tempListChecklistAudit.value.checklistAudit;
-      dataA.sort(((a, b) => a.index.compareTo(b.index)));
+      var dataA = _homeController.tempListChecklistAudit.value.checklistAudit!;
+      dataA.sort(((a, b) => a.index!.compareTo(b.index!)));
       for (int i = 0; i <= dataA.length - 1; i++) {
         List<int> temp = [];
-        var dataB = dataA[i].checklistElement;
+        var dataB = dataA[i].checklistElement!;
         for (int j = 0; j <= dataB.length - 1; j++) {
-          var dataC = dataB[j].checklistData;
+          var dataC = dataB[j].checklistData!;
           for (int k = 0; k <= dataC.length - 1; k++) {
-            temp.add(dataC[k].assessmentResult);
+            temp.add(dataC[k].assessmentResult!);
           }
         }
-        listIndex[i].assignAll(temp);
+        listIndex[i]!.assignAll(temp);
       }
     }
   }

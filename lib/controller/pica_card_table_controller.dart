@@ -15,12 +15,12 @@ import 'package:get/get.dart';
 class PicaCardTableController extends GetxController {
   final LoginController loginController = Get.find();
   final HomeController _homeController = Get.find();
-  ExpandableController expandableController;
-  TextEditingController textEditingControllerALL;
-  RxList<int> indexResultA = RxList<int>();
-  RxList<int> indexResultB = RxList<int>();
-  RxList<bool> boolIndex = RxList<bool>();
-  RxList<int> loadIndex;
+  ExpandableController? expandableController;
+  TextEditingController? textEditingControllerALL;
+  RxList<int?> indexResultA = RxList<int?>();
+  RxList<int?> indexResultB = RxList<int?>();
+  RxList<bool?> boolIndex = RxList<bool?>();
+  late RxList<int> loadIndex;
   RxBool isLoading = false.obs;
 
   RxString id = "".obs;
@@ -31,7 +31,7 @@ class PicaCardTableController extends GetxController {
   RxString colA = "".obs;
   RxString docB = "".obs;
   RxBool dataTableFilter = false.obs;
-  RxList<int> dataTableListRadio = RxList<int>();
+  RxList<int?> dataTableListRadio = RxList<int?>();
   int dataTableRadioIndex = 1;
 
   @override
@@ -50,34 +50,34 @@ class PicaCardTableController extends GetxController {
     textEditingControllerALL = TextEditingController();
   }
 
-  void fillTextData(int indexData, int indexCard, int index, String id) {
+  void fillTextData(int indexData, int indexCard, int? index, String id) {
     switch (id) {
       case "Actual":
         _homeController
             .tempListChecklistAudit
             .value
-            .checklistAudit[indexData]
-            .checklistElement[indexCard]
-            .checklistData[index]
-            .actual = textEditingControllerALL.text.toString();
+            .checklistAudit![indexData]
+            .checklistElement![indexCard]
+            .checklistData![index!]
+            .actual = textEditingControllerALL!.text.toString();
         break;
       case "Target":
         _homeController
             .tempListChecklistAudit
             .value
-            .checklistAudit[indexData]
-            .checklistElement[indexCard]
-            .checklistData[index]
-            .target = textEditingControllerALL.text.toString();
+            .checklistAudit![indexData]
+            .checklistElement![indexCard]
+            .checklistData![index!]
+            .target = textEditingControllerALL!.text.toString();
         break;
       case "Priority":
         _homeController
             .tempListChecklistAudit
             .value
-            .checklistAudit[indexData]
-            .checklistElement[indexCard]
-            .checklistData[index]
-            .improv = textEditingControllerALL.text.toString();
+            .checklistAudit![indexData]
+            .checklistElement![indexCard]
+            .checklistData![index!]
+            .improv = textEditingControllerALL!.text.toString();
         break;
       default:
     }
@@ -87,12 +87,12 @@ class PicaCardTableController extends GetxController {
     PicaAnalysisController picaAController = Get.find();
     bool isNo = false;
     Widget picaData;
-    List<int> radioData = [];
+    List<int?> radioData = [];
     var data = listChecklistAudit
-        .checklistAudit[picaAController.indexDetailData.value]
-        .checklistElement[index];
-    for (int i = 0; i < data.checklistData.length; i++) {
-      radioData.add(data.checklistData[i].assessmentResult);
+        .checklistAudit![picaAController.indexDetailData.value]
+        .checklistElement![index];
+    for (int i = 0; i < data.checklistData!.length; i++) {
+      radioData.add(data.checklistData![i].assessmentResult);
     }
 
     if (radioData.contains(1)) {
@@ -100,17 +100,17 @@ class PicaCardTableController extends GetxController {
     }
 
     if (isNo) {
-      title.value = data.title;
-      id.value = data.id;
+      title.value = data.title!;
+      id.value = data.id!;
       indexData.value = picaAController.indexDetailData.value;
       indexCard.value = index;
-      docA.value = data.tablePath.docA;
-      colA.value = data.tablePath.colA;
-      docB.value = data.tablePath.docB;
+      docA.value = data.tablePath!.docA!;
+      colA.value = data.tablePath!.colA!;
+      docB.value = data.tablePath!.docB!;
       dataTableFilter.value = true;
       dataTableRadioIndex = 1;
       dataTableListRadio.value = radioData;
-      print("in list: " + data.id);
+      print("in list: " + data.id!);
       if (picaAController.navBarIndex.value == 1) {
         picaData = PicaDetailTable(tag: data.id);
       } else if (picaAController.navBarIndex.value == 2) {
@@ -123,26 +123,26 @@ class PicaCardTableController extends GetxController {
         picaData: picaData,
       );
     } else {
-      print("not in list: " + data.id);
+      print("not in list: " + data.id!);
       return Container();
     }
   }
 
-  counter({int indexB, int indexA}) {
+  counter({int? indexB, int? indexA}) {
     int temp = 0;
-    List<ChecklistAudit> dataA =
+    List<ChecklistAudit>? dataA =
         _homeController.tempListChecklistAudit.value.checklistAudit;
     if (dataA != null) {
       List<ChecklistData> list =
-          dataA[indexA].checklistElement[indexB].checklistData;
+          dataA[indexA!].checklistElement![indexB!].checklistData!;
       for (int i = 0; i <= list.length - 1; i++) {
-        if (list[i].isNo) {
-          temp += list[i].dampak;
-          temp += list[i].urgensi;
+        if (list[i].isNo!) {
+          temp += list[i].dampak!;
+          temp += list[i].urgensi!;
         }
       }
-      _homeController.tempListChecklistAudit.value.checklistAudit[indexA]
-          .checklistElement[indexB].result = temp;
+      _homeController.tempListChecklistAudit.value.checklistAudit![indexA]
+          .checklistElement![indexB].result = temp;
       _sortCard(indexA, dataA);
     } else {
       print("counter's PicaData null");
@@ -150,17 +150,17 @@ class PicaCardTableController extends GetxController {
   }
 
   void displayIndex(int indexCard, int indexData,
-      {bool isGlobal = true, String tag}) {
+      {bool isGlobal = true, String? tag}) {
     List<ChecklistAudit> dataA =
-        _homeController.tempListChecklistAudit.value.checklistAudit;
+        _homeController.tempListChecklistAudit.value.checklistAudit!;
     loadIndex = RxList<int>();
-    List<int> data = [];
-    List<int> data2 = [];
-    List<bool> data3 = [];
+    List<int?> data = [];
+    List<int?> data2 = [];
+    List<bool?> data3 = [];
     List<ChecklistData> dataB =
-        dataA[indexData].checklistElement[indexCard].checklistData;
+        dataA[indexData].checklistElement![indexCard].checklistData!;
     for (int i = 0; i <= dataB.length - 1; i++) {
-      if (dataB[i].isNo) {
+      if (dataB[i].isNo!) {
         loadIndex.add(i);
       }
     }
@@ -186,9 +186,9 @@ class PicaCardTableController extends GetxController {
 
   void _sortCard(int indexData, List<ChecklistAudit> listCA) {
     try {
-      _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
-          .checklistElement
-          .sort((a, b) => b.result.compareTo(a.result));
+      _homeController.tempListChecklistAudit.value.checklistAudit![indexData]
+          .checklistElement!
+          .sort((a, b) => b.result!.compareTo(a.result!));
     } catch (e) {
       print(e);
     }
@@ -197,12 +197,12 @@ class PicaCardTableController extends GetxController {
 
   void _counterMainCard(int indexData, List<ChecklistAudit> listCA) {
     try {
-      int length = listCA[indexData].checklistElement.length;
+      int length = listCA[indexData].checklistElement!.length;
       int counter = 0;
       for (int i = 0; i <= length - 1; i++) {
-        counter += listCA[indexData].checklistElement[i].result;
+        counter += listCA[indexData].checklistElement![i].result!;
       }
-      _homeController.tempListChecklistAudit.value.checklistAudit[indexData]
+      _homeController.tempListChecklistAudit.value.checklistAudit![indexData]
           .score = counter;
       sortMainCard();
       _homeController.tempListChecklistAudit.refresh();
@@ -213,8 +213,8 @@ class PicaCardTableController extends GetxController {
 
   void sortMainCard() {
     try {
-      _homeController.tempListChecklistAudit.value.checklistAudit
-          .sort((a, b) => b.score.compareTo(a.score));
+      _homeController.tempListChecklistAudit.value.checklistAudit!
+          .sort((a, b) => b.score!.compareTo(a.score!));
     } catch (e) {
       print("sortMainCard: " + e.toString());
     }
@@ -226,9 +226,9 @@ class PicaCardTableController extends GetxController {
       _homeController
           .tempListChecklistAudit
           .value
-          .checklistAudit[indexData.value]
-          .checklistElement[indexCard.value]
-          .checklistData[i]
+          .checklistAudit![indexData.value]
+          .checklistElement![indexCard.value]
+          .checklistData![i]
           .isNo = boolIndex[i];
     }
     _homeController.tempListChecklistAudit.refresh();

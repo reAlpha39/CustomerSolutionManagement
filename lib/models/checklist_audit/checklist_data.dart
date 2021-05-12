@@ -12,14 +12,14 @@ class ChecklistData {
         this.improv,
     });
 
-    int urgensi;
-    int dampak;
-    bool isNo;
-    int assessmentResult;
-    String remark;
-    String actual;
-    String target;
-    String improv;
+    int? urgensi;
+    int? dampak;
+    bool? isNo;
+    int? assessmentResult;
+    String? remark;
+    String? actual;
+    String? target;
+    String? improv;
 
     factory ChecklistData.fromJson(String str) => ChecklistData.fromMap(json.decode(str));
 

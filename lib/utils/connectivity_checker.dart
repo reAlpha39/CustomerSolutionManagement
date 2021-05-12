@@ -6,7 +6,7 @@ Future<bool> connectivityChecker() async {
   final bool hasConnection =
       await InternetConnectionChecker().hasConnection.then((value) {
     if (!value) {
-      if (Get.isDialogOpen) {
+      if (Get.isDialogOpen!) {
         Get.back(closeOverlays: true);
       }
       Get.defaultDialog(

@@ -24,8 +24,8 @@ class CustomerInfoCheckbox extends StatelessWidget {
                 controlAffinity: ListTileControlAffinity.leading,
                 activeColor: Color(0xffffcd29),
                 checkColor: Colors.black87,
-                onChanged: (bool value) {
-                  controller.checkBoxA.value = value;
+                onChanged: (bool? value) {
+                  controller.checkBoxA.value = value!;
                 },
               )),
           Obx(() => CheckboxListTile(
@@ -34,8 +34,8 @@ class CustomerInfoCheckbox extends StatelessWidget {
                 controlAffinity: ListTileControlAffinity.leading,
                 activeColor: Color(0xffffcd29),
                 checkColor: Colors.black87,
-                onChanged: (bool value) {
-                  controller.checkBoxB.value = value;
+                onChanged: (bool? value) {
+                  controller.checkBoxB.value = value!;
                 },
               )),
           Obx(() => CheckboxListTile(
@@ -44,8 +44,8 @@ class CustomerInfoCheckbox extends StatelessWidget {
                 controlAffinity: ListTileControlAffinity.leading,
                 activeColor: Color(0xffffcd29),
                 checkColor: Colors.black87,
-                onChanged: (bool value) {
-                  controller.checkBoxC.value = value;
+                onChanged: (bool? value) {
+                  controller.checkBoxC.value = value!;
                 },
               )),
         ],

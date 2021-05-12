@@ -26,16 +26,16 @@ class PicaDetailMenuItems extends StatelessWidget {
                       _homeController
                           .tempListChecklistAudit
                           .value
-                          .checklistAudit[picaAController.indexDetailData.value]
-                          .checklistElement
+                          .checklistAudit![picaAController.indexDetailData.value]
+                          .checklistElement!
                           .length, (index) {
                     PicaCardTableController picaCTCTag = Get.find(
                         tag: _homeController
                             .tempListChecklistAudit
                             .value
-                            .checklistAudit[
+                            .checklistAudit![
                                 picaAController.indexDetailData.value]
-                            .checklistElement[index]
+                            .checklistElement![index]
                             .id);
                     return picaCTCTag.picaDetailCard(
                         index, _homeController.tempListChecklistAudit.value);

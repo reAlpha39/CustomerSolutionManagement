@@ -7,22 +7,22 @@ import 'package:get/get.dart';
 class DataTableController extends GetxController {
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
-  Rx<AuditTableData> auditTableData = AuditTableData().obs;
-  Rx<IwDataTable> iwDataTable = IwDataTable().obs;
+  Rx<AuditTableData?> auditTableData = AuditTableData().obs;
+  Rx<IwDataTable?> iwDataTable = IwDataTable().obs;
   RxBool isLoading = false.obs;
 
   loadDataTable(
-      {String docA,
-      String colA,
-      String docB,
+      {String? docA,
+      String? colA,
+      String? docB,
       bool filter = false,
-      RxList<int> listRadio,
-      int radioIndex}) {
+      RxList<int?>? listRadio,
+      int? radioIndex}) {
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
         _databaseProvider
-            .auditDataTable(docA: docA, collectionA: colA, docB: docB)
+            .auditDataTable(docA: docA, collectionA: colA!, docB: docB)
             .then((value) {
           if (filter) {
             if (value.runtimeType == AuditTableData) {
@@ -50,7 +50,7 @@ class DataTableController extends GetxController {
   }
 
   void _iwfilterTable(
-      {IwDataTable data, int radioIndex, RxList<int> listRadio}) {
+      {IwDataTable? data, int? radioIndex, RxList<int?>? listRadio}) {
     isLoading.value = true;
     IwDataTable tableData = IwDataTable();
     tableData.description = [];
@@ -62,11 +62,11 @@ class DataTableController extends GetxController {
     if (listRadio != null) {
       for (int i = 0; i <= listRadio.length - 1; i++) {
         if (listRadio[i] == radioIndex) {
-          tableData.description.add(data.description[i]);
-          tableData.dimension.add(data.dimension[i]);
-          tableData.id.add(data.id[i]);
-          tableData.element.add(data.element[i]);
-          tableData.noKlausul.add(data.noKlausul[i]);
+          tableData.description!.add(data!.description![i]);
+          tableData.dimension!.add(data.dimension![i]);
+          tableData.id!.add(data.id![i]);
+          tableData.element!.add(data.element![i]);
+          tableData.noKlausul!.add(data.noKlausul![i]);
         }
       }
       iwDataTable.value = tableData;
@@ -76,7 +76,7 @@ class DataTableController extends GetxController {
   }
 
   _msppfilterTable(
-      {AuditTableData data, int radioIndex, RxList<int> listRadio}) {
+      {AuditTableData? data, int? radioIndex, RxList<int?>? listRadio}) {
     isLoading.value = true;
     AuditTableData tableData = AuditTableData();
     tableData.description = [];
@@ -89,12 +89,12 @@ class DataTableController extends GetxController {
     if (listRadio != null) {
       for (int i = 0; i <= listRadio.length - 1; i++) {
         if (listRadio[i] == radioIndex) {
-          tableData.description.add(data.description[i]);
-          tableData.guidance.add(data.guidance[i]);
-          tableData.id.add(data.id[i]);
-          tableData.noKlause.add(data.noKlause[i]);
-          tableData.objectiveEvidence.add(data.objectiveEvidence[i]);
-          tableData.pic.add(data.pic[i]);
+          tableData.description!.add(data!.description![i]);
+          tableData.guidance!.add(data.guidance![i]);
+          tableData.id!.add(data.id![i]);
+          tableData.noKlause!.add(data.noKlause![i]);
+          tableData.objectiveEvidence!.add(data.objectiveEvidence![i]);
+          tableData.pic!.add(data.pic![i]);
         }
       }
       auditTableData.value = tableData;

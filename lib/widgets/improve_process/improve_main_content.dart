@@ -5,10 +5,10 @@ import 'package:line_icons/line_icons.dart';
 
 class ImproveMainContent extends StatelessWidget {
   final ImproveProcessController controller = Get.find(tag: 'global');
-  final int index;
-  final bool isBefore;
+  final int? index;
+  final bool? isBefore;
 
-  ImproveMainContent({Key key, this.index, this.isBefore}) : super(key: key);
+  ImproveMainContent({Key? key, this.index, this.isBefore}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,21 +27,21 @@ class ImproveMainContent extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12),
                   child: Obx(
                     () => SingleChildScrollView(
-                      child: isBefore
+                      child: isBefore!
                           ? Text(
                               controller.improveProcess.value
-                                  .improveProcesData[index].descriptionBefore,
+                                  .improveProcesData![index!].descriptionBefore!,
                               style: TextStyle(fontSize: 12),
                             )
                           : Text(
                               controller
                                           .improveProcess
                                           .value
-                                          .improveProcesData[index]
+                                          .improveProcesData![index!]
                                           .descriptionAfter !=
                                       null
                                   ? controller.improveProcess.value
-                                      .improveProcesData[index].descriptionAfter
+                                      .improveProcesData![index!].descriptionAfter!
                                   : "",
                               style: TextStyle(fontSize: 12),
                             ),
@@ -112,14 +112,14 @@ class ImproveMainContent extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(8)),
                 child: Obx(
-                  () => isBefore
+                  () => isBefore!
                       ? BoxImage(
                           pathPicture: controller.improveProcess.value
-                              .improveProcesData[index].picturePathBefore,
+                              .improveProcesData![index!].picturePathBefore,
                         )
                       : BoxImage(
                           pathPicture: controller.improveProcess.value
-                              .improveProcesData[index].picturePathAfter,
+                              .improveProcesData![index!].picturePathAfter,
                         ),
                 ),
               ),
@@ -132,9 +132,9 @@ class ImproveMainContent extends StatelessWidget {
 }
 
 class BoxImage extends StatelessWidget {
-  final String pathPicture;
+  final String? pathPicture;
 
-  const BoxImage({Key key, this.pathPicture}) : super(key: key);
+  const BoxImage({Key? key, this.pathPicture}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -143,7 +143,7 @@ class BoxImage extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8)),
         child: pathPicture != "" && pathPicture != null
             ? Image.network(
-                pathPicture,
+                pathPicture!,
                 loadingBuilder: (context, child, progress) {
                   return progress == null ? child : LinearProgressIndicator();
                 },

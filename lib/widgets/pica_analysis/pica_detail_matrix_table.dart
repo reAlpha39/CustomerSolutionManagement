@@ -12,9 +12,9 @@ class PicaDetailMatrixTable extends StatelessWidget {
   final DataTableController dtController = Get.find();
   final PicaCardTableController listCardController = Get.find(tag: 'global');
   final List<String> data = ['0', '1', '2', '3', '4', '5'];
-  final String tag;
+  final String? tag;
 
-  PicaDetailMatrixTable({Key key, this.tag}) : super(key: key);
+  PicaDetailMatrixTable({Key? key, this.tag}) : super(key: key);
 
   TextButton textButton(int id, String name) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
@@ -26,29 +26,29 @@ class PicaDetailMatrixTable extends StatelessWidget {
         var listText = _homeController
             .tempListChecklistAudit
             .value
-            .checklistAudit[controllerPU.indexData.value]
-            .checklistElement[controllerPU.indexCard.value]
+            .checklistAudit![controllerPU.indexData.value]
+            .checklistElement![controllerPU.indexCard.value]
             .checklistData;
-        String text = "Klik disini";
+        String? text = "Klik disini";
         if (name == "Actual") {
-          if (listText[id].actual != "") {
+          if (listText![id].actual != "") {
             text = listText[id].actual;
           }
         } else if (name == "Target") {
-          if (listText[id].target != "") {
+          if (listText![id].target != "") {
             text = listText[id].target;
           }
         } else if (name == "Priority") {
-          if (listText[id].improv != "") {
+          if (listText![id].improv != "") {
             text = listText[id].improv;
           }
         }
-        return Text(text);
+        return Text(text!);
       }),
     );
   }
 
-  Future<bool> resultTextField({int index, String name}) {
+  Future<bool?> resultTextField({int? index, required String name}) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
     return Get.defaultDialog(
         barrierDismissible: false,
@@ -84,7 +84,7 @@ class PicaDetailMatrixTable extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Obx(
-        () => dtController.auditTableData.value.id == null
+        () => dtController.auditTableData.value!.id == null
             ? Center(
                 child: CircularProgressIndicator(),
               )
@@ -101,7 +101,7 @@ class PicaDetailMatrixTable extends StatelessWidget {
                       DataColumn(label: Text('Prioritas Improve')),
                     ],
                     rows: List<DataRow>.generate(
-                      dtController.auditTableData.value.id.length,
+                      dtController.auditTableData.value!.id!.length,
                       (index) => DataRow(
                         cells: [
                           DataCell(
@@ -113,7 +113,7 @@ class PicaDetailMatrixTable extends StatelessWidget {
                                   behavior: CustomScrollBehavior(),
                                   child: SingleChildScrollView(
                                     child: Text(dtController
-                                        .auditTableData.value.description[index]
+                                        .auditTableData.value!.description![index]
                                         .replaceAll("\\n", "\n")),
                                   ),
                                 ),
@@ -127,7 +127,7 @@ class PicaDetailMatrixTable extends StatelessWidget {
                                 behavior: CustomScrollBehavior(),
                                 child: SingleChildScrollView(
                                   child: Text(dtController
-                                      .auditTableData.value.pic[index]
+                                      .auditTableData.value!.pic![index]
                                       .replaceAll("\\n", "\n")),
                                 ),
                               ),
@@ -135,17 +135,17 @@ class PicaDetailMatrixTable extends StatelessWidget {
                           ),
                           DataCell(
                             textButton(
-                                dtController.auditTableData.value.id[index],
+                                dtController.auditTableData.value!.id![index],
                                 "Actual"),
                           ),
                           DataCell(
                             textButton(
-                                dtController.auditTableData.value.id[index],
+                                dtController.auditTableData.value!.id![index],
                                 "Target"),
                           ),
                           DataCell(
                             textButton(
-                                dtController.auditTableData.value.id[index],
+                                dtController.auditTableData.value!.id![index],
                                 "Priority"),
                           ),
                         ],

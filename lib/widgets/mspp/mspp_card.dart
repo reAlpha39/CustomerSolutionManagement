@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MsppCard extends StatelessWidget {
-  final String title;
-  final String id;
-  final String docA;
-  final String docB;
-  final String colA;
+  final String? title;
+  final String? id;
+  final String? docA;
+  final String? docB;
+  final String? colA;
   final bool isIwTable;
   final bool dataTableFilter;
-  final RxList<int> dataTableListRadio;
-  final int dataTableRadioIndex;
+  final RxList<int>? dataTableListRadio;
+  final int? dataTableRadioIndex;
 
   const MsppCard({
-    Key key,
+    Key? key,
     this.title,
     this.id,
     this.docA,

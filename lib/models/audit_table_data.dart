@@ -14,12 +14,12 @@ class AuditTableData {
     this.pic,
   });
 
-  List<int> id;
-  List<String> description;
-  List<String> guidance;
-  List<String> noKlause;
-  List<String> objectiveEvidence;
-  List<String> pic;
+  List<int>? id;
+  List<String>? description;
+  List<String>? guidance;
+  List<String>? noKlause;
+  List<String>? objectiveEvidence;
+  List<String>? pic;
 
   factory AuditTableData.fromJson(String str) =>
       AuditTableData.fromMap(json.decode(str));
@@ -37,12 +37,12 @@ class AuditTableData {
       );
 
   Map<String, dynamic> toMap() => {
-        "id": List<dynamic>.from(id.map((x) => x)),
-        "description": List<dynamic>.from(description.map((x) => x)),
-        "guidance": List<dynamic>.from(guidance.map((x) => x)),
-        "noKlause": List<dynamic>.from(noKlause.map((x) => x)),
+        "id": List<dynamic>.from(id!.map((x) => x)),
+        "description": List<dynamic>.from(description!.map((x) => x)),
+        "guidance": List<dynamic>.from(guidance!.map((x) => x)),
+        "noKlause": List<dynamic>.from(noKlause!.map((x) => x)),
         "objectiveEvidence":
-            List<dynamic>.from(objectiveEvidence.map((x) => x)),
-        "pic": List<dynamic>.from(pic.map((x) => x)),
+            List<dynamic>.from(objectiveEvidence!.map((x) => x)),
+        "pic": List<dynamic>.from(pic!.map((x) => x)),
       };
 }

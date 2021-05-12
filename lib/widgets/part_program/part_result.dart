@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 
 class PartResult extends StatelessWidget {
   final PartProgramController controller = Get.find();
-  final List<String> data;
-  final int index;
-  final String id;
+  final List<String>? data;
+  final int? index;
+  final String? id;
 
   PartResult({this.data, this.index, this.id});
 
@@ -18,18 +18,18 @@ class PartResult extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          for (int i = 0; i <= data.length - 1; i++)
+          for (int i = 0; i <= data!.length - 1; i++)
             Container(
               child: Row(
                 children: [
                   Obx(() => Radio(
                       visualDensity: VisualDensity.compact,
                       value: i,
-                      groupValue: controller.radioIndexPP(id)[index],
+                      groupValue: controller.radioIndexPP(id)![index!],
                       activeColor: Color(0xffffcd29),
-                      onChanged: (int value) =>
-                          controller.radioIndexPP(id)[index] = value)),
-                  Text('${data[i]}'),
+                      onChanged: (int? value) =>
+                          controller.radioIndexPP(id)![index!] = value)),
+                  Text('${data![i]}'),
                 ],
               ),
             ),

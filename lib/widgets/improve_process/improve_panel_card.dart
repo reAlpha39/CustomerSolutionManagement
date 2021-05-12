@@ -20,7 +20,7 @@ class ImprovePanelCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 TextButton(
-                  onPressed: () => controller.panelController.close(),
+                  onPressed: () => controller.panelController!.close(),
                   child: Icon(
                     LineIcons.times,
                     color: Colors.black87,

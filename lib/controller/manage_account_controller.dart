@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:customer/models/users.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
@@ -7,11 +8,11 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ManageAccountController extends GetxController {
   DatabaseProvider databaseProvider = DatabaseProvider();
-  PanelController panelController;
-  TextEditingController namaTEC;
-  TextEditingController usernameTEC;
-  TextEditingController passwordTEC;
-  GlobalKey<FormState> formKey;
+  PanelController? panelController;
+  TextEditingController? namaTEC;
+  TextEditingController? usernameTEC;
+  TextEditingController? passwordTEC;
+  GlobalKey<FormState>? formKey;
 
   RxBool isLoading = false.obs;
   RxInt radio = 2.obs;
@@ -20,7 +21,7 @@ class ManageAccountController extends GetxController {
     1: 'internal',
     2: 'customer',
   };
-  RxList<Users> listUser;
+  late RxList<Users> listUser;
   RxString textButton = 'Create'.obs;
   RxString titleCard = 'Create Account'.obs;
 
@@ -51,7 +52,7 @@ class ManageAccountController extends GetxController {
   }
 
   validateTextField() {
-    var form = formKey.currentState;
+    var form = formKey!.currentState!;
     if (form.validate()) {
       form.save();
       if (textButton.value == "Create") {
@@ -76,7 +77,7 @@ class ManageAccountController extends GetxController {
     });
   }
 
-  deleteAccount(String username) {
+  deleteAccount(String? username) {
     showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
@@ -97,18 +98,18 @@ class ManageAccountController extends GetxController {
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
-        databaseProvider.usernameChecker(usernameTEC.text).then((available) {
+        databaseProvider.usernameChecker(usernameTEC!.text).then((available) {
           if (available) {
             Users users = Users(
-              nama: namaTEC.text,
-              username: usernameTEC.text,
-              password: passwordTEC.text,
-              type: radioData[radio],
+              nama: namaTEC!.text,
+              username: usernameTEC!.text,
+              password: passwordTEC!.text,
+              type: radioData[radio.value],
             );
             databaseProvider.createAccount(users).then((_) {
               clearData();
               isLoading.value = false;
-              panelController.close();
+              panelController!.close();
               listUsers();
             });
           } else {
@@ -128,12 +129,12 @@ class ManageAccountController extends GetxController {
     titleCard.value = 'Update Account';
     textButton.value = 'Update';
     var radioKey = radioData.keys
-        .firstWhere((k) => radioData[k] == user.type, orElse: () => null);
-    namaTEC.text = user.nama;
-    usernameTEC.text = user.username;
-    passwordTEC.text = user.password;
+        .firstWhereOrNull((k) => radioData[k] == user.type)!;
+    namaTEC!.text = user.nama!;
+    usernameTEC!.text = user.username!;
+    passwordTEC!.text = user.password!;
     radio.value = radioKey;
-    panelController.open();
+    panelController!.open();
   }
 
   updateAccount() {
@@ -141,16 +142,16 @@ class ManageAccountController extends GetxController {
     connectivityChecker().then((conn) {
       if (conn) {
         Users users = Users(
-          nama: namaTEC.text,
-          username: usernameTEC.text,
-          password: passwordTEC.text,
-          type: radioData[radio],
+          nama: namaTEC!.text,
+          username: usernameTEC!.text,
+          password: passwordTEC!.text,
+          type: radioData[radio.value],
         );
         databaseProvider.createAccount(users).then((_) {
           clearData();
           isLoading.value = false;
           listUsers();
-          panelController.close();
+          panelController!.close();
         });
       } else {
         isLoading.value = false;
@@ -158,7 +159,7 @@ class ManageAccountController extends GetxController {
     });
   }
 
-  _showDialogError({String title, String middleText}) {
+  _showDialogError({required String title, required String middleText}) {
     Get.defaultDialog(
         title: title,
         middleText: middleText,
@@ -168,9 +169,9 @@ class ManageAccountController extends GetxController {
   }
 
   clearData() {
-    namaTEC.clear();
-    usernameTEC.clear();
-    passwordTEC.clear();
+    namaTEC!.clear();
+    usernameTEC!.clear();
+    passwordTEC!.clear();
     radio.value = 2;
   }
 

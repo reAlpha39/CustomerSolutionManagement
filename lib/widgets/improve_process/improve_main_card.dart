@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ImproveMainCard extends StatelessWidget {
-  final int index;
-  final bool isBefore;
+  final int? index;
+  final bool? isBefore;
   final ImproveProcessController controller = Get.find(tag: 'global');
 
-  ImproveMainCard({Key key, this.index, this.isBefore}) : super(key: key);
+  ImproveMainCard({Key? key, this.index, this.isBefore}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,7 +57,7 @@ class ImproveMainCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
             child: Align(
               alignment:
-                  isBefore ? Alignment.centerRight : Alignment.centerLeft,
+                  isBefore! ? Alignment.centerRight : Alignment.centerLeft,
               child: Container(
                 constraints: BoxConstraints(
                   minWidth: 150,
@@ -76,7 +76,7 @@ class ImproveMainCard extends StatelessWidget {
                       minHeight: 40,
                     ),
                     child: Center(
-                      child: isBefore ? Text('Before') : Text('After'),
+                      child: isBefore! ? Text('Before') : Text('After'),
                     ),
                   ),
                 ),

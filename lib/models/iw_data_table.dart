@@ -13,11 +13,11 @@ class IwDataTable {
         this.noKlausul,
     });
 
-    List<int> id;
-    List<String> dimension;
-    List<String> element;
-    List<String> description;
-    List<String> noKlausul;
+    List<int>? id;
+    List<String>? dimension;
+    List<String>? element;
+    List<String>? description;
+    List<String>? noKlausul;
 
     factory IwDataTable.fromJson(String str) => IwDataTable.fromMap(json.decode(str));
 
@@ -32,10 +32,10 @@ class IwDataTable {
     );
 
     Map<String, dynamic> toMap() => {
-        "id": List<dynamic>.from(id.map((x) => x)),
-        "dimension": List<dynamic>.from(dimension.map((x) => x)),
-        "element": List<dynamic>.from(element.map((x) => x)),
-        "description": List<dynamic>.from(description.map((x) => x)),
-        "noKlause": List<dynamic>.from(noKlausul.map((x) => x)),
+        "id": List<dynamic>.from(id!.map((x) => x)),
+        "dimension": List<dynamic>.from(dimension!.map((x) => x)),
+        "element": List<dynamic>.from(element!.map((x) => x)),
+        "description": List<dynamic>.from(description!.map((x) => x)),
+        "noKlause": List<dynamic>.from(noKlausul!.map((x) => x)),
     };
 }

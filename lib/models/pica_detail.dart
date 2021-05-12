@@ -12,11 +12,11 @@ class PicaDetail {
         this.result,
     });
 
-    String title;
-    String id;
-    TablePath tablePath;
-    List<ColResult> colResult;
-    int result;
+    String? title;
+    String? id;
+    TablePath? tablePath;
+    List<ColResult>? colResult;
+    int? result;
 
     factory PicaDetail.fromJson(String str) => PicaDetail.fromMap(json.decode(str));
 
@@ -33,8 +33,8 @@ class PicaDetail {
     Map<String, dynamic> toMap() => {
         "title": title,
         "id": id,
-        "table_path": tablePath.toMap(),
-        "colResult": List<dynamic>.from(colResult.map((x) => x.toMap())),
+        "table_path": tablePath!.toMap(),
+        "colResult": List<dynamic>.from(colResult!.map((x) => x.toMap())),
         "result": result,
     };
 }

@@ -17,12 +17,12 @@ class MsppController extends GetxController {
     2: 'N/A',
   };
 
-  Rx<Mspp> msppData;
+  Rx<Mspp>? msppData;
   RxBool isLoading = false.obs;
   RxList<int> itemIndex = [0].obs;
   RxInt assessmentResult = (-1).obs;
 
-  TextEditingController textEditingControllerALL;
+  TextEditingController? textEditingControllerALL;
 
   @override
   void onInit() {
@@ -36,71 +36,71 @@ class MsppController extends GetxController {
     super.onClose();
   }
 
-  loadItem({String docA, String docB, int index, isAssessmentResult}) {
+  loadItem({String? docA, String? docB, int? index, required isAssessmentResult}) {
     List<ChecklistAudit> data =
-        _homeController.tempListChecklistAudit.value.checklistAudit;
+        _homeController.tempListChecklistAudit.value.checklistAudit!;
     int indexA = data.indexWhere((element) => element.id == docA);
     int indexB = data[indexA]
-        .checklistElement
+        .checklistElement!
         .indexWhere((element) => element.id == docB);
     var result;
     if (isAssessmentResult) {
       result = _homeController
           .tempListChecklistAudit
           .value
-          .checklistAudit[indexA]
-          .checklistElement[indexB]
-          .checklistData[index]
+          .checklistAudit![indexA]
+          .checklistElement![indexB]
+          .checklistData![index!]
           .assessmentResult;
       assessmentResult.value = result;
     } else {
       result = _homeController
           .tempListChecklistAudit
           .value
-          .checklistAudit[indexA]
-          .checklistElement[indexB]
-          .checklistData[index]
+          .checklistAudit![indexA]
+          .checklistElement![indexB]
+          .checklistData![index!]
           .remark;
     }
     return result;
   }
 
-  void searchItemIndex({String docA, String docB, int index}) {
+  void searchItemIndex({String? docA, String? docB, int? index}) {
     List<ChecklistAudit> data =
-        _homeController.tempListChecklistAudit.value.checklistAudit;
+        _homeController.tempListChecklistAudit.value.checklistAudit!;
     int indexA = data.indexWhere((element) => element.id == docA);
     int indexB = data[indexA]
-        .checklistElement
+        .checklistElement!
         .indexWhere((element) => element.id == docB);
     itemIndex.assignAll([indexA, indexB]);
   }
 
-  void saveItem({String docA, String docB, int index, isAssessmentResult}) {
+  void saveItem({String? docA, String? docB, int? index, required isAssessmentResult}) {
     PicaCardTableController _picaCT = Get.find(tag: 'global');
     searchItemIndex(docA: docA, docB: docB, index: index);
     if (isAssessmentResult) {
       _homeController
           .tempListChecklistAudit
           .value
-          .checklistAudit[itemIndex[0]]
-          .checklistElement[itemIndex[1]]
-          .checklistData[index]
+          .checklistAudit![itemIndex[0]]
+          .checklistElement![itemIndex[1]]
+          .checklistData![index!]
           .assessmentResult = assessmentResult.value;
       if (assessmentResult.value == 1) {
         _homeController
             .tempListChecklistAudit
             .value
-            .checklistAudit[itemIndex[0]]
-            .checklistElement[itemIndex[1]]
-            .checklistData[index]
+            .checklistAudit![itemIndex[0]]
+            .checklistElement![itemIndex[1]]
+            .checklistData![index]
             .isNo = true;
       } else {
         _homeController
             .tempListChecklistAudit
             .value
-            .checklistAudit[itemIndex[0]]
-            .checklistElement[itemIndex[1]]
-            .checklistData[index]
+            .checklistAudit![itemIndex[0]]
+            .checklistElement![itemIndex[1]]
+            .checklistData![index]
             .isNo = false;
       }
       _picaCT.counter(indexA: itemIndex[0], indexB: itemIndex[1]);
@@ -108,11 +108,11 @@ class MsppController extends GetxController {
       _homeController
           .tempListChecklistAudit
           .value
-          .checklistAudit[itemIndex[0]]
-          .checklistElement[itemIndex[1]]
-          .checklistData[index]
-          .remark = textEditingControllerALL.text;
-      textEditingControllerALL.clear();
+          .checklistAudit![itemIndex[0]]
+          .checklistElement![itemIndex[1]]
+          .checklistData![index!]
+          .remark = textEditingControllerALL!.text;
+      textEditingControllerALL!.clear();
       _homeController.tempListChecklistAudit.refresh();
     }
   }

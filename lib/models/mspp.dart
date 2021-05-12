@@ -22,18 +22,18 @@ class Mspp {
     this.applicationEngineer,
   });
 
-  Map<String, MsppData> periodicInspection;
-  Map<String, MsppData> periodicServicePlan;
-  Map<String, MsppData> periodicService;
-  Map<String, MsppData> tools;
-  Map<String, MsppData> infrastructur;
-  Map<String, MsppData> ketersediaanMekanik;
-  Map<String, MsppData> leadTimePenyelesaianP;
-  Map<String, MsppData> ovhPlan;
-  Map<String, MsppData> ovh;
-  Map<String, MsppData> unscheduleBreakdown;
-  Map<String, MsppData> cbm;
-  Map<String, MsppData> applicationEngineer;
+  Map<String, MsppData>? periodicInspection;
+  Map<String, MsppData>? periodicServicePlan;
+  Map<String, MsppData>? periodicService;
+  Map<String, MsppData>? tools;
+  Map<String, MsppData>? infrastructur;
+  Map<String, MsppData>? ketersediaanMekanik;
+  Map<String, MsppData>? leadTimePenyelesaianP;
+  Map<String, MsppData>? ovhPlan;
+  Map<String, MsppData>? ovh;
+  Map<String, MsppData>? unscheduleBreakdown;
+  Map<String, MsppData>? cbm;
+  Map<String, MsppData>? applicationEngineer;
 
   factory Mspp.fromJson(String str) => Mspp.fromMap(json.decode(str));
 
@@ -67,29 +67,29 @@ class Mspp {
       );
 
   Map<String, dynamic> toMap() => {
-        "periodicInspection": Map.from(periodicInspection)
+        "periodicInspection": Map.from(periodicInspection!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "periodicServicePlan": Map.from(periodicServicePlan)
+        "periodicServicePlan": Map.from(periodicServicePlan!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "periodicService": Map.from(periodicService)
+        "periodicService": Map.from(periodicService!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "tools": Map.from(tools)
+        "tools": Map.from(tools!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "infrastructure": Map.from(infrastructur)
+        "infrastructure": Map.from(infrastructur!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "ketersediaanMekanik": Map.from(ketersediaanMekanik)
+        "ketersediaanMekanik": Map.from(ketersediaanMekanik!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "leadTimePenyelesaianP": Map.from(leadTimePenyelesaianP)
+        "leadTimePenyelesaianP": Map.from(leadTimePenyelesaianP!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "ovhPlan": Map.from(ovhPlan)
+        "ovhPlan": Map.from(ovhPlan!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "ovh": Map.from(ovh)
+        "ovh": Map.from(ovh!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "unscheduleBreakdown": Map.from(unscheduleBreakdown)
+        "unscheduleBreakdown": Map.from(unscheduleBreakdown!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "cbm": Map.from(cbm)
+        "cbm": Map.from(cbm!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
-        "applicationEngineer": Map.from(applicationEngineer)
+        "applicationEngineer": Map.from(applicationEngineer!)
             .map((k, v) => MapEntry<String, dynamic>(k, v.toMap())),
       };
 }

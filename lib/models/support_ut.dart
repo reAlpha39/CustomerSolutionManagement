@@ -22,18 +22,18 @@ class SupportUt {
         this.ketidakpuasan,
     });
 
-    String id;
-    String namaCustomer;
-    String namaPerusahaan;
-    String alamatPerusahaan;
-    String misiPerusahaan;
-    String visiPerusahaan;
-    String customerSegment;
-    TotalProduct totalProduct;
-    String planBudget;
-    String problem;
-    String target;
-    List<String> ketidakpuasan;
+    String? id;
+    String? namaCustomer;
+    String? namaPerusahaan;
+    String? alamatPerusahaan;
+    String? misiPerusahaan;
+    String? visiPerusahaan;
+    String? customerSegment;
+    TotalProduct? totalProduct;
+    String? planBudget;
+    String? problem;
+    String? target;
+    List<String>? ketidakpuasan;
 
     factory SupportUt.fromJson(String str) => SupportUt.fromMap(json.decode(str));
 
@@ -62,10 +62,10 @@ class SupportUt {
         "misiPerusahaan": misiPerusahaan,
         "visiPerusahaan": visiPerusahaan,
         "customerSegment": customerSegment,
-        "totalProduct": totalProduct.toMap(),
+        "totalProduct": totalProduct!.toMap(),
         "planBudget": planBudget,
         "problem": problem,
         "target": target,
-        "ketidakpuasan": List<dynamic>.from(ketidakpuasan.map((x) => x)),
+        "ketidakpuasan": List<dynamic>.from(ketidakpuasan!.map((x) => x)),
     };
 }

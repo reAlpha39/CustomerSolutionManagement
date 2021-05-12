@@ -12,11 +12,11 @@ class PicaDetailTable extends StatelessWidget {
   final DataTableController dtController = Get.find();
   final PicaCardTableController listCardController = Get.find(tag: 'global');
   final List<String> data = ['0', '1', '2', '3', '4', '5'];
-  final String tag;
+  final String? tag;
 
-  PicaDetailTable({Key key, this.tag}) : super(key: key);
+  PicaDetailTable({Key? key, this.tag}) : super(key: key);
 
-  Future<bool> resultRadio({int index, bool isA}) {
+  Future<bool?> resultRadio({int? index, bool? isA}) {
     final PicaCardTableController controllerPU = Get.find(tag: tag);
     final PicaAnalysisController picaAController = Get.find();
     return Get.defaultDialog(
@@ -90,7 +90,7 @@ class PicaDetailTable extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Obx(
-        () => dtController.auditTableData.value.id == null
+        () => dtController.auditTableData.value!.id == null
             ? Center(
                 child: CircularProgressIndicator(),
               )
@@ -108,14 +108,14 @@ class PicaDetailTable extends StatelessWidget {
                       DataColumn(label: Text('Result')),
                     ],
                     rows: List<DataRow>.generate(
-                      dtController.auditTableData.value.id.length,
+                      dtController.auditTableData.value!.id!.length,
                       (index) => DataRow(
                         cells: [
                           DataCell(ScrollConfiguration(
                             behavior: CustomScrollBehavior(),
                             child: SingleChildScrollView(
                               child: Text(
-                                  '${dtController.auditTableData.value.noKlause[index].replaceAll("\\n", "\n")}'),
+                                  '${dtController.auditTableData.value!.noKlause![index].replaceAll("\\n", "\n")}'),
                             ),
                           )),
                           DataCell(
@@ -127,7 +127,7 @@ class PicaDetailTable extends StatelessWidget {
                                   behavior: CustomScrollBehavior(),
                                   child: SingleChildScrollView(
                                     child: Text(
-                                        '${dtController.auditTableData.value.description[index].replaceAll("\\n", "\n")}'),
+                                        '${dtController.auditTableData.value!.description![index].replaceAll("\\n", "\n")}'),
                                   ),
                                 ),
                               ),
@@ -140,7 +140,7 @@ class PicaDetailTable extends StatelessWidget {
                                 behavior: CustomScrollBehavior(),
                                 child: SingleChildScrollView(
                                   child: Text(
-                                      '${dtController.auditTableData.value.pic[index].replaceAll("\\n", "\n")}'),
+                                      '${dtController.auditTableData.value!.pic![index].replaceAll("\\n", "\n")}'),
                                 ),
                               ),
                             ),
@@ -154,7 +154,7 @@ class PicaDetailTable extends StatelessWidget {
                                   behavior: CustomScrollBehavior(),
                                   child: SingleChildScrollView(
                                     child: Text(
-                                        '${dtController.auditTableData.value.guidance[index].replaceAll("\\n", "\n")}'),
+                                        '${dtController.auditTableData.value!.guidance![index].replaceAll("\\n", "\n")}'),
                                   ),
                                 ),
                               ),
@@ -167,7 +167,7 @@ class PicaDetailTable extends StatelessWidget {
                                 behavior: CustomScrollBehavior(),
                                 child: SingleChildScrollView(
                                   child: Text(
-                                      '${dtController.auditTableData.value.objectiveEvidence[index].replaceAll("\\n", "\n")}'),
+                                      '${dtController.auditTableData.value!.objectiveEvidence![index].replaceAll("\\n", "\n")}'),
                                 ),
                               ),
                             ),

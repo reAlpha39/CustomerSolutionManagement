@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 class MsppCbm extends StatefulWidget {
   const MsppCbm({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

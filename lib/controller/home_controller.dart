@@ -12,11 +12,11 @@ class HomeController extends GetxController {
   final LoginController _loginController = Get.find();
 
   RxString msppPage = ''.obs;
-  Widget userView;
+  Widget? userView;
   String iconUser = '';
 
   RxString user = "".obs;
-  RxList<String> listCustomer;
+  late RxList<String>? listCustomer;
   RxString idCustomer = ''.obs;
   RxBool isLoading = false.obs;
   Rx<ListChecklistAudit> tempListChecklistAudit = ListChecklistAudit().obs;
@@ -35,7 +35,7 @@ class HomeController extends GetxController {
     }
   }
 
-  void loadMsppChecklistAudit({String username, String part}) {
+  void loadMsppChecklistAudit({String? username, String? part}) {
     connectivityChecker().then((conn) {
       if (conn) {
         _databaseProvider
@@ -49,7 +49,7 @@ class HomeController extends GetxController {
   }
 
   void _userType() {
-    String type = _loginController.usr.value.type;
+    String? type = _loginController.usr.value.type;
     switch (type) {
       case 'admin':
         //command here
@@ -81,8 +81,8 @@ class HomeController extends GetxController {
         print(isLoading.value);
         _databaseProvider.listCustomer().then((value) {
           listCustomer = [''].obs;
-          listCustomer.addAll(value);
-          listCustomer.removeAt(0);
+          listCustomer!.addAll(value);
+          listCustomer!.removeAt(0);
           isLoading.value = false;
           print(isLoading.value);
         });

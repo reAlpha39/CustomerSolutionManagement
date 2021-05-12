@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class CustomerInfoRadio extends StatelessWidget {
   final CustomerInfoController controller = Get.find();
-  final List<String> data;
+  final List<String>? data;
 
   CustomerInfoRadio({this.data});
 
@@ -21,15 +21,15 @@ class CustomerInfoRadio extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
           ),
-          for (int i = 1; i <= data.length - 1; i++)
+          for (int i = 1; i <= data!.length - 1; i++)
             Obx(() => ListTile(
-                  title: Text('${data[i]}'),
+                  title: Text('${data![i]}'),
                   leading: Radio(
                       value: i,
                       groupValue: controller.radioIndex.value,
                       activeColor: Color(0xffffcd29),
-                      onChanged: (int value) =>
-                          controller.radioIndex.value = value),
+                      onChanged: (int? value) =>
+                          controller.radioIndex.value = value!),
                 )),
         ],
       ),

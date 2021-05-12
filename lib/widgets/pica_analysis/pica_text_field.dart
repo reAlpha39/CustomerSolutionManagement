@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PicaTextField extends StatelessWidget {
-  final String tag;
+  final String? tag;
 
-  const PicaTextField({Key key, this.tag});
+  const PicaTextField({Key? key, this.tag});
   @override
   Widget build(BuildContext context) {
     final PicaCardTableController globalController = Get.find(tag: "global");

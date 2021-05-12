@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
             cancelTextColor: Colors.black87,
             confirmTextColor: Colors.black87,
             onConfirm: () => exit(0),
-            onCancel: () => Get.back()) ??
-        false;
+            onCancel: () => Get.back()) as Future<bool>? ??
+        false as Future<bool>;
   }
 }

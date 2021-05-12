@@ -10,12 +10,12 @@ class TotalProduct {
     this.lainnya,
   });
 
-  String unitedTractor;
-  String trakindo;
-  String kobelDo;
-  String hitachi;
-  String suny;
-  String lainnya;
+  String? unitedTractor;
+  String? trakindo;
+  String? kobelDo;
+  String? hitachi;
+  String? suny;
+  String? lainnya;
 
   factory TotalProduct.fromJson(String str) =>
       TotalProduct.fromMap(json.decode(str));

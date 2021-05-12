@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  TextEditingController usernameTextController;
-  TextEditingController passwordTextController;
+  TextEditingController? usernameTextController;
+  TextEditingController? passwordTextController;
 
   //Observalbe object
   Rx<Users> usr = Users().obs;
@@ -37,7 +37,7 @@ class LoginController extends GetxController {
     connectivityChecker().then((conn) {
       if (conn) {
         databaseProvider.getFirestore().then((value) => databaseProvider
-                .validateUser(usernameTextController.text)
+                .validateUser(usernameTextController!.text)
                 .then((value) {
               if (value != null) {
                 usr.value = value;
@@ -46,8 +46,8 @@ class LoginController extends GetxController {
                 print(isValidate.value);
                 if (isValidate.value) {
                   Get.offAndToNamed('/home_page');
-                  usernameTextController.text = '';
-                  passwordTextController.text = '';
+                  usernameTextController!.text = '';
+                  passwordTextController!.text = '';
                 } else {
                   _showDialogError(
                     title: 'Login Gagal',
@@ -68,7 +68,7 @@ class LoginController extends GetxController {
     });
   }
 
-  _showDialogError({String title, String middleText}) {
+  _showDialogError({required String title, required String middleText}) {
     Get.defaultDialog(
         title: title,
         middleText: middleText,
@@ -78,8 +78,8 @@ class LoginController extends GetxController {
   }
 
   void _validateUserPass() {
-    if (usernameTextController.text == usr.value.username &&
-        passwordTextController.text == usr.value.password) {
+    if (usernameTextController!.text == usr.value.username &&
+        passwordTextController!.text == usr.value.password) {
       isValidate.value = true;
     } else {
       isValidate.value = false;

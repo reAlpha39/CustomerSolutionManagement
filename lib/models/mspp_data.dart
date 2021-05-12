@@ -10,8 +10,8 @@ class MsppData {
         this.remark,
     });
 
-    List<int> assessmentResult;
-    List<String> remark;
+    List<int>? assessmentResult;
+    List<String>? remark;
 
     factory MsppData.fromJson(String str) => MsppData.fromMap(json.decode(str));
 
@@ -23,7 +23,7 @@ class MsppData {
     );
 
     Map<String, dynamic> toMap() => {
-        "assessmentResult": List<dynamic>.from(assessmentResult.map((x) => x)),
-        "remark": List<dynamic>.from(remark.map((x) => x)),
+        "assessmentResult": List<dynamic>.from(assessmentResult!.map((x) => x)),
+        "remark": List<dynamic>.from(remark!.map((x) => x)),
     };
 }

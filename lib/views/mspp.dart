@@ -1,6 +1,4 @@
 import 'package:customer/controller/home_controller.dart';
-import 'package:customer/controller/mspp_controller.dart';
-import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/widgets/mspp/mspp_ae.dart';
 import 'package:customer/widgets/mspp/mspp_cbm.dart';
 import 'package:customer/widgets/mspp/mspp_ovh.dart';
@@ -130,7 +128,6 @@ class Mspp extends StatelessWidget {
   }
 
   showDialog() {
-    PicaCardTableController picaCTController = Get.find(tag: 'global');
     return Get.defaultDialog(
         radius: 17,
         title: 'Simpan data',

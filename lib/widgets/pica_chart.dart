@@ -1,6 +1,4 @@
 import 'package:customer/controller/home_controller.dart';
-import 'package:customer/controller/other_program_controller.dart';
-import 'package:customer/controller/part_program_controller.dart';
 import 'package:customer/controller/pica_chart_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -16,8 +14,6 @@ class _PicaChartState extends State<PicaChart>
     with AutomaticKeepAliveClientMixin {
   final PicaChartController picaCController = Get.find();
   final HomeController _homeController = Get.find();
-  final OtherProgramController otherPController = Get.find();
-  final PartProgramController partPController = Get.find();
 
   @override
   Widget build(BuildContext context) {

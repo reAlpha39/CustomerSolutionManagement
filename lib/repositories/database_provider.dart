@@ -9,10 +9,6 @@ import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/iw_data_table.dart';
 import 'package:customer/models/model_unit.dart';
-import 'package:customer/models/mspp.dart';
-import 'package:customer/models/other_program.dart';
-import 'package:customer/models/part_program.dart';
-import 'package:customer/models/pica_data.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -47,6 +43,7 @@ class DatabaseProvider {
         user = Users.fromMap(dataUser[0].data() as Map<String, dynamic>);
       }
     } on FirebaseException catch (e) {
+      print(e);
       loginController.isLoading.value = false;
     }
     return user;
@@ -78,89 +75,6 @@ class DatabaseProvider {
     var data = querySnapshot.docs.last.id;
     id = int.tryParse(data);
     return id;
-  }
-
-  //Save MSPP Dipisah perdokumen
-  saveMSPP(Mspp mspp, String username) {
-    firestore = FirebaseFirestore.instance;
-    var data = mspp.toMap();
-    DocumentReference doc = firestore.collection('data_customer').doc(username);
-    CollectionReference collection = doc.collection('service_program');
-    collection.get().then((value) {
-      collection.doc('mspp').set(data).then((_) =>
-          showDialog(title: "Sukses", middleText: "Data berhasil dimasukkan"));
-    });
-  }
-
-  //Save Other Program Data
-  saveOtherProgram(OtherProgram otherProgram, String username) {
-    firestore = FirebaseFirestore.instance;
-    var data = otherProgram.toMap();
-    DocumentReference doc = firestore.collection('data_customer').doc(username);
-    CollectionReference collection = doc.collection('service_program');
-    collection.get().then((value) {
-      collection.doc('other_program').set(data).then((_) =>
-          showDialog(title: "Sukses", middleText: "Data berhasil dimasukkan"));
-    });
-  }
-
-  savePartProgram(PartProgram partProgram, String username) {
-    firestore = FirebaseFirestore.instance;
-    var data = partProgram.toMap();
-    DocumentReference doc = firestore.collection('data_customer').doc(username);
-    CollectionReference collection = doc.collection('service_program');
-    collection.get().then((value) {
-      collection.doc('part_program').set(data).then((_) =>
-          showDialog(title: "Sukses", middleText: "Data berhasil dimasukkan"));
-    });
-  }
-
-  Future<Mspp> loadMsppData(String username) async {
-    Mspp mspp = Mspp();
-    try {
-      firestore = FirebaseFirestore.instance;
-      DocumentReference doc =
-          firestore.collection('data_customer').doc(username);
-      CollectionReference collection = doc.collection('service_program');
-      var data = await collection.doc('mspp').get();
-      if (data.exists) {
-        mspp = Mspp.fromMap(data.data() as Map<String, dynamic>);
-      }
-    } catch (e) {}
-    return mspp;
-  }
-
-  //load other program data from database
-  Future<OtherProgram> loadOtherProgramData(String username) async {
-    OtherProgram otherProgram = OtherProgram();
-    try {
-      firestore = FirebaseFirestore.instance;
-      DocumentReference doc =
-          firestore.collection('data_customer').doc(username);
-      CollectionReference collection = doc.collection('service_program');
-      var data = await collection.doc('other_program').get();
-      if (data.exists) {
-        otherProgram = OtherProgram.fromMap(data.data() as Map<String, dynamic>);
-      }
-    } catch (e) {}
-    return otherProgram;
-  }
-
-  Future<PartProgram> loadPartProgramController(String username) async {
-    PartProgram partProgram = PartProgram();
-    try {
-      firestore = FirebaseFirestore.instance;
-      DocumentReference doc =
-          firestore.collection('data_customer').doc(username);
-      CollectionReference collection = doc.collection('service_program');
-      var data = await collection.doc('part_program').get();
-      if (data.exists) {
-        partProgram = PartProgram.fromMap(data.data() as Map<String, dynamic>);
-      }
-    } on FirebaseException catch (e) {
-      print(e);
-    }
-    return partProgram;
   }
 
   Future<List<String>> listCustomer() async {
@@ -235,16 +149,18 @@ class DatabaseProvider {
     List<Users> list = [];
     firestore = FirebaseFirestore.instance;
     CollectionReference collection = firestore.collection('users');
-    dynamic data = await collection.get().then((value) {
+    await collection.get().then((value) {
       for (int i = 0; i <= value.docs.length - 1; i++) {
-        Users user = Users.fromMap(value.docs[i].data() as Map<String, dynamic>);
+        Users user =
+            Users.fromMap(value.docs[i].data() as Map<String, dynamic>);
         list.add(user);
       }
     });
     return list;
   }
 
-  Future auditDataTable({String? docA, required String collectionA, String? docB}) async {
+  Future auditDataTable(
+      {String? docA, required String collectionA, String? docB}) async {
     var tableData;
     try {
       firestore = FirebaseFirestore.instance;
@@ -260,41 +176,6 @@ class DatabaseProvider {
       print("auditDataTable: " + e.toString());
     }
     return tableData;
-  }
-
-  Future<bool> savePicaData(PicaData picaData, String username) async {
-    bool isSuccess = false;
-    try {
-      var pica = picaData.toMap();
-      firestore = FirebaseFirestore.instance;
-      DocumentReference doc =
-          firestore.collection('data_customer').doc(username);
-      CollectionReference collection = doc.collection('pica_analysis');
-      dynamic data = await collection.doc('pica_observasi').set(pica).then((_) {
-        isSuccess = true;
-      });
-    } catch (e) {}
-    return isSuccess;
-  }
-
-  Future<PicaData?> loadPicaData(String username) async {
-    PicaData? picaData;
-    try {
-      firestore = FirebaseFirestore.instance;
-      DocumentReference doc =
-          firestore.collection('data_customer').doc(username);
-      var data =
-          await doc.collection('pica_analysis').doc('pica_observasi').get();
-      if (data.exists) {
-        picaData = PicaData.fromMap(data.data()!);
-      } else {
-        DocumentReference doc =
-            firestore.collection('initial_data').doc('pica_observation_t');
-        var data = await doc.get();
-        picaData = PicaData.fromMap(data.data() as Map<String, dynamic>);
-      }
-    } catch (e) {}
-    return picaData;
   }
 
   Future<ModelUnit?> loadModelUnit() async {
@@ -390,7 +271,8 @@ class DatabaseProvider {
     return isSuccess;
   }
 
-  Future<bool> deleteImproveProcess({required IpData ipData, String? username}) async {
+  Future<bool> deleteImproveProcess(
+      {required IpData ipData, String? username}) async {
     bool isDeleted = false;
     firestore = FirebaseFirestore.instance;
     try {
@@ -444,12 +326,14 @@ class DatabaseProvider {
       }
       List<ChecklistAudit> tempA = [];
       for (int i = 0; i <= data.docs.length - 1; i++) {
-        checklistAudit = ChecklistAudit.fromMap(data.docs[i].data() as Map<String, dynamic>);
+        checklistAudit =
+            ChecklistAudit.fromMap(data.docs[i].data() as Map<String, dynamic>);
         List<ChecklistElement> tempB = [];
         QuerySnapshot dataB =
             await colRef.doc(data.docs[i].id).collection('element').get();
         for (int j = 0; j <= dataB.docs.length - 1; j++) {
-          tempB.add(ChecklistElement.fromMap(dataB.docs[j].data() as Map<String, dynamic>));
+          tempB.add(ChecklistElement.fromMap(
+              dataB.docs[j].data() as Map<String, dynamic>));
         }
         checklistAudit.checklistElement = tempB;
         tempA.add(checklistAudit);

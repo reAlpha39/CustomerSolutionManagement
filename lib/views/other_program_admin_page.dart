@@ -1,4 +1,3 @@
-import 'package:customer/controller/other_program_controller.dart';
 import 'package:customer/widgets/other_program/other_people.dart';
 import 'package:customer/widgets/other_program/other_regm.dart';
 import 'package:customer/widgets/other_program/other_vm.dart';
@@ -6,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OtherProgramAdminPage extends StatelessWidget {
-  final OtherProgramController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

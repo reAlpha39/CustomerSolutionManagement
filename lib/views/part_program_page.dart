@@ -1,9 +1,4 @@
 import 'package:customer/controller/home_controller.dart';
-import 'package:customer/widgets/other_program/other_co.dart';
-import 'package:customer/widgets/other_program/other_mr.dart';
-import 'package:customer/widgets/other_program/other_people.dart';
-import 'package:customer/widgets/other_program/other_regm.dart';
-import 'package:customer/widgets/other_program/other_vm.dart';
 import 'package:customer/widgets/part_program/part_iw.dart';
 import 'package:customer/widgets/part_program/part_kp.dart';
 import 'package:flutter/material.dart';

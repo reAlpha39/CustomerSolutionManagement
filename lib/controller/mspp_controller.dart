@@ -1,7 +1,6 @@
 import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/models/checklist_audit/checklist_audit.dart';
-import 'package:customer/models/mspp.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ class MsppController extends GetxController {
     2: 'N/A',
   };
 
-  Rx<Mspp>? msppData;
   RxBool isLoading = false.obs;
   RxList<int> itemIndex = [0].obs;
   RxInt assessmentResult = (-1).obs;

@@ -193,7 +193,8 @@ class ImproveProcessController extends GetxController {
     });
   }
 
-  void _fillData({required bool isBefore, bool? isUpdate, String? downloadUrl}) {
+  void _fillData(
+      {required bool isBefore, bool? isUpdate, String? downloadUrl}) {
     if (isBefore) {
       if (isUpdate!) {
         if (downloadUrl != "") {
@@ -291,11 +292,9 @@ class ImproveProcessController extends GetxController {
     try {
       textEditingController!.clear();
       isPicked.value = false;
-      if (image != null) {
-        if (image.value.existsSync()) {
-          image.value.delete();
-          image.refresh();
-        }
+      if (image.value.existsSync()) {
+        image.value.delete();
+        image.refresh();
       }
     } catch (e) {
       print(e);

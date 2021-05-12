@@ -7,8 +7,6 @@ import 'package:customer/routes/manage_account_binding.dart';
 import 'package:customer/routes/mspp_admin_binding.dart';
 import 'package:customer/routes/mspp_binding.dart';
 import 'package:customer/routes/other_program_admin_binding.dart';
-import 'package:customer/routes/other_program_binding.dart';
-import 'package:customer/routes/part_program_binding.dart';
 import 'package:customer/routes/pica_analysis_binding.dart';
 import 'package:customer/routes/pica_card_table_binding.dart';
 import 'package:customer/routes/pica_chart_binding.dart';
@@ -90,7 +88,6 @@ class Routes {
       page: () => PartProgramPage(),
       bindings: [
         PicaCardTableBinding(),
-        PartProgramBinding(),
         MsppBinding(),
         DataTableBinding(),
       ],
@@ -101,8 +98,6 @@ class Routes {
       bindings: [
         PicaCardTableBinding(),
         MsppBinding(),
-        OtherProgramBinding(),
-        PartProgramBinding(),
         PicaAnalysisBinding(),
         PicaGraphicBinding(),
         DataTableBinding(),

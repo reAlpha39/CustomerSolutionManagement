@@ -73,16 +73,15 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<bool> _onWillPop() {
     return Get.defaultDialog(
-            radius: 17,
-            title: 'Exit App',
-            middleText: 'Apakah anda ingin keluar dari aplikasi?',
-            textConfirm: 'OK',
-            textCancel: 'Batal',
-            buttonColor: Color(0xffffcd29),
-            cancelTextColor: Colors.black87,
-            confirmTextColor: Colors.black87,
-            onConfirm: () => exit(0),
-            onCancel: () => Get.back()) as Future<bool>? ??
-        false as Future<bool>;
+        radius: 17,
+        title: 'Exit App',
+        middleText: 'Apakah anda ingin keluar dari aplikasi?',
+        textConfirm: 'OK',
+        textCancel: 'Batal',
+        buttonColor: Color(0xffffcd29),
+        cancelTextColor: Colors.black87,
+        confirmTextColor: Colors.black87,
+        onConfirm: () => exit(0),
+        onCancel: () => Get.back()).then((value) => value = false);
   }
 }

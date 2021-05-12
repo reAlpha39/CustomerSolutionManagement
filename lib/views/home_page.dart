@@ -29,17 +29,16 @@ class HomePage extends StatelessWidget {
 
   Future<bool> _onWillPop() {
     return Get.defaultDialog(
-            radius: 17,
-            title: 'Exit App',
-            middleText: 'Apakah anda ingin keluar dari aplikasi?',
-            textConfirm: 'OK',
-            buttonColor: Color(0xffffcd29),
-            cancelTextColor: Colors.black87,
-            textCancel: 'Batal',
-            confirmTextColor: Colors.black87,
-            onConfirm: () => exit(0),
-            onCancel: () => Get.back()) as Future<bool>? ??
-        false as Future<bool>;
+        radius: 17,
+        title: 'Exit App',
+        middleText: 'Apakah anda ingin keluar dari aplikasi?',
+        textConfirm: 'OK',
+        buttonColor: Color(0xffffcd29),
+        cancelTextColor: Colors.black87,
+        textCancel: 'Batal',
+        confirmTextColor: Colors.black87,
+        onConfirm: () => exit(0),
+        onCancel: () => Get.back()).then((value) => value = false);
   }
 }
 
@@ -299,7 +298,8 @@ class ListCustomer extends StatelessWidget {
                     (index) => Column(
                       children: [
                         ListTile(
-                          title: Text('${_homeController.listCustomer![index]}'),
+                          title:
+                              Text('${_homeController.listCustomer![index]}'),
                           onTap: () {
                             _homeController.idCustomer.value =
                                 _homeController.listCustomer![index];

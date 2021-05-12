@@ -281,12 +281,12 @@ class DatabaseProvider {
           .doc(username)
           .collection('improve_process')
           .doc(ipData.id);
-      if (ipData.picturePathBefore != null) {
+      if (ipData.picturePathBefore != "") {
         await firebase_storage.FirebaseStorage.instance
             .refFromURL(ipData.picturePathBefore!)
             .delete();
       }
-      if (ipData.picturePathAfter != null) {
+      if (ipData.picturePathAfter != "") {
         await firebase_storage.FirebaseStorage.instance
             .refFromURL(ipData.picturePathAfter!)
             .delete();

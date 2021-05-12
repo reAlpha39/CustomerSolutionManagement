@@ -223,13 +223,13 @@ class ImproveProcessController extends GetxController {
     }
   }
 
-  void deleteData(int? index) {
+  void deleteData(int index) {
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
         databaseProvider
             .deleteImproveProcess(
-                ipData: improveProcess.value.improveProcesData![index!],
+                ipData: improveProcess.value.improveProcesData![index],
                 username: loginController.usr.value.username)
             .then((value) {
           if (value) {

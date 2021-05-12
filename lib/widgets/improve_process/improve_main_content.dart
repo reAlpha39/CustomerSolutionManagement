@@ -52,7 +52,7 @@ class ImproveMainContent extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     InkWell(
-                      onTap: () => controller.deleteData(index),
+                      onTap: () => controller.deleteData(index!),
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(100),

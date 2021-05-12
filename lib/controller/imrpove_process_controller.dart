@@ -5,6 +5,7 @@ import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/model_unit.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
+import 'package:customer/utils/progress_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -31,6 +32,7 @@ class ImproveProcessController extends GetxController {
   RxBool isUpdate = false.obs;
   RxBool isBefore = false.obs;
   RxInt indexUpdate = (-1).obs;
+  RxBool isInit = false.obs;
 
   List<String> matrixList = [
     "PI",
@@ -58,6 +60,7 @@ class ImproveProcessController extends GetxController {
   void onInit() {
     panelController = PanelController();
     textEditingController = TextEditingController();
+    isInit.value = true;
     loadModelUnit();
     loadData();
     super.onInit();
@@ -114,6 +117,7 @@ class ImproveProcessController extends GetxController {
   }
 
   void loadData() {
+    showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -126,6 +130,7 @@ class ImproveProcessController extends GetxController {
             improveProcess.refresh();
           }
           isLoading.value = false;
+          closeCurrentDialog();
         });
       } else {
         isLoading.value = false;
@@ -134,6 +139,7 @@ class ImproveProcessController extends GetxController {
   }
 
   void saveData() {
+    showProgressDialog();
     isLoading.value = true;
     String? time = "";
     String name = "";
@@ -160,7 +166,6 @@ class ImproveProcessController extends GetxController {
             } else {
               _createData(time);
             }
-            improveProcess.refresh();
           }
         });
       } else {
@@ -224,6 +229,7 @@ class ImproveProcessController extends GetxController {
   }
 
   void deleteData(int index) {
+    showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
@@ -326,7 +332,14 @@ class ImproveProcessController extends GetxController {
     }
   }
 
+  void closeCurrentDialog() {
+    if (Get.isDialogOpen!) {
+      Navigator.of(Get.overlayContext!).pop();
+    }
+  }
+
   showDialog({required String title, required String middleText}) {
+    closeCurrentDialog();
     Get.defaultDialog(
         barrierDismissible: false,
         titleStyle: TextStyle(fontSize: 24),
@@ -338,10 +351,10 @@ class ImproveProcessController extends GetxController {
         buttonColor: Colors.yellow.shade600,
         confirmTextColor: Colors.black87,
         onConfirm: () {
+          panelController!.close();
+          Navigator.of(Get.overlayContext!).pop();
           loadData();
           resetPanel();
-          panelController!.close();
-          Get.back(closeOverlays: false);
         });
   }
 }

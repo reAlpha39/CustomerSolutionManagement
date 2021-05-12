@@ -39,7 +39,7 @@ dependencies:
   fl_chart: ^0.36.1
   google_nav_bar: ^5.0.5
   line_icons: ^2.0.1
-  image_picker: ^0.7.4
+  image_picker: ^0.7.5
 
 dev_dependencies:
   flutter_test:

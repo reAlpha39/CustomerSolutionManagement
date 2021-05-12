@@ -20,6 +20,8 @@ class PicaAnalysisPage extends StatelessWidget {
         minHeight: 0,
         renderPanelSheet: false,
         backdropEnabled: true,
+        onPanelClosed: () =>
+            WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
         maxHeight: context.height,
         panel: PicaDetailMenuCard(),
         collapsed: Container(),
@@ -112,10 +114,7 @@ class PicaAnalysisPage extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Obx(
-                    () =>
-                    _picaAController.widgetOptions()!
-                  ),
+                  child: Obx(() => _picaAController.widgetOptions()!),
                 ),
               ),
             ],

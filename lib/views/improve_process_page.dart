@@ -56,6 +56,8 @@ class ImproveProcessPage extends StatelessWidget {
         minHeight: 0,
         renderPanelSheet: false,
         backdropEnabled: true,
+        onPanelClosed: () =>
+            WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
         maxHeight: context.height,
         panel: ImprovePanelCard(),
         collapsed: Container(),

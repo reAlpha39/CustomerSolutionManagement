@@ -338,10 +338,9 @@ class ImproveProcessController extends GetxController {
         buttonColor: Colors.yellow.shade600,
         confirmTextColor: Colors.black87,
         onConfirm: () {
-          panelController!.close();
-          resetPanel();
           loadData();
-          print(improveProcess.value.toMap());
+          resetPanel();
+          panelController!.close();
           Get.back(closeOverlays: false);
         });
   }

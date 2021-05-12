@@ -34,7 +34,8 @@ class MsppController extends GetxController {
     super.onClose();
   }
 
-  loadItem({String? docA, String? docB, int? index, required isAssessmentResult}) {
+  loadItem(
+      {String? docA, String? docB, int? index, required isAssessmentResult}) {
     List<ChecklistAudit> data =
         _homeController.tempListChecklistAudit.value.checklistAudit!;
     int indexA = data.indexWhere((element) => element.id == docA);
@@ -73,8 +74,9 @@ class MsppController extends GetxController {
     itemIndex.assignAll([indexA, indexB]);
   }
 
-  void saveItem({String? docA, String? docB, int? index, required isAssessmentResult}) {
-    PicaCardTableController _picaCT = Get.find(tag: 'global');
+  void saveItem(
+      {String? docA, String? docB, int? index, required isAssessmentResult}) {
+    PicaCardTableController _picaCT = Get.find(tag: 'mspp');
     searchItemIndex(docA: docA, docB: docB, index: index);
     if (isAssessmentResult) {
       _homeController

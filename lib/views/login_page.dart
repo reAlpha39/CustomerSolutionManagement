@@ -14,58 +14,62 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: _onWillPop,
-      child: Scaffold(
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              physics: NeverScrollableScrollPhysics(),
-              child: ConstrainedBox(
-                constraints:
-                    BoxConstraints(minHeight: Get.height, minWidth: Get.width),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(maxWidth: 180),
-                            child: Container(
-                              child: Image.asset('assets/images/ut_logo.png'),
+      child: GestureDetector(
+        onTap: () =>
+            WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
+        child: Scaffold(
+          body: Stack(
+            children: [
+              SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                      minHeight: Get.height, minWidth: Get.width),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(maxWidth: 180),
+                              child: Container(
+                                child: Image.asset('assets/images/ut_logo.png'),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          height: 30,
-                          width: Get.width,
-                          color: Color(0xffffcd29),
-                          child: Center(
-                            child: Text(
-                              'Long-Lasting Relationship',
-                              style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.w400),
+                          Container(
+                            height: 30,
+                            width: Get.width,
+                            color: Color(0xffffcd29),
+                            child: Center(
+                              child: Text(
+                                'Long-Lasting Relationship',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w400),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Center(
-              child: SingleChildScrollView(
-                physics: ClampingScrollPhysics(),
-                child: Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: LoginCard()),
+              Center(
+                child: SingleChildScrollView(
+                  physics: ClampingScrollPhysics(),
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: LoginCard()),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

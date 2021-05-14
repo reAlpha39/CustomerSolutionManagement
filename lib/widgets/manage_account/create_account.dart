@@ -9,127 +9,132 @@ class CreateAccount extends StatelessWidget {
   final ManageAccountController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-      margin: EdgeInsets.only(left: 30, right: 30),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: 400),
-        child: Container(
-          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-          child: Form(
-            key: controller.formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.keyboard_arrow_down_outlined,
-                  color: Colors.black54,
-                  size: 32,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, bottom: 16),
-                  child: Obx(
-                    () => Text(
-                      controller.titleCard.value,
-                      style: TextStyle(fontSize: 24),
+    return GestureDetector(
+      onTap: () =>
+          WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+        margin: EdgeInsets.only(left: 30, right: 30),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 400),
+          child: Container(
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            child: Form(
+              key: controller.formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    color: Colors.black54,
+                    size: 32,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, bottom: 16),
+                    child: Obx(
+                      () => Text(
+                        controller.titleCard.value,
+                        style: TextStyle(fontSize: 24),
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: LoginTextField(
-                    textEditingController: controller.namaTEC,
-                    labelText: 'Nama Customer',
-                    isObsecure: false,
-                    iconData: Icons.person_add_alt_1_outlined,
-                    returnError: 'Nama harus diisi',
-                  ),
-                ),
-                Obx(
-                  () => controller.textButton.value == 'Update'
-                      ? Container()
-                      : Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: LoginTextField(
-                            textEditingController: controller.usernameTEC,
-                            labelText: 'Username',
-                            isObsecure: false,
-                            iconData: Icons.account_box_outlined,
-                            returnError: 'Username harus diisi',
-                          ),
-                        ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: LoginTextField(
-                    textEditingController: controller.passwordTEC,
-                    labelText: 'Password',
-                    isObsecure: true,
-                    iconData: Icons.lock_outline_rounded,
-                    returnError: 'Password harus diisi',
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 1, color: Colors.black38),
-                      borderRadius: BorderRadius.circular(17),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LoginTextField(
+                      textEditingController: controller.namaTEC,
+                      labelText: 'Nama Customer',
+                      isObsecure: false,
+                      iconData: Icons.person_add_alt_1_outlined,
+                      returnError: 'Nama harus diisi',
                     ),
-                    padding: EdgeInsets.only(
-                        top: 10, bottom: 10, left: 10, right: 10),
-                    child: ExpandableNotifier(
-                      child: ScrollOnExpand(
-                        child: ExpandablePanel(
-                          theme: const ExpandableThemeData(
-                              headerAlignment:
-                                  ExpandablePanelHeaderAlignment.center,
-                              tapBodyToExpand: true,
-                              tapBodyToCollapse: true,
-                              hasIcon: true,
-                              iconPlacement:
-                                  ExpandablePanelIconPlacement.right),
-                          header: Padding(
-                            padding: const EdgeInsets.only(left: 1),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.app_registration,
-                                    color: Colors.black45,
-                                  ),
-                                  Flexible(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 10),
-                                      child: Text(
-                                        'Tipe akun',
-                                        overflow: TextOverflow.fade,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black54),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                  ),
+                  Obx(
+                    () => controller.textButton.value == 'Update'
+                        ? Container()
+                        : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: LoginTextField(
+                              textEditingController: controller.usernameTEC,
+                              labelText: 'Username',
+                              isObsecure: false,
+                              iconData: Icons.account_box_outlined,
+                              returnError: 'Username harus diisi',
                             ),
                           ),
-                          collapsed: Container(),
-                          expanded: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10, left: 10, right: 10),
-                            child: RadioAccount(
-                              data: ['Admin', 'Internal', 'Customer'],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: LoginTextField(
+                      textEditingController: controller.passwordTEC,
+                      labelText: 'Password',
+                      isObsecure: true,
+                      iconData: Icons.lock_outline_rounded,
+                      returnError: 'Password harus diisi',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 1, color: Colors.black38),
+                        borderRadius: BorderRadius.circular(17),
+                      ),
+                      padding: EdgeInsets.only(
+                          top: 10, bottom: 10, left: 10, right: 10),
+                      child: ExpandableNotifier(
+                        child: ScrollOnExpand(
+                          child: ExpandablePanel(
+                            theme: const ExpandableThemeData(
+                                headerAlignment:
+                                    ExpandablePanelHeaderAlignment.center,
+                                tapBodyToExpand: true,
+                                tapBodyToCollapse: true,
+                                hasIcon: true,
+                                iconPlacement:
+                                    ExpandablePanelIconPlacement.right),
+                            header: Padding(
+                              padding: const EdgeInsets.only(left: 1),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.app_registration,
+                                      color: Colors.black45,
+                                    ),
+                                    Flexible(
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10),
+                                        child: Text(
+                                          'Tipe akun',
+                                          overflow: TextOverflow.fade,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black54),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            collapsed: Container(),
+                            expanded: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 10, left: 10, right: 10),
+                              child: RadioAccount(
+                                data: ['Admin', 'Internal', 'Customer'],
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Obx(() => _loginButton()),
-              ],
+                  Obx(() => _loginButton()),
+                ],
+              ),
             ),
           ),
         ),

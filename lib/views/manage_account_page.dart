@@ -14,6 +14,7 @@ class ManageAccountPage extends StatelessWidget {
       child: SlidingUpPanel(
         controller: controller.panelController,
         onPanelClosed: () {
+          WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus();
           controller.onPanelClose();
         },
         parallaxEnabled: true,

@@ -12,7 +12,7 @@ class OtherPeople extends StatefulWidget {
 
 class _MsppPsPlanState extends State<OtherPeople>
     with AutomaticKeepAliveClientMixin {
-      final MsppController controller = Get.find();
+  final MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -57,7 +57,8 @@ class _MsppPsPlanState extends State<OtherPeople>
               docA: 'other_program',
               colA: 'people',
               docB: 'development_organization',
-            ),MsppCard(
+            ),
+            MsppCard(
               title: 'Administration Organization',
               id: 'ao',
               docA: 'other_program',

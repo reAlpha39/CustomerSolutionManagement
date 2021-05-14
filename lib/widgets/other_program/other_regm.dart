@@ -12,7 +12,7 @@ class OtherRegm extends StatefulWidget {
 
 class _MsppPsPlanState extends State<OtherRegm>
     with AutomaticKeepAliveClientMixin {
-      final MsppController controller = Get.find();
+  final MsppController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     super.build(context);

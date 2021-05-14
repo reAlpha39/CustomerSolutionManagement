@@ -33,7 +33,7 @@ class HomeController extends GetxController {
   void loadCustomerChecklistData() {
     if (_loginController.usr.value.type == 'customer') {
       loadMsppChecklistAudit(username: _loginController.usr.value.username);
-    } else if (idCustomer.value != ''){
+    } else if (idCustomer.value != '') {
       showProgressDialog();
       loadMsppChecklistAudit(username: idCustomer.value);
     }

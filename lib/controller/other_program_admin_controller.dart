@@ -1,5 +1,3 @@
 import 'package:get/get.dart';
 
-class OtherProgramAdminController extends GetxController {
-  
-}
+class OtherProgramAdminController extends GetxController {}

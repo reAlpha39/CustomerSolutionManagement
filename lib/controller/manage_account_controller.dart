@@ -128,8 +128,8 @@ class ManageAccountController extends GetxController {
   displayDataToCard(Users user) {
     titleCard.value = 'Update Account';
     textButton.value = 'Update';
-    var radioKey = radioData.keys
-        .firstWhereOrNull((k) => radioData[k] == user.type)!;
+    var radioKey =
+        radioData.keys.firstWhereOrNull((k) => radioData[k] == user.type)!;
     namaTEC!.text = user.nama!;
     usernameTEC!.text = user.username!;
     passwordTEC!.text = user.password!;

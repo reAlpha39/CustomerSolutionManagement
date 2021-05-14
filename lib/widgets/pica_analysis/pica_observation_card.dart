@@ -45,8 +45,7 @@ class PicaObservationCard extends StatelessWidget {
                     child: Obx(
                       () => Text(
                         _homeController.tempListChecklistAudit.value
-                            .checklistAudit!
-                            [indexValue!].score
+                            .checklistAudit![indexValue!].score
                             .toString(),
                         style: TextStyle(
                           fontSize: 18,

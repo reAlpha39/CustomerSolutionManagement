@@ -52,8 +52,11 @@ class PicaDetailTable extends StatelessWidget {
       onPressed: () {
         resultRadio(index: id, isA: false);
       },
-      child: Obx(() => Text(
-          controllerPU.indexResultB[controllerPU.loadIndex[id]].toString())),
+      child: Obx(
+        () => Text(
+          controllerPU.indexResultB[controllerPU.loadIndex[id]].toString(),
+        ),
+      ),
     );
   }
 
@@ -199,10 +202,10 @@ class PicaDetailTable extends StatelessWidget {
             behavior: CustomScrollBehavior(),
             child: SingleChildScrollView(
               child: dtController.iwDataTable.value!.id != null
-                  ? Text(
-                      '${dtController.iwDataTable.value!.dimension![index].replaceAll("\\n", "\n")}')
-                  : Text(
-                      '${dtController.auditTableData.value!.noKlause![index].replaceAll("\\n", "\n")}'),
+                  ? Text(dtController.iwDataTable.value!.dimension![index]
+                      .replaceAll("\\n", "\n"))
+                  : Text(dtController.auditTableData.value!.noKlause![index]
+                      .replaceAll("\\n", "\n")),
             ),
           ),
         );
@@ -216,8 +219,9 @@ class PicaDetailTable extends StatelessWidget {
               child: ScrollConfiguration(
                 behavior: CustomScrollBehavior(),
                 child: SingleChildScrollView(
-                  child: Text(
-                      '${dtController.auditTableData.value!.description![index].replaceAll("\\n", "\n")}'),
+                  child: Text(dtController
+                      .auditTableData.value!.description![index]
+                      .replaceAll("\\n", "\n")),
                 ),
               ),
             ),
@@ -232,10 +236,10 @@ class PicaDetailTable extends StatelessWidget {
               behavior: CustomScrollBehavior(),
               child: SingleChildScrollView(
                 child: dtController.iwDataTable.value!.id != null
-                    ? Text(
-                        '${dtController.iwDataTable.value!.element![index].replaceAll("\\n", "\n")}')
-                    : Text(
-                        '${dtController.auditTableData.value!.pic![index].replaceAll("\\n", "\n")}'),
+                    ? Text(dtController.iwDataTable.value!.element![index]
+                        .replaceAll("\\n", "\n"))
+                    : Text(dtController.auditTableData.value!.pic![index]
+                        .replaceAll("\\n", "\n")),
               ),
             ),
           ),
@@ -251,10 +255,10 @@ class PicaDetailTable extends StatelessWidget {
                 behavior: CustomScrollBehavior(),
                 child: SingleChildScrollView(
                   child: dtController.iwDataTable.value!.id != null
-                      ? Text(
-                          '${dtController.iwDataTable.value!.description![index].replaceAll("\\n", "\n")}')
-                      : Text(
-                          '${dtController.auditTableData.value!.guidance![index].replaceAll("\\n", "\n")}'),
+                      ? Text(dtController.iwDataTable.value!.description![index]
+                          .replaceAll("\\n", "\n"))
+                      : Text(dtController.auditTableData.value!.guidance![index]
+                          .replaceAll("\\n", "\n")),
                 ),
               ),
             ),
@@ -268,8 +272,9 @@ class PicaDetailTable extends StatelessWidget {
             child: ScrollConfiguration(
               behavior: CustomScrollBehavior(),
               child: SingleChildScrollView(
-                child: Text(
-                    '${dtController.auditTableData.value!.objectiveEvidence![index].replaceAll("\\n", "\n")}'),
+                child: Text(dtController
+                    .auditTableData.value!.objectiveEvidence![index]
+                    .replaceAll("\\n", "\n")),
               ),
             ),
           ),

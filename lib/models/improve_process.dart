@@ -5,51 +5,54 @@
 import 'dart:convert';
 
 class ImproveProcess {
-    ImproveProcess({
-        this.improveProcesData,
-    });
+  ImproveProcess({
+    this.improveProcesData,
+  });
 
-    List<IpData>? improveProcesData;
+  List<IpData>? improveProcesData;
 
-    factory ImproveProcess.fromJson(String str) => ImproveProcess.fromMap(json.decode(str));
+  factory ImproveProcess.fromJson(String str) =>
+      ImproveProcess.fromMap(json.decode(str));
 
-    String toJson() => json.encode(toMap());
+  String toJson() => json.encode(toMap());
 
-    factory ImproveProcess.fromMap(Map<String, dynamic> json) => ImproveProcess(
-        improveProcesData: List<IpData>.from(json["improveProcesData"].map((x) => IpData.fromMap(x))),
-    );
+  factory ImproveProcess.fromMap(Map<String, dynamic> json) => ImproveProcess(
+        improveProcesData: List<IpData>.from(
+            json["improveProcesData"].map((x) => IpData.fromMap(x))),
+      );
 
-    Map<String, dynamic> toMap() => {
-        "improveProcesData": List<dynamic>.from(improveProcesData!.map((x) => x.toMap())),
-    };
+  Map<String, dynamic> toMap() => {
+        "improveProcesData":
+            List<dynamic>.from(improveProcesData!.map((x) => x.toMap())),
+      };
 }
 
 class IpData {
-    IpData({
-        this.id,
-        this.matrix,
-        this.model,
-        this.type,
-        this.descriptionBefore,
-        this.descriptionAfter,
-        this.picturePathBefore,
-        this.picturePathAfter,
-    });
+  IpData({
+    this.id,
+    this.matrix,
+    this.model,
+    this.type,
+    this.descriptionBefore,
+    this.descriptionAfter,
+    this.picturePathBefore,
+    this.picturePathAfter,
+  });
 
-    String? id;
-    String? matrix;
-    String? model;
-    String? type;
-    String? descriptionBefore;
-    String? descriptionAfter;
-    String? picturePathBefore;
-    String? picturePathAfter;
+  String? id;
+  String? matrix;
+  String? model;
+  String? type;
+  String? descriptionBefore;
+  String? descriptionAfter;
+  String? picturePathBefore;
+  String? picturePathAfter;
 
-    factory IpData.fromJson(String str) => IpData.fromMap(json.decode(str));
+  factory IpData.fromJson(String str) => IpData.fromMap(json.decode(str));
 
-    String toJson() => json.encode(toMap());
+  String toJson() => json.encode(toMap());
 
-    factory IpData.fromMap(Map<String, dynamic> json) => IpData(
+  factory IpData.fromMap(Map<String, dynamic> json) => IpData(
         id: json["id"],
         matrix: json["matrix"],
         model: json["model"],
@@ -58,9 +61,9 @@ class IpData {
         descriptionAfter: json["descriptionAfter"],
         picturePathBefore: json["picturePathBefore"],
         picturePathAfter: json["picturePathAfter"],
-    );
+      );
 
-    Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toMap() => {
         "id": id,
         "matrix": matrix,
         "model": model,
@@ -69,5 +72,5 @@ class IpData {
         "descriptionAfter": descriptionAfter,
         "picturePathBefore": picturePathBefore,
         "picturePathAfter": picturePathAfter,
-    };
+      };
 }

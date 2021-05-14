@@ -1,4 +1,5 @@
 import 'package:customer/controller/home_controller.dart';
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/part_program/part_iw.dart';
 import 'package:customer/widgets/part_program/part_kp.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 
 class PartProgramPage extends StatelessWidget {
   final HomeController _homeController = Get.find();
+  final LoginController _loginController = Get.find();
   final MsppController _msppController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -44,13 +46,15 @@ class PartProgramPage extends StatelessWidget {
                   ],
                 ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.save_outlined,
-            color: Color(0xffffcd29),
-          ),
-          onPressed: showDialog,
-        ),
+        floatingActionButton: _loginController.usr.value.type == 'customer'
+            ? FloatingActionButton(
+                child: Icon(
+                  Icons.save_outlined,
+                  color: Color(0xffffcd29),
+                ),
+                onPressed: showDialog,
+              )
+            : Container(),
       ),
     );
   }

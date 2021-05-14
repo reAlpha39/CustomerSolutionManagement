@@ -1,4 +1,5 @@
 import 'package:customer/controller/home_controller.dart';
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/mspp/mspp_ae.dart';
 import 'package:customer/widgets/mspp/mspp_cbm.dart';
@@ -17,6 +18,7 @@ import 'package:get/get.dart';
 
 class Mspp extends StatelessWidget {
   final HomeController _homeController = Get.find();
+  final LoginController _loginController = Get.find();
   final MsppController _msppController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -118,13 +120,15 @@ class Mspp extends StatelessWidget {
                   ],
                 ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.save_outlined,
-            color: Color(0xffffcd29),
-          ),
-          onPressed: showDialog,
-        ),
+        floatingActionButton: _loginController.usr.value.type == 'customer'
+            ? FloatingActionButton(
+                child: Icon(
+                  Icons.save_outlined,
+                  color: Color(0xffffcd29),
+                ),
+                onPressed: showDialog,
+              )
+            : Container(),
       ),
     );
   }

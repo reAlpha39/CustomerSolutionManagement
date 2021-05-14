@@ -1,10 +1,12 @@
 import 'package:customer/controller/imrpove_process_controller.dart';
+import 'package:customer/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ImproveMainContent extends StatelessWidget {
   final ImproveProcessController controller = Get.find(tag: 'global');
+  final LoginController _loginController = Get.find();
   final int? index;
   final bool? isBefore;
 
@@ -29,8 +31,11 @@ class ImproveMainContent extends StatelessWidget {
                     () => SingleChildScrollView(
                       child: isBefore!
                           ? Text(
-                              controller.improveProcess.value
-                                  .improveProcesData![index!].descriptionBefore!,
+                              controller
+                                  .improveProcess
+                                  .value
+                                  .improveProcesData![index!]
+                                  .descriptionBefore!,
                               style: TextStyle(fontSize: 12),
                             )
                           : Text(
@@ -40,8 +45,11 @@ class ImproveMainContent extends StatelessWidget {
                                           .improveProcesData![index!]
                                           .descriptionAfter !=
                                       null
-                                  ? controller.improveProcess.value
-                                      .improveProcesData![index!].descriptionAfter!
+                                  ? controller
+                                      .improveProcess
+                                      .value
+                                      .improveProcesData![index!]
+                                      .descriptionAfter!
                                   : "",
                               style: TextStyle(fontSize: 12),
                             ),
@@ -52,7 +60,11 @@ class ImproveMainContent extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     InkWell(
-                      onTap: () => controller.deleteData(index!),
+                      onTap: () {
+                        if (_loginController.usr.value.type == 'customer') {
+                          controller.deleteData(index!);
+                        }
+                      },
                       child: Card(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(100),
@@ -75,11 +87,13 @@ class ImproveMainContent extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        controller.openPanel(
-                          isCreate: false,
-                          isBeforeData: isBefore,
-                          index: index,
-                        );
+                        if (_loginController.usr.value.type == 'customer') {
+                          controller.openPanel(
+                            isCreate: false,
+                            isBeforeData: isBefore,
+                            index: index,
+                          );
+                        }
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(

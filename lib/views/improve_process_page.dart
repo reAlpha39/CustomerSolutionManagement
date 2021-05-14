@@ -1,4 +1,5 @@
 import 'package:customer/controller/imrpove_process_controller.dart';
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/improve_process/improve_main_card.dart';
 import 'package:customer/widgets/improve_process/improve_panel_card.dart';
@@ -12,6 +13,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ImproveProcessPage extends StatelessWidget {
   final ImproveProcessController controller = Get.find(tag: 'global');
+  final LoginController _loginController = Get.find();
 
   showDialogTypeUnit() {
     return Get.defaultDialog(
@@ -66,29 +68,31 @@ class ImproveProcessPage extends StatelessWidget {
             elevation: 0,
             title: Text('Improve Process'),
           ),
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Color(0xffffcd29),
-            child: Icon(
-              LineIcons.plus,
-            ),
-            onPressed: () {
-              if (controller.matrixText.value != "" &&
-                  controller.modelUnitText.value != "" &&
-                  controller.typeUnit.value != "") {
-                controller.openPanel(isCreate: true);
-              } else {
-                Get.snackbar(
-                  'Gagal',
-                  'Isi kategori pada bagian atas terlebih dahulu',
-                  backgroundColor: Colors.white70,
-                  borderWidth: 1,
-                  borderColor: Colors.black54,
-                  snackPosition: SnackPosition.BOTTOM,
-                  margin: const EdgeInsets.all(24),
-                );
-              }
-            },
-          ),
+          floatingActionButton: _loginController.usr.value.type == 'customer'
+              ? FloatingActionButton(
+                  backgroundColor: Color(0xffffcd29),
+                  child: Icon(
+                    LineIcons.plus,
+                  ),
+                  onPressed: () {
+                    if (controller.matrixText.value != "" &&
+                        controller.modelUnitText.value != "" &&
+                        controller.typeUnit.value != "") {
+                      controller.openPanel(isCreate: true);
+                    } else {
+                      Get.snackbar(
+                        'Gagal',
+                        'Isi kategori pada bagian atas terlebih dahulu',
+                        backgroundColor: Colors.white70,
+                        borderWidth: 1,
+                        borderColor: Colors.black54,
+                        snackPosition: SnackPosition.BOTTOM,
+                        margin: const EdgeInsets.all(24),
+                      );
+                    }
+                  },
+                )
+              : Container(),
           body: Container(
             color: Color(0xffffccd29),
             height: context.height,

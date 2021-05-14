@@ -135,41 +135,46 @@ class DatabaseProvider {
   //Delete akun
   Future<bool> deleteAccount(String? username) async {
     bool isSuccess = false;
-    firestore = FirebaseFirestore.instance;
-    try {
-      DocumentReference docRef =
-          firestore.collection('data_customer').doc(username);
-      var snapshot = await docRef.collection('improve_process').get();
-      var datas = snapshot.docs;
-      for (int i = 0; i <= datas.length - 1; i++) {
-        IpData ipData = IpData.fromMap(datas[i].data());
-        if (ipData.picturePathBefore != "") {
-          await firebase_storage.FirebaseStorage.instance
-              .refFromURL(ipData.picturePathBefore!)
-              .delete();
+    if (username != loginController.usr.value.username) {
+      firestore = FirebaseFirestore.instance;
+      try {
+        DocumentReference docRef =
+            firestore.collection('data_customer').doc(username);
+        var snapshot = await docRef.collection('improve_process').get();
+        var datas = snapshot.docs;
+        for (int i = 0; i <= datas.length - 1; i++) {
+          IpData ipData = IpData.fromMap(datas[i].data());
+          if (ipData.picturePathBefore != "") {
+            await firebase_storage.FirebaseStorage.instance
+                .refFromURL(ipData.picturePathBefore!)
+                .delete();
+          }
+          if (ipData.picturePathAfter != "") {
+            await firebase_storage.FirebaseStorage.instance
+                .refFromURL(ipData.picturePathAfter!)
+                .delete();
+          }
         }
-        if (ipData.picturePathAfter != "") {
-          await firebase_storage.FirebaseStorage.instance
-              .refFromURL(ipData.picturePathAfter!)
-              .delete();
-        }
+        CollectionReference colNs = docRef.collection('need_support');
+        await deleteCollection(colNs, docRef, false);
+
+        CollectionReference colCa = docRef.collection('checklist_audit');
+        await deleteCollection(colCa, docRef, true);
+
+        CollectionReference colIp = docRef.collection('improve_process');
+        await deleteCollection(colIp, docRef, false);
+
+        docRef.delete().then((_) {
+          showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
+          isSuccess = true;
+        });
+      } catch (e, s) {
+        print("deleteUser: " + e.toString());
+        print(s);
       }
-      CollectionReference colNs = docRef.collection('need_support');
-      await deleteCollection(colNs, docRef, false);
-
-      CollectionReference colCa = docRef.collection('checklist_audit');
-      await deleteCollection(colCa, docRef, true);
-
-      CollectionReference colIp = docRef.collection('improve_process');
-      await deleteCollection(colIp, docRef, false);
-
-      docRef.delete().then((_) {
-        showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
-        isSuccess = true;
-      });
-    } catch (e, s) {
-      print("deleteUser: " + e.toString());
-      print(s);
+    } else {
+      showDialog(
+          title: 'Gaga;', middleText: 'Tidak dapat menghapus akun sendiri');
     }
     return isSuccess;
   }

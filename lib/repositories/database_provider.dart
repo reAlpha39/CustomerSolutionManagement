@@ -35,7 +35,7 @@ class DatabaseProvider {
       firestore = FirebaseFirestore.instance;
       late List<QueryDocumentSnapshot> dataUser;
       await firestore
-          .collection('users')
+          .collection('data_customer')
           .where('username', isEqualTo: username)
           .get()
           .then((value) => dataUser = value.docs);
@@ -80,7 +80,7 @@ class DatabaseProvider {
   Future<List<String>> listCustomer() async {
     List<String> listCustomer = [];
     firestore = FirebaseFirestore.instance;
-    QuerySnapshot snapshot = await firestore.collection('users').get();
+    QuerySnapshot snapshot = await firestore.collection('data_customer').get();
     var docs = snapshot.docs;
     for (int i = 0; i <= docs.length - 1; i++) {
       Users users = Users.fromMap(docs[i].data() as Map<String, dynamic>);
@@ -96,7 +96,7 @@ class DatabaseProvider {
     bool isAvailable = false;
     firestore = FirebaseFirestore.instance;
     var data = await firestore
-        .collection('users')
+        .collection('data_customer')
         .where('username', isEqualTo: username)
         .get();
     if (data.docs.length == 0) {
@@ -110,7 +110,7 @@ class DatabaseProvider {
     bool isSuccess = false;
     var data = users.toMap();
     firestore = FirebaseFirestore.instance;
-    CollectionReference collection = firestore.collection('users');
+    CollectionReference collection = firestore.collection('data_customer');
     collection.doc(users.username).set(data).then((_) {
       showDialog(title: "Sukses", middleText: "User berhasil dibuat");
       isSuccess = true;
@@ -123,7 +123,7 @@ class DatabaseProvider {
     bool isSuccess = false;
     var data = user.toMap();
     firestore = FirebaseFirestore.instance;
-    CollectionReference collection = firestore.collection('users');
+    CollectionReference collection = firestore.collection('data_customer');
     collection.doc(users.username).set(data).then((_) {
       showDialog(
           title: 'Sukses', middleText: 'Data user berhasil diperbaharui');
@@ -136,7 +136,7 @@ class DatabaseProvider {
   Future<bool> deleteAccount(String? username) async {
     bool isSuccess = false;
     firestore = FirebaseFirestore.instance;
-    CollectionReference collection = firestore.collection('users');
+    CollectionReference collection = firestore.collection('data_customer');
     collection.doc(username).delete().then((_) {
       showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
       isSuccess = true;
@@ -148,7 +148,7 @@ class DatabaseProvider {
   Future<List<Users>> listUsers() async {
     List<Users> list = [];
     firestore = FirebaseFirestore.instance;
-    CollectionReference collection = firestore.collection('users');
+    CollectionReference collection = firestore.collection('data_customer');
     await collection.get().then((value) {
       for (int i = 0; i <= value.docs.length - 1; i++) {
         Users user =

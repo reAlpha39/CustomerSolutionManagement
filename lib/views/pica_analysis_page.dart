@@ -1,6 +1,5 @@
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/mspp_controller.dart';
-import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_menu_card.dart';
 import 'package:flutter/material.dart';

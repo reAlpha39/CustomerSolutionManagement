@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/model_unit.dart';
@@ -12,7 +13,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ImproveProcessController extends GetxController {
-  LoginController loginController = Get.find();
+  final LoginController _loginController = Get.find();
+  final HomeController _homeController = Get.find();
   DatabaseProvider databaseProvider = DatabaseProvider();
   PanelController? panelController;
   TextEditingController? textEditingController;
@@ -62,7 +64,7 @@ class ImproveProcessController extends GetxController {
     textEditingController = TextEditingController();
     isInit.value = true;
     loadModelUnit();
-    loadData();
+    loadCustomerImproveProcess();
     super.onInit();
   }
 
@@ -116,14 +118,20 @@ class ImproveProcessController extends GetxController {
     return data;
   }
 
-  void loadData() {
+  void loadCustomerImproveProcess() {
+    if (_loginController.usr.value.type == 'customer') {
+      loadData(_loginController.usr.value.username!);
+    } else {
+      loadData(_homeController.idCustomer.value);
+    }
+  }
+
+  void loadData(String username) {
     showProgressDialog();
     isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
-        databaseProvider
-            .loadImproveProcessData(loginController.usr.value.username)
-            .then((value) {
+        databaseProvider.loadImproveProcessData(username).then((value) {
           if (value != null) {
             improveProcess.value = ImproveProcess();
             improveProcess.value = value;
@@ -153,7 +161,7 @@ class ImproveProcessController extends GetxController {
         name = renameFile(isBefore: isBefore.value, name: time);
         databaseProvider
             .uploadImproveProcessImage(
-                image.value, name, loginController.usr.value.username)
+                image.value, name, _loginController.usr.value.username)
             .then((downloadUrl) {
           if (downloadUrl != null) {
             _fillData(
@@ -177,7 +185,7 @@ class ImproveProcessController extends GetxController {
   void _updateData() {
     databaseProvider
         .updateImproveProcessData(
-            ipData.value, loginController.usr.value.username, ipData.value.id)
+            ipData.value, _loginController.usr.value.username, ipData.value.id)
         .then((value) {
       if (value) {
         showDialog(title: 'Sukses', middleText: 'Data berhasil diperbaharui');
@@ -189,7 +197,7 @@ class ImproveProcessController extends GetxController {
   void _createData(String? time) {
     databaseProvider
         .saveImproveProcessData(
-            ipData.value, loginController.usr.value.username, time)
+            ipData.value, _loginController.usr.value.username, time)
         .then((value) {
       if (value) {
         showDialog(title: 'Sukses', middleText: 'Data berhasil ditambahkan');
@@ -236,7 +244,7 @@ class ImproveProcessController extends GetxController {
         databaseProvider
             .deleteImproveProcess(
                 ipData: improveProcess.value.improveProcesData![index],
-                username: loginController.usr.value.username)
+                username: _loginController.usr.value.username)
             .then((value) {
           if (value) {
             isLoading.value = false;
@@ -353,7 +361,7 @@ class ImproveProcessController extends GetxController {
         onConfirm: () {
           panelController!.close();
           Navigator.of(Get.overlayContext!).pop();
-          loadData();
+          loadCustomerImproveProcess();
           resetPanel();
         });
   }

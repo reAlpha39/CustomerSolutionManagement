@@ -2,8 +2,10 @@ import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
+import 'package:customer/utils/progress_dialog.dart';
 import 'package:customer/widgets/home/home_admin.dart';
 import 'package:customer/widgets/home/home_customer.dart';
+import 'package:customer/widgets/home/home_internal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +17,6 @@ class HomeController extends GetxController {
   Widget? userView;
   String iconUser = '';
 
-  RxString user = "".obs;
   late RxList<String>? listCustomer;
   RxString idCustomer = ''.obs;
   RxBool isLoading = false.obs;
@@ -25,13 +26,16 @@ class HomeController extends GetxController {
   void onInit() {
     _userType();
     _loadListCustomer();
-    _loadCustomerChecklistData();
+    loadCustomerChecklistData();
     super.onInit();
   }
 
-  void _loadCustomerChecklistData() {
+  void loadCustomerChecklistData() {
     if (_loginController.usr.value.type == 'customer') {
       loadMsppChecklistAudit(username: _loginController.usr.value.username);
+    } else {
+      showProgressDialog();
+      loadMsppChecklistAudit(username: idCustomer.value);
     }
   }
 
@@ -43,6 +47,9 @@ class HomeController extends GetxController {
             .then((value) {
           tempListChecklistAudit.value = value;
           tempListChecklistAudit.refresh();
+          if (Get.isDialogOpen!) {
+            Navigator.of(Get.overlayContext!).pop();
+          }
         });
       }
     });
@@ -59,7 +66,8 @@ class HomeController extends GetxController {
         break;
       case 'internal':
         //command here
-        userView = HomeCustomer();
+        userView = HomeInternal();
+        msppPage.value = '/mspp';
         iconUser = 'assets/images/icon_tc.png';
         break;
       case 'customer':

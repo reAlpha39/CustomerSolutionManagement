@@ -115,9 +115,14 @@ class Shapeground extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        _homeController.user.value == ""
-                                            ? Text('Pilih User')
-                                            : Text(_homeController.user.value),
+                                        Obx(
+                                          () => _homeController
+                                                      .idCustomer.value ==
+                                                  ""
+                                              ? Text('Pilih User')
+                                              : Text(_homeController
+                                                  .idCustomer.value),
+                                        ),
                                         ConstrainedBox(
                                           constraints: BoxConstraints.tightFor(
                                               width: 35, height: 35),
@@ -303,7 +308,7 @@ class ListCustomer extends StatelessWidget {
                           onTap: () {
                             _homeController.idCustomer.value =
                                 _homeController.listCustomer![index];
-                            Get.back(closeOverlays: false);
+                            _homeController.loadCustomerChecklistData();
                           },
                         ),
                         index != _homeController.listCustomer!.length - 1

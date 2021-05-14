@@ -44,7 +44,7 @@ jobs:
 
     # Upload generated apk to the release page.
     - name: Create release apk
-    - uses: ncipollo/release-action@v1
+      uses: ncipollo/release-action@v1
       with:
         artifacts: "build/app/outputs/apk/release/*.apk"
         token: ${{ secrets.CSM_WORKFLOW }}

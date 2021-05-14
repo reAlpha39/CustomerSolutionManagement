@@ -1,4 +1,5 @@
 import 'package:customer/controller/home_controller.dart';
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/part_program/part_iw.dart';
 import 'package:customer/widgets/part_program/part_kp.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 
 class PartProgramPage extends StatelessWidget {
   final HomeController _homeController = Get.find();
+  final MsppController _msppController = Get.find();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -64,9 +66,9 @@ class PartProgramPage extends StatelessWidget {
       buttonColor: Color(0xffffcd29),
       cancelTextColor: Colors.black87,
       onConfirm: () {
-        // controller.saveData();
+        _msppController.saveToDb();
       },
-      onCancel: () => Get.toNamed('/other_program'),
+      onCancel: () => Navigator.of(Get.overlayContext!).pop(),
     );
   }
 }

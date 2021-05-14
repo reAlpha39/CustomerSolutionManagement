@@ -1,3 +1,4 @@
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/controller/pica_analysis_controller.dart';
 import 'package:customer/widgets/pica_analysis/pica_detail_menu_card.dart';
@@ -9,7 +10,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PicaAnalysisPage extends StatelessWidget {
   final PicaAnalysisController _picaAController = Get.find();
-  final PicaCardTableController _picaCTController = Get.find(tag: 'global');
+  final MsppController _msppController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -81,13 +82,13 @@ class PicaAnalysisPage extends StatelessWidget {
             ),
           ),
           floatingActionButton: Obx(
-            () => _picaAController.navBarIndex.value == 1
+            () => _picaAController.navBarIndex.value != 0
                 ? FloatingActionButton(
                     child: Icon(
                       LineIcons.save,
                       color: Color(0xffffcd29),
                     ),
-                    onPressed: () => _picaCTController.saveData(),
+                    onPressed: () => _msppController.saveToDb(),
                   )
                 : Container(),
           ),

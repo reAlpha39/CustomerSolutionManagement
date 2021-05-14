@@ -1,4 +1,5 @@
 import 'package:customer/controller/home_controller.dart';
+import 'package:customer/controller/mspp_controller.dart';
 import 'package:customer/widgets/mspp/mspp_ae.dart';
 import 'package:customer/widgets/mspp/mspp_cbm.dart';
 import 'package:customer/widgets/mspp/mspp_ovh.dart';
@@ -16,6 +17,7 @@ import 'package:get/get.dart';
 
 class Mspp extends StatelessWidget {
   final HomeController _homeController = Get.find();
+  final MsppController _msppController = Get.find();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -129,18 +131,18 @@ class Mspp extends StatelessWidget {
 
   showDialog() {
     return Get.defaultDialog(
-        radius: 17,
-        title: 'Simpan data',
-        middleText: 'Apakah data yang anda masukkan sudah benar?',
-        textConfirm: 'YA',
-        textCancel: 'Tidak',
-        confirmTextColor: Colors.black87,
-        buttonColor: Color(0xffffcd29),
-        cancelTextColor: Colors.black87,
-        onConfirm: () {
-          // controller.saveDataMspp();
-          // picaCTController.saveData();
-        },
-        onCancel: () => Get.toNamed('/mspp'));
+      radius: 17,
+      title: 'Simpan data',
+      middleText: 'Apakah data yang anda masukkan sudah benar?',
+      textConfirm: 'YA',
+      textCancel: 'Tidak',
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+      onConfirm: () {
+        _msppController.saveToDb();
+      },
+      onCancel: () => Navigator.of(Get.overlayContext!).pop(),
+    );
   }
 }

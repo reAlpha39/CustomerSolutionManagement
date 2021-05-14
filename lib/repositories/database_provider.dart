@@ -299,6 +299,53 @@ class DatabaseProvider {
     return isDeleted;
   }
 
+  Future<bool> saveChecklistData(
+      ListChecklistAudit listChecklistAudit, String username) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      CollectionReference colRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('checklist_audit');
+      bool isDataExist = await checkData(colRef);
+      DocumentReference docRefA;
+      DocumentReference docRefB;
+      var temp;
+      for (int i = 0; i <= listChecklistAudit.checklistAudit!.length - 1; i++) {
+        docRefA = colRef.doc(listChecklistAudit.checklistAudit![i].id);
+        if (isDataExist) {
+          await docRefA.update(listChecklistAudit.checklistAudit![i].toMap());
+        } else {
+          await docRefA.set(listChecklistAudit.checklistAudit![i].toMap());
+        }
+        for (int j = 0;
+            j <=
+                listChecklistAudit.checklistAudit![i].checklistElement!.length -
+                    1;
+            j++) {
+          temp = listChecklistAudit.checklistAudit![i].checklistElement![j]
+              .toMap();
+          ChecklistElement checklistElement = ChecklistElement.fromMap(temp);
+          docRefB = colRef
+              .doc(listChecklistAudit.checklistAudit![i].id)
+              .collection('element')
+              .doc(checklistElement.id);
+          if (isDataExist) {
+            await docRefB.update(checklistElement.toMap());
+          } else {
+            await docRefB.set(checklistElement.toMap());
+          }
+          isSuccess = true;
+        }
+      }
+    } catch (e, s) {
+      print("saveChecklistData: " + e.toString());
+      print(s);
+    }
+    return isSuccess;
+  }
+
   Future<ListChecklistAudit> loadCheckListData(
       {String? username, String? part}) async {
     firestore = FirebaseFirestore.instance;
@@ -310,10 +357,9 @@ class DatabaseProvider {
           .collection('data_customer')
           .doc(username)
           .collection('checklist_audit');
-      DocumentSnapshot checkData =
-          await colRef.doc('periodic_inspection').get();
+      bool isDataExist = await checkData(colRef);
       QuerySnapshot data;
-      if (!checkData.exists) {
+      if (!isDataExist) {
         colRef = firestore
             .collection('initial_data')
             .doc('checklist_audit')
@@ -345,52 +391,22 @@ class DatabaseProvider {
     return listChecklistAudit;
   }
 
-  // testMspp(String username) {
-  //   firestore = FirebaseFirestore.instance;
-  //   ListChecklistAudit listChecklistAudit = ListChecklistAudit();
-  //   ChecklistElement checklistElement = ChecklistElement();
-
-  //   try {
-  //     CollectionReference colRef = firestore
-  //         .collection('initial_data')
-  //         .doc('checklist_audit')
-  //         .collection('data');
-  //     var initialData = initialDataMspp();
-  //     listChecklistAudit = ListChecklistAudit.fromJson(initialData);
-  //     DocumentReference docRefA;
-  //     DocumentReference docRefB;
-  //     var temp;
-  //     for (int i = 0; i <= listChecklistAudit.checklistAudit.length - 1; i++) {
-  //       docRefA = colRef.doc(listChecklistAudit.checklistAudit[i].id);
-  //       docRefA.set(listChecklistAudit.checklistAudit[i].toMap());
-  //       for (int j = 0;
-  //           j <=
-  //               listChecklistAudit.checklistAudit[i].checklistElement.length -
-  //                   1;
-  //           j++) {
-  //         temp =
-  //             listChecklistAudit.checklistAudit[i].checklistElement[j].toMap();
-  //         checklistElement = ChecklistElement.fromMap(temp);
-  //         docRefB = colRef
-  //             .doc(listChecklistAudit.checklistAudit[i].id)
-  //             .collection('element')
-  //             .doc(checklistElement.id);
-  //         docRefB.set(checklistElement.toMap());
-  //       }
-  //     }
-  //   } catch (e, s) {
-  //     print(e);
-  //     print(s);
-  //   }
-  // }
-
-  // loadInitialData() async {
-  //   firestore = FirebaseFirestore.instance;
-  //   DocumentReference doc =
-  //       firestore.collection('initial_data').doc('pica_observation_t');
-  //   var data =
-  //       await doc.set(initialData().toMap()).then((value) => print('done'));
-  // }
+  Future<bool> checkData(CollectionReference colRef) async {
+    bool isExist = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      DocumentSnapshot checkData =
+          await colRef.doc('periodic_inspection').get();
+      if (checkData.exists) {
+        isExist = true;
+      } else {
+        isExist = false;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return isExist;
+  }
 
   dummy() async {
     // IwDataTable dataTable = IwDataTable();

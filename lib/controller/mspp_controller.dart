@@ -1,13 +1,17 @@
 import 'package:customer/controller/home_controller.dart';
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/pica_card_table_controller.dart';
 import 'package:customer/models/checklist_audit/checklist_audit.dart';
 import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/utils/connectivity_checker.dart';
+import 'package:customer/utils/progress_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MsppController extends GetxController {
   final HomeController _homeController = Get.find();
+  final LoginController _loginController = Get.find();
   final DatabaseProvider _databaseProvider = DatabaseProvider();
 
   Map<int, String> radioData = {
@@ -117,12 +121,42 @@ class MsppController extends GetxController {
     }
   }
 
-  dummy() {
-    _databaseProvider.dummy();
+  void saveToDb() {
+    showProgressDialog();
+    connectivityChecker().then((conn) {
+      if (conn) {
+        _databaseProvider
+            .saveChecklistData(_homeController.tempListChecklistAudit.value,
+                _loginController.usr.value.username!)
+            .then((value) {
+          if (value) {
+            showDialog(title: 'Sukses', middleText: 'Data berhasil disimpan');
+          }
+        });
+      }
+    });
   }
 
-  void showProgressDialog() {
-    Get.dialog(Center(child: CircularProgressIndicator()),
-        barrierDismissible: false);
+  void closeCurrentDialog() {
+    if (Get.isDialogOpen!) {
+      Navigator.of(Get.overlayContext!).pop();
+    }
+  }
+
+  showDialog({required String title, required String middleText}) {
+    closeCurrentDialog();
+    Get.defaultDialog(
+        barrierDismissible: false,
+        titleStyle: TextStyle(fontSize: 24),
+        middleTextStyle: TextStyle(fontSize: 18),
+        title: title,
+        middleText: middleText,
+        textConfirm: 'OK',
+        radius: 17,
+        buttonColor: Colors.yellow.shade600,
+        confirmTextColor: Colors.black87,
+        onConfirm: () {
+          Navigator.of(Get.overlayContext!).pop();
+        });
   }
 }

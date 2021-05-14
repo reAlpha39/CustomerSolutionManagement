@@ -53,31 +53,35 @@ class CustomerInfo extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-          color: Colors.white,
-          //color: Color(0xffffcd29),
-          height: Get.height,
-          child: Theme(
-              data: ThemeData(primarySwatch: Colors.blueGrey),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 20, left: 20),
-                child: ScrollConfiguration(
-                  behavior: CustomScrollBehavior(),
-                  child: SingleChildScrollView(
-                    physics: ClampingScrollPhysics(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        CustomerInfoCardInfo(),
-                        CustomerInfoCardProduk(),
-                        CustomerInfoCardOther(),
-                      ],
+      body: GestureDetector(
+        onTap: () =>
+            WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
+        child: Container(
+            color: Colors.white,
+            //color: Color(0xffffcd29),
+            height: Get.height,
+            child: Theme(
+                data: ThemeData(primarySwatch: Colors.blueGrey),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20, left: 20),
+                  child: ScrollConfiguration(
+                    behavior: CustomScrollBehavior(),
+                    child: SingleChildScrollView(
+                      physics: ClampingScrollPhysics(),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          CustomerInfoCardInfo(),
+                          CustomerInfoCardProduk(),
+                          CustomerInfoCardOther(),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ))),
+                ))),
+      ),
     );
   }
 

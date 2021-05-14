@@ -136,12 +136,63 @@ class DatabaseProvider {
   Future<bool> deleteAccount(String? username) async {
     bool isSuccess = false;
     firestore = FirebaseFirestore.instance;
-    CollectionReference collection = firestore.collection('data_customer');
-    collection.doc(username).delete().then((_) {
-      showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
-      isSuccess = true;
-    });
+    try {
+      DocumentReference docRef =
+          firestore.collection('data_customer').doc(username);
+      var snapshot = await docRef.collection('improve_process').get();
+      var datas = snapshot.docs;
+      for (int i = 0; i <= datas.length - 1; i++) {
+        IpData ipData = IpData.fromMap(datas[i].data());
+        if (ipData.picturePathBefore != "") {
+          await firebase_storage.FirebaseStorage.instance
+              .refFromURL(ipData.picturePathBefore!)
+              .delete();
+        }
+        if (ipData.picturePathAfter != "") {
+          await firebase_storage.FirebaseStorage.instance
+              .refFromURL(ipData.picturePathAfter!)
+              .delete();
+        }
+      }
+      CollectionReference colNs = docRef.collection('need_support');
+      await deleteCollection(colNs, docRef, false);
+
+      CollectionReference colCa = docRef.collection('checklist_audit');
+      await deleteCollection(colCa, docRef, true);
+
+      CollectionReference colIp = docRef.collection('improve_process');
+      await deleteCollection(colIp, docRef, false);
+
+      docRef.delete().then((_) {
+        showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
+        isSuccess = true;
+      });
+    } catch (e, s) {
+      print("deleteUser: " + e.toString());
+      print(s);
+    }
     return isSuccess;
+  }
+
+  Future<void> deleteCollection(
+      CollectionReference colRef, DocumentReference docRef, bool isCa) async {
+    try {
+      QuerySnapshot querySnapshot = await colRef.get();
+      print(isCa);
+      for (int j = 0; j <= querySnapshot.docs.length - 1; j++) {
+        if (isCa) {
+          CollectionReference colElement =
+              colRef.doc(querySnapshot.docs[j].id).collection('element');
+          var dataElement = await colElement.get();
+          for (int k = 0; k <= dataElement.docs.length - 1; k++) {
+            await colElement.doc(dataElement.docs[k].id).delete();
+          }
+        }
+        await colRef.doc(querySnapshot.docs[j].id).delete();
+      }
+    } catch (e) {
+      print("deleteCollection: " + e.toString());
+    }
   }
 
   //List Users

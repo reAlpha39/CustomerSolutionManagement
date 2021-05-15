@@ -7,14 +7,15 @@ Future<bool> connectivityChecker() async {
       await InternetConnectionChecker().hasConnection.then((value) {
     if (!value) {
       if (Get.isDialogOpen!) {
-        Get.back(closeOverlays: true);
+        Navigator.of(Get.overlayContext!).pop();
       }
       Get.defaultDialog(
-          title: 'Koneksi Error',
-          middleText: 'Periksa kembali koneksi internet anda',
-          textConfirm: 'OK',
-          confirmTextColor: Colors.black87,
-          onConfirm: () => Get.back());
+        title: 'Koneksi Error',
+        middleText: 'Periksa kembali koneksi internet anda',
+        textConfirm: 'OK',
+        confirmTextColor: Colors.black87,
+        onConfirm: () => Navigator.of(Get.overlayContext!).pop(),
+      );
     }
     return value;
   });

@@ -50,21 +50,13 @@ class ImprovePanelContent extends StatelessWidget {
                               ? controller.isBefore.value
                                   ? PreviewImage(
                                       isBefore: true,
-                                      pathPicture: controller
-                                          .improveProcess
-                                          .value
-                                          .improveProcesData![
-                                              controller.indexUpdate.value]
-                                          .picturePathBefore,
+                                      pathPicture:
+                                          controller.tempImagePath.value,
                                     )
                                   : PreviewImage(
                                       isBefore: false,
-                                      pathPicture: controller
-                                          .improveProcess
-                                          .value
-                                          .improveProcesData![
-                                              controller.indexUpdate.value]
-                                          .picturePathAfter,
+                                      pathPicture:
+                                          controller.tempImagePath.value,
                                     )
                               : PreviewImage(
                                   isBefore: true,

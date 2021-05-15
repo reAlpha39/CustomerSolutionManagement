@@ -338,14 +338,10 @@ class DatabaseProvider {
           .collection('improve_process')
           .doc(ipData.id);
       if (ipData.picturePathBefore != "") {
-        await firebase_storage.FirebaseStorage.instance
-            .refFromURL(ipData.picturePathBefore!)
-            .delete();
+        await deletePicture(ipData.picturePathBefore!);
       }
       if (ipData.picturePathAfter != "") {
-        await firebase_storage.FirebaseStorage.instance
-            .refFromURL(ipData.picturePathAfter!)
-            .delete();
+        await deletePicture(ipData.picturePathAfter!);
       }
       await docRef.delete();
       isDeleted = true;
@@ -353,6 +349,14 @@ class DatabaseProvider {
       print(e);
     }
     return isDeleted;
+  }
+
+  Future<void> deletePicture(String path) async {
+    try {
+      await firebase_storage.FirebaseStorage.instance.refFromURL(path).delete();
+    } catch (e) {
+      print("deletePicture: " + e.toString());
+    }
   }
 
   Future<bool> saveChecklistData(

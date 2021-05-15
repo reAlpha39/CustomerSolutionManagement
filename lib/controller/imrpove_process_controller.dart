@@ -29,8 +29,8 @@ class ImproveProcessController extends GetxController {
   RxBool isPicked = false.obs;
   RxBool isLoading = false.obs;
   Rx<File> image = File("").obs;
-  Rx<File>? imageBefore;
-  Rx<File>? imageAfter;
+  RxString tempImagePath = "".obs;
+  RxString tempImageToDelete = "".obs;
   RxBool isUpdate = false.obs;
   RxBool isBefore = false.obs;
   RxInt indexUpdate = (-1).obs;
@@ -170,6 +170,9 @@ class ImproveProcessController extends GetxController {
               downloadUrl: downloadUrl,
             );
             if (isUpdate.value) {
+              if (tempImageToDelete.value != "") {
+                _deleteUpdatePicture();
+              }
               _updateData();
             } else {
               _createData(time);
@@ -206,13 +209,20 @@ class ImproveProcessController extends GetxController {
     });
   }
 
+  void _deleteUpdatePicture() async {
+    await databaseProvider
+        .deletePicture(tempImageToDelete.value)
+        .then((_) => tempImageToDelete.value = "");
+  }
+
   void _fillData(
       {required bool isBefore, bool? isUpdate, String? downloadUrl}) {
     if (isBefore) {
       if (isUpdate!) {
-        if (downloadUrl != "") {
-          ipData.value.picturePathBefore = downloadUrl;
+        if (downloadUrl == "" && ipData.value.picturePathBefore != "") {
+          tempImageToDelete.value = ipData.value.picturePathBefore!;
         }
+        ipData.value.picturePathBefore = downloadUrl;
         ipData.value.descriptionBefore = textEditingController!.text;
       } else {
         ipData.value.matrix = matrixText.value;
@@ -225,9 +235,10 @@ class ImproveProcessController extends GetxController {
       }
     } else {
       if (isUpdate!) {
-        if (downloadUrl != "") {
-          ipData.value.picturePathAfter = downloadUrl;
+        if (downloadUrl == "" && ipData.value.picturePathAfter != "") {
+          tempImageToDelete.value = ipData.value.picturePathAfter!;
         }
+        ipData.value.picturePathAfter = downloadUrl;
         ipData.value.descriptionAfter = textEditingController!.text;
       } else {
         ipData.value.picturePathAfter = downloadUrl;
@@ -267,12 +278,16 @@ class ImproveProcessController extends GetxController {
       isUpdate.value = true;
       if (isBeforeData!) {
         isBefore.value = true;
+        tempImagePath.value =
+            improveProcess.value.improveProcesData![index!].picturePathBefore!;
         textEditingController!.text =
-            improveProcess.value.improveProcesData![index!].descriptionBefore!;
+            improveProcess.value.improveProcesData![index].descriptionBefore!;
       } else {
         isBefore.value = false;
+        tempImagePath.value =
+            improveProcess.value.improveProcesData![index!].picturePathAfter!;
         textEditingController!.text =
-            improveProcess.value.improveProcesData![index!].descriptionAfter!;
+            improveProcess.value.improveProcesData![index].descriptionAfter!;
       }
       ipData.value = improveProcess.value.improveProcesData![index];
       ipData.refresh();
@@ -304,6 +319,7 @@ class ImproveProcessController extends GetxController {
 
   void resetPanel() {
     try {
+      tempImagePath.value = "";
       textEditingController!.clear();
       isPicked.value = false;
       if (image.value.existsSync()) {

@@ -19,15 +19,18 @@ class ImproveMainCard extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
-            padding:
-                const EdgeInsets.only(top: 42, left: 10, right: 10, bottom: 20),
+            padding: const EdgeInsets.symmetric(
+              vertical: 20,
+              horizontal: 10,
+            ),
             child: Container(
               child: Align(
                 alignment: Alignment.center,
                 child: Card(
-                  elevation: 12,
+                  elevation: 5,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(17)),
+                    borderRadius: BorderRadius.circular(17),
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 8.0),
                     child: ConstrainedBox(
@@ -54,7 +57,7 @@ class ImproveMainCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 32),
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Align(
               alignment:
                   isBefore! ? Alignment.centerRight : Alignment.centerLeft,
@@ -64,6 +67,7 @@ class ImproveMainCard extends StatelessWidget {
                   maxWidth: 150,
                 ),
                 child: Card(
+                  elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100),
                   ),

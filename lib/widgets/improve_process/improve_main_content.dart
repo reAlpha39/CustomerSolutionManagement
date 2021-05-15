@@ -59,16 +59,18 @@ class ImproveMainContent extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        if (_loginController.usr.value.type == 'customer') {
-                          controller.deleteData(index!);
-                        }
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
+                    Card(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(100),
+                        onTap: () {
+                          if (_loginController.usr.value.type == 'customer') {
+                            controller.deleteData(index!);
+                          }
+                        },
                         child: Container(
                           height: 40,
                           width: 40,
@@ -85,20 +87,22 @@ class ImproveMainContent extends StatelessWidget {
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        if (_loginController.usr.value.type == 'customer') {
-                          controller.openPanel(
-                            isCreate: false,
-                            isBeforeData: isBefore,
-                            index: index,
-                          );
-                        }
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                        ),
+                    Card(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(100),
+                        onTap: () {
+                          if (_loginController.usr.value.type == 'customer') {
+                            controller.openPanel(
+                              isCreate: false,
+                              isBeforeData: isBefore,
+                              index: index,
+                            );
+                          }
+                        },
                         child: Container(
                           height: 40,
                           width: 40,

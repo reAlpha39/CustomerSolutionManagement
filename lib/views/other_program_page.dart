@@ -94,7 +94,7 @@ class OtherProgramPage extends StatelessWidget {
       onConfirm: () {
         _msppController.saveToDb();
       },
-      onCancel: () => Navigator.of(Get.overlayContext!).pop(),
+      onCancel: () => Get.toNamed("/other_program"),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:customer/models/users.dart';
 import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/utils/progress_dialog.dart';
 import 'package:customer/utils/connectivity_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -79,23 +80,22 @@ class ManageAccountController extends GetxController {
 
   deleteAccount(String? username) {
     showProgressDialog();
-    isLoading.value = true;
     connectivityChecker().then((conn) {
       if (conn) {
         databaseProvider.deleteAccount(username).then((value) {
-          isLoading.value = false;
           listUsers();
+          closeCurrentDialog();
           Get.back();
         });
       } else {
-        isLoading.value = false;
+        closeCurrentDialog();
         Get.back();
       }
     });
   }
 
   createAccount() {
-    isLoading.value = true;
+    showProgressDialog();
     connectivityChecker().then((conn) {
       if (conn) {
         databaseProvider.usernameChecker(usernameTEC!.text).then((available) {
@@ -108,19 +108,19 @@ class ManageAccountController extends GetxController {
             );
             databaseProvider.createAccount(users).then((_) {
               clearData();
-              isLoading.value = false;
+              closeCurrentDialog();
               panelController!.close();
               listUsers();
             });
           } else {
-            isLoading.value = false;
+            closeCurrentDialog();
             _showDialogError(
                 title: 'Create error',
                 middleText: 'Username sudah terdapat dalam database');
           }
         });
       } else {
-        isLoading.value = false;
+        closeCurrentDialog();
       }
     });
   }
@@ -138,7 +138,7 @@ class ManageAccountController extends GetxController {
   }
 
   updateAccount() {
-    isLoading.value = true;
+    showProgressDialog();
     connectivityChecker().then((conn) {
       if (conn) {
         Users users = Users(
@@ -149,14 +149,20 @@ class ManageAccountController extends GetxController {
         );
         databaseProvider.createAccount(users).then((_) {
           clearData();
-          isLoading.value = false;
+          closeCurrentDialog();
           listUsers();
           panelController!.close();
         });
       } else {
-        isLoading.value = false;
+        closeCurrentDialog();
       }
     });
+  }
+
+  void closeCurrentDialog() {
+    if (Get.isDialogOpen!) {
+      Navigator.of(Get.overlayContext!).pop();
+    }
   }
 
   _showDialogError({required String title, required String middleText}) {
@@ -173,10 +179,5 @@ class ManageAccountController extends GetxController {
     usernameTEC!.clear();
     passwordTEC!.clear();
     radio.value = 2;
-  }
-
-  void showProgressDialog() {
-    Get.dialog(Center(child: CircularProgressIndicator()),
-        barrierDismissible: false);
   }
 }

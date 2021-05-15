@@ -85,11 +85,9 @@ class ManageAccountController extends GetxController {
         databaseProvider.deleteAccount(username).then((value) {
           listUsers();
           closeCurrentDialog();
-          Get.back();
         });
       } else {
         closeCurrentDialog();
-        Get.back();
       }
     });
   }

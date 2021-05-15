@@ -68,7 +68,7 @@ class ImproveMainContent extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         onTap: () {
                           if (_loginController.usr.value.type == 'customer') {
-                            controller.deleteData(index!);
+                            _deleteConfirmationDialog();
                           }
                         },
                         child: Container(
@@ -145,6 +145,23 @@ class ImproveMainContent extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  _deleteConfirmationDialog() {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Hapus Data',
+      middleText: 'Apakah anda yakin ingin menghapus data ini?',
+      textConfirm: 'YA',
+      textCancel: 'Tidak',
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+      onConfirm: () {
+        controller.deleteData(index!);
+      },
+      onCancel: () => Get.toNamed("/improve_process"),
     );
   }
 }

@@ -106,27 +106,17 @@ class DatabaseProvider {
   }
 
   //Membuat akun user
-  Future<bool> createAccount(Users users) async {
+  Future<bool> createAndUpdateAccount(Users users, bool isCreate) async {
     bool isSuccess = false;
     var data = users.toMap();
     firestore = FirebaseFirestore.instance;
     CollectionReference collection = firestore.collection('data_customer');
     collection.doc(users.username).set(data).then((_) {
-      showDialog(title: "Sukses", middleText: "User berhasil dibuat");
-      isSuccess = true;
-    });
-    return isSuccess;
-  }
-
-  //Update akun
-  Future<bool> updateAccount(Users user) async {
-    bool isSuccess = false;
-    var data = user.toMap();
-    firestore = FirebaseFirestore.instance;
-    CollectionReference collection = firestore.collection('data_customer');
-    collection.doc(users.username).set(data).then((_) {
-      showDialog(
-          title: 'Sukses', middleText: 'Data user berhasil diperbaharui');
+      if (isCreate) {
+        showDialog(title: "Sukses", middleText: "User berhasil dibuat");
+      } else {
+        showDialog(title: "Sukses", middleText: "User berhasil diperbaharui");
+      }
       isSuccess = true;
     });
     return isSuccess;

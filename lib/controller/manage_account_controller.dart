@@ -104,7 +104,7 @@ class ManageAccountController extends GetxController {
               password: passwordTEC!.text,
               type: radioData[radio.value],
             );
-            databaseProvider.createAccount(users).then((_) {
+            databaseProvider.createAndUpdateAccount(users, true).then((_) {
               clearData();
               closeCurrentDialog();
               panelController!.close();
@@ -145,7 +145,7 @@ class ManageAccountController extends GetxController {
           password: passwordTEC!.text,
           type: radioData[radio.value],
         );
-        databaseProvider.createAccount(users).then((_) {
+        databaseProvider.createAndUpdateAccount(users, false).then((_) {
           clearData();
           closeCurrentDialog();
           listUsers();

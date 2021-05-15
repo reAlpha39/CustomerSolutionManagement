@@ -73,7 +73,7 @@ class LoginController extends GetxController {
         title: title,
         middleText: middleText,
         textConfirm: 'OK',
-        confirmTextColor: Colors.white,
+        confirmTextColor: Colors.black54,
         onConfirm: () => Get.back());
   }
 

@@ -13,7 +13,7 @@ class Users {
   String? username;
   String? password;
   String? type;
-  int? level;
+  String? level;
 
   factory Users.fromJson(String str) => Users.fromMap(json.decode(str));
 

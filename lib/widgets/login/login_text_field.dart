@@ -8,6 +8,7 @@ class LoginTextField extends StatelessWidget {
     this.returnError,
     this.isObsecure,
     this.iconData,
+    this.isCrl = false,
   })  : _textEditingController = textEditingController,
         super(key: key);
 
@@ -16,6 +17,7 @@ class LoginTextField extends StatelessWidget {
   final String? returnError;
   final bool? isObsecure;
   final IconData? iconData;
+  final bool? isCrl;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,13 @@ class LoginTextField extends StatelessWidget {
             size: 20,
           )),
       validator: (value) {
-        if (value == '') {
+        if (isCrl!) {
+          if (["0", "1", "2", "3", "4", "5", "6", "7"].contains(value)) {
+            return null;
+          } else {
+            return returnError;
+          }
+        } else if (value == '') {
           return returnError;
         } else {
           return null;

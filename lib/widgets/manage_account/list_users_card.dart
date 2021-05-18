@@ -76,7 +76,7 @@ class ListUsersCard extends StatelessWidget {
                           ),
                           DataCell(
                             Container(
-                              width: 100,
+                              width: 30,
                               child: Text(
                                 '${user.level}',
                                 softWrap: true,

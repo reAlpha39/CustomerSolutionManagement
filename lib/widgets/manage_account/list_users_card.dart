@@ -31,7 +31,6 @@ class ListUsersCard extends StatelessWidget {
                   DataColumn(label: Text('Name')),
                   DataColumn(label: Text('Username')),
                   DataColumn(label: Text('Password')),
-                  DataColumn(label: Text('Level')),
                   DataColumn(label: Text('Type')),
                 ],
                 rows: controller.listUser
@@ -69,16 +68,6 @@ class ListUsersCard extends StatelessWidget {
                               width: 100,
                               child: Text(
                                 '${user.password}',
-                                softWrap: true,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ),
-                          DataCell(
-                            Container(
-                              width: 30,
-                              child: Text(
-                                '${user.level}',
                                 softWrap: true,
                                 overflow: TextOverflow.ellipsis,
                               ),

@@ -140,18 +140,6 @@ class CreateAccount extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: LoginTextField(
-                              textEditingController: controller.levelTEC,
-                              labelText: 'Customer Relationship Level',
-                              isObsecure: false,
-                              isCrl: true,
-                              iconData: Icons.person_add_alt_1_outlined,
-                              returnError:
-                                  'Isi 1 - 7, user selain customer isi "0".',
-                            ),
-                          ),
                         ],
                       ),
                     ),

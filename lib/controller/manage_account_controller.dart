@@ -13,7 +13,6 @@ class ManageAccountController extends GetxController {
   TextEditingController? namaTEC;
   TextEditingController? usernameTEC;
   TextEditingController? passwordTEC;
-  TextEditingController? levelTEC;
   GlobalKey<FormState>? formKey;
 
   RxBool isLoading = false.obs;
@@ -33,7 +32,6 @@ class ManageAccountController extends GetxController {
     namaTEC = TextEditingController();
     usernameTEC = TextEditingController();
     passwordTEC = TextEditingController();
-    levelTEC = TextEditingController();
     formKey = GlobalKey<FormState>();
     listUsers();
     super.onInit();
@@ -44,7 +42,6 @@ class ManageAccountController extends GetxController {
     namaTEC?.dispose();
     usernameTEC?.dispose();
     passwordTEC?.dispose();
-    levelTEC?.dispose();
     super.onClose();
   }
 
@@ -106,7 +103,6 @@ class ManageAccountController extends GetxController {
               username: usernameTEC!.text,
               password: passwordTEC!.text,
               type: radioData[radio.value],
-              level: levelTEC!.text,
             );
             databaseProvider.createAndUpdateAccount(users, true).then((_) {
               clearData();
@@ -135,7 +131,6 @@ class ManageAccountController extends GetxController {
     namaTEC!.text = user.nama!;
     usernameTEC!.text = user.username!;
     passwordTEC!.text = user.password!;
-    levelTEC!.text = user.level!;
     radio.value = radioKey;
     panelController!.open();
   }
@@ -149,7 +144,6 @@ class ManageAccountController extends GetxController {
           username: usernameTEC!.text,
           password: passwordTEC!.text,
           type: radioData[radio.value],
-          level: levelTEC!.text,
         );
         databaseProvider.createAndUpdateAccount(users, false).then((_) {
           clearData();
@@ -182,7 +176,6 @@ class ManageAccountController extends GetxController {
     namaTEC!.clear();
     usernameTEC!.clear();
     passwordTEC!.clear();
-    levelTEC!.clear();
     radio.value = 2;
   }
 }

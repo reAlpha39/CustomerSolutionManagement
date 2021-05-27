@@ -6,14 +6,12 @@ class Users {
     this.username,
     this.password,
     this.type,
-    this.level,
   });
 
   String? nama;
   String? username;
   String? password;
   String? type;
-  String? level;
 
   factory Users.fromJson(String str) => Users.fromMap(json.decode(str));
 
@@ -24,7 +22,6 @@ class Users {
         username: json["username"],
         password: json["password"],
         type: json["type"],
-        level: json["level"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -32,6 +29,5 @@ class Users {
         "username": username,
         "password": password,
         "type": type,
-        "level": level,
       };
 }

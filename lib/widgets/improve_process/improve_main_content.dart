@@ -1,5 +1,6 @@
 import 'package:customer/controller/imrpove_process_controller.dart';
 import 'package:customer/controller/login_controller.dart';
+import 'package:customer/widgets/box_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -162,33 +163,6 @@ class ImproveMainContent extends StatelessWidget {
         controller.deleteData(index!);
       },
       onCancel: () => Get.toNamed("/improve_process"),
-    );
-  }
-}
-
-class BoxImage extends StatelessWidget {
-  final String? pathPicture;
-
-  const BoxImage({Key? key, this.pathPicture}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 3 / 4,
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-        child: pathPicture != "" && pathPicture != null
-            ? Image.network(
-                pathPicture!,
-                loadingBuilder: (context, child, progress) {
-                  return progress == null ? child : LinearProgressIndicator();
-                },
-                fit: BoxFit.cover,
-              )
-            : Image.asset(
-                "assets/images/no_image.jpg",
-                fit: BoxFit.cover,
-              ),
-      ),
     );
   }
 }

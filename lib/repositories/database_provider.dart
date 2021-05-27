@@ -478,6 +478,30 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  Future loadReviewMeetingData(String? username) async {
+    ListReviewMeeting listReviewMeeting = ListReviewMeeting();
+    listReviewMeeting.reviewMeeting = [];
+    try {
+      firestore = FirebaseFirestore.instance;
+      QuerySnapshot docRef = await firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .get();
+      for (int i = 0; i <= docRef.docs.length - 1; i++) {
+        QueryDocumentSnapshot doc = docRef.docs[i];
+        var data = doc.data();
+        ReviewMeeting reviewMeeting =
+            ReviewMeeting.fromMap(data as Map<String, dynamic>);
+        reviewMeeting.id = doc.id;
+        listReviewMeeting.reviewMeeting!.add(reviewMeeting);
+      }
+    } catch (e) {
+      print(e);
+    }
+    return listReviewMeeting;
+  }
+
   dummy() async {
     // IwDataTable dataTable = IwDataTable();
     // dataTable.description = List<String>.filled(52, 'placeholder');

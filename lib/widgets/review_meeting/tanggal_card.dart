@@ -1,6 +1,12 @@
+import 'package:customer/controller/review_meeting_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TanggalCard extends StatelessWidget {
+  final ReviewMeetingController _controller = Get.find();
+  final int? index;
+
+  TanggalCard({Key? key, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -20,7 +26,8 @@ class TanggalCard extends StatelessWidget {
               vertical: 12,
               horizontal: 20,
             ),
-            child: Text("Sunday, May 30 2021"),
+            child: Text(
+                _controller.listReviewMeeting.value.reviewMeeting![index!].tanggal!),
           ),
         ),
       ),

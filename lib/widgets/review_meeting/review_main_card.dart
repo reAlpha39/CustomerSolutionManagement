@@ -1,7 +1,14 @@
+import 'package:customer/controller/review_meeting_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
+import 'package:customer/widgets/box_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ReviewMainCard extends StatelessWidget {
+  final ReviewMeetingController _controller = Get.find();
+  final int? index;
+
+  ReviewMainCard({Key? key, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +35,8 @@ class ReviewMainCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Title",
+                        _controller
+                            .listReviewMeeting.value.reviewMeeting![index!].nama!,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -47,7 +55,8 @@ class ReviewMainCard extends StatelessWidget {
                               vertical: 2,
                             ),
                             child: Text(
-                              "Weekly",
+                              _controller.listReviewMeeting.value
+                                  .reviewMeeting![index!].type!,
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
                                 fontSize: 12,
@@ -64,7 +73,8 @@ class ReviewMainCard extends StatelessWidget {
                           child: ScrollConfiguration(
                             behavior: CustomScrollBehavior(),
                             child: SingleChildScrollView(
-                              child: Text("Text"),
+                              child: Text(_controller.listReviewMeeting.value
+                                  .reviewMeeting![index!].agenda!),
                             ),
                           ),
                         ),
@@ -95,7 +105,8 @@ class ReviewMainCard extends StatelessWidget {
                                 behavior: CustomScrollBehavior(),
                                 child: SingleChildScrollView(
                                   child: Text(
-                                    "",
+                                    _controller.listReviewMeeting.value
+                                        .reviewMeeting![index!].note!,
                                     style: TextStyle(fontSize: 12),
                                   ),
                                 ),
@@ -113,12 +124,12 @@ class ReviewMainCard extends StatelessWidget {
                 child: AspectRatio(
                   aspectRatio: 3 / 4,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(8),
-                    ),
-                    child: Image.asset(
-                      "assets/images/no_image.jpg",
-                      fit: BoxFit.cover,
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    child: Obx(
+                      () => BoxImage(
+                        pathPicture: _controller
+                            .listReviewMeeting.value.reviewMeeting![index!].picture,
+                      ),
                     ),
                   ),
                 ),

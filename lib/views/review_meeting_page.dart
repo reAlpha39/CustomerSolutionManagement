@@ -1,4 +1,5 @@
 import 'package:customer/controller/review_meeting_controller.dart';
+import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/review_meeting/review_main_card.dart';
 import 'package:customer/widgets/review_meeting/review_panel_card.dart';
 import 'package:customer/widgets/review_meeting/tanggal_card.dart';
@@ -18,8 +19,7 @@ class ReviewMeetingPage extends StatelessWidget {
         minHeight: 0,
         renderPanelSheet: false,
         backdropEnabled: true,
-        onPanelClosed: () =>
-            controller.onClosePanel(),
+        onPanelClosed: () => controller.onClosePanel(),
         maxHeight: context.height,
         panel: ReviewPanelCard(),
         collapsed: Container(),
@@ -35,14 +35,38 @@ class ReviewMeetingPage extends StatelessWidget {
             ),
           ),
           body: Center(
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TanggalCard(),
-                  ReviewMainCard(),
-                ],
-              ),
+            child: Obx(
+              () => controller.listReviewMeeting.value.reviewMeeting == null
+                  ? Container()
+                  : Container(
+                      height: context.height,
+                      child: Scrollbar(
+                        child: SingleChildScrollView(
+                          physics: BouncingScrollPhysics(),
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: Column(
+                              children: List<Widget>.generate(
+                                controller.listReviewMeeting.value
+                                    .reviewMeeting!.length,
+                                (index) => Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TanggalCard(
+                                      index: index,
+                                    ),
+                                    ReviewMainCard(
+                                      index: index,
+                                    ),
+                                  ],
+                                ),
+                              ).reversed.toList(),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
             ),
           ),
         ),

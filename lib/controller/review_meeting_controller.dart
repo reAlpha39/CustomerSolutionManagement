@@ -20,6 +20,7 @@ class ReviewMeetingController extends GetxController {
   Rx<File> image = File("").obs;
   RxBool isPicked = false.obs;
   RxBool isUpdate = false.obs;
+  RxInt radioIndex = 0.obs;
 
   @override
   void onInit() {

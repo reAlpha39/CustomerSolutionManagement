@@ -1,4 +1,6 @@
 import 'package:customer/controller/review_meeting_controller.dart';
+import 'package:customer/widgets/review_meeting/review_meeting_radio.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:get/get.dart';
@@ -66,14 +68,63 @@ class ReviewPanelContent extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Colors.black38),
+                    borderRadius: BorderRadius.circular(17),
+                  ),
+                  padding:
+                      EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
+                  child: ExpandableNotifier(
+                    child: ScrollOnExpand(
+                      child: ExpandablePanel(
+                        theme: const ExpandableThemeData(
+                          headerAlignment:
+                              ExpandablePanelHeaderAlignment.center,
+                          tapBodyToExpand: true,
+                          tapBodyToCollapse: true,
+                          hasIcon: true,
+                          iconPlacement: ExpandablePanelIconPlacement.right,
+                        ),
+                        header: Padding(
+                          padding: const EdgeInsets.only(left: 1),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Type Meeting',
+                              overflow: TextOverflow.fade,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ),
+                        ),
+                        collapsed: Container(),
+                        expanded: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 10,
+                            left: 10,
+                            right: 10,
+                          ),
+                          child: ReviewMeetingRadio(),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: _controller.noteTextController,
                   maxLines: 3,
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(17),
-                      ),
-                      labelText: "Note Meeting"),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(17),
+                    ),
+                    labelText: "Note Meeting",
+                  ),
                 ),
               ),
               ConstrainedBox(

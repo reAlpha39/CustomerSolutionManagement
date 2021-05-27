@@ -1,4 +1,5 @@
 import 'package:customer/controller/review_meeting_controller.dart';
+import 'package:customer/widgets/review_meeting/review_panel_content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -62,7 +63,7 @@ class ReviewPanelCard extends StatelessWidget {
                     Radius.circular(17),
                   ),
                 ),
-                child: Container(),
+                child: ReviewPanelContent(),
               ),
             ),
             Container(

@@ -1,0 +1,20 @@
+enum ReviewMeetingType { Weekly, Monthly }
+
+final typeValues = EnumValues({
+  "weekly": ReviewMeetingType.Weekly,
+  "monthly": ReviewMeetingType.Monthly,
+});
+
+class EnumValues<T> {
+  Map<String, T>? map;
+  Map<T, String>? reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    if (reverseMap == null) {
+      reverseMap = map!.map((k, v) => new MapEntry(v, k));
+    }
+    return reverseMap!;
+  }
+}

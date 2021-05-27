@@ -19,7 +19,7 @@ class ReviewMeetingPage extends StatelessWidget {
         renderPanelSheet: false,
         backdropEnabled: true,
         onPanelClosed: () =>
-            WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
+            controller.onClosePanel(),
         maxHeight: context.height,
         panel: ReviewPanelCard(),
         collapsed: Container(),

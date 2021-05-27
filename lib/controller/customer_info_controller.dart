@@ -45,6 +45,7 @@ class CustomerInfoController extends GetxController {
   TextEditingController? planBudgetTextController;
   TextEditingController? problemTextController;
   TextEditingController? targetTextController;
+  TextEditingController? levelTextEditingController;
 
   @override
   void onInit() {
@@ -62,6 +63,7 @@ class CustomerInfoController extends GetxController {
     planBudgetTextController = TextEditingController();
     problemTextController = TextEditingController();
     targetTextController = TextEditingController();
+    levelTextEditingController = TextEditingController();
     super.onInit();
   }
 
@@ -81,6 +83,7 @@ class CustomerInfoController extends GetxController {
     planBudgetTextController?.dispose();
     problemTextController?.dispose();
     targetTextController?.dispose();
+    levelTextEditingController?.dispose();
     super.onClose();
   }
 
@@ -135,6 +138,7 @@ class CustomerInfoController extends GetxController {
               planBudget: planBudgetTextController!.text,
               problem: problemTextController!.text,
               target: targetTextController!.text,
+              level: levelTextEditingController!.text,
               ketidakpuasan: checkBoxValue());
           _databaseProvider.saveData(dataCustomer);
           clearText();
@@ -164,6 +168,7 @@ class CustomerInfoController extends GetxController {
     planBudgetTextController!.clear();
     problemTextController!.clear();
     targetTextController!.clear();
+    levelTextEditingController!.clear();
     radioIndex.value = 0;
     checkBoxA.value = false;
     checkBoxB.value = false;

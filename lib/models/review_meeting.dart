@@ -4,20 +4,20 @@
 
 import 'dart:convert';
 
-class ListChecklistAudit {
-  ListChecklistAudit({
+class ListReviewMeeting {
+  ListReviewMeeting({
     this.reviewMeeting,
   });
 
   List<ReviewMeeting>? reviewMeeting;
 
-  factory ListChecklistAudit.fromJson(String str) =>
-      ListChecklistAudit.fromMap(json.decode(str));
+  factory ListReviewMeeting.fromJson(String str) =>
+      ListReviewMeeting.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ListChecklistAudit.fromMap(Map<String, dynamic> json) =>
-      ListChecklistAudit(
+  factory ListReviewMeeting.fromMap(Map<String, dynamic> json) =>
+      ListReviewMeeting(
         reviewMeeting: List<ReviewMeeting>.from(
             json["review_meeting"].map((x) => ReviewMeeting.fromMap(x))),
       );

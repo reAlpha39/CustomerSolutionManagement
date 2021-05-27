@@ -30,6 +30,7 @@ class ListReviewMeeting {
 
 class ReviewMeeting {
   ReviewMeeting({
+    this.id,
     this.tanggal,
     this.nama,
     this.agenda,
@@ -38,6 +39,7 @@ class ReviewMeeting {
     this.picture,
   });
 
+  String? id;
   String? tanggal;
   String? nama;
   String? agenda;
@@ -51,6 +53,7 @@ class ReviewMeeting {
   String toJson() => json.encode(toMap());
 
   factory ReviewMeeting.fromMap(Map<String, dynamic> json) => ReviewMeeting(
+        id: json["id"],
         tanggal: json["tanggal"],
         nama: json["nama"],
         agenda: json["agenda"],
@@ -60,6 +63,7 @@ class ReviewMeeting {
       );
 
   Map<String, dynamic> toMap() => {
+        "id": id,
         "tanggal": tanggal,
         "nama": nama,
         "agenda": agenda,

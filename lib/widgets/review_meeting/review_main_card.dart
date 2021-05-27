@@ -1,11 +1,14 @@
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/review_meeting_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/box_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 class ReviewMainCard extends StatelessWidget {
   final ReviewMeetingController _controller = Get.find();
+  final LoginController _loginController = Get.find();
   final int? index;
 
   ReviewMainCard({Key? key, this.index}) : super(key: key);
@@ -27,16 +30,18 @@ class ReviewMainCard extends StatelessWidget {
             children: [
               Flexible(
                 fit: FlexFit.tight,
-                flex: 6,
+                flex: 7,
                 child: Container(
-                  height: 190,
+                  height: 220,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _controller
-                            .listReviewMeeting.value.reviewMeeting![index!].nama!,
+                        _controller.listReviewMeeting.value
+                            .reviewMeeting![index!].nama!,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -66,15 +71,17 @@ class ReviewMainCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        height: 80,
-                        child: Scrollbar(
-                          thickness: 1,
-                          child: ScrollConfiguration(
-                            behavior: CustomScrollBehavior(),
-                            child: SingleChildScrollView(
-                              child: Text(_controller.listReviewMeeting.value
-                                  .reviewMeeting![index!].agenda!),
+                      Flexible(
+                        fit: FlexFit.tight,
+                        child: Container(
+                          child: Scrollbar(
+                            thickness: 1,
+                            child: ScrollConfiguration(
+                              behavior: CustomScrollBehavior(),
+                              child: SingleChildScrollView(
+                                child: Text(_controller.listReviewMeeting.value
+                                    .reviewMeeting![index!].agenda!),
+                              ),
                             ),
                           ),
                         ),
@@ -84,7 +91,7 @@ class ReviewMainCard extends StatelessWidget {
                           padding: const EdgeInsets.only(bottom: 12),
                           child: Container(
                             height: 1,
-                            width: 200,
+                            width: 180,
                             color: Colors.black12,
                           ),
                         ),
@@ -99,7 +106,6 @@ class ReviewMainCard extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
                             child: Container(
-                              width: 180,
                               height: 30,
                               child: ScrollConfiguration(
                                 behavior: CustomScrollBehavior(),
@@ -120,18 +126,85 @@ class ReviewMainCard extends StatelessWidget {
                 ),
               ),
               Flexible(
-                flex: 3,
-                child: AspectRatio(
-                  aspectRatio: 3 / 4,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    child: Obx(
-                      () => BoxImage(
-                        pathPicture: _controller
-                            .listReviewMeeting.value.reviewMeeting![index!].picture,
+                flex: 4,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 4.0),
+                      child: AspectRatio(
+                        aspectRatio: 3 / 4,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
+                          child: Obx(
+                            () => BoxImage(
+                              pathPicture: _controller.listReviewMeeting.value
+                                  .reviewMeeting![index!].picture,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Card(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(100),
+                            onTap: () {
+                              if (_loginController.usr.value.type ==
+                                  'customer') {}
+                            },
+                            child: Container(
+                              height: 35,
+                              width: 35,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xffffcd29),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  LineIcons.trash,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(100),
+                            onTap: () {
+                              if (_loginController.usr.value.type ==
+                                  'customer') {}
+                            },
+                            child: Container(
+                              height: 35,
+                              width: 35,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xffffcd29),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  LineIcons.edit,
+                                  size: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],

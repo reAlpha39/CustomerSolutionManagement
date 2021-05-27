@@ -1,5 +1,4 @@
 import 'package:customer/controller/review_meeting_controller.dart';
-import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/review_meeting/review_main_card.dart';
 import 'package:customer/widgets/review_meeting/review_panel_card.dart';
 import 'package:customer/widgets/review_meeting/tanggal_card.dart';

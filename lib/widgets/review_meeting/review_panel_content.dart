@@ -55,7 +55,7 @@ class ReviewPanelContent extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  controller: _controller.titleTextController,
+                  controller: _controller.agendaTextController,
                   maxLines: 3,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -67,7 +67,7 @@ class ReviewPanelContent extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  controller: _controller.titleTextController,
+                  controller: _controller.noteTextController,
                   maxLines: 3,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(

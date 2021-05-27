@@ -1,0 +1,140 @@
+import 'package:customer/controller/review_meeting_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
+
+class ReviewPanelCard extends StatelessWidget {
+  final ReviewMeetingController controller = Get.find();
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () =>
+          WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
+      child: Card(
+        color: Color(0xffffcd29),
+        margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 72.0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
+        child: Column(
+          children: [
+            Container(
+              height: 50,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  TextButton(
+                    onPressed: () => controller.panelController!.close(),
+                    child: Icon(
+                      LineIcons.times,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  Container(
+                    width: 220,
+                    child: Obx(
+                      () => controller.isUpdate.value
+                          ? Text(
+                              "Update",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          : Text(
+                              "Create",
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Flexible(
+              fit: FlexFit.tight,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(17),
+                  ),
+                ),
+                child: Container(),
+              ),
+            ),
+            Container(
+              height: 50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all<double>(0),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                        ),
+                      ),
+                      onPressed: () => controller.resetPanel(),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Container(
+                          width: 50,
+                          height: 30,
+                          child: Center(
+                            child: Text('Reset'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all<double>(0),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                        ),
+                      ),
+                      onPressed: () => controller.saveData(),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Container(
+                          width: 50,
+                          height: 30,
+                          child: Center(
+                            child: Obx(
+                              () => controller.isUpdate.value
+                                  ? Text('Update')
+                                  : Text('Save'),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

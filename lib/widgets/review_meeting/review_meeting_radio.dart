@@ -1,14 +1,9 @@
 import 'package:customer/controller/review_meeting_controller.dart';
-import 'package:customer/models/type.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ReviewMeetingRadio extends StatelessWidget {
   final ReviewMeetingController controller = Get.find();
-  final List<String> data = [
-    typeValues.reverse[ReviewMeetingType.Monthly]!,
-    typeValues.reverse[ReviewMeetingType.Weekly]!
-  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +11,7 @@ class ReviewMeetingRadio extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (int i = 0; i <= data.length - 1; i++)
+          for (int i = 0; i <= controller.reviewMeetingTypes.length - 1; i++)
             Container(
               child: Row(
                 children: [
@@ -30,7 +25,7 @@ class ReviewMeetingRadio extends StatelessWidget {
                           controller.radioIndex.value = value!,
                     ),
                   ),
-                  Text('${data[i]}'),
+                  Text('${controller.reviewMeetingTypes[i]}'),
                 ],
               ),
             ),

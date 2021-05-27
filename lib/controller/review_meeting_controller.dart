@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:customer/models/review_meeting.dart';
+import 'package:customer/models/type.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -10,6 +12,10 @@ class ReviewMeetingController extends GetxController {
   PanelController? panelController;
   final dateFormat = DateFormat('EEE, MMMM dd yyyy');
   final _picker = ImagePicker();
+  final List<String> reviewMeetingTypes = [
+    typeValues.reverse[ReviewMeetingType.Monthly]!,
+    typeValues.reverse[ReviewMeetingType.Weekly]!
+  ];
   GlobalKey<FormState>? formKey;
   TextEditingController? titleTextController;
   TextEditingController? dateTextController;
@@ -17,6 +23,7 @@ class ReviewMeetingController extends GetxController {
   TextEditingController? noteTextController;
   RxString dateMeeting = "".obs;
   RxString tempImagePath = "".obs;
+  RxString savedImagePath = "".obs;
   Rx<File> image = File("").obs;
   RxBool isPicked = false.obs;
   RxBool isUpdate = false.obs;
@@ -25,6 +32,7 @@ class ReviewMeetingController extends GetxController {
   @override
   void onInit() {
     panelController = PanelController();
+    formKey = GlobalKey<FormState>();
     titleTextController = TextEditingController();
     dateTextController = TextEditingController();
     agendaTextController = TextEditingController();
@@ -88,5 +96,41 @@ class ReviewMeetingController extends GetxController {
     }
   }
 
-  void saveData() {}
+  void saveData() {
+    if (formKey!.currentState!.validate()) {
+      ReviewMeeting data = ReviewMeeting(
+        tanggal: dateTextController!.text,
+        nama: titleTextController!.text,
+        agenda: agendaTextController!.text,
+        note: noteTextController!.text,
+        type: reviewMeetingTypes[radioIndex.value],
+        picture: savedImagePath.value,
+      );
+    }
+  }
+
+  void closeCurrentDialog() {
+    if (Get.isDialogOpen!) {
+      Navigator.of(Get.overlayContext!).pop();
+    }
+  }
+
+  showDialog({required String title, required String middleText}) {
+    closeCurrentDialog();
+    Get.defaultDialog(
+        barrierDismissible: false,
+        titleStyle: TextStyle(fontSize: 24),
+        middleTextStyle: TextStyle(fontSize: 18),
+        title: title,
+        middleText: middleText,
+        textConfirm: 'OK',
+        radius: 17,
+        buttonColor: Colors.yellow.shade600,
+        confirmTextColor: Colors.black87,
+        onConfirm: () {
+          panelController!.close();
+          Navigator.of(Get.overlayContext!).pop();
+          resetPanel();
+        });
+  }
 }

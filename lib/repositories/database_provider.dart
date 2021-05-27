@@ -9,6 +9,7 @@ import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/iw_data_table.dart';
 import 'package:customer/models/model_unit.dart';
+import 'package:customer/models/review_meeting.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -164,7 +165,7 @@ class DatabaseProvider {
       }
     } else {
       showDialog(
-          title: 'Gaga;', middleText: 'Tidak dapat menghapus akun sendiri');
+          title: 'Gagal', middleText: 'Tidak dapat menghapus akun sendiri');
     }
     return isSuccess;
   }
@@ -280,12 +281,12 @@ class DatabaseProvider {
   }
 
   Future<String?> uploadImproveProcessImage(
-      File image, String filename, String? username) async {
+      File image, String filename, String? username, String folderName) async {
     String? downloadUrl;
     try {
       if (image.existsSync()) {
         var task = await firebase_storage.FirebaseStorage.instance
-            .ref("improve_process/" + username!)
+            .ref(folderName + username!)
             .child(filename)
             .putFile(image);
         downloadUrl = await task.ref.getDownloadURL();
@@ -456,6 +457,25 @@ class DatabaseProvider {
       print(e);
     }
     return isExist;
+  }
+
+  Future<bool> saveDataReviewMeeting(
+      ReviewMeeting review, String username) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      var data = review.toMap();
+      DocumentReference doc = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .doc(review.id);
+      await doc.set(data);
+      isSuccess = true;
+    } catch (e) {
+      print(e);
+    }
+    return isSuccess;
   }
 
   dummy() async {

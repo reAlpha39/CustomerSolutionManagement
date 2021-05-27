@@ -1,8 +1,11 @@
 enum ReviewMeetingType { Weekly, Monthly }
+enum FolderNameImage { ImproveProcess, ReviewMeeting }
 
 final typeValues = EnumValues({
   "weekly": ReviewMeetingType.Weekly,
   "monthly": ReviewMeetingType.Monthly,
+  "improve_process/": FolderNameImage.ImproveProcess,
+  "review_meeting/": FolderNameImage.ReviewMeeting,
 });
 
 class EnumValues<T> {

@@ -4,6 +4,7 @@ import 'package:customer/controller/home_controller.dart';
 import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/model_unit.dart';
+import 'package:customer/models/type.dart';
 import 'package:customer/repositories/database_provider.dart';
 import 'package:customer/utils/connectivity_checker.dart';
 import 'package:customer/utils/progress_dialog.dart';
@@ -35,6 +36,7 @@ class ImproveProcessController extends GetxController {
   RxBool isBefore = false.obs;
   RxInt indexUpdate = (-1).obs;
   RxBool isInit = false.obs;
+  String _folderName = typeValues.reverse[FolderNameImage.ImproveProcess]!;
 
   List<String> matrixList = [
     "PI",
@@ -161,7 +163,11 @@ class ImproveProcessController extends GetxController {
         name = renameFile(isBefore: isBefore.value, name: time);
         databaseProvider
             .uploadImproveProcessImage(
-                image.value, name, _loginController.usr.value.username)
+          image.value,
+          name,
+          _loginController.usr.value.username,
+          _folderName,
+        )
             .then((downloadUrl) {
           if (downloadUrl != null) {
             _fillData(

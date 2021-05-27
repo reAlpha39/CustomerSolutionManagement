@@ -1,7 +1,11 @@
 import 'dart:io';
 
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/models/review_meeting.dart';
 import 'package:customer/models/type.dart';
+import 'package:customer/repositories/database_provider.dart';
+import 'package:customer/utils/connectivity_checker.dart';
+import 'package:customer/utils/progress_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +13,8 @@ import 'package:get/get.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ReviewMeetingController extends GetxController {
+  final LoginController _loginController = Get.find();
+  DatabaseProvider _databaseProvider = DatabaseProvider();
   PanelController? panelController;
   final dateFormat = DateFormat('EEE, MMMM dd yyyy');
   final _picker = ImagePicker();
@@ -23,11 +29,11 @@ class ReviewMeetingController extends GetxController {
   TextEditingController? noteTextController;
   RxString dateMeeting = "".obs;
   RxString tempImagePath = "".obs;
-  RxString savedImagePath = "".obs;
   Rx<File> image = File("").obs;
   RxBool isPicked = false.obs;
   RxBool isUpdate = false.obs;
   RxInt radioIndex = 0.obs;
+  String _folderName = typeValues.reverse[FolderNameImage.ReviewMeeting]!;
 
   @override
   void onInit() {
@@ -61,6 +67,7 @@ class ReviewMeetingController extends GetxController {
       dateTextController!.clear();
       noteTextController!.clear();
       agendaTextController!.clear();
+      radioIndex.value = 0;
       isPicked.value = false;
       if (image.value.existsSync()) {
         image.value.delete();
@@ -96,17 +103,48 @@ class ReviewMeetingController extends GetxController {
     }
   }
 
-  void saveData() {
+  void saveData() async {
     if (formKey!.currentState!.validate()) {
-      ReviewMeeting data = ReviewMeeting(
-        tanggal: dateTextController!.text,
-        nama: titleTextController!.text,
-        agenda: agendaTextController!.text,
-        note: noteTextController!.text,
-        type: reviewMeetingTypes[radioIndex.value],
-        picture: savedImagePath.value,
-      );
+      showProgressDialog();
+      bool isConnected = false;
+      try {
+        isConnected = await connectivityChecker();
+        if (isConnected) {
+          String id = formatTime();
+          String filename = "review_" + id;
+          String? path = await _databaseProvider.uploadImproveProcessImage(
+              image.value,
+              filename,
+              _loginController.usr.value.username,
+              _folderName);
+          ReviewMeeting data = ReviewMeeting(
+            id: id,
+            tanggal: dateTextController!.text,
+            nama: titleTextController!.text,
+            agenda: agendaTextController!.text,
+            note: noteTextController!.text,
+            type: reviewMeetingTypes[radioIndex.value],
+            picture: path!,
+          );
+          await _databaseProvider.saveDataReviewMeeting(
+              data, _loginController.usr.value.username!);
+          showDialog(title: "Sukses", middleText: "Data berhasil disimpan");
+        }
+      } catch (e) {
+        showDialog(title: "Gagal", middleText: "Data gagal tersimpan.");
+      }
     }
+  }
+
+  String formatTime() {
+    var currentTime = DateTime.now().toString();
+    var trim = currentTime
+        .replaceAll("-", "")
+        .replaceAll(" ", "")
+        .replaceAll(":", "")
+        .split(".");
+    String formatTime = trim[0];
+    return formatTime;
   }
 
   void closeCurrentDialog() {

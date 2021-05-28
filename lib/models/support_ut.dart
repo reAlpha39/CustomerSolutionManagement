@@ -20,6 +20,7 @@ class SupportUt {
     this.problem,
     this.target,
     this.ketidakpuasan,
+    this.level,
   });
 
   String? id;
@@ -34,6 +35,7 @@ class SupportUt {
   String? problem;
   String? target;
   List<String>? ketidakpuasan;
+  String? level;
 
   factory SupportUt.fromJson(String str) => SupportUt.fromMap(json.decode(str));
 
@@ -52,6 +54,7 @@ class SupportUt {
         problem: json["problem"],
         target: json["target"],
         ketidakpuasan: List<String>.from(json["ketidakpuasan"].map((x) => x)),
+        level: json["level"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -67,5 +70,6 @@ class SupportUt {
         "problem": problem,
         "target": target,
         "ketidakpuasan": List<dynamic>.from(ketidakpuasan!.map((x) => x)),
+        "level": level,
       };
 }

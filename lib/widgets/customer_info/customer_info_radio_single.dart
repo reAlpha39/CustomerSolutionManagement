@@ -14,7 +14,7 @@ class CustomerInfoCheckbox extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 5),
             child: Text(
-              'Ketidakpuasan support UT',
+              'Ketidakpuasan: ',
               style: TextStyle(fontSize: 20),
             ),
           ),

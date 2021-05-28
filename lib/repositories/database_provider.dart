@@ -9,6 +9,7 @@ import 'package:customer/models/checklist_audit/list_checklist_audit.dart';
 import 'package:customer/models/improve_process.dart';
 import 'package:customer/models/iw_data_table.dart';
 import 'package:customer/models/model_unit.dart';
+import 'package:customer/models/review_meeting.dart';
 import 'package:customer/models/support_ut.dart';
 import 'package:customer/models/users.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -164,7 +165,7 @@ class DatabaseProvider {
       }
     } else {
       showDialog(
-          title: 'Gaga;', middleText: 'Tidak dapat menghapus akun sendiri');
+          title: 'Gagal', middleText: 'Tidak dapat menghapus akun sendiri');
     }
     return isSuccess;
   }
@@ -280,12 +281,12 @@ class DatabaseProvider {
   }
 
   Future<String?> uploadImproveProcessImage(
-      File image, String filename, String? username) async {
+      File image, String filename, String? username, String folderName) async {
     String? downloadUrl;
     try {
       if (image.existsSync()) {
         var task = await firebase_storage.FirebaseStorage.instance
-            .ref("improve_process/" + username!)
+            .ref(folderName + username!)
             .child(filename)
             .putFile(image);
         downloadUrl = await task.ref.getDownloadURL();
@@ -456,6 +457,89 @@ class DatabaseProvider {
       print(e);
     }
     return isExist;
+  }
+
+  Future<bool> saveDataReviewMeeting(
+      ReviewMeeting review, String username) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      var data = review.toMap();
+      DocumentReference doc = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .doc(review.id);
+      await doc.set(data);
+      isSuccess = true;
+    } catch (e) {
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future<bool> updateReviewMeetingData(
+      ReviewMeeting review, String? username, String? docName) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      var map = review.toMap();
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .doc(docName);
+      await docRef.update(map);
+      isSuccess = true;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return isSuccess;
+  }
+
+  Future loadReviewMeetingData(String? username) async {
+    ListReviewMeeting listReviewMeeting = ListReviewMeeting();
+    listReviewMeeting.reviewMeeting = [];
+    try {
+      firestore = FirebaseFirestore.instance;
+      QuerySnapshot docRef = await firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .get();
+      for (int i = 0; i <= docRef.docs.length - 1; i++) {
+        QueryDocumentSnapshot doc = docRef.docs[i];
+        var data = doc.data();
+        ReviewMeeting reviewMeeting =
+            ReviewMeeting.fromMap(data as Map<String, dynamic>);
+        reviewMeeting.id = doc.id;
+        listReviewMeeting.reviewMeeting!.add(reviewMeeting);
+      }
+    } catch (e) {
+      print(e);
+    }
+    return listReviewMeeting;
+  }
+
+  Future<bool> deleteReviewMeetingData(
+      {required ReviewMeeting reviewMeeting, String? username}) async {
+    bool isDeleted = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .doc(reviewMeeting.id);
+      if (reviewMeeting.picture != "") {
+        await deletePicture(reviewMeeting.picture!);
+      }
+      await docRef.delete();
+      isDeleted = true;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return isDeleted;
   }
 
   dummy() async {

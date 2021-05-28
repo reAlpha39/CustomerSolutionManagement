@@ -33,6 +33,11 @@ class HomeCustomer extends StatelessWidget {
           imageAsset: 'assets/images/other_program.png',
           titleText: "Improve Process",
         ),
+        HomeCard(
+          route: '/review_meeting_page',
+          imageAsset: 'assets/images/other_program.png',
+          titleText: "Review Meeting",
+        ),
       ],
     );
   }

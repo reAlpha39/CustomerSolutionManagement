@@ -60,6 +60,14 @@ class CustomerInfoCardOther extends StatelessWidget {
                               customerInfoController.targetTextController,
                           maxLines: 1,
                         ),
+                        CustomerInfoTextField(
+                          labelText: 'Customer Level Relationship',
+                          keyboardType: TextInputType.number,
+                          isLevel: true,
+                          controller:
+                              customerInfoController.levelTextEditingController,
+                          maxLines: 1,
+                        ),
                         CustomerInfoCheckbox()
                       ],
                     ),

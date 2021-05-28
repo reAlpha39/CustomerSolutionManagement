@@ -27,7 +27,9 @@ class TanggalCard extends StatelessWidget {
               horizontal: 20,
             ),
             child: Text(
-                _controller.listReviewMeeting.value.reviewMeeting![index!].tanggal!),
+              _controller
+                  .listReviewMeeting.value.reviewMeeting![index!].tanggal!,
+            ),
           ),
         ),
       ),

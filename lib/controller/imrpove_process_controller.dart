@@ -225,10 +225,20 @@ class ImproveProcessController extends GetxController {
       {required bool isBefore, bool? isUpdate, String? downloadUrl}) {
     if (isBefore) {
       if (isUpdate!) {
-        if (downloadUrl == "" && ipData.value.picturePathBefore != "") {
-          tempImageToDelete.value = ipData.value.picturePathBefore!;
+        if (tempImagePath.value != "") {
+          if (downloadUrl == "") {
+            tempImageToDelete.value = ipData.value.picturePathBefore!;
+            if (ipData.value.picturePathBefore == "") {
+              ipData.value.picturePathBefore = downloadUrl;
+            }
+          } else {
+            if (ipData.value.picturePathBefore != "") {
+              ipData.value.picturePathBefore = downloadUrl;
+            }
+          }
+        } else {
+          ipData.value.picturePathBefore = downloadUrl;
         }
-        ipData.value.picturePathBefore = downloadUrl;
         ipData.value.descriptionBefore = textEditingController!.text;
       } else {
         ipData.value.matrix = matrixText.value;
@@ -241,10 +251,20 @@ class ImproveProcessController extends GetxController {
       }
     } else {
       if (isUpdate!) {
-        if (downloadUrl == "" && ipData.value.picturePathAfter != "") {
-          tempImageToDelete.value = ipData.value.picturePathAfter!;
+        if (tempImagePath.value != "") {
+          if (downloadUrl == "") {
+            tempImageToDelete.value = ipData.value.picturePathAfter!;
+            if (ipData.value.picturePathAfter == "") {
+              ipData.value.picturePathAfter = downloadUrl;
+            }
+          } else {
+            if (ipData.value.picturePathAfter != "") {
+              ipData.value.picturePathAfter = downloadUrl;
+            }
+          }
+        } else {
+          ipData.value.picturePathAfter = downloadUrl;
         }
-        ipData.value.picturePathAfter = downloadUrl;
         ipData.value.descriptionAfter = textEditingController!.text;
       } else {
         ipData.value.picturePathAfter = downloadUrl;

@@ -27,7 +27,7 @@ class ReviewMeetingPage extends StatelessWidget {
             title: Text("Review Meeting"),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () => controller.panelController!.open(),
+            onPressed: () => controller.openReviewPanel(),
             backgroundColor: Color(0xffffcd29),
             child: Icon(
               LineIcons.plus,

@@ -478,6 +478,25 @@ class DatabaseProvider {
     return isSuccess;
   }
 
+  Future<bool> updateReviewMeetingData(
+      ReviewMeeting review, String? username, String? docName) async {
+    bool isSuccess = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      var map = review.toMap();
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .doc(docName);
+      await docRef.update(map);
+      isSuccess = true;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return isSuccess;
+  }
+
   Future loadReviewMeetingData(String? username) async {
     ListReviewMeeting listReviewMeeting = ListReviewMeeting();
     listReviewMeeting.reviewMeeting = [];

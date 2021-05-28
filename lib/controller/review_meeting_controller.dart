@@ -31,11 +31,14 @@ class ReviewMeetingController extends GetxController {
   TextEditingController? noteTextController;
   RxString dateMeeting = "".obs;
   RxString tempImagePath = "".obs;
+  RxString tempImageToDelete = "".obs;
   Rx<File> image = File("").obs;
   RxBool isPicked = false.obs;
   RxBool isUpdate = false.obs;
+  RxInt indexUpdate = (-1).obs;
   RxInt radioIndex = 0.obs;
   Rx<ListReviewMeeting> listReviewMeeting = ListReviewMeeting().obs;
+  Rx<ReviewMeeting> reviewMeeting = ReviewMeeting().obs;
   String _folderName = typeValues.reverse[FolderNameImage.ReviewMeeting]!;
   bool _isConnected = false;
 
@@ -63,6 +66,38 @@ class ReviewMeetingController extends GetxController {
   void onClosePanel() {
     resetPanel();
     WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus();
+  }
+
+  void openReviewPanel({bool isCreate = true, int? index}) {
+    if (_loginController.usr.value.type == 'customer') {
+      if (isCreate) {
+        _openPanel(isCreate: isCreate);
+      } else {
+        _openPanel(isCreate: isCreate, index: index);
+      }
+    }
+  }
+
+  void _openPanel({required bool isCreate, int? index}) {
+    resetPanel();
+    if (isCreate) {
+      isUpdate.value = false;
+      panelController!.open();
+    } else {
+      ReviewMeeting data = listReviewMeeting.value.reviewMeeting![index!];
+      isUpdate.value = true;
+      tempImagePath.value = data.picture!;
+      titleTextController!.text = data.nama!;
+      dateTextController!.text = data.tanggal!;
+      noteTextController!.text = data.note!;
+      agendaTextController!.text = data.agenda!;
+      radioIndex.value =
+          reviewMeetingTypes.indexWhere((element) => data.type! == element);
+      reviewMeeting.value = data;
+      reviewMeeting.refresh();
+      indexUpdate.value = index;
+      panelController!.open();
+    }
   }
 
   void resetPanel() {
@@ -142,33 +177,110 @@ class ReviewMeetingController extends GetxController {
     if (formKey!.currentState!.validate()) {
       _isConnected = false;
       showProgressDialog();
+      String id = "";
       try {
         _isConnected = await connectivityChecker();
         if (_isConnected) {
-          String id = _formatTime();
+          if (isUpdate.value) {
+            id = reviewMeeting.value.id!;
+          } else {
+            id = _formatTime();
+          }
           String filename = "review_" + id;
           String? path = await _databaseProvider.uploadImproveProcessImage(
               image.value,
               filename,
               _loginController.usr.value.username,
               _folderName);
-          ReviewMeeting data = ReviewMeeting(
-            id: id,
-            tanggal: dateTextController!.text,
-            nama: titleTextController!.text,
-            agenda: agendaTextController!.text,
-            note: noteTextController!.text,
-            type: reviewMeetingTypes[radioIndex.value],
-            picture: path!,
-          );
-          await _databaseProvider.saveDataReviewMeeting(
-              data, _loginController.usr.value.username!);
-          _showDialog(title: "Sukses", middleText: "Data berhasil disimpan");
+          if (path != null) {
+            _fillData(downloadUrl: path, id: id);
+            if (isUpdate.value) {
+              if (tempImageToDelete.value != "") {
+                _deleteUpdatePicture();
+              }
+              _updateData();
+            } else {
+              _createData();
+            }
+          }
         }
       } catch (e) {
         _showDialog(title: "Gagal", middleText: "Data gagal tersimpan.");
       }
     }
+  }
+
+  void _fillData({String? id, String? downloadUrl}) {
+    if (isUpdate.value) {
+      if (tempImagePath.value != "") {
+        if (downloadUrl == "") {
+          tempImageToDelete.value = reviewMeeting.value.picture!;
+          if (reviewMeeting.value.picture == "") {
+            reviewMeeting.value.picture = downloadUrl;
+          }
+        } else {
+          if (reviewMeeting.value.picture != "") {
+            reviewMeeting.value.picture = downloadUrl;
+          }
+        }
+      } else {
+        reviewMeeting.value.picture = downloadUrl;
+      }
+    } else {
+      reviewMeeting.value.id = id;
+      reviewMeeting.value.picture = downloadUrl!;
+    }
+    reviewMeeting.value.tanggal = dateTextController!.text;
+    reviewMeeting.value.nama = titleTextController!.text;
+    reviewMeeting.value.agenda = agendaTextController!.text;
+    reviewMeeting.value.note = noteTextController!.text;
+    reviewMeeting.value.type = reviewMeetingTypes[radioIndex.value];
+  }
+
+  void _createData() async {
+    try {
+      _isConnected = false;
+      showProgressDialog();
+      _isConnected = await connectivityChecker();
+      if (_isConnected) {
+        bool isUpdated = false;
+        isUpdated = await _databaseProvider.saveDataReviewMeeting(
+          reviewMeeting.value,
+          _loginController.usr.value.username!,
+        );
+        if (isUpdated) {
+          _showDialog(title: 'Sukses', middleText: 'Data berhasil ditambahkan');
+        }
+      }
+    } catch (e) {
+      _showDialog(title: "Gagal", middleText: "Data gagal tersimpan.");
+    }
+  }
+
+  void _updateData() async {
+    try {
+      _isConnected = false;
+      showProgressDialog();
+      _isConnected = await connectivityChecker();
+      if (_isConnected) {
+        bool isUpdated = false;
+        isUpdated = await _databaseProvider.updateReviewMeetingData(
+            reviewMeeting.value,
+            _loginController.usr.value.username,
+            reviewMeeting.value.id);
+        if (isUpdated) {
+          _showDialog(
+              title: 'Sukses', middleText: 'Data berhasil diperbaharui');
+        }
+      }
+    } catch (e) {
+      _showDialog(title: "Gagal", middleText: "Data gagal tersimpan.");
+    }
+  }
+
+  void _deleteUpdatePicture() async {
+    await _databaseProvider.deletePicture(tempImageToDelete.value);
+    tempImageToDelete.value = "";
   }
 
   void deleteReviewMeeting(int index) {

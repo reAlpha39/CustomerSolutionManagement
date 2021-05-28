@@ -1,4 +1,3 @@
-import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/review_meeting_controller.dart';
 import 'package:customer/utils/custom_scroll_behavior.dart';
 import 'package:customer/widgets/box_image.dart';
@@ -8,7 +7,6 @@ import 'package:line_icons/line_icons.dart';
 
 class ReviewMainCard extends StatelessWidget {
   final ReviewMeetingController _controller = Get.find();
-  final LoginController _loginController = Get.find();
   final int? index;
 
   ReviewMainCard({Key? key, this.index}) : super(key: key);
@@ -182,8 +180,10 @@ class ReviewMainCard extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(100),
                             onTap: () {
-                              if (_loginController.usr.value.type ==
-                                  'customer') {}
+                              _controller.openReviewPanel(
+                                isCreate: false,
+                                index: index,
+                              );
                             },
                             child: Container(
                               height: 35,

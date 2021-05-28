@@ -502,6 +502,27 @@ class DatabaseProvider {
     return listReviewMeeting;
   }
 
+  Future<bool> deleteReviewMeetingData(
+      {required ReviewMeeting reviewMeeting, String? username}) async {
+    bool isDeleted = false;
+    firestore = FirebaseFirestore.instance;
+    try {
+      DocumentReference docRef = firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('review_meeting')
+          .doc(reviewMeeting.id);
+      if (reviewMeeting.picture != "") {
+        await deletePicture(reviewMeeting.picture!);
+      }
+      await docRef.delete();
+      isDeleted = true;
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    return isDeleted;
+  }
+
   dummy() async {
     // IwDataTable dataTable = IwDataTable();
     // dataTable.description = List<String>.filled(52, 'placeholder');

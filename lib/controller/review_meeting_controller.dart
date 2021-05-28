@@ -111,13 +111,13 @@ class ReviewMeetingController extends GetxController {
 
   void _loadReviewMeeting() {
     if (_loginController.usr.value.type == 'customer') {
-      loadData(_loginController.usr.value.username!);
+      _loadData(_loginController.usr.value.username!);
     } else {
-      loadData(_homeController.idCustomer.value);
+      _loadData(_homeController.idCustomer.value);
     }
   }
 
-  void loadData(String username) async {
+  void _loadData(String username) async {
     _isConnected = false;
     showProgressDialog();
     try {
@@ -131,11 +131,10 @@ class ReviewMeetingController extends GetxController {
           _isConnected = false;
         }
         print(listReviewMeeting.value.reviewMeeting![0].id);
-        closeCurrentDialog();
+        _closeCurrentDialog();
       }
     } catch (e) {
-      _isConnected = false;
-      showDialog(title: "Gagal", middleText: "Data gagal di unduh.");
+      _showDialog(title: "Gagal", middleText: "Data gagal di unduh.");
     }
   }
 
@@ -146,7 +145,7 @@ class ReviewMeetingController extends GetxController {
       try {
         _isConnected = await connectivityChecker();
         if (_isConnected) {
-          String id = formatTime();
+          String id = _formatTime();
           String filename = "review_" + id;
           String? path = await _databaseProvider.uploadImproveProcessImage(
               image.value,
@@ -164,16 +163,41 @@ class ReviewMeetingController extends GetxController {
           );
           await _databaseProvider.saveDataReviewMeeting(
               data, _loginController.usr.value.username!);
-          showDialog(title: "Sukses", middleText: "Data berhasil disimpan");
+          _showDialog(title: "Sukses", middleText: "Data berhasil disimpan");
         }
       } catch (e) {
-        _isConnected = false;
-        showDialog(title: "Gagal", middleText: "Data gagal tersimpan.");
+        _showDialog(title: "Gagal", middleText: "Data gagal tersimpan.");
       }
     }
   }
 
-  String formatTime() {
+  void deleteReviewMeeting(int index) {
+    if (_loginController.usr.value.type == 'customer') {
+      _deleteData(index);
+    }
+  }
+
+  void _deleteData(int index) async {
+    showProgressDialog();
+    try {
+      _isConnected = false;
+      _isConnected = await connectivityChecker();
+      if (_isConnected) {
+        bool isDeleted = await _databaseProvider.deleteReviewMeetingData(
+            reviewMeeting: listReviewMeeting.value.reviewMeeting![index],
+            username: _loginController.usr.value.username);
+        if (isDeleted) {
+          _showDialog(title: 'Sukses', middleText: 'Data berhasil dihapus');
+        } else {
+          _showDialog(title: "Gagal", middleText: "Data gagal dihapus.");
+        }
+      }
+    } catch (e) {
+      _showDialog(title: "Gagal", middleText: "Data gagal dihapus.");
+    }
+  }
+
+  String _formatTime() {
     var currentTime = DateTime.now().toString();
     var trim = currentTime
         .replaceAll("-", "")
@@ -184,14 +208,15 @@ class ReviewMeetingController extends GetxController {
     return formatTime;
   }
 
-  void closeCurrentDialog() {
+  void _closeCurrentDialog() {
     if (Get.isDialogOpen!) {
       Navigator.of(Get.overlayContext!).pop();
     }
   }
 
-  showDialog({required String title, required String middleText}) {
-    closeCurrentDialog();
+  _showDialog({required String title, required String middleText}) {
+    _isConnected = false;
+    _closeCurrentDialog();
     Get.defaultDialog(
         barrierDismissible: false,
         titleStyle: TextStyle(fontSize: 24),

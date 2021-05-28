@@ -156,8 +156,7 @@ class ReviewMainCard extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(100),
                             onTap: () {
-                              if (_loginController.usr.value.type ==
-                                  'customer') {}
+                              _controller.deleteReviewMeeting(index!);
                             },
                             child: Container(
                               height: 35,

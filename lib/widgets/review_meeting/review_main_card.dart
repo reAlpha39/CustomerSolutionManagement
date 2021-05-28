@@ -156,7 +156,7 @@ class ReviewMainCard extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(100),
                             onTap: () {
-                              _controller.deleteReviewMeeting(index!);
+                              _deleteConfirmationDialog();
                             },
                             child: Container(
                               height: 35,
@@ -210,6 +210,23 @@ class ReviewMainCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  _deleteConfirmationDialog() {
+    return Get.defaultDialog(
+      radius: 17,
+      title: 'Hapus Data',
+      middleText: 'Apakah anda yakin ingin menghapus data ini?',
+      textConfirm: 'YA',
+      textCancel: 'Tidak',
+      confirmTextColor: Colors.black87,
+      buttonColor: Color(0xffffcd29),
+      cancelTextColor: Colors.black87,
+      onConfirm: () {
+        _controller.deleteReviewMeeting(index!);
+      },
+      onCancel: () => Get.toNamed("/review_meeting_page"),
     );
   }
 }

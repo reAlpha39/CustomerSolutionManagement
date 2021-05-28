@@ -25,7 +25,7 @@ jobs:
     - name: Restore Keystore
       run: |
         echo "${{ secrets.RELEASE_KEYSTORE }}" > upload-keystore.jks.asc
-        gpg --batch --passphrase "{{ secrets.GPG_PASSPHRASE }}" -d -o upload-keystore.jks.asc > android/app/upload-keystore.jks
+        gpg --batch --passphrase "{{ secrets.GPG_PASSPHRASE }}" -d -o android/app/upload-keystore.jks upload-keystore.jks.asc
         echo "storeFile=upload-keystore.jks" >> android/key.properties
         echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
         echo "storePassword=${{ secrets.STORE_KEY_PASSWORD }}" >> android/key.properties

@@ -75,6 +75,7 @@ flutter:
     - assets/images/icon_improve.png
     - assets/images/icon_pica.png
     - assets/images/icon_manage_account.png
+    - assets/images/icon_launcher.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

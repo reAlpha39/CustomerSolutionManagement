@@ -8,7 +8,7 @@ class HomeAdmin extends StatelessWidget {
       children: [
         HomeCard(
           route: '/manage_account',
-          imageAsset: 'assets/images/service_program.png',
+          imageAsset: 'assets/images/icon_manage_account.png',
           titleText: "Manage Customer Account",
         ),
       ],

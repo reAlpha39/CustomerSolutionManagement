@@ -36,12 +36,12 @@ class HomeInternal extends StatelessWidget {
                 ),
                 HomeCard(
                   route: '/pica_page',
-                  imageAsset: 'assets/images/other_program.png',
+                  imageAsset: 'assets/images/icon_pica.png',
                   titleText: "Pica Analysis",
                 ),
                 HomeCard(
                   route: '/improve_process',
-                  imageAsset: 'assets/images/other_program.png',
+                  imageAsset: 'assets/images/icon_improve.png',
                   titleText: "Improve Process",
                 ),
               ],

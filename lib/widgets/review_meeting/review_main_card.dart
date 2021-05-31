@@ -14,7 +14,8 @@ class ReviewMainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      width: 400,
+      width: 600,
+      height: 220,
       child: Card(
         elevation: 5,
         shape: RoundedRectangleBorder(
@@ -89,7 +90,7 @@ class ReviewMainCard extends StatelessWidget {
                           padding: const EdgeInsets.only(bottom: 12),
                           child: Container(
                             height: 1,
-                            width: 180,
+                            width: context.isLandscape ? 280 : 180,
                             color: Colors.black12,
                           ),
                         ),
@@ -123,89 +124,15 @@ class ReviewMainCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Flexible(
-                flex: 4,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 4.0),
-                      child: AspectRatio(
-                        aspectRatio: 3 / 4,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          child: Obx(
-                            () => BoxImage(
-                              pathPicture: _controller.listReviewMeeting.value
-                                  .reviewMeeting![index!].picture,
-                            ),
-                          ),
-                        ),
-                      ),
+              context.isLandscape
+                  ? ImageColumnLandscape(
+                      index: index,
+                      dialog: _deleteConfirmationDialog,
+                    )
+                  : ImageColumnPotrait(
+                      index: index,
+                      dialog: _deleteConfirmationDialog,
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Card(
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(100),
-                            onTap: () {
-                              _deleteConfirmationDialog();
-                            },
-                            child: Container(
-                              height: 35,
-                              width: 35,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xffffcd29),
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  LineIcons.trash,
-                                  size: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Card(
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(100),
-                            onTap: () {
-                              _controller.openReviewPanel(
-                                isCreate: false,
-                                index: index,
-                              );
-                            },
-                            child: Container(
-                              height: 35,
-                              width: 35,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xffffcd29),
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  LineIcons.edit,
-                                  size: 20,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
@@ -227,6 +154,189 @@ class ReviewMainCard extends StatelessWidget {
         _controller.deleteReviewMeeting(index!);
       },
       onCancel: () => Get.toNamed("/review_meeting_page"),
+    );
+  }
+}
+
+class ImageColumnPotrait extends StatelessWidget {
+  final ReviewMeetingController _controller = Get.find();
+  final int? index;
+  final Function? dialog;
+
+  ImageColumnPotrait({Key? key, this.index, this.dialog}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      flex: 4,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: Obx(
+              () => ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 141),
+                child: BoxImage(
+                  pathPicture: _controller
+                      .listReviewMeeting.value.reviewMeeting![index!].picture,
+                ),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100),
+                  onTap: () {
+                    dialog!();
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xffffcd29),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        LineIcons.trash,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100),
+                  onTap: () {
+                    _controller.openReviewPanel(
+                      isCreate: false,
+                      index: index,
+                    );
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xffffcd29),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        LineIcons.edit,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ImageColumnLandscape extends StatelessWidget {
+  final ReviewMeetingController _controller = Get.find();
+  final int? index;
+  final Function? dialog;
+
+  ImageColumnLandscape({Key? key, this.index, this.dialog}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      flex: 4,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: Obx(
+              () => ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 220),
+                child: BoxImage(
+                  pathPicture: _controller
+                      .listReviewMeeting.value.reviewMeeting![index!].picture,
+                ),
+              ),
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100),
+                  onTap: () {
+                    dialog!();
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xffffcd29),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        LineIcons.trash,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100),
+                  onTap: () {
+                    _controller.openReviewPanel(
+                      isCreate: false,
+                      index: index,
+                    );
+                  },
+                  child: Container(
+                    height: 35,
+                    width: 35,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xffffcd29),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        LineIcons.edit,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

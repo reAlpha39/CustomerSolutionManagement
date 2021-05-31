@@ -39,6 +39,7 @@ class ReviewMeetingPage extends StatelessWidget {
                   ? Container()
                   : Container(
                       height: context.height,
+                      width: context.width,
                       child: Scrollbar(
                         child: SingleChildScrollView(
                           physics: BouncingScrollPhysics(),

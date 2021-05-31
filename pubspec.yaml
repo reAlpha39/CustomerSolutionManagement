@@ -55,8 +55,10 @@ dev_dependencies:
 # This is for launcher icon
 flutter_icons:
   android: "launcher_icon"
-  ios: true
+  ios: false
   image_path: "assets/images/icon_launcher.png"
+  adaptive_icon_background: "#333333"
+  adaptive_icon_foreground: "assets/images/icon_foreground.png"
 
 # The following section is specific to Flutter.
 flutter:
@@ -83,6 +85,7 @@ flutter:
     - assets/images/icon_pica.png
     - assets/images/icon_manage_account.png
     - assets/images/icon_launcher.png
+    - assets/images/icon_foreground.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

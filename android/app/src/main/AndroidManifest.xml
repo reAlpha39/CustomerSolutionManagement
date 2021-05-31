@@ -6,7 +6,7 @@
       </intent>
     </queries>
    <application
-        android:label="customer"
+        android:label="CSM"
         android:icon="@mipmap/launcher_icon"
         android:requestLegacyExternalStorage="true">
         <activity

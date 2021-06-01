@@ -77,7 +77,9 @@ class ImproveMainContent extends StatelessWidget {
                           width: 40,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Color(0xffffcd29),
+                            color: _loginController.usr.value.type == 'customer'
+                                ? Color(0xffffcd29)
+                                : Colors.grey.shade300,
                           ),
                           child: Center(
                             child: Icon(
@@ -109,7 +111,9 @@ class ImproveMainContent extends StatelessWidget {
                           width: 40,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Color(0xffffcd29),
+                            color: _loginController.usr.value.type == 'customer'
+                                ? Color(0xffffcd29)
+                                : Colors.grey.shade300,
                           ),
                           child: Center(
                             child: Icon(

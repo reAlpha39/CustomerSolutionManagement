@@ -1,3 +1,4 @@
+import 'package:customer/controller/login_controller.dart';
 import 'package:customer/controller/review_meeting_controller.dart';
 import 'package:customer/widgets/review_meeting/review_main_card.dart';
 import 'package:customer/widgets/review_meeting/review_panel_card.dart';
@@ -9,6 +10,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class ReviewMeetingPage extends StatelessWidget {
   final ReviewMeetingController controller = Get.find();
+  final LoginController _loginController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -26,13 +28,15 @@ class ReviewMeetingPage extends StatelessWidget {
           appBar: AppBar(
             title: Text("Review Meeting"),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => controller.openReviewPanel(),
-            backgroundColor: Color(0xffffcd29),
-            child: Icon(
-              LineIcons.plus,
-            ),
-          ),
+          floatingActionButton: _loginController.usr.value.type == 'customer'
+              ? FloatingActionButton(
+                  onPressed: () => controller.openReviewPanel(),
+                  backgroundColor: Color(0xffffcd29),
+                  child: Icon(
+                    LineIcons.plus,
+                  ),
+                )
+              : Container(),
           body: Center(
             child: Obx(
               () => controller.listReviewMeeting.value.reviewMeeting == null

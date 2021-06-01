@@ -165,7 +165,6 @@ class ReviewMeetingController extends GetxController {
         } else {
           _isConnected = false;
         }
-        print(listReviewMeeting.value.reviewMeeting![0].id);
         _closeCurrentDialog();
       }
     } catch (e) {

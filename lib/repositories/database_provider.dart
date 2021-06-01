@@ -71,6 +71,28 @@ class DatabaseProvider {
     });
   }
 
+  //Load Support Ut data per user
+  Future<List<SupportUt>> loadSupportUt(String username) async {
+    List<SupportUt> data = [];
+    try {
+      firestore = FirebaseFirestore.instance;
+      QuerySnapshot fetchData = await firestore
+          .collection('data_customer')
+          .doc(username)
+          .collection('need_support')
+          .get();
+      SupportUt temp;
+      for (int i = 0; i <= fetchData.docs.length - 1; i++) {
+        temp =
+            SupportUt.fromMap(fetchData.docs[i].data() as Map<String, dynamic>);
+        data.add(temp);
+      }
+    } catch (e) {
+      throw "Cannot load support Ut data";
+    }
+    return data;
+  }
+
   int? searchLastId(QuerySnapshot querySnapshot) {
     int? id;
     var data = querySnapshot.docs.last.id;

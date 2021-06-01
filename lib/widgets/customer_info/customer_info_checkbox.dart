@@ -1,9 +1,11 @@
 import 'package:customer/controller/customer_info_controller.dart';
+import 'package:customer/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomerInfoRadio extends StatelessWidget {
   final CustomerInfoController controller = Get.find();
+  final LoginController _loginController = Get.find();
   final List<String>? data;
 
   CustomerInfoRadio({this.data});
@@ -22,15 +24,21 @@ class CustomerInfoRadio extends StatelessWidget {
             ),
           ),
           for (int i = 1; i <= data!.length - 1; i++)
-            Obx(() => ListTile(
-                  title: Text('${data![i]}'),
-                  leading: Radio(
-                      value: i,
-                      groupValue: controller.radioIndex.value,
-                      activeColor: Color(0xffffcd29),
-                      onChanged: (int? value) =>
-                          controller.radioIndex.value = value!),
-                )),
+            Obx(
+              () => ListTile(
+                title: Text('${data![i]}'),
+                leading: Radio(
+                  value: i,
+                  groupValue: controller.radioIndex.value,
+                  activeColor: Color(0xffffcd29),
+                  onChanged: (int? value) {
+                    if (_loginController.usr.value.type == 'customer') {
+                      controller.radioIndex.value = value!;
+                    }
+                  },
+                ),
+              ),
+            ),
         ],
       ),
     );

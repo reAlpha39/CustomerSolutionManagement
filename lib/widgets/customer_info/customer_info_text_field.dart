@@ -1,7 +1,10 @@
+import 'package:customer/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class CustomerInfoTextField extends StatelessWidget {
+  final LoginController _loginController = Get.find();
   final TextEditingController? controller;
   final String? labelText;
   final int? maxLines;
@@ -23,6 +26,7 @@ class CustomerInfoTextField extends StatelessWidget {
       child: TextFormField(
         maxLines: maxLines,
         maxLengthEnforcement: MaxLengthEnforcement.enforced,
+        readOnly: _loginController.usr.value.type == "internal" ? true : false,
         controller: controller,
         keyboardType: keyboardType,
         validator: (value) {

@@ -66,8 +66,8 @@ class CustomerInfo extends StatelessWidget {
         onTap: () =>
             WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus(),
         child: Container(
+          width: context.width,
           color: Colors.white,
-          //color: Color(0xffffcd29),
           height: Get.height,
           child: Theme(
             data: ThemeData(primarySwatch: Colors.blueGrey),

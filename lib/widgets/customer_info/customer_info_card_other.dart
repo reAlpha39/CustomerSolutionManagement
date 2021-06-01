@@ -23,7 +23,7 @@ class CustomerInfoCardOther extends StatelessWidget {
           child: Form(
               key: customerInfoController.formKeyOther,
               child: ExpandableNotifier(
-                initialExpanded: _loginController.usr.value.type == "internal"
+                  initialExpanded: _loginController.usr.value.type == "internal"
                       ? true
                       : false,
                   child: ScrollOnExpand(

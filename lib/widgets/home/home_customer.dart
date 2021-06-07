@@ -35,7 +35,7 @@ class HomeCustomer extends StatelessWidget {
         ),
         HomeCard(
           route: '/review_meeting_page',
-          imageAsset: 'assets/images/other_program.png',
+          imageAsset: 'assets/images/icon_meeting.png',
           titleText: "Review Meeting",
         ),
       ],

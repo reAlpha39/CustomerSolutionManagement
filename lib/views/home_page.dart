@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                                 scrollDirection: Axis.vertical,
                                 child: Container(
                                   child: Padding(
-                                    padding: const EdgeInsets.only(top:25),
+                                    padding: const EdgeInsets.only(top:45),
                                     child: HomeCustomer(),
                                   ),
                                 ),
@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                 ),
                 Positioned(
                     left: 32,
-                    top: 25,
+                    top: 35,
                     child: Container(
                       height: 20,
                       width: 335,
@@ -157,7 +157,7 @@ class HomePage extends StatelessWidget {
                                 scrollDirection: Axis.vertical,
                                 child: Container(
                                   child: Padding(
-                                    padding: const EdgeInsets.only(top:35),
+                                    padding: const EdgeInsets.only(top:45),
                                     child: HomeCustomer2(),
                                   ),
                                 ),

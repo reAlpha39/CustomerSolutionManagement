@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Colors.black87),
               color: Color(0xffffcd29),
               titleTextStyle: TextStyle(color: Colors.black87),
-              brightness: Brightness.light,
+              systemOverlayStyle: SystemUiOverlayStyle.light,
             )));
   }
 }

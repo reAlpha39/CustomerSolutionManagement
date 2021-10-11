@@ -70,6 +70,9 @@ class CustomerInfoController extends GetxController {
     problemTextController = TextEditingController();
     targetTextController = TextEditingController();
     levelTextEditingController = TextEditingController();
+    formKeyCustomer = GlobalKey<FormState>();
+    formKeyProduk = GlobalKey<FormState>();
+    formKeyOther = GlobalKey<FormState>();
     super.onInit();
   }
 

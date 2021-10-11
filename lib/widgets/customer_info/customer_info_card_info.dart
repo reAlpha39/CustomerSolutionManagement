@@ -12,7 +12,6 @@ class CustomerInfoCardInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    customerInfoController.formKeyCustomer = GlobalKey<FormState>();
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Card(

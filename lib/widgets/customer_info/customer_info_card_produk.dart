@@ -10,7 +10,6 @@ class CustomerInfoCardProduk extends StatelessWidget {
   final LoginController _loginController = Get.find();
   @override
   Widget build(BuildContext context) {
-    customerInfoController.formKeyProduk = GlobalKey<FormState>();
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 10),
       child: Card(

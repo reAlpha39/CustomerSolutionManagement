@@ -32,6 +32,6 @@ class MsppAdminController extends GetxController {
         isLoading.value = false;
         print(isLoading.value);
       });
-    } catch (Exception) {}
+    } catch (exception) {}
   }
 }

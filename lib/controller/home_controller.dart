@@ -95,6 +95,6 @@ class HomeController extends GetxController {
           print(isLoading.value);
         });
       }
-    } catch (Exception) {}
+    } catch (exception) {}
   }
 }

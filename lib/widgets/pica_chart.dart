@@ -80,10 +80,11 @@ class _PicaChartState extends State<PicaChart>
                                     reservedSize: 50,
                                     showTitles: true,
                                     rotateAngle: 270,
-                                    getTextStyles: (value, number) => const TextStyle(
-                                        color: Color(0xff7589a2),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 10),
+                                    getTextStyles: (value, number) =>
+                                        const TextStyle(
+                                            color: Color(0xff7589a2),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10),
                                     margin: 20,
                                     getTitles: (double value) {
                                       switch (value.toInt()) {
@@ -132,10 +133,11 @@ class _PicaChartState extends State<PicaChart>
                                   ),
                                   leftTitles: SideTitles(
                                     showTitles: true,
-                                    getTextStyles: (value, number) => const TextStyle(
-                                        color: Color(0xff7589a2),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 10),
+                                    getTextStyles: (value, number) =>
+                                        const TextStyle(
+                                            color: Color(0xff7589a2),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10),
                                     margin: 10,
                                     reservedSize: 15,
                                     getTitles: (value) {

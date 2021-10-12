@@ -80,7 +80,7 @@ class _PicaChartState extends State<PicaChart>
                                     reservedSize: 50,
                                     showTitles: true,
                                     rotateAngle: 270,
-                                    getTextStyles: (value) => const TextStyle(
+                                    getTextStyles: (value, number) => const TextStyle(
                                         color: Color(0xff7589a2),
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10),
@@ -132,7 +132,7 @@ class _PicaChartState extends State<PicaChart>
                                   ),
                                   leftTitles: SideTitles(
                                     showTitles: true,
-                                    getTextStyles: (value) => const TextStyle(
+                                    getTextStyles: (value, number) => const TextStyle(
                                         color: Color(0xff7589a2),
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10),

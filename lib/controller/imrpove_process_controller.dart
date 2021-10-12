@@ -359,7 +359,7 @@ class ImproveProcessController extends GetxController {
 
   Future imageFromCamera() async {
     isPicked.value = false;
-    var file = await _picker.getImage(source: ImageSource.camera);
+    var file = await _picker.pickImage(source: ImageSource.camera);
     if (file != null) {
       image = Rx<File>(File(file.path));
       image.refresh();
@@ -372,7 +372,7 @@ class ImproveProcessController extends GetxController {
   Future imageFromGallery() async {
     isPicked.value = false;
     var file =
-        await _picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 50);
     if (file != null) {
       image = Rx<File>(File(file.path));
       image.refresh();

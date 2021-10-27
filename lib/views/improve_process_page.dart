@@ -179,12 +179,13 @@ class ImproveProcessPage extends StatelessWidget {
                               minHeight: 40,
                             ),
                             child: Center(
-                              child:
-                                  Obx(() => controller.modelUnit.value == null
-                                      ? CircularProgressIndicator()
-                                      : controller.typeUnit.value == ""
-                                          ? Text('Type Unit')
-                                          : Text(controller.typeUnit.value)),
+                              child: Obx(
+                                () => controller.modelUnit.value == null
+                                    ? CircularProgressIndicator()
+                                    : controller.typeUnit.value == ""
+                                        ? Text('Type Unit')
+                                        : Text(controller.typeUnit.value),
+                              ),
                             ),
                           ),
                         ),
@@ -201,13 +202,15 @@ class ImproveProcessPage extends StatelessWidget {
                         topRight: Radius.circular(17),
                       ),
                     ),
-                    child: SingleChildScrollView(
-                      child: Obx(
-                        () =>
-                            controller.improveProcess.value.improveProcesData ==
-                                    null
-                                ? Container()
-                                : Column(
+                    child: Obx(
+                      () => controller.improveProcess.value.improveProcesData ==
+                              null
+                          ? Container()
+                          : controller.improveProcess.value.improveProcesData!
+                                      .length !=
+                                  0
+                              ? SingleChildScrollView(
+                                  child: Column(
                                     children: List<Widget>.generate(
                                       controller.improveProcess.value
                                           .improveProcesData!.length,
@@ -245,7 +248,17 @@ class ImproveProcessPage extends StatelessWidget {
                                       ),
                                     ).reversed.toList(),
                                   ),
-                      ),
+                                )
+                              : Container(
+                                  child: Center(
+                                    child: Text(
+                                      'Belum ada data',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                     ),
                   ),
                 ),

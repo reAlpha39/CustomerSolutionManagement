@@ -41,36 +41,49 @@ class ReviewMeetingPage extends StatelessWidget {
             child: Obx(
               () => controller.listReviewMeeting.value.reviewMeeting == null
                   ? Container()
-                  : Container(
-                      height: context.height,
-                      width: context.width,
-                      child: Scrollbar(
-                        child: SingleChildScrollView(
-                          physics: BouncingScrollPhysics(),
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Column(
-                              children: List<Widget>.generate(
-                                controller.listReviewMeeting.value
-                                    .reviewMeeting!.length,
-                                (index) => Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    TanggalCard(
-                                      index: index,
+                  : controller.listReviewMeeting.value.reviewMeeting!.length !=
+                          0
+                      ? Container(
+                          height: context.height,
+                          width: context.width,
+                          child: Scrollbar(
+                            child: SingleChildScrollView(
+                              physics: BouncingScrollPhysics(),
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 20),
+                                child: Column(
+                                  children: List<Widget>.generate(
+                                    controller.listReviewMeeting.value
+                                        .reviewMeeting!.length,
+                                    (index) => Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        TanggalCard(
+                                          index: index,
+                                        ),
+                                        ReviewMainCard(
+                                          index: index,
+                                        ),
+                                      ],
                                     ),
-                                    ReviewMainCard(
-                                      index: index,
-                                    ),
-                                  ],
+                                  ).reversed.toList(),
                                 ),
-                              ).reversed.toList(),
+                              ),
+                            ),
+                          ),
+                        )
+                      : Container(
+                          child: Center(
+                            child: Text(
+                              'Belum ada data',
+                              style: TextStyle(
+                                fontSize: 14,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
             ),
           ),
         ),

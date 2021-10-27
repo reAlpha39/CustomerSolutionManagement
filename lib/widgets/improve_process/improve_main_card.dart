@@ -80,7 +80,7 @@ class ImproveMainCard extends StatelessWidget {
                       minHeight: 40,
                     ),
                     child: Center(
-                      child: isBefore! ? Text('Before') : Text('After'),
+                      child: isBefore! ? Text('Sebelum') : Text('Sesudah'),
                     ),
                   ),
                 ),

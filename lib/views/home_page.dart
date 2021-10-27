@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             toolbarHeight: 0,
             shadowColor: Colors.transparent,
             backgroundColor: Colors.white,
-            systemOverlayStyle: SystemUiOverlayStyle.light,
+            systemOverlayStyle: SystemUiOverlayStyle.dark,
           ),
           body: Container(
             child: Shapeground(),

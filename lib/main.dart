@@ -16,20 +16,27 @@ class MyApp extends StatelessWidget {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark));
     return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        getPages: Routes.route,
-        initialRoute: '/login_page',
-        initialBinding: LoginBinding(),
-        theme: ThemeData(
-            primarySwatch: createMaterialColor(Color(0xffffcd29)),
-            floatingActionButtonTheme:
-                FloatingActionButtonThemeData(backgroundColor: Colors.white),
-            appBarTheme: AppBarTheme(
-              iconTheme: IconThemeData(color: Colors.black87),
-              color: Color(0xffffcd29),
-              titleTextStyle: TextStyle(color: Colors.black87),
-              systemOverlayStyle: SystemUiOverlayStyle.dark,
-            )));
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      getPages: Routes.route,
+      initialRoute: '/login_page',
+      initialBinding: LoginBinding(),
+      theme: ThemeData(
+        primarySwatch: createMaterialColor(Color(0xffffcd29)),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.white,
+        ),
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black87),
+          color: Color(0xffffcd29),
+          titleTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
+        ),
+      ),
+    );
   }
 }

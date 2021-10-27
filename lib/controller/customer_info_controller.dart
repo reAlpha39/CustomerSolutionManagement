@@ -199,6 +199,9 @@ class CustomerInfoController extends GetxController {
           );
           _databaseProvider.saveData(dataCustomer);
           clearText();
+        } else {
+          _showDialog(
+              title: "Gagal", middleText: "Pastikan seluruh data telah diisi");
         }
       }
     });
@@ -231,5 +234,23 @@ class CustomerInfoController extends GetxController {
     checkBoxA.value = false;
     checkBoxB.value = false;
     checkBoxC.value = false;
+  }
+
+  _showDialog({required String title, required String middleText}) {
+    _closeCurrentDialog();
+    Get.defaultDialog(
+      barrierDismissible: false,
+      titleStyle: TextStyle(fontSize: 24),
+      middleTextStyle: TextStyle(fontSize: 18),
+      title: title,
+      middleText: middleText,
+      textConfirm: 'OK',
+      radius: 17,
+      buttonColor: Colors.yellow.shade600,
+      confirmTextColor: Colors.black87,
+      onConfirm: () {
+        _closeCurrentDialog();
+      },
+    );
   }
 }

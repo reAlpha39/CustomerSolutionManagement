@@ -593,16 +593,24 @@ class DatabaseProvider {
 
   //menampilkan dialog
   showDialog({required String title, required String middleText}) {
+    if (Get.isDialogOpen!) {
+      Navigator.of(Get.overlayContext!).pop();
+    }
     Get.defaultDialog(
-        barrierDismissible: false,
-        titleStyle: TextStyle(fontSize: 24),
-        middleTextStyle: TextStyle(fontSize: 18),
-        title: title,
-        middleText: middleText,
-        textConfirm: 'OK',
-        radius: 17,
-        buttonColor: Colors.yellow.shade600,
-        confirmTextColor: Colors.black87,
-        onConfirm: () => Get.back(closeOverlays: false));
+      barrierDismissible: false,
+      titleStyle: TextStyle(fontSize: 24),
+      middleTextStyle: TextStyle(fontSize: 18),
+      title: title,
+      middleText: middleText,
+      textConfirm: 'OK',
+      radius: 17,
+      buttonColor: Colors.yellow.shade600,
+      confirmTextColor: Colors.black87,
+      onConfirm: () {
+        if (Get.isDialogOpen!) {
+          Navigator.of(Get.overlayContext!).pop();
+        }
+      },
+    );
   }
 }

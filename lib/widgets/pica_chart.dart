@@ -22,7 +22,7 @@ class _PicaChartState extends State<PicaChart>
       padding: const EdgeInsets.all(12.0),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            minHeight: 100, maxHeight: 450, maxWidth: 600, minWidth: 300),
+            minHeight: 100, maxHeight: 800, maxWidth: 600, minWidth: 300),
         child: Card(
           elevation: 4,
           shape:
@@ -49,7 +49,7 @@ class _PicaChartState extends State<PicaChart>
                             child: BarChart(
                               BarChartData(
                                 alignment: BarChartAlignment.spaceAround,
-                                maxY: 120,
+                                maxY: 110,
                                 minY: 0,
                                 barTouchData: BarTouchData(
                                   enabled: false,
@@ -66,7 +66,7 @@ class _PicaChartState extends State<PicaChart>
                                       return BarTooltipItem(
                                         rod.y.round().toString(),
                                         TextStyle(
-                                          fontSize: 10,
+                                          fontSize: 12,
                                           color: Colors.black54,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -76,15 +76,18 @@ class _PicaChartState extends State<PicaChart>
                                 ),
                                 titlesData: FlTitlesData(
                                   show: true,
+                                  rightTitles: SideTitles(),
+                                  topTitles: SideTitles(),
                                   bottomTitles: SideTitles(
-                                    reservedSize: 50,
+                                    reservedSize: 70,
                                     showTitles: true,
                                     rotateAngle: 270,
                                     getTextStyles: (value, number) =>
                                         const TextStyle(
-                                            color: Color(0xff7589a2),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 10),
+                                      color: Color(0xff7589a2),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12,
+                                    ),
                                     margin: 20,
                                     getTitles: (double value) {
                                       switch (value.toInt()) {
@@ -137,11 +140,11 @@ class _PicaChartState extends State<PicaChart>
                                         const TextStyle(
                                             color: Color(0xff7589a2),
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 10),
-                                    margin: 10,
+                                            fontSize: 12),
+                                    margin: 14,
                                     reservedSize: 15,
                                     getTitles: (value) {
-                                      if (value == 90) {
+                                      if (value == 90.0) {
                                         return '93';
                                       } else {
                                         return '';
@@ -164,6 +167,7 @@ class _PicaChartState extends State<PicaChart>
                                     x: index,
                                     barRods: [
                                       BarChartRodData(
+                                        width: 10,
                                         y: picaCController.scorePica(
                                             picaCController.listIndex[index]!),
                                         colors: picaCController.colorBar(

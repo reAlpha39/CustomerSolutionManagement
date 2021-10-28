@@ -67,7 +67,9 @@ class ListUsersCard extends StatelessWidget {
                             Container(
                               width: 100,
                               child: Text(
-                                '${user.password}',
+                                user.password == null
+                                    ? '•••'
+                                    : "•" * user.password!.length,
                                 softWrap: true,
                                 overflow: TextOverflow.ellipsis,
                               ),

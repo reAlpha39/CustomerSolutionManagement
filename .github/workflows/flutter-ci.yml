@@ -59,12 +59,10 @@ jobs:
         artifacts: "build/app/outputs/apk/release/*.apk"
         token: ${{ secrets.CSM_WORKFLOW }}
 
-    - name: Discord notification
-      uses: LeGitHubDeTai/github-to-discord@main
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        DISCORD_USERNAME: Tai Studio
-        MESSAGE_TITLE: New Version
-        MESSAGE_DESCRIPTION: Github Action By Tai Studio
-        MESSAGE_COLOR: 5814783
+    - name: Send status to Discord
+      uses: nebularg/actions-discord-webhook@v1
+      with:
+        webhook_url: ${{ secrets.DISCORD_WEBHOOK }} # required
+        status: ${{ job.status }} # optional, this is the default
+      if: always()
 
